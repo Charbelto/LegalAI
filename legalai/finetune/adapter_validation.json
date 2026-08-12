@@ -1,0 +1,356 @@
+{
+  "checked_at_utc": "2026-08-04T14:18:35.995173+00:00",
+  "max_new_tokens": 400,
+  "min_diff_ratio": 0.05,
+  "roles": [
+    {
+      "role": "legal",
+      "status": "ok",
+      "adapter_dir": "C:\\Users\\Charbel\\Desktop\\Legal AI\\legalai\\adapters\\legal",
+      "mean_diff_ratio": 0.9832,
+      "train_examples": 1425,
+      "final_train_loss": 1.4087575241174113,
+      "eval_history": [
+        {
+          "epoch": 0.247,
+          "eval_loss": 1.3100900650024414,
+          "eval_mean_token_accuracy": 0.7384439408779144
+        },
+        {
+          "epoch": 0.494,
+          "eval_loss": 1.202885627746582,
+          "eval_mean_token_accuracy": 0.7506636559963227
+        },
+        {
+          "epoch": 0.741,
+          "eval_loss": 1.1646281480789185,
+          "eval_mean_token_accuracy": 0.7556982398033142
+        },
+        {
+          "epoch": 0.988,
+          "eval_loss": 1.1603816747665405,
+          "eval_mean_token_accuracy": 0.756158846616745
+        },
+        {
+          "epoch": 1.0,
+          "eval_loss": 1.1603708267211914,
+          "eval_mean_token_accuracy": 0.756478226184845
+        },
+        {
+          "epoch": 1.0,
+          "eval_loss": 1.1603708267211914,
+          "eval_mean_token_accuracy": 0.756478226184845
+        }
+      ],
+      "learning_signal": {
+        "first_eval_loss": 1.3101,
+        "best_eval_loss": 1.1604,
+        "final_eval_loss": 1.1604,
+        "improvement": 0.1497,
+        "improved": true,
+        "best_epoch": 1.0
+      },
+      "base_eval_loss": 2.9585,
+      "best_eval_loss": 1.1603708267211914,
+      "gain_from_base": 1.7981,
+      "saturated_after_epoch1": false,
+      "failed_divergence_check": false,
+      "failed_loss_curve_check": false,
+      "comparisons": [
+        {
+          "probe": "You are the Legal Agent, an expert on the EU AI Act and AI regulations.\n\nYour role is to answer questions about:\n- EU AI Act provisions and requirements\n- Risk ",
+          "diff_ratio": 0.974,
+          "tuned": "**Answer As Of**: 2026-08-04\n**Issue**: Under the EU AI Act, what conformity-assessment obligations apply to a provider of a high-risk AI system before placing it on the market?\n**Rule**: Article 43\n**Application**: For high-risk AI systems covered by the Union harmonisation legislation listed in Section A of Annex I, the provider shall follow the relevant conformity assessment procedure as required under those legal acts.\n**Conclusion**: The provider shall follow the relevant conformity assessment procedure as required under those legal acts.\n**Sources**: [Document 1], [Document 2], [Document 3]\n**Confidence**: High\n**Effective Date**: [Specific date(s) the applicable obligations enter into force]",
+          "base": "Insufficient authoritative support -- recommend expert review.",
+          "tuned_signals": {
+            "chars": 707,
+            "words": 99,
+            "article_citations": 1,
+            "irac_markers": 6,
+            "type_token_ratio": 0.677
+          },
+          "base_signals": {
+            "chars": 62,
+            "words": 7,
+            "article_citations": 0,
+            "irac_markers": 0,
+            "type_token_ratio": 1.0
+          }
+        },
+        {
+          "probe": "You are the Legal Agent, an expert on the EU AI Act and AI regulations.\n\nYour role is to answer questions about:\n- EU AI Act provisions and requirements\n- Risk ",
+          "diff_ratio": 0.9784,
+          "tuned": "**Answer As Of**: 2026-08-04\n**Issue**: Is an AI system used to evaluate creditworthiness of natural persons high-risk under the EU AI Act? Explain your reasoning.\n**Rule**: Article 8(1)(b), (c) and (d) of the EU AI Act\n**Application**: An AI system used to evaluate the creditworthiness of natural persons\n**Conclusion**: Yes\n**Sources**: Document 1\n**Confidence**: High\n**Effective Date**: 2024-07-12",
+          "base": "Insufficient authoritative support -- recommend expert review.",
+          "tuned_signals": {
+            "chars": 402,
+            "words": 58,
+            "article_citations": 1,
+            "irac_markers": 6,
+            "type_token_ratio": 0.724
+          },
+          "base_signals": {
+            "chars": 62,
+            "words": 7,
+            "article_citations": 0,
+            "irac_markers": 0,
+            "type_token_ratio": 1.0
+          }
+        },
+        {
+          "probe": "You are the Legal Agent, an expert on the EU AI Act and AI regulations.\n\nYour role is to answer questions about:\n- EU AI Act provisions and requirements\n- Risk ",
+          "diff_ratio": 0.9973,
+          "tuned": "**Answer As Of**: 2026-08-04\n**Issue**: What penalties may a member state impose for placing a prohibited AI practice on the market?\n**Rule**: Article 80 Procedure for dealing with AI systems classified by the provider as non-high-risk in application of Annex III 1. Where a market surveillance authority has sufficient reason to consider that an AI system classified by the provider as non-high-risk in application of Annex III 1. Where a market surveillance authority has sufficient reason to consider that an AI system classified by the provider as non-high-risk in application of Annex III 1. Where a market surveillance authority has sufficient reason to consider that an AI system classified by the provider as non-high-risk in application of Annex III 1. Where a market surveillance authority has sufficient reason to consider that an AI system classified by the provider as non-high-risk in application of Annex III 1. Where a market surveillance authority has sufficient reason to consider that an AI system classified by the provider as non-high-risk in application of Annex III 1. Where a market surveillance authority has sufficient reason to consider that an AI system classified by the provider as non-high-risk in application of Annex III 1. Where a market surveillance authority has sufficient reason to consider that an AI system classified by the provider as non-high-risk in application of Annex III 1. Where a market surveillance authority has sufficient reason to consider that an AI system classified by the provider as non-high-risk in application of Annex III 1. Where a market surveillance authority has sufficient reason to consider that an AI system classified by the provider as non-high-risk in application of Annex III 1. Where a market surveillance authority has sufficient reason to consider that an AI system classified by the provider as non-high-risk in application of Annex III 1. Where a market surveillance authority has sufficient reason to consider that an AI system classified by the provider as non-high-risk in application of Annex III 1. Where a market surveillance authority has sufficient reason to",
+          "base": "Insufficient authoritative support -- recommend expert review.",
+          "tuned_signals": {
+            "chars": 2144,
+            "words": 337,
+            "article_citations": 1,
+            "irac_markers": 2,
+            "type_token_ratio": 0.145
+          },
+          "base_signals": {
+            "chars": 62,
+            "words": 7,
+            "article_citations": 0,
+            "irac_markers": 0,
+            "type_token_ratio": 1.0
+          }
+        }
+      ],
+      "tuned_mean_article_citations": 1.0,
+      "base_mean_article_citations": 0.0,
+      "tuned_mean_irac_markers": 4.67,
+      "base_mean_irac_markers": 0.0,
+      "tuned_mean_words": 164.67,
+      "base_mean_words": 7.0,
+      "word_ratio_vs_base": 23.52
+    },
+    {
+      "role": "news",
+      "status": "ok",
+      "adapter_dir": "C:\\Users\\Charbel\\Desktop\\Legal AI\\legalai\\adapters\\news",
+      "mean_diff_ratio": 0.9332,
+      "train_examples": 1425,
+      "final_train_loss": 1.9491852382041888,
+      "eval_history": [
+        {
+          "epoch": 0.247,
+          "eval_loss": 1.9341963529586792,
+          "eval_mean_token_accuracy": 0.5701502501964569
+        },
+        {
+          "epoch": 0.494,
+          "eval_loss": 1.9086312055587769,
+          "eval_mean_token_accuracy": 0.573768573999405
+        },
+        {
+          "epoch": 0.741,
+          "eval_loss": 1.904282808303833,
+          "eval_mean_token_accuracy": 0.5741072475910187
+        },
+        {
+          "epoch": 0.988,
+          "eval_loss": 1.9035797119140625,
+          "eval_mean_token_accuracy": 0.5747690021991729
+        },
+        {
+          "epoch": 1.0,
+          "eval_loss": 1.9035141468048096,
+          "eval_mean_token_accuracy": 0.5746369659900665
+        },
+        {
+          "epoch": 1.0,
+          "eval_loss": 1.9035141468048096,
+          "eval_mean_token_accuracy": 0.5746369659900665
+        }
+      ],
+      "learning_signal": {
+        "first_eval_loss": 1.9342,
+        "best_eval_loss": 1.9035,
+        "final_eval_loss": 1.9035,
+        "improvement": 0.0307,
+        "improved": true,
+        "best_epoch": 1.0
+      },
+      "base_eval_loss": 2.994,
+      "best_eval_loss": 1.9035141468048096,
+      "gain_from_base": 1.0905,
+      "saturated_after_epoch1": false,
+      "failed_divergence_check": false,
+      "failed_loss_curve_check": false,
+      "comparisons": [
+        {
+          "probe": "You are the News Agent, an expert on current AI-related news and developments.\n\nYour role is to answer questions about:\n- Recent AI regulation announcements\n- I",
+          "diff_ratio": 0.8887,
+          "tuned": "Article:\n\nThe European Commission announced on Tuesday that it would delay parts of its digital rulebook by twelve months, citing industry readiness concerns. The delay affects transparency obligations originally due in August.\n\nAnswer:\n\nThe European Commission announced the delay because they cited industry readiness concerns. It affects transparency obligations originally due in August.\n\nSupporting detail from the news article:\n\n\"The European Commission has delayed parts of its digital rulebook by 12 months, citing industry readiness concerns.\"\n\n\"Under the original plan, the rules were supposed to be implemented in August.\"",
+          "base": "Based on the information provided, the European Commission delayed parts of its digital rulebook by twelve months. This decision was made with the intention of addressing industry readiness concerns. \n\nThe delay specifically affects transparency obligations that were initially scheduled for implementation in August. These obligations were part of the broader digital rulebook designed to regulate various aspects of digital markets within the EU. By pushing back these requirements, the commission aims to give industries more time to prepare and adapt to the regulations, ensuring they are ready before enforcement begins.",
+          "tuned_signals": {
+            "chars": 633,
+            "words": 89,
+            "article_citations": 0,
+            "irac_markers": 0,
+            "type_token_ratio": 0.596
+          },
+          "base_signals": {
+            "chars": 625,
+            "words": 90,
+            "article_citations": 0,
+            "irac_markers": 0,
+            "type_token_ratio": 0.767
+          }
+        },
+        {
+          "probe": "You are the News Agent, an expert on current AI-related news and developments.\n\nYour role is to answer questions about:\n- Recent AI regulation announcements\n- I",
+          "diff_ratio": 0.9776,
+          "tuned": "Article:\n\nRegulators in three countries have launched a joint investigation into a facial recognition company that they say illegally collected images of people without their permission, according to media reports.\n\nThe companies involved include the U.S.-based Clearview AI, which has been accused of scraping millions of photos from social media sites; the Chinese tech giant Baidu; and the French firm DeepSDK, which was acquired by Baidu last year.\n\nClearview AI said in a statement that it \"has not engaged with any government or law enforcement agency\" and that its technology is used for \"lawful purposes.\"\n\n\"The allegations made against us are false,\" the company added.\n\nBaidu did not immediately respond to a request for comment.\n\nDeepSDK also denied wrongdoing, saying it had \"no knowledge of any illegal activity.\" It added that it would work with authorities as part of the investigation.\n\nIn a separate development, China's National Supervisory Commission announced Thursday that it had launched an investigation into the use of facial recognition technology at public events, including sports games and concerts.\n\nThe commission said it would investigate whether such uses were legal and if there was evidence of abuse.\n\nChina has become one of the world's largest users of facial recognition technology, with hundreds of cities using the system to monitor citizens' movements and activities.\n\nFacial recognition systems can be trained to identify individuals even when they're wearing masks or other coverings, raising concerns among privacy advocates who worry that governments could use them to track people's movements and behavior.\n\nA number of countries have recently introduced new laws regulating the use of facial recognition technology, including France, Germany, Italy, Spain, and the United Kingdom.\n\nIn July, the European Union approved a draft law that would ban the use of biometric data -- including facial recognition -- unless it is necessary for national security or public safety reasons.\n\nHowever, some experts warn that the proposed EU legislation may still allow for widespread use of facial recognition technology, particularly in cases where it is used to combat crime.\n\nMeanwhile, the",
+          "base": "The inquiry was triggered by reports that a facial recognition vendor had improperly scraped images of individuals without their consent. This unethical practice led regulators in three different countries to open a joint investigation into the company's activities. The vendor has denied any wrongdoing but has stated its willingness to cooperate with the authorities.",
+          "tuned_signals": {
+            "chars": 2225,
+            "words": 340,
+            "article_citations": 0,
+            "irac_markers": 0,
+            "type_token_ratio": 0.653
+          },
+          "base_signals": {
+            "chars": 369,
+            "words": 54,
+            "article_citations": 0,
+            "irac_markers": 0,
+            "type_token_ratio": 0.87
+          }
+        }
+      ],
+      "tuned_mean_article_citations": 0.0,
+      "base_mean_article_citations": 0.0,
+      "tuned_mean_irac_markers": 0.0,
+      "base_mean_irac_markers": 0.0,
+      "tuned_mean_words": 214.5,
+      "base_mean_words": 72.0,
+      "word_ratio_vs_base": 2.98
+    },
+    {
+      "role": "general_qa",
+      "status": "ok",
+      "adapter_dir": "C:\\Users\\Charbel\\Desktop\\Legal AI\\legalai\\adapters\\general_qa",
+      "mean_diff_ratio": 0.8968,
+      "train_examples": 1421,
+      "final_train_loss": 4.013428420163272,
+      "eval_history": [
+        {
+          "epoch": 0.248,
+          "eval_loss": 3.9588325023651123,
+          "eval_mean_token_accuracy": 0.6545813620090485
+        },
+        {
+          "epoch": 0.495,
+          "eval_loss": 2.1845526695251465,
+          "eval_mean_token_accuracy": 0.6643948972225189
+        },
+        {
+          "epoch": 0.743,
+          "eval_loss": 1.6657352447509766,
+          "eval_mean_token_accuracy": 0.678624302148819
+        },
+        {
+          "epoch": 0.991,
+          "eval_loss": 1.6492377519607544,
+          "eval_mean_token_accuracy": 0.6808354556560516
+        },
+        {
+          "epoch": 1.0,
+          "eval_loss": 1.6479127407073975,
+          "eval_mean_token_accuracy": 0.6812716126441956
+        },
+        {
+          "epoch": 1.0,
+          "eval_loss": 1.6479127407073975,
+          "eval_mean_token_accuracy": 0.6812716126441956
+        }
+      ],
+      "learning_signal": {
+        "first_eval_loss": 3.9588,
+        "best_eval_loss": 1.6479,
+        "final_eval_loss": 1.6479,
+        "improvement": 2.3109,
+        "improved": true,
+        "best_epoch": 1.0
+      },
+      "base_eval_loss": 3.4494,
+      "best_eval_loss": 1.6479127407073975,
+      "gain_from_base": 1.8015,
+      "saturated_after_epoch1": false,
+      "failed_divergence_check": false,
+      "failed_loss_curve_check": false,
+      "comparisons": [
+        {
+          "probe": "You are the General QA Agent, a helpful assistant for general questions.\n\nYour role is to answer:\n- General knowledge questions\n- Clarifications and explanation",
+          "diff_ratio": 0.9673,
+          "tuned": "EU directives have no binding effect across all member states; instead they must be translated into national legislation before enforcement occurs at local level - whereas treaties directly bind individual countries upon ratification of them as part thereof europeaunions constitutional textbook chapter 3. Contrasted with instruments such british parliamentary statutes that require unanimity amongst jurisdictions witheuquoque_nationals_were_compelled_to_adhere_by_preceptive_prohibition_under_article_59(7)treaty_imperative_drew_no_affirmative_assent_from_non-participating_jurisdiction_in_brussels_council_decisions_typically_require_interparlementarism_and_reconciliation_with_national_legislature_over_discrepancies_between_instrument_text_or_premise_that_demonstrated_deficits_within_the_principle_of_superordination_when_conflicting_meets_later_cited_premises_per_section_b_above_rather_than_just_plain_outright_invalidity_due_to_non_ratified_premised_premise_become_valid_upon_ratifying_all_members_signed_document_after_meeting_criteria_for_ratify_passage_through_presidency_executive_branch_approving_draft_negotiates_agreed_outcome_post_meet_pre_ratifies_premise_premise_premise_premise_premise_premise_premise_premise_premise_premise_premise_premise_premise_premise",
+          "base": "In EU law, both regulations and directives are legally binding instruments. However, they differ in their scope and application. A regulation directly applies to all member states without requiring national implementation, while a directive requires each member state to transpose its provisions into national law. In essence, regulations have immediate effect across the EU, whereas directives need adaptation by individual countries.",
+          "tuned_signals": {
+            "chars": 1278,
+            "words": 56,
+            "article_citations": 0,
+            "irac_markers": 0,
+            "type_token_ratio": 1.0
+          },
+          "base_signals": {
+            "chars": 435,
+            "words": 61,
+            "article_citations": 0,
+            "irac_markers": 0,
+            "type_token_ratio": 0.852
+          }
+        },
+        {
+          "probe": "You are the General QA Agent, a helpful assistant for general questions.\n\nYour role is to answer:\n- General knowledge questions\n- Clarifications and explanation",
+          "diff_ratio": 0.9916,
+          "tuned": "Vector databases store data as vectors instead of tabular formats like SQL tables; they allow fast search operations using similarity metrics such Euclidean distance between points within space where each dimension represents an attribute from your dataset. Vector Databases leverage machine learning algorithms that extract high dimensional representations called embeddings which transform numeric inputs into scalars with unique properties making them highly efficient at matching semantically related items efficiently across large datasets without requiring strict schema definitions beforehand! \n\nGiven this description about how vector databases work - why would companies want use these? Ideal situations appear whenever deep neural networks need fine tuning via iterative training cycles leveraging existing ones efficacy rather than starting over manually selecting new hyperparameters values every time again potentially repeating unproductive outcomes until achieving satisfactory results overall performance profile ideals exceeding baseline benchmarks afforded standardized approaches typical narrowly scoped specialized implementations designed around individual domains specialist roles meant outright replacing generic broad scope solutions including legacy systems retaining footprint deeper integrates core facets beyond merely mapping factual details distinct subsets aligning granular level granularity branching off multiple branches diverged paths converge back together resembling multivariate statistics field overlap fields stemmed commonplace practices differentiate advanced techniques systematic approach yielding superior quality outputs compared traditional alternatives swiftly validating patterns emergent trends rapidly adaptation strategies prioritize diversity strengthens robustness resilience against noise intrinsic weaknesses vulnerabilities exploited strategically crafted design optimised behaviour motivated purely instrumental tactical advantages competitive edge leadership position dominant market share premium price tag valuation markups finance investors bullish buyers catalyst propellant growth inflection point maturation phase saturation peak popularity wane decline obsolescence depreciate value diminished returns pitfalls trap hazardous risks caution warning precautionary measures mitigate damage",
+          "base": "A vector database is a type of database that stores and manages data as vectors, which are mathematical representations of data points in a multi-dimensional space. These databases excel at handling complex, high-dimensional data like text, images, or audio, enabling efficient similarity searches and machine learning tasks such as clustering, classification, and recommendation systems. They're particularly useful in artificial intelligence applications where precise vector operations are crucial.",
+          "tuned_signals": {
+            "chars": 2353,
+            "words": 281,
+            "article_citations": 0,
+            "irac_markers": 0,
+            "type_token_ratio": 0.986
+          },
+          "base_signals": {
+            "chars": 501,
+            "words": 67,
+            "article_citations": 0,
+            "irac_markers": 0,
+            "type_token_ratio": 0.821
+          }
+        },
+        {
+          "probe": "You are the General QA Agent, a helpful assistant for general questions.\n\nYour role is to answer:\n- General knowledge questions\n- Clarifications and explanation",
+          "diff_ratio": 0.7315,
+          "tuned": "I apologize I cannot accept your kind offer at this time due my current commitments; however i look forward our next encounter!",
+          "base": "Dear [Recipient], thank you for considering me for this meeting. Regrettably, my schedule on that day doesn't align with our proposed time, and I'd hate to miss out on such an important discussion. Could we perhaps reschedule for a more convenient date? Looking forward to our collaboration. Best regards.",
+          "tuned_signals": {
+            "chars": 127,
+            "words": 22,
+            "article_citations": 0,
+            "irac_markers": 0,
+            "type_token_ratio": 0.909
+          },
+          "base_signals": {
+            "chars": 305,
+            "words": 49,
+            "article_citations": 0,
+            "irac_markers": 0,
+            "type_token_ratio": 0.898
+          }
+        }
+      ],
+      "tuned_mean_article_citations": 0.0,
+      "base_mean_article_citations": 0.0,
+      "tuned_mean_irac_markers": 0.0,
+      "base_mean_irac_markers": 0.0,
+      "tuned_mean_words": 119.67,
+      "base_mean_words": 59.0,
+      "word_ratio_vs_base": 2.03
+    }
+  ]
+}

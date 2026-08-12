@@ -1,0 +1,10 @@
+mode=all  session=probe_all_408428ff  query=What is a high-risk AI system under the EU AI Act?
+status=200  elapsed=2797.8s
+experts_run=4  abstained=False
+abstained_experts=[]
+tokens prompt/completion = 8949/2789
+truncation_warnings=[]
+slowest nodes (ms): aggregator=1518321, general_qa=320462, response=227308, legal=175167, news=135131, validator=27939
+answer length: 4144 chars, 460 words
+--- answer ---
+Information must include substantial descriptions defining technical details operating conditions expected outcomes constraints different elements gather information regarding execution guidelines comparing evaluations testing reconsider these parts with diverse impact situations including potential weaknesses within associated organizations respect security enforcement satisfaction caution design strict performance validation balancing legislations implied governance loophole risks breach certified ratings admissibility scope legal requirements auditors viable narrow jurisdiction legitimised financially subvert regulatory authorities vulnerable cybersecure anoint pivotal strobe territories 

@@ -1,0 +1,8 @@
+Key Takeaways
+The EU AI Act has extraterritorial reach, any U.S. company whose AI systems or outputs touch EU users is in scope, regardless of having a physical EU presence, with fines of up to €35 million or 7% of global annual turnover for non-compliance.
+The Act's four-tier risk classification (unacceptable, high, limited, and minimal risk) determines the level of compliance obligations, identifying where each AI system sits is the critical first step for U.S. firms.
+Key enforcement deadlines are already active, prohibited AI practices applied from February 2025, GPAI transparency obligations from August 2025, and full high-risk AI enforcement begins August 2026, making immediate preparation non-negotiable.
+High-risk AI systems require a documented risk management system, human oversight controls, conformity assessments, and post-deployment monitoring all of which must be audit-ready before EU market entry.
+Early compliance is a strategic advantage, not just a legal obligation, companies that embed EU AI Act governance into their product lifecycle build procurement trust, reduce vendor risk, and position themselves ahead of what is fast becoming a global regulatory benchmark.
+If you want your AI product to be accessed by an EU customer tomorrow, the EU AI Act should be effectively on your roadmap today. The regulation’s extraterritorial scope means U.S. tech, AI, and SaaS companies now have to treat EU AI compliance the way they learnt (sometimes painfully) to treat GDPR.
+Unlike earlier “soft law” AI principles, the EU AI Act is enforceable, risk‑based, and backed by serious penalties and potential market access restrictions. For executives, legal, risk, and product leaders in U.S.

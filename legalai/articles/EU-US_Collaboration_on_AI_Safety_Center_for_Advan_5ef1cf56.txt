@@ -1,0 +1,22 @@
+EU-US Collaboration on AI Safety
+Apr 5, 2024
+Today, leaders at the European Union and the United States
+announced
+that the EU and US will work together to evaluate artificial intelligence models. The pledge happened in Belgium during the EU-US Trade and Technology Council meeting.
+On the upside, collaboration and cooperation are always good, and given the global reach of AI, it’s good to think about working with other countries to make AI safer. We can learn a lot from the European approach of regulating AI that focuses on risk. The EU’s guidelines are structured around the different levels of risk associated with different tasks and outcomes. They’re looking at AI from the perspective of risk, with more regulations and restrictions in the areas with the greater risk. For example, with medical applications, the risk is much higher than if we’re using AI for job or movie recommendations, and thus, those applications will have greater controls associated with them.
+On the downside, we might be making the problem even harder than it is. Dealing with how to regulate AI is difficult enough to begin with. It’s going to be even more difficult if we have to address cross-cultural issues of different and potentially conflicting goals and values. The concern is whether we’ll make the problem so abstract, so overarching, that the likelihood of us getting to a solution will be incredibly low.
+Overarching rules that are generally applicable are a great target, but it will take time to get there. We must make sure that we don’t ignore the very real and pressing issues that we can already see (digital addiction, rise in depression on social media, unfair or biased systems) while we work on the grand vision.
+We have to make sure that we don’t wait until
+everything
+is agreed on before we do
+anything
+.
+Let’s not get so excited about solving the abstract that we ignore the specifics. And there are a lot of specifics.
+Kristian Hammond
+Bill and Cathy Osborn Professor of Computer Science
+Director of the Center for Advancing Safety of Machine Intelligence
+(CASMI)
+Director of the Master of Science in Artificial Intelligence
+(MSAI)
+Program
+More Reactions: Read All Notes on the News

@@ -1,0 +1,124 @@
+{
+  "checked_at_utc": "2026-08-03T12:48:57.270218+00:00",
+  "cuda_available": true,
+  "gpu": "NVIDIA GeForce RTX 4070 Laptop GPU",
+  "torch_version": "2.13.0+cu126",
+  "load_in_4bit": true,
+  "quant_type": "nf4",
+  "double_quant": true,
+  "compute_dtype": "bfloat16",
+  "use_adapters": false,
+  "arm": "base",
+  "max_input_tokens": 3072,
+  "roles": [
+    {
+      "role": "legal",
+      "loaded": true,
+      "base_model": "unsloth/Llama-3.2-3B-Instruct",
+      "adapter_dir": null,
+      "load_s": 16.57,
+      "free_before_mib": 7068,
+      "free_after_mib": 4862,
+      "model_cost_mib": 2206,
+      "generate_s": 3.12,
+      "completion_tokens": 43,
+      "sample": "The EU AI Act places an obligation on providers of high-risk AI systems to conduct a Human Impact Assessment (HIA) before deploying these systems, which involves identifying and mitigating potential risks to individuals and society."
+    },
+    {
+      "role": "news",
+      "loaded": true,
+      "base_model": "Qwen/Qwen2.5-3B-Instruct",
+      "adapter_dir": null,
+      "load_s": 9.14,
+      "free_before_mib": 4862,
+      "free_after_mib": 2870,
+      "model_cost_mib": 1992,
+      "generate_s": 2.5,
+      "completion_tokens": 33,
+      "sample": "A regulatory sandbox is a controlled environment where innovative financial products or services can be tested and developed under the supervision of regulators to ensure compliance with relevant laws and regulations."
+    },
+    {
+      "role": "general_qa",
+      "loaded": true,
+      "base_model": "ibm-granite/granite-3.1-2b-instruct",
+      "adapter_dir": null,
+      "load_s": 7.62,
+      "free_before_mib": 2870,
+      "free_after_mib": 1089,
+      "model_cost_mib": 1781,
+      "generate_s": 3.9,
+      "completion_tokens": 48,
+      "sample": "A law is a general, constitutionally-grounded principle established by a legislative body, while a regulation is a detailed, administrative rule issued by an executive agency to implement and clarify the provisions of a specific"
+    }
+  ],
+  "baseline": {
+    "free_mib": 7068,
+    "total_mib": 8188,
+    "used_mib": 1120,
+    "torch_allocated_mib": 0,
+    "torch_reserved_mib": 0
+  },
+  "after_all_loads": {
+    "free_mib": 1089,
+    "total_mib": 8188,
+    "used_mib": 7099,
+    "torch_allocated_mib": 5499,
+    "torch_reserved_mib": 5558
+  },
+  "all_three_models_mib": 5979,
+  "sequential_generation_s": 9.52,
+  "peak_vram_after_generation": {
+    "free_mib": 1057,
+    "total_mib": 8188,
+    "used_mib": 7130,
+    "torch_allocated_mib": 5507,
+    "torch_reserved_mib": 5572
+  },
+  "concurrent_generation_s": 8.89,
+  "concurrent_errors": {},
+  "concurrency_speedup": 1.07,
+  "peak_vram_after_concurrent": {
+    "free_mib": 980,
+    "total_mib": 8188,
+    "used_mib": 7208,
+    "torch_allocated_mib": 5532,
+    "torch_reserved_mib": 5626
+  },
+  "kv_budget": {
+    "context_tokens": 4096,
+    "per_model": [
+      {
+        "role": "legal",
+        "layers": 28,
+        "kv_heads": 8,
+        "head_dim": 128,
+        "grouped_query_attention": true,
+        "kib_per_token": 112.0,
+        "kv_cache_mib_at_context": 448
+      },
+      {
+        "role": "news",
+        "layers": 36,
+        "kv_heads": 2,
+        "head_dim": 128,
+        "grouped_query_attention": true,
+        "kib_per_token": 36.0,
+        "kv_cache_mib_at_context": 144
+      },
+      {
+        "role": "general_qa",
+        "layers": 40,
+        "kv_heads": 8,
+        "head_dim": 64,
+        "grouped_query_attention": true,
+        "kib_per_token": 80.0,
+        "kv_cache_mib_at_context": 320
+      }
+    ],
+    "total_kv_cache_mib": 912,
+    "free_after_weights_mib": 1089,
+    "headroom_mib": 177,
+    "fits": true
+  },
+  "verdict": "PASS"
+}

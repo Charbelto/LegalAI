@@ -1,0 +1,12 @@
+Chapter II: Prohibited AI Practices
+Article 5: Prohibited AI practices
+Summary
+Article 5 prohibits the placing on the EU market, putting into service or use of certain AI systems for manipulative, exploitative and social scoring practices, which by their inherent nature violate fundamental rights and EU values. It also outlaws certain AI systems used for individual criminal offence risk assessment and prediction based solely on profiling or personality traits and characteristics, untargeted scraping to develop facial recognition databases, emotion recognition and biometric categorisation. Real-time remote biometric identification in publicly accessible spaces for the purposes of law enforcement is also prohibited with some exceptions.
+The summaries are meant to provide helpful explanation but are not legal binding.
+1.   The following AI practices shall be prohibited:
+(a)
+the placing on the market, the putting into service or the use of an AI system that deploys subliminal techniques beyond a person’s consciousness or purposefully manipulative or deceptive techniques, with the objective, or the effect of materially distorting the behaviour of a person or a group of persons by appreciably impairing their ability to make an informed decision, thereby causing them to take a decision that they would not have otherwise taken in a manner that causes or is reasonably likely to cause that person, another person or group of persons significant harm;
+(b)
+the placing on the market, the putting into service or the use of an AI system that exploits any of the vulnerabilities of a natural person or a specific group of persons due to their age, disability or a specific social or economic situation, with the objective, or the effect, of materially distorting the behaviour of that person or a person belonging to that group in a manner that causes or is reasonably likely to cause that person or another person significant harm;
+(c)
+the placing on the market, the putting into service

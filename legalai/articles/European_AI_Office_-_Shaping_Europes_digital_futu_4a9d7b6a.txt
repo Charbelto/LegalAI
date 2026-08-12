@@ -1,0 +1,201 @@
+The European AI Office supports the development and adoption of trustworthy Artificial Intelligence (AI) solutions, while protecting people against risks.
+The European AI Office was
+established within the European Commission
+as the foundation for a single AI governance system. It supports the
+EU approach to AI
+, playing a key role in implementing the
+AI Act
+– especially for
+general-purpose AI (GPAI)
+– guaranteeing the health, safety and fundamental rights of people and providing legal certainty to businesses. It also enforces the rules for GPAI models and supports the governance bodies in Member States in their tasks. This is underpinned by the powers given to the Commission by the AI Act, including the ability to conduct evaluations of GPAI models, request information and measures from model providers, and apply sanctions.
+The AI Office also promotes an
+innovative ecosystem of trustworthy AI
+, to reap the societal and economic benefits. It ensures a strategic, coherent and effective European approach to AI at
+international level
+, becoming a global reference point.
+The Structure of the AI Office
+The AI Office employs more than 125 staff, including technology specialists, administrative assistants, lawyers, policy specialists, and economists. It has 6 units and 2 advisers, reflecting its mandate:
+“Excellence in AI and Robotics” - unit A1
+“Regulation and Compliance” - unit A2
+“AI Safety” - unit A3
+“AI Innovation and Policy Coordination” - unit A4
+“AI for Societal Good” - unit A5
+"AI in Health and Life Science" - unit A6
+Lead Scientific Adviser
+International Affairs Adviser
+Tasks of the AI Office
+Supporting the AI Act and enforcing general-purpose AI rules
+The AI Office makes use of its expertise to support the implementation and
+enforcement of the AI Act
+by:
+Contributing to the
+coherent application of the AI Act
+across the Member States, including the set-up of advisory bodies at EU level, facilitating support and information exchange
+Developing
+tools, methodologies and benchmarks for evaluating capabilities
+and reach of general-purpose AI models, and
+classifying models
+with systemic risks
+Drawing up
+state-of-the-art codes of practice
+to detail out rules, in cooperation with leading AI developers, the scientific community and other experts
+Preparing
+guidance and guidelines, implementing and delegated acts
+, and other tools to support effective implementation of the AI Act and
+monitor compliance
+with the regulation
+Investigating possible infringements
+of the rules, including inspections, requests for technical documentation and access to models in order to assess models' capabilities
+Requesting providers to
+take corrective action
+and, in case of infringement,
+restrict
+the public availability of a
+model
+and
+issue direct fines for non-compliance
+Strengthening the development and use of trustworthy AI
+The AI Office, in collaboration with relevant public and private actors and the startup community, contributes to fostering trustworthy AI across the EU by:
+Advancing
+actions and policies to reap the societal and economic benefits
+of AI across the EU
+Providing advice on best practices and enabling ready-access to
+AI sandboxes, real-world testing and other European support structures
+for AI uptake
+Encouraging
+innovative ecosystems of trustworthy AI
+to enhance the EU’s competitiveness and economic growth
+Aiding the
+Commission in leveraging the use of transformative AI tools
+and reinforcing AI literacy
+Fostering international cooperation
+At international level, the AI Office contributes to a strategic, coherent, and effective EU approach, by:
+Promoting the
+EU’s approach to trustworthy AI
+, including collaboration with similar institutions worldwide
+Fostering international cooperation and governance on AI,
+contributing to a global approach to AI
+Supporting the
+development and implementation of international agreements
+on AI
+Cooperation with institutions, experts and stakeholders
+The
+AI Office collaborates
+with
+Member States
+and the wider
+expert community
+through dedicated platforms:
+The
+European Artificial Intelligence Board (AI Board)
+is a key advisory body supported by the AI Office that includes representatives from each EU Member States and the
+European Centre for Algorithmic Transparency
+(ECAT). The AI Board’s primary role is to ensure the effective implementation of the AI Act across the EU by coordinating national authorities, sharing technical and regulatory expertise and providing advice on AI policy, innovation, and international partnerships.
+The
+Scientific Panel
+of independent experts ensures a strong link with the scientific community. Further technical expertise is gathered in an
+Advisory Forum
+, representing a balanced selection of stakeholders, including industry, startups and Small and Medium-sized Enterprises (SMEs), academia, think tanks and civil society.
+The AI Office also oversees the
+AI Pact
+, which allows businesses to engage with the Commission and other stakeholders to share best practices and join activities. This engagement has started before the AI Act entered into force and allows businesses to plan ahead and prepare for the full implementation of the AI Act. To stay up to date and register, check the
+AI Pact events
+.
+The
+Apply AI Alliance
+is the main coordination forum bringing together AI providers, industry leaders, academia and the public sector to ensure policy actions are grounded in the real-world needs. Closely connected to the Alliance, an AI Observatory will track AI trends and assess impact of AI in specific sectors.
+Initiatives promoting the development and adoption of AI
+The AI Office actively supports innovators through policies and initiatives that spur growth across the EU:
+The
+AI Continent action plan
+, launched in April 2025, explains how to harness the untapped potential of EU researchers and industries, turning EU strengths – such as unparalleled talent and strong traditional industries – into AI accelerators. The plan promotes economic growth and competitiveness in areas such as healthcare, cars, science.
+The
+Apply AI Strategy
+, launched in October 2025, complements the action plan. It aims to boost AI adoption and innovation across Europe, particularly among SMEs. It is designed to enhance the competitiveness of strategic sectors and strengthen the EU’s tech sovereignty.
+In June 2026, the
+'AI omnibus'
+(part of the
+Digital Simplification Package
+) was adopted, introducing targeted amendments to the AI Act to ensure the rules remain clear, simple, and innovation-friendly. The
+amendments entered into force
+on 27 July.
+The ‘
+GenAI4EU
+' initiative, part of the 2024
+AI innovation package
+, contributes to the development of novel use cases and emerging applications in 14 industrial sectors and the public sector.
+Other initiatives aimed at boosting the development and uptake of AI are:
+AI Factories
+Testing and Experimentation Facilities (TEFS) and sandboxes
+European Digital Innovation Hubs (EDIHs)
+AI skills and literacy
+Job opportunities and collaboration
+The AI Office recruits talent from a wide range of backgrounds for policy, technical and legal roles and administrative support. To apply, complete the
+Expression of Interest Form
+. For inquiries, please contact us at the following addresses:
+Recruitment:
+CNECT-AIOFFICE-RECRUITMENT@ec.europa.eu
+General Inquiries:
+CNECT-AIOFFICE@ec.europa.eu
+Important: These email addresses are for inquiries only. Applications must be submitted through the dedicated form, not via email.
+Quick Links
+Any question on the AI Act? Visit our Single Information Platform
+AI Continent action plan
+Apply AI strategy
+AI Act
+AI Pact
+European approach to artificial intelligence
+AI factories
+AI in health
+AI tools for cities
+AI for public good
+Apply AI Alliance
+AI skills and literacy
+EU international engagement on AI
+Upcoming guidelines supporting the implementation of the AI Act
+Latest News
+PRESS RELEASE
+|
+31 July 2026
+Commission starts enforcing AI Act rules and new transparency requirements on 2 August
+PRESS RELEASE
+|
+30 July 2026
+EU launches AI Gigafactories call to boost Europe's computing capacity and unlock more than €30 billion in investment
+EVENT
+|
+02 September 2026
+AI-powered robotics in Europe: Live demonstrations and strategic debate
+EVENT
+|
+14 September 2026
+Kick-off of new GenAI pilots for public administration & Apply AI stakeholder meeting
+PRESS RELEASE
+|
+20 July 2026
+Commission publishes guidelines on transparency obligations for providers and deployers of certain AI systems
+EVENT
+|
+20 October 2026 - 21 October 2026
+Advanced Virtual Human Twins (VHT) Platform - Annual Event
+Browse Artificial intelligence
+Related Content
+Big Picture
+Artificial Intelligence
+Europe is transforming into the AI continent by fostering the development and uptake of new AI applications while ensuring that AI remains safe and respect EU values.
+AI Board
+The European Artificial Intelligence Board (the "AI Board") is a key advisory body that was created...
+AI Act Advisory Forum
+The Advisory Forum is a general advisory body to the European Commission and the AI Board...
+AI Act Scientific Panel
+The Scientific Panel advises the AI Office and national authorities on the implementation the AI Act...
+EU international engagement on Artificial Intelligence
+The AI Office leads the EU's international engagement on AI – from promoting safe and trustworthy AI...
+Other
+AI for Public Good
+Artificial Intelligence has the power to drive meaningful change, improving lives and tackling some...
+AI tools for Cities
+The European Commission will provide a suite of advanced tools enabling urban planners to optimise...
+Last update
+31 July 2026
+Print as PDF

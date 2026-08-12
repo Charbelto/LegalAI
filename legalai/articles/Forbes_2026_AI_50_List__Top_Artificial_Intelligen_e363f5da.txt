@@ -1,0 +1,92 @@
+Forbes 2026 AI 50 List | Top Artificial Intelligence Companies
+Edited by
+Rashi Shrivastava
+April 16, 2026 at 6:30 AM
+Sponsoring Partner
+Click here for the full methodology.
+Anthropic
+CEO
+:
+DARIO AMODEI
+HQ
+:
+SAN FRANCISCO
+FUNDING
+:
+$60 BIL
+FOUNDED
+:
+2021
+Anthropic had a busy February. First Claude Cowork, designed to automate common business processes, spooked the market, sending SaaS, IT and legal services shares $285 billion lower. Then it launched its latest version of Claude Opus, its coding model that’s upending software engineering. Finally, it had a very public feud with the U.S. government. After refusing to budge on safeguards around autonomous weapons and mass domestic surveillance, Anthropic was blacklisted by the Pentagon. But that’s made CEO and cofounder Dario Amodei a hero of sorts in the AI world, with rivals like OpenAI and Google coming to his defense. And business keeps booming. Revenue hit $4.5 billion last year and in February Claude surpassed ChatGPT to become the most downloaded app on the App Store. It’s now valued at $380 billion.
+VIEW PROFILE
+EliseAI
+CEO
+:
+MINNA SONG
+HQ
+:
+NEW YORK
+FUNDING
+:
+$392 MIL
+FOUNDED
+:
+2017
+Over 80 percent of the country’s largest property management firms use EliseAI’s chatbots to speed up repetitive admin work like tracking maintenance requests, scheduling apartment tours and renewing leases. CEO Minna Song took a front desk job at a real estate firm to learn about the industry’s pain points before starting the New York-based EliseAI in 2017. At the time, she struggled to convince investors to take a chance on an AI company targeting housing. “Now we go into investor meetings and they're pitching us back to us,” says Song, 35. In 2023, the startup expanded into another crucial industry: healthcare, where its tech helps verify insurance, make appointments and answer billing questions.
+VIEW PROFILE
+Gamma
+CEO
+:
+GRANT LEE
+HQ
+:
+SAN FRANCISCO
+FUNDING
+:
+$91 MIL
+FOUNDED
+:
+2020
+Former investment banker Grant Lee used to waste hours formatting text and designing graphics for PowerPoint presentations. Today, his startup Gamma lets anyone type in a simple text prompt to spin up sleek financial slides, visuals to go with social media posts and even entire websites. The app’s first version, launched in 2020, was a dud: one investor called it “the worst idea” they’d ever heard, Lee, 42, recalls. But the AI craze changed Gamma’s fortunes: It’s been profitable since 2023 and is now valued at $2.1 billion. One hundred million people have used its tools at least once and more than 600,000 are regular users, paying between $9 to $100 a month.
+VIEW PROFILE
+Reflection
+CEO
+:
+MISHA LASKIN
+HQ
+:
+BROOKLYN
+FUNDING
+:
+$2.1 BIL
+FOUNDED
+:
+2024
+Chinese AI companies like DeepSeek lead the world on open-source AI models, where the underlying code is visible to clients and can be modified, which has made the Trump administration eager to champion an American alternative. Enter Reflection, a two-year-old Brooklyn-based startup that’s raised $2.1 billion and is valued at $8 billion. Backed by Nvidia, Sequoia, Lightspeed and 1789 Capital, where Donald Trump Jr. is a partner, the company hasn’t publicly released its own AI yet but is spending billions building a data center in South Korea and developing bespoke AIs for Korean companies. Former Google DeepMind researchers Misha Laskin and Ioannis Antonoglou, who led early efforts on Gemini, founded the venture in 2024.
+VIEW PROFILE
+Featured Articles
+How Forbes Compiled The 2026 AI 50 List
+Forbes’ AI 50 list spotlights the most promising privately held companies applying artificial intelligence to solve real-world challenges.
+Elisabeth Brier
+The AI 50 Brink List
+Meet the early-stage startups racing to define the future of artificial intelligence.
+Sofia Chierchio
+How France’s Mistral Built A $14 Billion AI Empire By Not Being American
+Paris-based Mistral wanted to develop a top-tier AI model to rival OpenAI and Anthropic. That didn’t work out. But it turns out lots of folks don’t care if the AI is bleeding edge – as long as it wasn’t made in America or China.
+Iain Martin
+Amplify Your Forbes Recognition
+Proudly showcase your success with Reprints & Display Products, Premium Profiles, and Award Logos.
+Reprints & Display Products
+Proudly showcase your Forbes accolade with plaques, wall displays, reprints, desktop awards, and more.
+Learn More
+Award Logos
+Leverage the power of Forbes by licensing the official logo to use in your marketing.
+Learn More
+Listmaker Voice
+Leverage the influence of your top executives with a thought leadership article published on Forbes.com
+Learn More
+Related Forbes Lists
+The World's Billionaires List
+Fin Tech 50
+Midas List
+Browse More Forbes Lists

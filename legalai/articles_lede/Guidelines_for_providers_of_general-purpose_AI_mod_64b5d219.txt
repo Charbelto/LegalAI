@@ -1,0 +1,25 @@
+The Commission has issued guidelines to clarify the scope of the obligations for providers of general-purpose AI models under the AI Act. These obligations entered into application on 2 August 2025.
+The
+guidelines on the scope of obligations for providers of general-purpose AI (GPAI) models
+(available in the 24 EU official languages) help actors in the AI ecosystem understand whether the obligations apply to them and what is expected of them, ensuring they can innovate with confidence.
+Key points of the guidelines
+Clear definitions
+: The guidelines introduce straightforward technical criteria, for instance for when an AI model is considered "general-purpose." This helps developers understand if they need to comply with the obligations under the AI Act.
+Pragmatic approach
+: The guidelines are designed to be pragmatic. For instance, they clarify that only those making significant modifications to AI models need to comply with the obligations for providers of GPAI models, not those making minor changes.
+Exemptions for open-source
+: The guidelines also clarify under what conditions providers of open-source AI models are exempt from certain obligations, to promote transparency and innovation.
+Why are these guidelines important?
+The guidelines explain how the Commission interprets key terms in the
+AI Act
+. This helps actors in the AI ecosystem understand who is expected to follow which obligations. Thus, the guidelines complement the
+General-Purpose AI Code of Practice
+, a voluntary, practical tool that explains how providers of GPAI models can fulfil their obligations under the AI Act.
+Application and enforcement timeline
+From
+2 August 2025
+, the
+obligations for providers
+of GPAI models
+entered into application
+. Providers of GPAI models placed on the market after this date must comply and are expected to informally collaborate with the AI Office’s technical staff. In particular, providers of the most advanced models, i.e.

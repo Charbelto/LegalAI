@@ -1,0 +1,75 @@
+The AI Office leads the EU's international engagement on AI – from promoting safe and trustworthy AI to building strategic partnerships and advancing AI for the public good worldwide.
+Artificial intelligence is transforming economies, societies and the global power dynamics. Its opportunities and risks transcend borders, making international cooperation essential. The
+AI Office
+leads the EU's international engagement on AI, based on the
+AI Act
+and the Coordinated Plan on AI. The EU AI Diplomacy aims to lead global efforts on AI by supporting innovation, setting appropriate guardrails on AI and developing the global governance of AI while ensuring alignment with European values, interests and security.
+The EU approach to AI is built on 3 closely linked pillars:
+excellence
+trust
+international cooperation
+These pillars comprise both the internal EU policy and the external dimension of this EU policy. International outreach and cooperation are therefore a core component of the EU's AI Strategy.
+As part of the EU's international engagement with other countries, the
+EU Tech Business Offer
+aims
+to create mutual benefits for partner countries.
+It includes measures to strengthen capacity-building, research cooperation and talent. These efforts help align international digital developments with EU rules
+–⁠
+such as those on artificial intelligence
+–⁠
+thereby supporting European competitiveness in the global market.
+Leading the EU’s international engagement on AI
+The AI Office is in charge of defining the priorities of the EU’s international engagement in the area of AI and coordinating their implementation. It represents the EU in international organisations, develops strategic partnerships and ensures coherence between EU internal AI policies and international action.
+The EU engages with countries and international organisations to support trustworthy, human-centric AI. The EU cooperates on AI with an increasing number of countries and regions, including Canada, the United States, India, Japan, the Republic of Korea, Singapore, Australia, the United Kingdom, Latin America and the Caribbean, and Africa. Cooperation takes various different forms, ranging from communicating the EU approach and sharing experiences and lessons learnt with partners, via research and innovation partnerships to joint projects on AI safety and AI for the public good.
+Furthermore, the EU is engaged in key international organisations where AI is discussed, including the G7, G20, OECD and the Global Partnership on AI, the Council of Europe, as well as in the United Nations context.
+AI Research
+The EU supports the development and use of artificial intelligence that is grounded in scientific excellence. International research cooperation is central to this mission: it strengthens Europe’s scientific leadership and supports the EU’s ambition to help shape global approaches to AI.
+A key priority is to expand scientific cooperation on fundamental AI research with international partners, building on European initiatives such as the
+Resource for AI Science in Europe (RAISE)
+and the
+Frontier AI Initiative.
+These efforts aim to accelerate progress on next-generation AI architectures and agentic systems representing a shift from passive, text-generating models to autonomous, goal-driven agents that can plan, reason, use tools, and collaborate.
+Deeper international cooperation must also be matched with robust safeguards. Research security is an integral part of the approach. The EU will continue to develop strategic partnerships with trusted partners that share its principles and commitments in advanced AI research.
+Safe and trustworthy AI
+Because systemic risks linked to advanced AI are global in nature, the EU places a strong emphasis on international cooperation on AI safety, sharing expertise with partners and avoiding duplication of efforts. The AI Office contributes to the international AI safety cooperation and bilateral discussions about obligations for providers of the most advanced AI models. Through NAAIMES (International Network for Advanced AI Measurement, Evaluation and Science; formerly Network of AI Safety Institutes), the AI Office collaborates with international partners on technical tools for AI governance. Where appropriate, joint situational awareness and communication channels for effective incident response are established.
+AI for the Public Good
+The EU promotes
+AI for the Public Good
+, using AI as an instrument to drive inclusive innovation and address major societal challenges for the benefit of all. This work strengthens Europe’s technological capabilities and sovereignty while supporting global solutions through scientific cooperation and open innovation with the EU’s partners.
+Concrete initiatives include AI applications for healthcare, energy, climate and
+city planning
+and disaster risk management, from preparedness and prediction to crisis monitoring and
+post-disaster recovery and reconstruction
+, contributing both to innovation and long-term capacity building with partner countries.
+Through this comprehensive approach, the AI Office positions the EU as a proactive, cooperative and reliable global partner. By combining innovation, guardrails and international cooperation, the EU aims to lead by example to ensure that AI benefits societies worldwide while respecting fundamental rights and shared values.
+For a full overview of our initiatives, you can watch this
+webinar on EU's international engagement on AI
+.
+Explore more
+International Digital Strategy
+EU Tech Business Offer
+Latest News
+News article
+03 August 2026
+Fourth GPAI Signatory Taskforce meeting
+The fourth meeting of the Signatory Taskforce under the General-Purpose AI (GPAI) Code of Practice focused on the Safety and Security Chapter and the Copyright Chapter.
+News article
+31 July 2026
+Strong backing for the Code of Practice on Transparency of AI-generated Content
+About 190 organisations signed the Code of Practice on Transparency of AI-generated Content ahead of the entry into application of the legal obligations.
+Press release
+31 July 2026
+Commission starts enforcing AI Act rules and new transparency requirements on 2 August
+From 2 August 2026, the European Commission’s AI Office, together with national authorities, will begin enforcing the Artificial Intelligence (AI) Act.
+Press release
+30 July 2026
+EU launches AI Gigafactories call to boost Europe's computing capacity and unlock more than €30 billion in investment
+The EU has launched a call for tenders to establish up to seven AI Gigafactories across Europe, as part of its latest major push to accelerate Europe's technological sovereignty and ambition of becoming the AI Continent.
+Browse Artificial intelligence
+Related Content
+Big Picture
+European AI Office
+The European AI Office supports the development and adoption of trustworthy Artificial Intelligence (AI) solutions, while protecting people against risks.
+Last update
+27 May 2026
+Print as PDF

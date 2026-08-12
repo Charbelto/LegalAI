@@ -1,0 +1,32 @@
+EU AI Act Guide 2026: Risk Classes, GPAI, Deadlines, Fines
+Published: 17 May 2026
+·
+Last updated: 17 May 2026
+· Category: EU AI Act
+·
+~14 min read
+TL;DR — EU AI Act in 5 sentences
+Regulation (EU) 2024/1689
+— the world's first comprehensive AI regulation, in force since 01.08.2024, applying in stages until 02.08.2027. First phase (prohibited practices + AI Literacy) in force since 02.02.2025.
+4 risk classes:
+prohibited (Art. 5), high-risk (Art. 6 + Annex III), limited risk (Art. 50 transparency), minimal risk (voluntary).
+Two roles with different obligations:
+Provider (Art. 3 No. 3) and Deployer (Art. 3 No. 4). Substantial modification or rebranding makes you a provider (Art. 25).
+Fines up to €35M or 7% global annual turnover
+(Art. 99) for Art. 5 violations — the highest sanctions of any EU regulation.
+Deadline 02.08.2026 for most SMBs
+with high-risk AI under Annex III (recruiting, education, critical infrastructure, etc.). Preparation now is essential.
+1. What is the EU AI Act?
+The
+Regulation (EU) 2024/1689 on Artificial Intelligence
+(AI Act) is the world's first comprehensive horizontal regulation of artificial intelligence. It entered into force on 01.08.2024, applies in stages and is fully effective from 02.08.2027.
+The AI Act follows a
+risk-based approach
+: the higher the risk of an AI application to safety, health or fundamental rights, the stricter the obligations. Unlike the GDPR, the AI Act doesn't primarily regulate data processing but
+products and applications
+along the value chain from development to deployment.
+Core concepts:
+AI System (Art. 3 No. 1):
+a machine-based system that operates with varying degrees of autonomy, may exhibit adaptiveness, and from received inputs infers outputs (predictions, content, recommendations, decisions) that can influence physical or virtual environments.
+GPAI model (Art. 3 No. 63):
+an AI model trained with broad data enabling general-purpose use — e.g.

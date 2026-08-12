@@ -1,0 +1,46 @@
+version: "3.9"
+
+services:
+  legalai:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: legalai
+    ports:
+      - "8000:8000"
+    environment:
+      OLLAMA_BASE_URL: ${OLLAMA_BASE_URL:-http://host.docker.internal:11434}
+      OLLAMA_MODEL: ${OLLAMA_MODEL:-qwen2.5}
+      OLLAMA_EMBEDDING_MODEL: ${OLLAMA_EMBEDDING_MODEL:-nomic-embed-text}
+      LEGALAI_ALLOWED_ORIGINS: ${LEGALAI_ALLOWED_ORIGINS:-*}
+      LEGALAI_SERVE_STATIC: "1"
+    volumes:
+      - ./articles:/app/articles
+      - ./chroma_storage:/app/chroma_storage
+      - ./sessions:/app/sessions
+      - ./articles.json:/app/articles.json
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "python", "-c", "import requests,sys; sys.exit(0 if requests.get('http://127.0.0.1:8000/health', timeout=3).ok else 1)"]
+      interval: 30s
+      timeout: 5s
+      retries: 5
+      start_period: 25s
+
+  benchmark:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    depends_on:
+      legalai:
+        condition: service_healthy
+    environment:
+      URL_BASE: http://legalai:8000
+      LEGALAI_DETERMINISTIC: "1"
+      JUDGE_MODEL: llama3.1:8b
+    volumes:
+      - ./eval_dataset.json:/app/eval_dataset.json
+      - ./results:/app/results
+    profiles: ["bench"]
+    command: ["python", "benchmark.py"]
+

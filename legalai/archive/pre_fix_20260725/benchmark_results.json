@@ -1,0 +1,115 @@
+{
+  "all": {
+    "success": true,
+    "elapsed_s": 79.07,
+    "backend_ms": 67523.96,
+    "route": "legal",
+    "timings": {
+      "planner": 0.02,
+      "router": 306.43,
+      "memory": 0.75,
+      "retrieval": 2071.53,
+      "legal": 23449.64,
+      "news": 23742.29,
+      "general_qa": 3463.28,
+      "aggregator": 6961.25,
+      "validator": 1893.47,
+      "response": 5627.79
+    },
+    "response": "The EU AI Act outlines stringent compliance requirements for high-risk AI systems, including those used in legal services. Key obligations include:\n\n- **Risk Assessment**: Conduct thorough risk assessments to identify potential risks.\n- **Conformity Assessments**: Undergo independent third-party evaluations to ensure safety and performance standards are met.\n- **Human Oversight**: Prioritize human oversight for critical applications.\n- **Technical Documentation**: Maintain detailed records supporting compliance.\n\nRecent updates have provided more guidance on these processes, including clearer procedures for conformity assessments and enhanced enforcement mechanisms through the establishment of an EU AI Observatory.\n\nFor the most up-to-date information, refer to official EU documents or regulatory bodies. Ensuring compliance is crucial to maintain safety, transparency, and accountability in high-risk AI systems.",
+    "steps": 20
+  },
+  "single": {
+    "success": true,
+    "elapsed_s": 46.51,
+    "backend_ms": 45436.47,
+    "route": "legal",
+    "timings": {
+      "planner": 0.02,
+      "router": 266.46,
+      "memory": 0.72,
+      "retrieval": 2144.74,
+      "legal": 22283.78,
+      "aggregator": 9463.39,
+      "validator": 2660.38,
+      "response": 8611.81
+    },
+    "response": "Under the EU AI Act, high-risk AI systems must meet several stringent requirements:\n\n- **Risk Assessment**: Providers need to conduct thorough risk assessments before deployment.\n- **Technical Documentation**: Detailed documentation is required to show compliance.\n- **Human Oversight**: In certain cases, human oversight is necessary.\n- **Record-Keeping**: Records must be maintained for at least 10 years post-deployment.\n- **Post-Market Monitoring**: Continuous monitoring ensures ongoing compliance.\n- **Transparency**: High-risk systems must provide clear information about their functioning.\n\nAs of May 2026, there have been no specific updates regarding recent changes to the EU AI Act. Non-compliance can result in significant fines ranging from €250,000 to 6% of annual global turnover.\n\nFor more detailed information on specific articles or sections, refer to the official European Commission website.\n\nIf you're interested in learning more about how AI is being integrated into legal practices and data management, upcoming events like \"AI & Legal Innovation Talks\" scheduled for June 17-18, 2026, in London, might provide additional insights.",
+    "steps": 16
+  },
+  "parallel": {
+    "success": true,
+    "elapsed_s": 71.0,
+    "backend_ms": 69850.96,
+    "route": "legal",
+    "timings": {
+      "planner": 0.02,
+      "router": 262.24,
+      "memory": 0.38,
+      "retrieval": 2146.87,
+      "news": 21752.01,
+      "general_qa": 25693.61,
+      "legal": 48231.9,
+      "aggregator": 8990.11,
+      "validator": 2754.27,
+      "response": 7456.75
+    },
+    "response": "The EU AI Act aims to ensure that high-risk AI systems meet ethical and safety standards. Here are the key compliance requirements:\n\n- **Risk Assessment and Documentation**: High-risk AI systems must undergo thorough risk assessments with detailed documentation covering design, development, testing, deployment, and monitoring.\n- **Human Oversight**: Systems should be designed to allow for human intervention when necessary.\n- **Technical Documentation and Certificates**: Comprehensive technical documentation and certificates from independent third parties are required.\n- **Labeling and Transparency**: Products must clearly indicate they are AI systems and provide information about their capabilities and limitations.\n- **Post-Market Monitoring**: Continuous monitoring is essential to ensure ongoing compliance.\n\nAs of May 20, 2026, the EU AI Act has not yet been fully implemented but is expected to come into force in May 2024 with a grace period until mid-2025 for compliance. For detailed requirements and the latest updates, consult official EU sources or legal experts.",
+    "steps": 20
+  },
+  "legal_news_parallel": {
+    "success": true,
+    "elapsed_s": 69.49,
+    "backend_ms": 68398.85,
+    "route": "legal",
+    "timings": {
+      "planner": 0.02,
+      "router": 289.22,
+      "memory": 0.7,
+      "retrieval": 2147.32,
+      "legal": 28588.89,
+      "news": 50127.69,
+      "aggregator": 6198.34,
+      "validator": 2526.96,
+      "response": 7099.41
+    },
+    "response": "The EU AI Act focuses on regulating high-risk AI systems used in critical sectors such as healthcare, construction, transport, and energy. Key compliance requirements include:\n\n- **Conducting Risk Assessments:** Evaluating potential risks associated with the AI system.\n- **Technical Documentation:** Preparing detailed documentation to support risk management.\n- **Human Oversight:** Ensuring human intervention is available for decision-making processes.\n- **Record Keeping:** Maintaining records for 10 years following the deployment of the system.\n- **Labeling and Explanation:** Clearly labeling the system with its risk category and providing explanations for outputs.\n\nAs of May 2026, the act is still under implementation. Member states are aligning their national laws to comply. Recent updates include ongoing public consultations and guidance documents from the European Commission to assist stakeholders in meeting these requirements.",
+    "steps": 18
+  },
+  "legal_first": {
+    "success": true,
+    "elapsed_s": 83.41,
+    "backend_ms": 82269.66,
+    "route": "legal",
+    "timings": {
+      "planner": 0.02,
+      "router": 305.63,
+      "memory": 0.64,
+      "retrieval": 2269.18,
+      "legal": 39179.93,
+      "news": 22892.53,
+      "aggregator": 5900.48,
+      "validator": 2542.46,
+      "response": 9172.54
+    },
+    "response": "High-risk AI systems under the EU AI Act must meet several stringent compliance requirements:\n\n- **Detailed Risk Assessments:** These must be conducted to identify potential risks.\n- **Comprehensive Technical Documentation:** To ensure transparency and accountability.\n- **Human Oversight Mechanisms:** To maintain control over system operations.\n- **Accuracy and Robustness:** Ensuring reliable performance of the AI system.\n- **Data Protection Compliance:** Adherence to EU data protection laws.\n- **Traceability:** Maintaining a clear record of how decisions are made by the AI system.\n- **Continuous Post-Market Monitoring:** To address any emerging issues post-deployment.\n\nAs of May 2026, there have been no significant updates to the act itself. However, ongoing efforts by regulatory bodies continue to support implementation through guidance and best practices.\n\nFor precise details, consulting a legal expert specializing in EU AI regulations is recommended.",
+    "steps": 18
+  },
+  "verify_only": {
+    "success": true,
+    "elapsed_s": 22.27,
+    "backend_ms": 20823.33,
+    "route": "legal",
+    "timings": {
+      "planner": 0.02,
+      "router": 377.47,
+      "memory": 0.5,
+      "retrieval": 2336.39,
+      "aggregator": 9819.23,
+      "validator": 3374.65,
+      "response": 4909.89
+    },
+    "response": "The EU AI Act outlines strict compliance requirements and obligations for high-risk AI systems, including those used in legal practices. Key obligations include:\n\n- Ensuring data privacy and security\n- Maintaining transparency\n- Avoiding bias\n\nRecent updates emphasize the importance of ethical considerations and client trust. Law firms must comply with these regulations to mitigate risks and maintain legal standards.\n\nFor the latest details, refer to the official EU AI Act documentation or consult a legal expert specializing in AI compliance.",
+    "steps": 14
+  }
+}

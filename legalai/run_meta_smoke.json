@@ -1,0 +1,99 @@
+{
+  "started_at_utc": "2026-08-05T13:19:11.060993+00:00",
+  "finished_at_utc": "2026-08-05T13:36:09.886094+00:00",
+  "duration_s": 1018.83,
+  "runs_file": "benchmark_runs_smoke.jsonl",
+  "smoke": true,
+  "modes": [
+    "all",
+    "parallel",
+    "dag"
+  ],
+  "arm": "base",
+  "appended": true,
+  "repeats": 1,
+  "queries": 1,
+  "query_types": [
+    "simple"
+  ],
+  "planned_runs": 3,
+  "attempted_runs": 3,
+  "limit": null,
+  "concurrency": 1,
+  "completed_runs": 3,
+  "failed_runs": 0,
+  "warmup_excluded": true,
+  "seed_base": 1000,
+  "seeds": [
+    1000
+  ],
+  "server_config": {
+    "app_version": "1.1.0",
+    "ollama_base_url": "http://localhost:11434",
+    "generation_provider": "local_peft",
+    "chat_model": "legal=unsloth/Llama-3.2-3B-Instruct; news=Qwen/Qwen2.5-3B-Instruct; general_qa=ibm-granite/granite-3.1-2b-instruct",
+    "embedding_model": "nomic-embed-text",
+    "max_iterations": 2,
+    "expert_execution_mode": "all",
+    "serve_static": false,
+    "compl_ai_enabled": false,
+    "deterministic": false,
+    "llm_seed": 42,
+    "num_ctx": 8192,
+    "num_predict": 1024,
+    "generation_arm": "base",
+    "local_models": [
+      {
+        "role": "legal",
+        "base_model": "unsloth/Llama-3.2-3B-Instruct",
+        "dataset": "legalbench",
+        "adapter_dir": "C:\\Users\\Charbel\\Desktop\\Legal AI\\legalai\\adapters\\legal",
+        "adapter_present": true,
+        "adapter_requested": false
+      },
+      {
+        "role": "news",
+        "base_model": "Qwen/Qwen2.5-3B-Instruct",
+        "dataset": "newsqa",
+        "adapter_dir": "C:\\Users\\Charbel\\Desktop\\Legal AI\\legalai\\adapters\\news",
+        "adapter_present": true,
+        "adapter_requested": false
+      },
+      {
+        "role": "general_qa",
+        "base_model": "ibm-granite/granite-3.1-2b-instruct",
+        "dataset": "dolly15k",
+        "adapter_dir": "C:\\Users\\Charbel\\Desktop\\Legal AI\\legalai\\adapters\\general_qa",
+        "adapter_present": true,
+        "adapter_requested": false
+      }
+    ],
+    "local_max_input_tokens": 6144,
+    "eurlex_live_search_enabled": false
+  },
+  "env": {
+    "LEGALAI_DETERMINISTIC": "0",
+    "LEGALAI_NUM_CTX": "8192",
+    "LEGALAI_NUM_PREDICT": null,
+    "LEGALAI_ENABLE_COMPL_AI": "0",
+    "GENERATION_PROVIDER": "local_peft",
+    "OLLAMA_MODEL": null,
+    "OLLAMA_NUM_PARALLEL": "4",
+    "OLLAMA_BASE_URL": null,
+    "DEEPSEEK_MODEL": null,
+    "LEGALAI_USE_ADAPTERS": "0",
+    "LEGALAI_ADAPTER_DIR": null,
+    "LEGALAI_LEGAL_BASE_MODEL": null,
+    "LEGALAI_NEWS_BASE_MODEL": null,
+    "LEGALAI_GENERAL_BASE_MODEL": null,
+    "LEGALAI_LOCAL_MAX_INPUT_TOKENS": null,
+    "LEGALAI_ENABLE_EURLEX_LIVE": "0"
+  },
+  "platform": {
+    "python": "3.11.9",
+    "system": "Windows",
+    "release": "10",
+    "machine": "AMD64",
+    "processor": "AMD64 Family 25 Model 68 Stepping 1, AuthenticAMD"
+  }
+}

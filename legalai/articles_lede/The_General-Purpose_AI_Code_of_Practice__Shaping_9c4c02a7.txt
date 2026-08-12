@@ -1,0 +1,33 @@
+The code of practice helps industry comply with the AI Act legal obligations on safety, transparency and copyright of general-purpose AI models.
+The General-Purpose AI (GPAI) code of practice is a voluntary tool, prepared by
+independent experts
+in a multi-stakeholder process, designed to help industry comply with the AI Act’s obligations for providers of general-purpose AI models. Read more about the
+timeline and the drafting process of the code
+.
+The
+code was published on July 10, 2025
+. It is complemented by
+Commission guidelines
+on key concepts related to general-purpose AI models. The
+Commission
+and the
+AI Board
+have confirmed that the code is an
+adequate voluntary tool
+for providers of GPAI models to demonstrate compliance with the AI Act.
+Following the endorsement, AI model providers who voluntarily sign it can show they comply with the AI Act by adhering to the code. This will
+reduce their administrative burden
+and give them
+more legal certainty
+and trust than if they proved compliance through other methods. Find more information on the
+questions and answers (Q&A) about the GPAI code of practice
+. Signatories of the Code have established the
+Signatory Taskforce
+, chaired by the AI Office, to facilitate a coherent application of the Code. The
+Vademecum
+contains the rules of procedure and the list of members.
+Providers of general-purpose AI models may sign the code by completing the
+Signatory Form
+and sending the signed form to
+EU-AIOFFICE-CODE-SIGNATURES@ec.europa.eu
+. Potential Signatories may also email this address to ask any questions on the process of signing up to the code.

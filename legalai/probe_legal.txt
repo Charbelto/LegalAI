@@ -1,0 +1,176 @@
+﻿==============================================================================
+LEGAL EXPERT, RAW OUTPUT, PRODUCTION PROMPT LENGTH
+==============================================================================
+[RetrievalAgent] Connected to ChromaDB at chroma_storage
+[RetrievalAgent] Retrieving documents for: What is a high-risk AI system under the EU AI Act?...
+[RetrievalAgent] Retrieved and reranked 5 documents using hybrid search.
+[local_models] loading role=legal base=unsloth/Llama-3.2-3B-Instruct 4bit=True adapter=yes
+python.exe : Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher 
+rate limits and faster downloads.
+At line:1 char:462
++ ... NISTIC="0"; & .\.venv\Scripts\python.exe -u probe_legal_expert.py > p ...
++                 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (Warning: You ar...ster downloads.:String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+ 
+W0804 11:15:58.487000 39760 .venv\Lib\site-packages\torch\utils\flop_counter.py:29] triton not found; flop counting 
+will not work for triton kernels
+
+Loading weights:   0%|          | 0/254 [00:00<?, ?it/s]
+Loading weights:   0%|          | 1/254 [00:00<03:04,  1.37it/s]
+Loading weights:   2%|▏         | 4/254 [00:00<00:44,  5.66it/s]
+Loading weights:   5%|▍         | 12/254 [00:01<00:13, 17.54it/s]
+Loading weights:   6%|▋         | 16/254 [00:01<00:10, 21.74it/s]
+Loading weights:   8%|▊         | 21/254 [00:01<00:08, 27.75it/s]
+Loading weights:  10%|█         | 26/254 [00:01<00:07, 31.24it/s]
+Loading weights:  12%|█▏        | 31/254 [00:01<00:06, 33.45it/s]
+Loading weights:  15%|█▍        | 37/254 [00:01<00:05, 39.54it/s]
+Loading weights:  17%|█▋        | 42/254 [00:01<00:05, 37.35it/s]
+Loading weights:  19%|█▉        | 48/254 [00:01<00:04, 42.22it/s]
+Loading weights:  21%|██        | 53/254 [00:01<00:04, 41.51it/s]
+Loading weights:  23%|██▎       | 58/254 [00:02<00:04, 40.80it/s]
+Loading weights:  25%|██▌       | 64/254 [00:02<00:04, 45.35it/s]
+Loading weights:  27%|██▋       | 69/254 [00:02<00:04, 41.80it/s]
+Loading weights:  30%|██▉       | 75/254 [00:02<00:03, 45.87it/s]
+Loading weights:  31%|███▏      | 80/254 [00:02<00:04, 42.69it/s]
+Loading weights:  33%|███▎      | 85/254 [00:02<00:04, 41.78it/s]
+Loading weights:  36%|███▌      | 91/254 [00:02<00:03, 45.93it/s]
+Loading weights:  38%|███▊      | 96/254 [00:02<00:03, 41.65it/s]
+Loading weights:  40%|████      | 102/254 [00:03<00:03, 45.84it/s]
+Loading weights:  42%|████▏     | 107/254 [00:03<00:03, 44.47it/s]
+Loading weights:  44%|████▍     | 112/254 [00:03<00:03, 43.51it/s]
+Loading weights:  46%|████▋     | 118/254 [00:03<00:02, 47.35it/s]
+Loading weights:  48%|████▊     | 123/254 [00:03<00:03, 42.60it/s]
+Loading weights:  51%|█████     | 129/254 [00:03<00:02, 46.90it/s]
+Loading weights:  53%|█████▎    | 134/254 [00:03<00:02, 44.61it/s]
+Loading weights:  55%|█████▍    | 139/254 [00:03<00:02, 42.46it/s]
+Loading weights:  57%|█████▋    | 145/254 [00:04<00:02, 46.45it/s]
+Loading weights:  59%|█████▉    | 150/254 [00:04<00:02, 41.77it/s]
+Loading weights:  61%|██████▏   | 156/254 [00:04<00:02, 45.23it/s]
+Loading weights:  63%|██████▎   | 161/254 [00:04<00:02, 41.91it/s]
+Loading weights:  65%|██████▌   | 166/254 [00:04<00:02, 40.73it/s]
+Loading weights:  67%|██████▋   | 171/254 [00:04<00:01, 42.78it/s]
+Loading weights:  69%|██████▉   | 176/254 [00:04<00:02, 38.18it/s]
+Loading weights:  72%|███████▏  | 183/254 [00:04<00:01, 43.90it/s]
+Loading weights:  74%|███████▍  | 188/254 [00:05<00:01, 41.81it/s]
+Loading weights:  76%|███████▌  | 193/254 [00:05<00:01, 40.64it/s]
+Loading weights:  78%|███████▊  | 199/254 [00:05<00:01, 45.06it/s]
+Loading weights:  80%|████████  | 204/254 [00:05<00:01, 41.31it/s]
+Loading weights:  83%|████████▎ | 210/254 [00:05<00:00, 45.47it/s]
+Loading weights:  85%|████████▍ | 215/254 [00:05<00:00, 43.51it/s]
+Loading weights:  87%|████████▋ | 220/254 [00:05<00:00, 42.26it/s]
+Loading weights:  89%|████████▉ | 226/254 [00:05<00:00, 46.27it/s]
+Loading weights:  91%|█████████ | 231/254 [00:06<00:00, 41.82it/s]
+Loading weights:  93%|█████████▎| 237/254 [00:06<00:00, 46.07it/s]
+Loading weights:  95%|█████████▌| 242/254 [00:06<00:00, 44.20it/s]
+Loading weights:  97%|█████████▋| 247/254 [00:06<00:00, 42.79it/s]
+Loading weights:  99%|█████████▉| 252/254 [00:06<00:00, 43.75it/s]
+Loading weights: 100%|██████████| 254/254 [00:06<00:00, 38.88it/s]
+[local_models]   loaded role=legal in 17.2s
+[LegalAgent] Processing legal query: What is a high-risk AI system under the EU AI Act?...
+[transformers] Both `max_new_tokens` (=1024) and `max_length`(=131072) seem to have been set. `max_new_tokens` will 
+take precedence. Please refer to the documentation for more information. 
+(https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+[transformers] Ignoring clean_up_tokenization_spaces=True for BPE tokenizer TokenizersBackend. The 
+clean_up_tokenization post-processing step is designed for WordPiece tokenizers and is destructive for BPE (it strips 
+spaces before punctuation). Set clean_up_tokenization_spaces=False to suppress this warning, or set 
+clean_up_tokenization_spaces_for_bpe_even_though_it_will_corrupt_output=True to force cleanup anyway.
+[LegalAgent] Generated legal response (4867 chars)
+
+[TUNED] prompt=1292 tokens | answer=687 words, 4867 chars
+    Q: What is a high-risk AI system under the EU AI Act?
+    **Answer As Of**: 2026-08-04
+    **Issue**: What is a high-risk AI system under the EU AI Act?
+    **Rule**: Article 6(3) of the Artificial Intelligence Act
+    **Application**: The question pertains to the definition of a high-risk AI system under the EU AI Act.
+    **Conclusion**: A high-risk AI system refers to an AI system that poses significant risks to individuals, society, or the environment, including but not limited to: (i) causing physical harm or death; (ii) violating fundamental rights and freedoms; (iii) perpetuating discrimination, bias, or prejudice; (iv) facilitating illegal activities; (v) co
+[RetrievalAgent] Retrieving documents for: What conformity-assessment obligations apply to a ...
+[RetrievalAgent] Retrieved and reranked 5 documents using hybrid search.
+[LegalAgent] Processing legal query: What conformity-assessment obligations apply to a ...
+[transformers] Both `max_new_tokens` (=1024) and `max_length`(=131072) seem to have been set. `max_new_tokens` will 
+take precedence. Please refer to the documentation for more information. 
+(https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+[LegalAgent] Generated legal response (3296 chars)
+
+[TUNED] prompt=1353 tokens | answer=513 words, 3296 chars
+    Q: What conformity-assessment obligations apply to a provider of a high-risk AI sys
+    **Answer As Of**: 2026-08-04
+    **Issue**: What conformity-assessment obligations apply to a provider of a high-risk AI system?
+    **Rule**: Article 43, Article 44, Article 45, Article 46, Article 47, Article 48, Article 49, Article 50, Article 51, Article 52, Article 53, Article 54, Article 55, Article 56, Article 57, Article 58, Article 59, Article 60, Article 61, Article 62, Article 63, Article 64, Article 65, Article 66, Article 67, Article 68, Article 69, Article 70, Article 71, Article 72, Article 73, Article 74, Article 75, Article 76, Article 77, Article 78, Article 79, Article 80, Article 8
+[RetrievalAgent] Connected to ChromaDB at chroma_storage
+[RetrievalAgent] Retrieving documents for: What is a high-risk AI system under the EU AI Act?...
+[RetrievalAgent] Retrieved and reranked 5 documents using hybrid search.
+[local_models] loading role=legal base=unsloth/Llama-3.2-3B-Instruct 4bit=True adapter=no
+
+Loading weights:   0%|          | 0/254 [00:00<?, ?it/s]
+Loading weights:   0%|          | 1/254 [00:00<01:20,  3.14it/s]
+Loading weights:   4%|▍         | 10/254 [00:00<00:08, 29.55it/s]
+Loading weights:   8%|▊         | 21/254 [00:00<00:04, 50.48it/s]
+Loading weights:  12%|█▏        | 30/254 [00:00<00:03, 61.27it/s]
+Loading weights:  16%|█▌        | 40/254 [00:00<00:03, 68.22it/s]
+Loading weights:  20%|█▉        | 50/254 [00:00<00:02, 73.03it/s]
+Loading weights:  23%|██▎       | 59/254 [00:00<00:02, 77.30it/s]
+Loading weights:  27%|██▋       | 68/254 [00:01<00:02, 77.27it/s]
+Loading weights:  30%|███       | 77/254 [00:01<00:02, 80.65it/s]
+Loading weights:  35%|███▌      | 89/254 [00:01<00:01, 90.71it/s]
+Loading weights:  39%|███▉      | 99/254 [00:01<00:01, 93.31it/s]
+Loading weights:  44%|████▎     | 111/254 [00:01<00:01, 96.48it/s]
+Loading weights:  48%|████▊     | 121/254 [00:01<00:01, 94.05it/s]
+Loading weights:  52%|█████▏    | 131/254 [00:01<00:01, 92.11it/s]
+Loading weights:  56%|█████▋    | 143/254 [00:01<00:01, 97.90it/s]
+Loading weights:  60%|██████    | 153/254 [00:01<00:01, 97.77it/s]
+Loading weights:  65%|██████▍   | 165/254 [00:02<00:00, 99.32it/s]
+Loading weights:  69%|██████▉   | 175/254 [00:02<00:00, 93.06it/s]
+Loading weights:  73%|███████▎  | 185/254 [00:02<00:00, 89.33it/s]
+Loading weights:  78%|███████▊  | 197/254 [00:02<00:00, 96.80it/s]
+Loading weights:  81%|████████▏ | 207/254 [00:02<00:00, 97.59it/s]
+Loading weights:  86%|████████▌ | 219/254 [00:02<00:00, 98.15it/s]
+Loading weights:  90%|█████████ | 229/254 [00:02<00:00, 95.34it/s]
+Loading weights:  94%|█████████▍| 239/254 [00:02<00:00, 92.89it/s]
+Loading weights:  98%|█████████▊| 250/254 [00:02<00:00, 96.59it/s]
+Loading weights: 100%|██████████| 254/254 [00:03<00:00, 84.41it/s]
+[local_models]   loaded role=legal in 7.0s
+[LegalAgent] Processing legal query: What is a high-risk AI system under the EU AI Act?...
+[transformers] Both `max_new_tokens` (=1024) and `max_length`(=131072) seem to have been set. `max_new_tokens` will 
+take precedence. Please refer to the documentation for more information. 
+(https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+[LegalAgent] Generated legal response (1130 chars)
+
+[BASE ] prompt=1292 tokens | answer=165 words, 1130 chars
+    Q: What is a high-risk AI system under the EU AI Act?
+    **Answer As Of**: 2026-08-04
+    
+    **Issue**: What is a high-risk AI system under the EU AI Act?
+    
+    **Rule**: According to Article 2(1)(b) of the Artificial Intelligence Act, a high-risk AI system is defined as "any artificial intelligence system which, by virtue of its algorithmic characteristics, presents significant risks to society."
+    
+    **Application**: Based on the definition provided in the rule, a high-risk AI system can include various types of AI systems that pose significant risks to society due to their algorithmic characteristics. These risks can stem from factors such as bias, fairness, tr
+[RetrievalAgent] Retrieving documents for: What conformity-assessment obligations apply to a ...
+[RetrievalAgent] Retrieved and reranked 5 documents using hybrid search.
+[LegalAgent] Processing legal query: What conformity-assessment obligations apply to a ...
+[transformers] Both `max_new_tokens` (=1024) and `max_length`(=131072) seem to have been set. `max_new_tokens` will 
+take precedence. Please refer to the documentation for more information. 
+(https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+[LegalAgent] Generated legal response (1450 chars)
+
+[BASE ] prompt=1353 tokens | answer=208 words, 1450 chars
+    Q: What conformity-assessment obligations apply to a provider of a high-risk AI sys
+    **Answer As Of**: 2026-08-04
+    
+    **Issue**: What conformity-assessment obligations apply to a provider of a high-risk AI system?
+    
+    **Rule**: According to Article 43 of the Artificial Intelligence Act, the provider of a high-risk AI system shall carry out the relevant conformity assessment procedure prior to placing the system on the market.
+    
+    **Application**: Since the AI system in question is classified as high-risk and has already been placed on the market or put into service, the provider must have completed the conformity assessment procedure before marketing the system. Furthermore, the provid
+
+==============================================================================
+SUMMARY
+==============================================================================
+  prompt 1292 tokens
+    tuned:  687 words  abstained=False
+    base :  165 words  abstained=False
+    ratio: 4.16x
+  prompt 1353 tokens
+    tuned:  513 words  abstained=False
+    base :  208 words  abstained=False
+    ratio: 2.47x

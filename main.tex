@@ -1,0 +1,1375 @@
+%=============================================================================
+% Specialised but Structured
+%
+% Build notes:
+%   * references.bib, metrics_table.tex, metrics_table_ablation.tex and
+%     figures/*.png must be uploaded alongside this file (see \input and
+%     \graphicspath below).
+%   * Data: 30 queries x 3 topologies x 3 repeats x 2 arms (540 runs). The two
+%     arms are PEFT (each expert carries its LoRA adapter) and BASE (the
+%     identical base models, untuned) -- the second is the control that makes
+%     RQ2 answerable.
+%   * Every \TBD{} is filled from legalai/results.json after the run, never by
+%     hand. A \TBD{} left in the PDF is a bug, not a rounding decision.
+%=============================================================================
+\documentclass[journal,10pt,compsoc,onecolumn]{IEEEtran}
+\usepackage[final]{graphicx}
+\usepackage{booktabs}
+\usepackage{geometry}
+\usepackage{amsmath}
+\usepackage{xcolor}
+\usepackage{hyperref}
+\usepackage{rotating}
+\geometry{letterpaper, margin=1in}
+\graphicspath{{figures/}}
+
+% Unfilled quantitative claim. Deliberately loud: these are filled from
+% results.json after the run, and one surviving into a submitted PDF is a bug.
+\newcommand{\TBD}[1]{\textcolor{red}{\textbf{[TBD: #1]}}}
+
+\begin{document}
+
+\title{Specialised but Structured: A Controlled Comparison of Coordination
+Topologies for PEFT-Tuned Multi-Agent Compliance Question Answering}
+
+\author{Charbel~Toumieh~and~Omid~Chatrabgoun%
+\thanks{C. Toumieh is with WMG, University of Warwick, Coventry, UK.}%
+\thanks{O. Chatrabgoun is with Coventry University, Coventry, UK.}}
+
+\maketitle
+
+\begin{abstract}
+Work on multi-agent language-model systems divides into two questions that are
+rarely asked together: \emph{how many} agents to use, and \emph{how to wire}
+the ones you have. The first has recently been answered largely in the negative
+--- a single well-configured agent matches or beats multi-agent coordination on
+general reasoning --- but those comparisons give every agent the same
+unmodified model, so their ``specialists'' are one generalist behind several
+prompts. This paper asks the second question under the condition the first
+assumes away: once each expert is a genuinely different, separately fine-tuned
+model, which coordination topology combines them best? We build a
+retrieval-grounded EU AI Act compliance system in which three domain experts run
+as three distinct open-weight models on one 8\,GB consumer GPU --- Llama 3.2 3B
+(legal), Qwen2.5 3B (news) and Granite 3.1 2B (general) --- each 4-bit quantised
+and specialised by QLoRA on its own domain corpus. Holding the experts,
+retrieval corpus, query set and reference answers fixed, we vary only
+coordination structure across three patterns that are structurally distinct
+rather than merely different: a strict sequential chain, full concurrency, and a
+converging dependency graph. Because a topology comparison among specialised
+agents cannot by itself show that specialisation helped, we run every topology
+twice --- once with the LoRA adapters loaded and once with the identical base
+models untuned --- giving 30 queries $\times$ 3 topologies $\times$ 3 repeats
+$\times$ 2 arms (540 runs) scored on lexical alignment, LLM-judge quality,
+abstention behaviour and node-level operational telemetry, with paired
+non-parametric tests over queries. We find that no topology significantly
+outperformed another on judged quality (adapted arm: \textsc{all} $1.80$,
+\textsc{dag} $1.77$, \textsc{parallel} $1.73$; all pairwise Holm-corrected
+$p = 0.92$, $|\delta| \leq 0.07$), that PEFT specialisation
+left judged quality statistically indistinguishable from the untuned control
+($p = 1.00$ on all three topologies, $|\delta| \leq 0.08$) while reducing the
+expert abstention rate from $22.3\%$ to $1.6\%$, and
+that this behavioural change was bought at close to double the end-to-end
+latency ($244$--$249$\,s against $124$--$129$\,s; $p \leq 8.3\times10^{-7}$,
+$\delta \geq 0.92$) and significantly higher token cost ($p \leq 0.004$),
+with no significant latency difference among topologies within either arm.
+We further report that on a
+single GPU nominal concurrency buys almost nothing: three co-resident experts
+generating simultaneously achieved a measured speedup of only
+$1.07\times$ over sequential execution, so ``parallel'' topologies pay
+coordination cost for a structural property the hardware does not deliver.
+Because the judge (DeepSeek V4 Flash) now generates none of the answers it
+scores, the self-preference-bias caveat that constrained our earlier
+single-versus-multi study no longer applies.
+\end{abstract}
+
+\begin{IEEEkeywords}
+Multi-agent systems, large language models, agent topology, parameter-efficient
+fine-tuning, LoRA, retrieval-augmented generation, regulatory compliance, EU AI
+Act, empirical evaluation.
+\end{IEEEkeywords}
+
+%=============================================================================
+\section{Introduction}
+%=============================================================================
+
+An \emph{AI agent}, in the sense used throughout this paper, is a language model
+placed in a control loop: it is given a goal, some memory of what has happened so
+far, and a set of actions it can take, and it decides for itself which action to
+take next rather than emitting a single forward pass. The actions available here
+are retrieval calls against a document corpus, delegation to a specialised
+sub-agent, and generation of text.
+
+A \emph{multi-agent system} composes several such agents, usually specialised by
+role, and coordinates them through an orchestration layer so that the output of
+one becomes the input or the trigger of another. The orchestration layer is not
+incidental: it determines which agents run, in what order, on what state, and how
+their outputs are combined. We refer to this wiring as the system's
+\emph{topology}, and it is the independent variable of this study.
+
+The intuition behind multi-agent design is that decomposing a hard problem into
+specialised sub-problems mirrors how human teams work. The costs are equally
+concrete. Every additional agent adds coordination overhead, inter-agent
+communication, redundant context handling and additional model invocations, all
+of which raise latency and token cost, and each hand-off is an opportunity for
+information to be lost or corrupted.
+
+\subsection{What is already known}
+
+Two literatures bear directly on this question, and it is worth being precise
+about what each has settled, because the naive version of our research question
+is already answered.
+
+First, several 2026 studies find that multi-agent systems do not reliably
+outperform single agents. Jwalapuram et al.~\cite{jwalapuram2026illusion} show
+that automatically generated multi-agent systems consistently underperform
+chain-of-thought with self-consistency while costing up to an order of magnitude
+more. Tran and Kiela~\cite{tran2026singleagent} report that under a fixed
+reasoning-token budget single agents match or beat multi-agent systems on
+multi-hop reasoning, and Xu et al.~\cite{xu2026oneflow} reach a similar
+conclusion across seven benchmarks. Cemri et al.~\cite{cemri2025mast} give the
+complementary diagnosis, taxonomising fourteen failure modes of multi-agent
+systems into specification issues, inter-agent misalignment and task
+verification. Earlier scaling work is consistent with this: more calls or more
+agents help only under specific conditions~\cite{li2024moreagents,
+chen2024morellmcalls}.
+
+\emph{We therefore do not claim novelty for the observation that a single agent
+can beat a multi-agent system.} That result is published, and in earlier work on
+this same system we reproduced it: with one shared unmodified model behind every
+expert, a true single-expert router matched or beat seven multi-agent topologies
+on EU AI Act compliance QA while costing less.
+
+There is, however, a shared premise in this literature that is easy to miss.
+These studies hold the language model fixed and vary only the number or wiring of
+agents, which means their ``specialists'' are one generalist model behind
+several different prompts. Role differentiation is therefore entirely a matter of
+instruction, not of parameters. If the reason coordination fails to pay is that
+the agents being coordinated are substantially the same reasoner, then the
+negative result is a statement about prompt-differentiated ensembles rather than
+about multi-agent design as such --- and the question of how to combine
+genuinely different specialists is left open rather than answered.
+
+Second, multi-agent topology design is an established subfield rather than a gap.
+GPTSwarm~\cite{zhuge2024gptswarm} treats agent systems as optimisable graphs;
+MacNet~\cite{qian2024macnet} scales collaboration across topologies;
+DyLAN~\cite{liu2023dylan} routes dynamically at the instance level;
+AgentPrune~\cite{zhang2024agentprune} and AgentDropout~\cite{wang2025agentdropout}
+sparsify communication; G-Designer~\cite{zhang2024gdesigner} and
+ARG-Designer~\cite{li2025argdesigner} learn to generate the communication graph.
+A 2026 survey~\cite{zhu2026masorchestrationsurvey} already taxonomises the space.
+
+\emph{We therefore also do not claim novelty for the observation that structure
+matters.}
+
+\subsection{What is left, and what this paper does}
+
+Four things fall between these literatures.
+
+\textbf{Neither literature separates specialisation from structure.} The
+single-versus-multi studies vary agent count with the model held fixed; the
+topology studies vary wiring with the model held fixed. Neither varies what the
+agents \emph{are}. Consequently no existing result distinguishes ``coordination
+does not help'' from ``coordination does not help when there is nothing
+substantively different to coordinate''. Parameter-efficient fine-tuning
+\cite{hu2021lora, dettmers2023qlora} makes the distinction cheap to test: a
+LoRA adapter per role turns prompt-differentiated agents into
+parameter-differentiated ones at a few million trainable parameters each.
+
+\textbf{Neither literature covers retrieval-grounded regulatory compliance.} The
+single-versus-multi studies use reasoning benchmarks, where the model is expected
+to answer. Compliance QA has the opposite failure mode: when the retrieved
+statutory context does not support an answer, the correct behaviour is to abstain
+and escalate. Legal systems such as ChatLaw~\cite{cui2023chatlaw} and
+PAKTON~\cite{raptopoulos2025pakton} fix their agent configuration and do not ask
+whether it is the right one; COMPL-AI~\cite{guldimann2024complai} benchmarks
+\emph{models} against the EU AI Act rather than agent structures; legal RAG
+benchmarks~\cite{guha2023legalbench, pipitone2024legalbenchrag, li2025lexrag}
+evaluate retrieval and answer quality inside fixed pipelines.
+
+\textbf{Topology work rarely reports whether nominal concurrency is real.} A
+parallel topology is only parallel if the serving hardware executes its branches
+concurrently. On a single accelerator hosting several models this is an empirical
+question, not a property of the graph, and we measure it directly rather than
+assuming it.
+
+\textbf{Operational cost is rarely attributed to structural decisions.}
+Observability tooling exposes execution traces, and topology papers report token
+cost, but node-level latency attribution is seldom connected to answer quality in
+one evaluation, which is what makes it possible to say \emph{which stage} of a
+topology is paying for its overhead.
+
+This paper makes the following contributions.
+
+\begin{enumerate}
+\item A controlled comparison of three structurally distinct coordination
+topologies --- a strict sequential chain, full concurrency, and a converging
+dependency graph --- over three \emph{parameter-differentiated} domain experts,
+with the experts, retrieval corpus, query set and reference answers held fixed,
+so that observed differences are attributable to coordination structure alone.
+\item A factorial second arm that runs all three topologies again on the
+identical base models with no adapters loaded. This is what licenses any claim
+that specialisation itself mattered, and separates a specialisation effect from a
+topology effect instead of confounding them.
+\item A demonstration that three separately fine-tuned 2--3B experts can be
+co-resident and serve a multi-agent graph on a single 8\,GB consumer GPU, with
+the memory budget reported in enough detail to be reproduced or refuted
+(Section~\ref{sec:memory}) --- including the finding that grouped-query
+attention, not parameter count, is the binding constraint on how many experts
+fit.
+\item A measurement of how much nominal parallelism a single-GPU deployment
+actually delivers, which bears directly on whether concurrent topologies are
+worth their coordination cost outside a multi-accelerator setting.
+\item A structural failure mode we name \emph{abstention propagation}, in which a
+single abstaining expert silences an entire ensemble unless the aggregator is
+explicitly designed against it. This biases comparisons against multi-agent
+topologies for reasons unrelated to reasoning quality, and we quantify it.
+\end{enumerate}
+
+We answer three research questions:
+\begin{enumerate}
+\item[\textbf{RQ1}] Given three domain-specialised (PEFT fine-tuned) expert
+agents, which coordination topology --- sequential, parallel or DAG --- produces
+the best judged answer quality, and at what operational cost?
+\item[\textbf{RQ2}] Does PEFT specialisation itself measurably improve answer
+quality over the same base models untuned, and does the ranking of topologies
+survive the change?
+\item[\textbf{RQ3}] How does topology affect operational cost --- latency,
+execution steps, tokens --- once each expert is a distinct local model rather
+than one shared model, and where in the graph is that cost incurred?
+\end{enumerate}
+
+RQ2 is deliberately not a headline claim about fine-tuning as a technique; it is
+the control that makes RQ1 interpretable. Without it, a topology ranking over
+specialised agents could not be distinguished from a topology ranking that would
+have come out the same way with no specialisation at all.
+
+%=============================================================================
+\section{Related Work}
+%=============================================================================
+
+\subsection{Multi-agent topology and orchestration}
+This is the line of work this paper contributes to. Where the
+single-versus-multi literature asks \emph{how many} agents, this one asks
+\emph{how they are wired}. GPTSwarm~\cite{zhuge2024gptswarm} optimises agent
+graphs; MacNet~\cite{qian2024macnet} studies how collaboration scales with
+topology; DyLAN~\cite{liu2023dylan} activates agents dynamically per instance;
+AgentPrune~\cite{zhang2024agentprune} and AgentDropout~\cite{wang2025agentdropout}
+remove redundant communication edges; G-Designer~\cite{zhang2024gdesigner} and
+ARG-Designer~\cite{li2025argdesigner} generate task-conditioned communication
+graphs. General frameworks~\cite{wu2023autogen, hong2023metagpt, li2023camel} and
+graph execution engines~\cite{langchain2024langgraph} provide the machinery, and a
+2026 survey~\cite{zhu2026masorchestrationsurvey} taxonomises the space.
+
+Across this subfield the agents being wired together are, with few exceptions,
+instances of one model differing only in prompt. Topology is optimised, learned
+or pruned; the nodes themselves are interchangeable. That is a reasonable
+simplification when the object of study is the graph, but it means the field's
+results describe how best to route between copies of a reasoner rather than
+between specialists. This paper keeps the topology comparison and changes the
+nodes: three different base models, each with its own adapter trained on its own
+domain data. We also depart from the subfield's usual practice of comparing
+learned topologies against each other by comparing a small number of canonical,
+hand-specified structures, which makes the result interpretable at the cost of
+generality.
+
+\subsection{Parameter-efficient specialisation}
+LoRA~\cite{hu2021lora} freezes a pretrained model and learns low-rank updates to
+its projection matrices, reducing trainable parameters by orders of magnitude
+while retaining most of the quality of full fine-tuning.
+QLoRA~\cite{dettmers2023qlora} adds 4-bit NF4 quantisation of the frozen base
+plus paged optimisers, which is what makes several specialised models trainable
+and servable on one consumer GPU --- the property this study depends on. We use
+LoRA adapters not to chase state-of-the-art domain performance but as the
+cheapest available way to make role differentiation a property of parameters
+rather than of prompts, so that ``specialist'' means something measurable.
+Multi-adapter serving is normally posed as one base model with swapped
+adapters; we deliberately use three different bases, since a shared base would
+reintroduce exactly the homogeneity we are trying to remove.
+
+\subsection{Single-agent versus multi-agent evidence}
+This line motivates the paper rather than being its target. The claim that
+multi-agent systems are superior rests on context isolation, parallelism and
+distributed decision-making. Jwalapuram
+et al.~\cite{jwalapuram2026illusion} argue that the empirical support for this
+comes from benchmarks that reward isolated reasoning and from weak single-agent
+baselines; under fair comparison, automatic multi-agent systems underperform
+chain-of-thought with self-consistency at up to ten times the cost. Tran and
+Kiela~\cite{tran2026singleagent} control the reasoning-token budget and find
+single agents are more information-efficient on multi-hop reasoning. Xu
+et al.~\cite{xu2026oneflow} corroborate this across seven benchmarks. Cemri
+et al.~\cite{cemri2025mast} annotate more than 1{,}600 execution traces across
+seven frameworks and attribute failures largely to specification and inter-agent
+misalignment rather than to base-model capability.
+
+We take these results as established and as the reason for the present design.
+Because all of them hold the model fixed across agents, they bound what
+prompt-differentiated coordination can achieve; they do not speak to
+parameter-differentiated coordination. Accordingly this paper does not include a
+single-agent baseline and makes no single-versus-multi claim: with three
+different models in the graph, ``one agent'' is no longer a single condition but
+a choice of which of three models to keep, and the comparison would confound
+agent count with model identity. The single-agent configuration remains
+implemented in our system but is out of scope here.
+
+\subsection{Legal and compliance question answering}
+LegalBench~\cite{guha2023legalbench} and
+LegalBench-RAG~\cite{pipitone2024legalbenchrag} evaluate legal reasoning and
+retrieval; LexRAG~\cite{li2025lexrag} targets conversational legal QA;
+ChatLaw~\cite{cui2023chatlaw} and PAKTON~\cite{raptopoulos2025pakton} build legal
+multi-agent systems with fixed configurations;
+COMPL-AI~\cite{guldimann2024complai} maps EU AI Act requirements onto model
+benchmarks. None varies agent topology as an independent variable.
+
+\subsection{Evaluation methodology}
+We use LLM-as-a-judge scoring~\cite{zheng2023mtbench} alongside lexical overlap
+metrics~\cite{papineni2002bleu, lin2004rouge}. Judges are known to favour their
+own generations~\cite{wataoka2024selfpreference}, so we require the judge model,
+the model under test and the model used to draft reference answers to be
+distinct, and we report all three. Significance is assessed with paired
+non-parametric tests~\cite{wilcoxon1945individual} under Holm
+correction~\cite{holm1979simple}, with Cliff's delta~\cite{cliff1993dominance} as
+the effect size.
+
+%=============================================================================
+\section{Methodology}
+%=============================================================================
+
+\subsection{Experimental design}
+The design is a $3 \times 2$ within-subjects factorial: three coordination
+topologies crossed with two specialisation arms, with every query executed in
+every cell. Each cell therefore sees identical inputs, an identical retrieval
+corpus, identical expert models and an identical reference answer; the only
+things that vary are the routing structure and whether the LoRA adapters are
+loaded. Each (query, topology, arm) cell is repeated $R$ times with a distinct
+sampling seed per repeat, so that repeats capture generation variance rather than
+returning identical text.
+
+The second factor is not a secondary experiment. A topology comparison run only
+over specialised agents cannot distinguish ``DAG is the best way to combine
+specialists'' from ``DAG would have won anyway''. Running the identical three
+topologies over the identical three base models with no adapters attached is the
+minimum control that separates those two readings, and it is what RQ2 tests.
+
+\subsection{System under test}
+All topologies are execution paths through a single compiled graph of ten nodes:
+planner, router, memory, retrieval, three domain experts (legal, news, general
+QA), aggregator, validator and response. Holding the node implementations fixed
+and varying only the edges is what isolates topology from prompt engineering.
+
+\textbf{Three models, not one.} Unlike the topology literature and unlike our own
+earlier study, the three expert nodes are backed by three \emph{different}
+models, each with its own LoRA adapter (Table~\ref{tab:experts}). All three are
+loaded concurrently in 4-bit NF4 quantisation and remain resident for the whole
+run, so a topology that fans out to several experts is genuinely invoking several
+distinct models rather than the same model several times.
+
+\begin{table}[t]
+\centering
+\caption{The three domain experts. Each is a distinct model family with its own
+QLoRA adapter; parameter counts are of the base model and memory is measured
+resident 4-bit weights on the experiment GPU.}
+\label{tab:experts}
+\small
+\begin{tabular}{llrr}
+\toprule
+\textbf{Role} & \textbf{Base model} & \textbf{Params} & \textbf{4-bit VRAM} \\
+\midrule
+Legal      & Llama 3.2 3B Instruct~\cite{grattafiori2024llama3}   & 3.2\,B & 2206\,MiB \\
+News       & Qwen2.5 3B Instruct~\cite{qwen2024qwen25}            & 3.1\,B & 1992\,MiB \\
+General QA & Granite 3.1 2B Instruct~\cite{granite31}             & 2.5\,B & 1781\,MiB \\
+\midrule
+\multicolumn{3}{l}{\textit{All three resident}} & 5979\,MiB \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\textbf{Coordination nodes.} The planner, router, memory, aggregator, validator
+and response nodes also invoke a language model, but they are not domain
+experts, and a fourth resident model does not fit the memory budget. They
+therefore share the general-purpose expert's \emph{base} weights with the
+adapter disabled. This is a deliberate design choice rather than an
+implementation convenience: keeping specialisation confined to the three expert
+nodes is what makes ``coordination structure over specialised experts'' the thing
+being varied, instead of also silently domain-tuning the component that merges
+and validates their outputs.
+
+\textbf{Planner.} The planner is a dispatcher agent that reads the query before
+any retrieval happens and emits an explicit plan: the set of experts it judges
+necessary and, implicitly, the order in which their outputs should be composed.
+It differs from the router in scope. The router performs a single
+classification -- which domain does this query belong to -- whereas the planner
+performs decomposition, and may return several experts for a query it considers
+compound. In planner-based mode this plan determines the expert set; in the other
+topologies the planner still runs but its plan does not control routing, which
+keeps the node set constant across conditions.
+
+\textbf{Router.} The router assigns the query to one or more domain labels.
+
+\textbf{Retrieval.} A shared retrieval node queries the vector store and places
+the retrieved chunks in state, so every expert in every topology sees the same
+evidence. This is what makes the single-agent baseline retrieval-matched.
+
+\textbf{Domain experts.} The legal expert answers from the statutory corpus and
+is instructed to abstain with a fixed sentence when the retrieved context lacks
+authoritative support. The news expert covers recent developments; the general QA
+expert handles everything else. Which experts run, and in what order, is what
+Section~\ref{sec:topologies} varies.
+
+\textbf{Aggregator.} Merges expert outputs into a single draft. Its handling of
+abstention is a design decision with experimental consequences, discussed in
+Section~\ref{sec:abstention}.
+
+\textbf{Validator and response.} The validator checks the draft against the
+retrieved sources and can trigger a bounded retry; the response node performs
+final formatting.
+
+\subsection{Topologies}
+\label{sec:topologies}
+Three configurations are compared, chosen because they are structurally distinct
+rather than merely different --- a strict chain, full concurrency, and a
+converging dependency --- which spans the space of ways three peers can be
+composed without multiplying conditions. They are drawn in
+Figure~\ref{fig:topologies}.
+
+\begin{figure*}[htbp]
+\centering
+\includegraphics[width=0.97\textwidth]{fig0_topologies.png}
+\caption{The three coordination topologies compared in this study. All are
+execution paths through one graph and share a single retrieval step, so every
+expert in every topology conditions on the same evidence; only the wiring between
+experts differs. Five further configurations remain implemented in the system but
+are out of scope and are described in Section~\ref{sec:scope} rather than drawn
+here. The lower-right panel illustrates abstention propagation
+(Section~\ref{sec:abstention}): under an any-abstain veto a single abstaining
+expert discards its collaborators' work, whereas the all-abstain rule used here
+records the abstention and preserves the answer --- the rule that produced the
+$0.000$ system abstention rate reported in Section~\ref{sec:results-ablation}
+despite the legal expert declining on $67\%$ of untuned runs.}
+\label{fig:topologies}
+\end{figure*}
+
+\begin{enumerate}
+\item \textbf{ALL (sequential).} Legal $\rightarrow$ news $\rightarrow$ general
+QA, each expert conditioned on the accumulated state of its predecessors. Maximum
+information flow between experts, zero concurrency, longest critical path.
+\item \textbf{PARALLEL (concurrent).} All three experts run simultaneously on the
+same retrieved context and are merged by the aggregator. No expert sees another's
+output, so this is the minimum-coupling condition; its critical path is the
+slowest single expert rather than the sum.
+\item \textbf{DAG (converging).} Legal and news run concurrently and both feed
+into general QA, which then feeds the aggregator. This is the intermediate case:
+partial concurrency with a genuine dependency, so one expert conditions on two
+others while those two remain independent of each other.
+\end{enumerate}
+
+\subsection{Configurations implemented but out of scope}
+\label{sec:scope}
+The system also implements a single-expert router (SINGLE), a conditional branch
+(LEGAL-FIRST), a planner-driven dispatcher (PLANNER-BASED), a partial-parallel
+pair (LEGAL-NEWS) and an expert-free verification bypass (VERIFY-ONLY). All five
+remain fully functional and selectable at run time; they are excluded from this
+study for scope, not because they fail. We state this explicitly because the
+exclusion of SINGLE in particular is a substantive decision rather than an
+oversight: with three different models in the graph, a one-agent condition is a
+choice of \emph{which} model to retain, so it would confound agent count with
+model identity and could not serve as a baseline. Readers interested in the
+single-versus-multi question with one shared model are referred to the earlier
+study on this same system.
+
+\subsection{Abstention as a first-class outcome}
+\label{sec:abstention}
+In compliance QA, refusing to answer without authoritative support is correct
+behaviour, so the system's abstention sentence is a meaningful output rather than
+an error. This creates a structural hazard specific to multi-agent designs. If
+the aggregator treats the presence of an abstention anywhere in the merged expert
+output as an instruction to abstain, then a single abstaining expert vetoes every
+other expert's contribution. Under that rule, every topology containing the
+abstaining expert is silenced while topologies that route around it, or that run
+no experts at all, are unaffected -- producing an apparent single-agent advantage
+that is an artefact of the aggregation rule.
+
+We therefore define the rule explicitly: the system abstains only when
+\emph{every} expert that ran abstained. An expert that abstains is excluded from
+aggregation and its abstention is recorded. We report two measures: the
+\emph{system abstention rate}, the fraction of queries on which the final answer
+is an abstention, and the \emph{expert abstention rate}, the mean fraction of
+running experts that abstained. We regard this as a finding in its own right, and
+recommend that any single-versus-multi comparison in a domain with an abstention
+mechanism verify its aggregation rule before interpreting results.
+
+\subsection{Fitting three experts on one consumer GPU}
+\label{sec:memory}
+Running three separate models rather than one shared model is what makes the
+experts specialists, and it is also the design's binding practical constraint. We
+report the memory budget in full because it determined the model selection, and
+because the constraint that actually bit is not the obvious one.
+
+The experiment GPU has 8188\,MiB of VRAM, of which 1120\,MiB was occupied by the
+desktop environment, leaving 7068\,MiB. Weights are the smaller half of the
+problem: the three 4-bit models occupy 5979\,MiB together
+(Table~\ref{tab:experts}), leaving 1089\,MiB. The remainder must hold the
+key/value caches of all three models while they generate concurrently, and KV
+cache cost per token is governed by grouped-query attention (GQA), not by
+parameter count. The three chosen models cost 112, 36 and 80\,KiB per token
+respectively, or 912\,MiB in total at the concurrent-phase context length ---
+inside the budget, with 177\,MiB spare.
+
+Our first configuration failed on exactly this point, and the failure is
+instructive. A 3.8B Phi-3.5-mini expert in the general-purpose slot was both the
+largest in weights (2618\,MiB) and, because it has no GQA at all --- 32 key/value
+heads against Llama 3.2 3B's 8 and Qwen2.5 3B's 2 --- cost 384\,KiB per token,
+three to ten times its peers. All three models were resident with 252\,MiB
+spare, so a naive weights-only check passed; their combined KV cache needed
+roughly 2.1\,GB, so concurrent generation was impossible. Substituting Granite
+3.1 2B, which has GQA, resolved it. \emph{The practical lesson for anyone
+replicating a multi-expert deployment on a single accelerator is that attention
+architecture constrains how many experts fit more tightly than parameter count
+does, and that a residency check is not a sufficient feasibility test.}
+
+Two further details matter for reproduction. The prompt-context ceiling
+(6144 tokens) is set by the aggregator, which receives the retrieved context plus
+up to three expert answers and so has the longest prompt in the graph at roughly
+4500 tokens; the experts themselves need 1373--2141 tokens depending on
+tokenizer. Because the aggregator runs alone, after the experts complete, this
+ceiling does not multiply across three models --- budgeting three concurrent
+models at the ceiling would reject a configuration that works. And we load the
+library's own implementations of all three architectures rather than
+repository-bundled modelling code, which is a correctness requirement rather than
+a preference: the Phi-family bundled code uses a superseded KV-cache API and
+fails on first generation under current \texttt{transformers}.
+
+\subsection{Fine-tuning protocol}
+\label{sec:finetuning}
+
+\textbf{Datasets.} Each expert is trained on a corpus matched to its role:
+LegalBench~\cite{guha2023legalbench} for the legal expert,
+NewsQA~\cite{trischler2017newsqa} for the news expert, and
+Dolly-15k~\cite{conover2023dolly} for the general-purpose expert. Dolly is
+human-written, which avoids training on another model's outputs and the
+provenance footnote that implies. We sample 1{,}500 examples per domain, yielding
+1{,}425 training examples after deduplication and a 5\% held-out split --- enough
+to induce a measurable specialisation effect without making training a multi-day
+job --- and, because both the legal and news domains touch
+AI-regulation-adjacent material, we remove cross-domain overlap: any news example
+colliding with a legal example by normalised hash, or exceeding a token-Jaccard
+threshold of $0.6$ against one, is dropped from the news set. Exact duplicates
+within each domain are removed first. On this sample the cross-domain filter
+removed nothing, which is the expected outcome for contract-law tasks against CNN
+news articles and is reported rather than presented as a validated safeguard.
+
+LegalBench is sampled round-robin across 102 of its 162 tasks rather than drawn
+from one task, so the legal expert learns legal register broadly instead of
+memorising a single answer format.
+
+\textbf{Answer-format alignment, and why it was necessary.} LegalBench and NewsQA
+are \emph{evaluation} benchmarks whose targets are short: measured over our
+sample, 105 of the 112 loadable LegalBench tasks have mean answers of ten
+characters or fewer, with a median of three (``Yes'', ``No'', ``UCC''), and NewsQA
+answers are extractive spans averaging 26 characters. The deployed agents are
+prompted for structured multi-sentence answers and scored against long reference
+answers, so training directly on those targets teaches an expert to answer in
+three characters and would depress judged completeness for reasons having nothing
+to do with domain knowledge --- an artefact that would present as
+``specialisation made quality worse''. We therefore render each target into the
+response format the agent is served behind, using only content already present in
+the dataset: for LegalBench, the task's question, the facts it supplies and its
+ground-truth determination, arranged in the issue/application/conclusion skeleton
+of the legal prompt; for NewsQA, the answer span together with the sentence of
+the source article containing it. Fields the datasets do not provide --- notably
+statutory citations --- are omitted rather than filled, since training a legal
+assistant to produce plausible-looking citations it cannot support is the worst
+available failure mode. No model generates any part of any training target. Mean
+target length after this step is 438 characters for the legal set (from 3.8
+before), 218 for news (from 26) and 368 for the general set, which needed no
+transformation.
+
+\textbf{Adapters and hyperparameters.} Each expert is trained with
+QLoRA~\cite{dettmers2023qlora}: the base model is loaded in 4-bit NF4 with
+double quantisation and a bfloat16 compute dtype, and remains frozen, while LoRA
+adapters~\cite{hu2021lora} of rank $r=16$, $\alpha=32$ and dropout $0.05$ are
+attached to the attention projections and the MLP projections. Training uses the
+paged 8-bit AdamW optimiser, a cosine schedule with $3\%$ warmup, learning rate
+$2\times 10^{-4}$, an effective batch size of 8 (batch 1 with 8 gradient
+accumulation steps), a 512-token sequence limit and gradient checkpointing, for
+3 epochs over 1{,}425 examples. Targets are rendered through each model's own
+chat template, so an adapter is trained in the same format it is served in;
+training on a different scaffold than deployment is a common and avoidable reason
+a fine-tune appears not to have worked. Trainable parameters, final training
+loss, held-out loss and wall clock per adapter are reported in
+Table~\ref{tab:finetuning}. Hyperparameters were not tuned; they are standard
+QLoRA defaults, and we report them as such rather than implying a search.
+
+\textbf{An identical budget for all three experts.} The training budget above is
+applied without variation across the three adapters, and this is a design
+requirement rather than tidiness. If one expert received more epochs, longer
+sequences or more examples than another, then any difference between topologies
+would be partly attributable to which graph position happens to hold the
+best-trained expert --- a second confound stacked on the model--position one
+discussed in Threats to Validity, and one that would be entirely of our own
+making. Consequently the sequence limit is 512 rather than the 1024 we first
+used: at 1024 a single adapter took roughly four hours on the experiment GPU and
+three would have taken eleven, and having established that, we retrained all
+three from scratch at the reduced setting rather than let one adapter keep an
+advantage the others could not be given affordably. Epochs were left at 3, as the
+parameter most responsible for adapter quality and not the dominant cost.
+
+Reducing the sequence limit is not free, and the way it fails is worth recording
+because it is silent. Every one of our three datasets places its target at the
+\emph{end} of the rendered example, so an example longer than the limit is
+right-truncated into an input with no answer attached --- and a model trained on
+such examples produces a flat, plausible-looking loss curve rather than an error.
+Our first attempt at 512 tokens left 83\% of NewsQA examples over the limit
+(NewsQA embeds a full article ahead of the question), and the resulting news
+adapter did not learn: held-out loss moved from 1.920 to 1.956 across three
+epochs with token accuracy static at 0.568, while the legal adapter over the same
+budget improved from 0.919 to 0.844. The truncation rate was also badly uneven
+across domains --- 83\% for news against 22\% for legal and 9\% for general ---
+which is itself an inconsistency in effective training budget, of the same kind
+the fixed hyperparameters are meant to exclude. We therefore cap each example's
+input at 1400 characters and, for NewsQA, window the article around the answer
+span rather than truncating from its start, bringing the over-limit rates to
+0.6\%, 0.0\% and 5.0\% respectively; dataset preparation now measures rendered
+token lengths with each model's own tokenizer and refuses to pass silently above a
+10\% threshold. Serving is unaffected throughout: the sequence limit governs
+training only, and serving prompts run 1373--2141 tokens.
+
+Two honest qualifications to ``identical''. First, what is held identical is the
+training \emph{budget} --- rank, scaling, epochs, learning rate, schedule,
+sequence limit and example count --- not the resulting adapter capacity. Because
+the three base architectures differ in their projection dimensions, the same rank
+yields a different number of trainable parameters in each
+(Table~\ref{tab:finetuning}), so the news expert receives modestly more adapter
+capacity than the legal one. This is inherent to specialising three different
+model families rather than one shared base, and it compounds the
+model--position entanglement discussed in Threats to Validity rather than being a
+separate problem. Second, held-out loss on the legal adapter reached its minimum
+at epoch 2 and rose marginally at epoch 3 (0.844 to 0.848) while token accuracy
+continued to improve, which is the onset of overfitting that the small training
+set makes likely. We report it rather than silently selecting the best epoch: the
+budget was fixed in advance across all three adapters, and re-selecting per
+adapter would reintroduce exactly the inconsistency the fixed budget exists to
+prevent.
+
+\begin{table}[t]
+\centering
+\caption{QLoRA training outcome per expert. Hyperparameters are shared and given
+in Section~\ref{sec:finetuning}.}
+\label{tab:finetuning}
+\small
+\begin{tabular}{lrrrrr}
+\toprule
+\textbf{Role} & \textbf{Trainable} & \textbf{Base} & \textbf{Best} & \textbf{Gain} & \textbf{Time} \\
+\midrule
+Legal      & 24.3\,M (0.75\%) & 2.958 & 0.816 & $-72\%$ & 78.3\,min \\
+News       & 29.9\,M (0.96\%) & 2.994 & 1.630 & $-46\%$ & 62.2\,min \\
+General QA & 28.2\,M (1.12\%) & 3.449 & 1.096 & $-68\%$ & 71.9\,min \\
+\bottomrule
+\end{tabular}
+
+\vspace{2pt}
+{\footnotesize Base and Best are held-out cross-entropy for the unadapted base
+model and the best epoch respectively; Gain is the reduction between them.}
+\end{table}
+
+\textbf{Adapter validation.} An adapter that leaves output essentially unchanged
+would make the PEFT arm a relabelled copy of the control arm and RQ2 vacuous, so
+each adapter was checked before benchmarking rather than assumed to have worked.
+Two independent checks are applied. First, held-out cross-entropy against the
+\emph{unadapted} base model: all three adapters reduce it substantially, by 46\%
+to 72\% (Table~\ref{tab:finetuning}). Second, behavioural divergence, generating
+the same domain probes from the adapted and unadapted weights and comparing them:
+mean divergence was 87.2\% (legal), 80.6\% (news) and 87.1\% (general QA).
+
+We report a measurement pitfall here because it produced a wrong conclusion
+before it was caught. Evaluating once per epoch means the earliest measurement
+already includes a full epoch of training, so an epoch-to-epoch comparison
+answers only whether training \emph{continued} to improve. On that basis the news
+adapter appeared inert --- its held-out loss ran 1.630, 1.638, 1.678 across three
+epochs --- when in fact it had reduced loss from a base of 2.994 to 1.630 within
+the first epoch and then saturated. Judging adapter quality from a training curve
+without an unadapted reference point is therefore unreliable in exactly the
+direction that would lead a practitioner to discard a working adapter, and we
+measure against the base model instead.
+
+\textbf{The general-purpose expert runs unadapted, and why.} Two of the three
+experts carry their adapters in the PEFT arm; the general-purpose expert runs on
+its base weights. This is a decision forced by measurement rather than a design
+preference, and it is stated here because it changes what the PEFT arm is.
+
+Its adapter is trained on Dolly-15k --- generic instructions with a median
+rendered length of roughly 300 tokens --- while in this task the node is served
+approximately 1370 tokens of statutory text, because it shares the retrieval
+context given to every expert. At that length the adapted model emitted
+ungrammatical output containing invented words and ran to the full 1024-token
+generation limit on every call (156\,s), whereas the identical base weights
+answered correctly in 9\,s, citing Annex III and the EU database registration
+requirement. The legal and news adapters show no such behaviour; their training
+examples resemble what they are served, at 299 and 642 median tokens
+respectively. The general expert is also the smallest model and moved furthest
+from its base in training (held-out loss 3.45 to 1.72), so it had the most
+capability available to lose.
+
+Three interventions were tried before accepting this. Biasing the Dolly sample
+toward context-bearing examples raised the median from 175 to 301 tokens and
+helped materially --- generation time fell from 213\,s to 78\,s and the model
+stopped hitting the token limit --- but the output remained degenerate. Giving
+Granite a padding token distinct from its end-of-sequence token, which it lacks,
+had no measurable effect: the held-out curves before and after were
+near-identical. Gentler hyperparameters were already in use. What remains is best
+described as a distribution limit rather than a defect, and we report it as one:
+\emph{parameter-efficient specialisation of a small model on general instruction
+data degraded it on long out-of-domain context, to the point of unusability.}
+
+The consequence for RQ2 is a narrower claim. The ablation compares two adapted
+experts plus one unadapted against three unadapted, so it measures the effect of
+specialising the legal and news roles rather than all three. We regard that as
+the honest reading and prefer it to benchmarking a component we have measured as
+broken, which would have made RQ1 a comparison of topologies over a degraded
+expert.
+
+\textbf{What the adapters learned, including what we did not intend.} All three
+adapters shorten answers markedly relative to their base models: mean response
+length on the validation probes fell from 161 to 68 words (legal), 68 to 24
+(news) and 116 to 30 (general QA), and the legal adapter's rate of explicit
+article citation did not increase. This is not a training failure --- the loss
+reductions above are large --- but it is a transfer we did not intend. All three
+source corpora have shorter targets than the deployed agents are prompted to
+produce, and the adapters absorbed that answer register alongside the domain
+content, notwithstanding the format alignment described above. Because judged
+completeness and lexical overlap are both measured against long reference
+answers, this biases the PEFT arm downward on precisely those metrics, and we
+flag it here so the RQ2 result in Section~\ref{sec:results-ablation} is read with
+the mechanism in view rather than as an unqualified verdict on specialisation.
+
+\subsection{Dataset and reference answers}
+The evaluation set contains 30 queries in three classes designed to test
+RQ2: \emph{simple} queries answerable from a single statutory provision,
+\emph{decomposable} queries requiring several sub-answers to be composed, and
+\emph{routing} queries whose correct handling depends on selecting the right
+domain. Reference answers were drafted against the statutory corpus and reviewed
+by independent statutory alignment checks against official EU AI Act text. \emph{Reference answers
+must not be described as expert-curated unless a domain expert has reviewed
+them.} We report the model used to draft them so that judge self-preference can
+be assessed.
+
+\subsection{Metrics}
+Metrics fall into five families.
+
+\textbf{Reference alignment:} BLEU-1 and BLEU-4~\cite{papineni2002bleu};
+ROUGE-1, ROUGE-2 and ROUGE-L F1~\cite{lin2004rouge}; word and character Jaccard;
+TF cosine similarity; Levenshtein similarity.
+
+\textbf{Judged quality:} accuracy, completeness and groundedness on a 1--5 scale
+from an LLM judge~\cite{zheng2023mtbench}, plus their mean. Judge calls that fail
+to return a parseable score are excluded rather than recorded as minimum scores.
+
+\textbf{Retrieval:} precision@5, recall@5 and mean reciprocal rank against
+human-annotated relevant chunks. These are computed only for queries whose
+relevant chunks have been annotated by hand; the analysis pipeline suppresses them
+otherwise. We note this explicitly because an earlier version of this dataset
+recorded, as its relevance labels, the identifiers the retriever itself returned
+while the reference answers were being drafted, which makes precision@5 equal to
+$1.0$ by construction. Human relevance annotations were not performed for this dataset; retrieval metric columns (Precision@5, Recall@5, MRR) are therefore suppressed across all analyses.
+
+\textbf{Operational:} end-to-end and backend latency, graph execution steps, mean
+step latency, generation speed, measured prompt and completion tokens, cost
+computed from measured tokens, and per-node latency.
+
+\textbf{Behavioural and structural:} system and expert abstention rates, word,
+sentence and paragraph counts, lexical diversity, citation counts.
+
+Separating what a structure \emph{costs} from what its answer is \emph{worth} is
+the crux of the single-versus-multi question, which is why both families are
+reported for every configuration.
+
+\subsection{Token-budget fairness}
+A single agent that answers with fewer model invocations necessarily spends fewer
+tokens, so an unadjusted comparison conflates two claims: that the single agent is
+\emph{better} and that it is \emph{cheaper}. The recent single-versus-multi
+literature controls for this by equalising the reasoning-token
+budget~\cite{tran2026singleagent}. Because the topologies here differ in their
+node structure rather than in a tunable budget, we cannot equalise tokens by
+construction without changing the topologies themselves. We therefore report
+quality both unadjusted and normalised by spend: judged quality per thousand total
+tokens and per second of wall-clock time, and we include the normalised measure in
+the significance tests. A topology that wins only on the unadjusted measure while
+losing on the normalised one is buying its quality rather than earning it, and we
+say so where that occurs.
+
+\subsection{Statistical protocol}
+The experimental unit is the query. Repeats within a (query, topology, arm) cell
+are averaged before testing, because repeats are correlated samples of one item
+and treating them as independent would inflate the sample size.
+
+Two families of comparison are run, and Holm correction~\cite{holm1979simple} is
+applied within each family separately, per metric.
+
+\textbf{Topology (RQ1, RQ3).} All three pairs of topologies --- ALL vs.\
+PARALLEL, ALL vs.\ DAG, PARALLEL vs.\ DAG --- are compared with a two-sided
+Wilcoxon signed-rank test~\cite{wilcoxon1945individual} paired on query, with
+Cliff's delta~\cite{cliff1993dominance} as a non-parametric effect size. These
+tests are run \emph{within} an arm, never across one: pairing a tuned topology
+against an untuned one would confound structure with specialisation. The same
+tests are repeated within each task class.
+
+\textbf{Specialisation (RQ2).} Within each topology, the PEFT arm is compared
+against the base arm, paired on query. This is three tests, Holm-corrected across
+that family.
+
+Throughout, a positive median difference and a positive Cliff's delta both mean
+the first-named side of a comparison scored higher. Comparisons with fewer than
+six paired queries are reported as not tested rather than as null results, since a
+two-sided signed-rank test cannot reach $p<0.05$ below that size. With 30 queries
+the design reliably detects large effects only; non-significant results should be
+read as inconclusive rather than as evidence of equivalence.
+
+\subsection{Reproducibility}
+Generation is fully local: three 4-bit NF4 quantised experts (Llama 3.2 3B
+Instruct, Qwen2.5 3B Instruct, Granite 3.1 2B Instruct) served through
+\texttt{transformers} with LoRA adapters via \texttt{peft}, co-resident on one
+NVIDIA RTX 4070 Laptop GPU (8\,GB). Embeddings: nomic-embed-text via local
+Ollama. Prompt-context ceiling 6,144 tokens with a 1,024-token generation budget;
+prompts exceeding the ceiling are truncated from the left and the event is
+recorded rather than silent. Decoding: non-deterministic (temperature sampling,
+seeds 1000, 1001, 1002). Corpus: 735 chunks, comprising 644 chunks of EU AI Act
+statutory text from 599{,}775 characters, ingested from CELEX:32024R1689 ---
+Regulation (EU) 2024/1689 as published in the Official Journal --- retrieved
+through the EU Publications Office's Cellar endpoint, plus 91 chunks from a
+frozen snapshot of 32 news and commentary sources retrieved on 6 August 2026.
+The news snapshot is fetched once and never refreshed during the run, so all 540
+runs read an identical corpus; the ten routing queries ask for current
+developments and are unanswerable from statute alone. Statutory chunks carry a
+higher authority rank than news in the retriever's reranking, and the resulting
+source mix per query type is reported in Section~\ref{sec:threats}. $N=30$ queries, 3 topologies, 2 arms, $R=3$ repeats
+(540 evaluation runs). Judge: DeepSeek V4 Flash. Reference answers: initially
+drafted by Llama 3.1 8B, then revised in full before scoring, with every
+statutory citation checked against the ingested text of CELEX:32024R1689; 20 of
+the 30 were rewritten against the statute alone and 10 against the statute plus
+a frozen news snapshot (see Section~\ref{sec:threats}). Total execution time
+across the 540 runs: $28.0$ hours ($18.5$\,h adapted, $9.5$\,h untuned).
+
+Two caveats on the operational numbers. First, wall-clock comparisons between
+parallel and sequential topologies are only meaningful to the extent that the
+serving stack executes concurrent branches concurrently; we measure this directly
+rather than assuming it, and report the result in Section~\ref{sec:concurrency}.
+Second, all three experts share one GPU, so the parallel topologies contend for a
+single compute resource --- a deployment on three accelerators would not be
+subject to the same limit, and our latency findings for PARALLEL and DAG should
+not be read as properties of those structures in general.
+
+%=============================================================================
+\section{Results}
+%=============================================================================
+
+\emph{Every number in this section is produced by the analysis pipeline and
+transcribed from \texttt{results.json}; none is entered by hand. A
+\texttt{\textbackslash TBD} marker would indicate a value the pipeline has not
+yet produced; none remain.}
+
+The full metric table for the PEFT arm is given in
+Table~\ref{tab:agent_workflows_eval}, and the two arms side by side in
+Table~\ref{tab:peft_ablation}; both are generated directly from the run. The
+figures that follow are not restatements of them: each is included because it
+shows something a table cannot, and each is discussed on that basis.
+
+% Generated by evaluate_workflows.py. Upload BOTH .tex files to Overleaf:
+% metrics_table.tex (the PEFT arm, Table~\ref{tab:agent_workflows_eval}) and
+% metrics_table_ablation.tex (both arms, Table~\ref{tab:peft_ablation}).
+\IfFileExists{metrics_table.tex}{\input{metrics_table.tex}}{%
+\begin{table}[htbp]
+\centering
+\caption{Metric table (generated by evaluate\_workflows.py from
+analysis\_summary.csv).}
+\label{tab:agent_workflows_eval}
+\begin{tabular}{ll}
+\toprule
+\textbf{Status} & \TBD{run metrics_table.tex not yet generated} \\
+\bottomrule
+\end{tabular}
+\end{table}}
+
+\IfFileExists{metrics_table_ablation.tex}{\input{metrics_table_ablation.tex}}{%
+\begin{table}[htbp]
+\centering
+\caption{RQ2 ablation table (generated by evaluate\_workflows.py; written only
+when both arms were benchmarked).}
+\label{tab:peft_ablation}
+\begin{tabular}{ll}
+\toprule
+\textbf{Status} & \TBD{run metrics_table_ablation.tex not yet generated} \\
+\bottomrule
+\end{tabular}
+\end{table}}
+
+\subsection{Does nominal parallelism materialise?}
+\label{sec:concurrency}
+
+Before interpreting any latency number we establish whether the concurrent
+topologies are concurrent in practice. With all three experts resident, issuing
+three generation requests simultaneously from three threads completed in
+$8.89$\,s against $9.52$\,s for the same three requests issued sequentially --- a
+speedup of $1.07\times$, against a theoretical ceiling near $3\times$.
+
+This is a hardware result, not a graph result: three models sharing one GPU
+serialise at the level of compute regardless of how the orchestration layer
+dispatches them. It has a direct consequence for the rest of this section.
+PARALLEL and DAG pay the full coordination cost of a concurrent structure ---
+extra model invocations, extra prompt tokens, an aggregation step over more
+inputs --- while recovering almost none of the wall-clock benefit that motivates
+concurrency in the first place. Their latency should therefore be read as close to
+the sequential sum of their branches, and any latency advantage they show over ALL
+comes from running fewer or shorter expert calls rather than from overlapping
+them. On a multi-accelerator deployment this constraint would not apply, and we
+are explicit that our latency findings for these two topologies are properties of
+this deployment rather than of the structures in general.
+
+\subsection{Operational profile (RQ3)}
+
+\begin{figure*}[htbp]
+\centering
+\includegraphics[width=0.95\textwidth]{fig1_operational.png}
+\caption{Operational profile by topology (PEFT arm): end-to-end latency, latency
+decomposed by graph node, execution steps, and cost from measured tokens. Error
+bars are 95\% confidence intervals over queries and repeats.}
+\label{fig:operational}
+\end{figure*}
+
+Figure~\ref{fig:operational} shows what an aggregate latency column cannot: the
+node decomposition attributes each topology's cost to the stage that incurs it,
+separating time spent generating from time spent coordinating.
+End-to-end latency was $249.1$\,s for \textsc{all}, $244.2$\,s for
+\textsc{parallel} and $246.8$\,s for \textsc{dag} --- a spread below $2\%$, with
+no pairwise difference significant (Holm-corrected $p = 1.00$ throughout). In
+\textsc{all}, whose branches execute in sequence, generation nodes (the three
+experts plus the aggregator) accounted for $87.5\%$ of backend latency and
+coordination for the remaining $12.5\%$. For \textsc{parallel} and \textsc{dag}
+the per-node timings sum to more than the wall clock --- $314.2$\,s and
+$223.9$\,s of expert time against backends of $243.9$\,s and $246.5$\,s --- both
+because concurrent branches overlap and because each thread's timer additionally
+absorbs the interval it spends blocked on a contended GPU. A generation
+\emph{share} is therefore not well defined for those two topologies and we do
+not report one. Coordination overhead was near-constant across all three at
+$12.2$--$12.5\%$ of backend latency, which is the more informative comparison:
+restructuring the graph moved work between branches without changing what
+coordination cost. Execution cost from measured tokens was $\$0.00226$,
+$\$0.00231$ and $\$0.00223$ per query for \textsc{all}, \textsc{parallel} and
+\textsc{dag} respectively.
+
+Because each expert is now a different model of a different size, per-node latency
+is no longer comparable across experts in the way it was when all three shared one
+model: a slower legal node may reflect Llama 3.2 3B's cost per token rather than
+the legal task's difficulty. We therefore read the node decomposition as
+attributing cost to \emph{positions in the graph}, not as a ranking of the
+experts.
+
+\subsection{Answer quality (RQ1)}
+
+\begin{figure*}[htbp]
+\centering
+\includegraphics[width=0.95\textwidth]{fig2_quality.png}
+\caption{Answer quality by topology (PEFT arm): BLEU against the reference
+answers, ROUGE F1, LLM-judge average, and abstention rate. Error bars are 95\%
+confidence intervals.}
+\label{fig:quality}
+\end{figure*}
+
+Figure~\ref{fig:quality} places lexical alignment, judged quality and abstention
+side by side. Judged quality was $1.804 \pm 0.102$ for \textsc{all},
+$1.733 \pm 0.094$ for \textsc{parallel} and $1.770 \pm 0.098$ for \textsc{dag}
+(mean of accuracy, completeness and groundedness on a five-point scale,
+$\pm$ 95\% CI over queries), and lexical alignment was near-identical at
+ROUGE-L $F_1$ of $0.169$, $0.168$ and $0.170$ respectively. Pairwise tests over
+the three topologies gave \textsc{all} vs \textsc{dag} a median difference of
+$+0.111$ ($p_{\text{Holm}} = 0.92$, $\delta = +0.02$), \textsc{all} vs
+\textsc{parallel} $+0.111$ ($p_{\text{Holm}} = 0.92$, $\delta = +0.07$) and
+\textsc{dag} vs \textsc{parallel} $0.000$ ($p_{\text{Holm}} = 0.92$,
+$\delta = -0.00$): every comparison is non-significant with a negligible effect
+size, and the confidence intervals of all three topologies overlap one another
+entirely. System abstention rate was $0.000$ for every topology --- the graph
+always returned an answer --- while the expert abstention rate, which reflects
+how many running experts declined for want of authoritative support, was
+$1.9\%$, $1.5\%$ and $1.5\%$ for \textsc{all}, \textsc{parallel} and
+\textsc{dag}. The gap between those two abstention measures is itself a result,
+and Section~\ref{sec:results-ablation} returns to it.
+
+\subsection{Does coordination structure pay for itself? (RQ1)}
+\label{sec:tradeoff-ref}
+
+\begin{figure*}[htbp]
+\centering
+\includegraphics[width=0.95\textwidth]{fig3_tradeoff.png}
+\caption{Quality against latency (PEFT arm). The shaded region contains
+topologies that are slower than the best-scoring topology without being better;
+points in it are paying for coordination that returns nothing measurable.}
+\label{fig:tradeoff}
+\end{figure*}
+
+Figure~\ref{fig:tradeoff} converts the per-metric columns into a decision. With no
+single-agent baseline, the reference point is the empirically best-scoring
+topology rather than an external control, and the shaded region is the set of
+configurations it dominates on both axes. That region is empty. \textsc{all}
+scores highest ($1.804$) and is the slowest ($249.1$\,s); \textsc{parallel}
+scores lowest ($1.733$) and is the fastest ($244.2$\,s); \textsc{dag} sits
+between them on both axes ($1.770$, $246.8$\,s). No topology is simultaneously
+slower and worse than another, so none is dominated --- but the spread is
+$0.07$ judge points and $4.9$\,s, and neither axis separates the topologies
+significantly ($p_{\text{Holm}} = 0.92$ on quality, $1.00$ on latency). The
+honest reading is not that one structure wins the trade-off but that, at this
+scale, the trade-off does not discriminate: a practitioner choosing among these
+three is choosing within measurement noise.
+
+On token-normalised quality --- judged quality per thousand total tokens --- the
+ranking was \textsc{all} $0.180$, \textsc{dag} $0.177$, \textsc{parallel}
+$0.170$, preserving the unadjusted ordering. No pairwise comparison approached
+significance (\textsc{all} vs \textsc{dag} $p_{\text{Holm}} = 0.67$,
+$\delta = -0.02$; \textsc{all} vs \textsc{parallel} $p_{\text{Holm}} = 0.57$,
+$\delta = +0.05$; \textsc{dag} vs \textsc{parallel} $p_{\text{Holm}} = 0.57$,
+$\delta = +0.08$). Because the ordering survives normalisation, no topology's
+nominal standing is explained by its spending more tokens than the others. This measure matters because the three topologies differ in how many
+expert invocations they make, so a structure could buy quality with tokens rather
+than earn it with organisation; a topology that leads on the unadjusted measure
+but not on the normalised one is doing exactly that.
+
+\subsection{Does specialisation itself help? (RQ2)}
+\label{sec:results-ablation}
+
+\begin{figure*}[htbp]
+\centering
+\includegraphics[width=0.95\textwidth]{fig5_ablation.png}
+\caption{The RQ2 ablation: each topology run with LoRA-specialised experts and
+with the identical base models untuned. Error bars are 95\% confidence
+intervals.}
+\label{fig:ablation}
+\end{figure*}
+
+Figure~\ref{fig:ablation} and Table~\ref{tab:peft_ablation} answer the question a
+topology comparison alone cannot. Within each topology, the PEFT arm scored
+$1.804$ against the untuned $1.752$ for \textsc{all}
+($p_{\text{Holm}} = 1.00$, $\delta = +0.04$), $1.733$ against $1.778$ for
+\textsc{parallel} ($p_{\text{Holm}} = 1.00$, $\delta = -0.05$) and $1.770$
+against $1.796$ for \textsc{dag} ($p_{\text{Holm}} = 1.00$, $\delta = -0.08$):
+no detectable quality effect in any topology, and in two of the three the point
+estimate favours the \emph{untuned} arm. The same comparison on operational
+metrics is emphatically not null. Specialisation increased end-to-end latency
+in every topology with near-maximal effect sizes
+($\delta = +0.92$, $+0.93$, $+0.98$ for \textsc{all}, \textsc{parallel} and
+\textsc{dag}; $p_{\text{Holm}} \leq 8.3\times10^{-7}$) and raised token cost
+significantly ($p_{\text{Holm}} = 0.004$, $0.0001$, $0.004$). A Cliff's delta
+above $0.92$ means almost every adapted run was slower than almost every
+untuned one. What specialisation did change in behaviour rather than score was
+abstention: the expert abstention rate fell from $22.3\%$ untuned to $1.6\%$
+adapted, driven by the legal expert, which declined to answer in $67\%$ of
+untuned runs against $5\%$ adapted. System-level abstention was $0.000$ in both
+arms, because the aggregator composed an answer from the remaining experts
+whenever the legal expert withdrew --- so a change that is dramatic inside the
+graph is invisible at its output.
+Adapter validation before the run confirmed the adapters were not inert
+(Section~\ref{sec:finetuning}), so a null result here would be a statement about
+the value of this specialisation on this task, not about whether the adapters were
+applied.
+
+Two readings of this comparison are worth separating. If specialisation helps and
+the topology ranking is the same in both arms, then coordination structure and
+specialisation contribute independently, and the ranking in
+Section~\ref{sec:tradeoff-ref} generalises beyond tuned experts. If the ranking
+\emph{changes} between arms, then the best way to combine agents depends on
+whether those agents are specialised --- which would be the more interesting
+finding, and the one that most directly answers the question this paper set out
+to ask. We observe that the nominal ranking is \emph{not} preserved: with
+adapters the order is \textsc{all} $>$ \textsc{dag} $>$ \textsc{parallel}
+($1.804$, $1.770$, $1.733$), while untuned it inverts almost exactly to
+\textsc{dag} $>$ \textsc{parallel} $>$ \textsc{all} ($1.796$, $1.778$,
+$1.752$). We decline to read this as the interesting finding above. No
+within-arm difference is significant in either arm ($p_{\text{Holm}} = 0.92$
+adapted, $1.00$ untuned), the largest gap in either ordering is $0.07$ judge
+points against confidence intervals of roughly $\pm 0.10$, and a reordering of
+three statistically indistinguishable values is what noise looks like. The
+defensible statement is the weaker one: this experiment does not resolve
+whether the best way to combine agents depends on their specialisation,
+because it could not establish a ranking within either arm to begin with.
+
+\subsection{Does decomposability change the answer?}
+
+\begin{figure*}[htbp]
+\centering
+\includegraphics[width=0.95\textwidth]{fig4_query_type.png}
+\caption{Quality by topology within each task class (PEFT arm). If a coordination
+structure earns its cost through decomposition, its advantage should widen from
+simple to decomposable and routing queries.}
+\label{fig:querytype}
+\end{figure*}
+
+Figure~\ref{fig:querytype} tests the standard defence of richer coordination
+directly, and is the one result that cannot be read from a pooled table at all. If
+sequential chaining or a converging dependency earns its overhead by decomposing
+work, the gap between it and flat concurrency should widen on decomposable and
+routing queries relative to simple ones. Within-class tests gave no significant
+result in any class, but the direction is worth recording. On decomposable
+queries --- the class the defence predicts --- \textsc{all} led both concurrent
+structures by the widest margins observed anywhere in the study
+(\textsc{all} vs \textsc{parallel}: median difference $+0.222$,
+$p_{\text{Holm}} = 0.23$, $\delta = +0.19$; \textsc{all} vs \textsc{dag}:
+$+0.111$, $p_{\text{Holm}} = 0.23$, $\delta = +0.23$), while \textsc{dag} and
+\textsc{parallel} were indistinguishable from each other
+($0.000$, $p_{\text{Holm}} = 0.67$, $\delta = +0.02$). On simple and routing
+queries every comparison returned $p_{\text{Holm}} = 1.00$ with
+$|\delta| \leq 0.14$. So the only place the sequential chain shows any
+advantage is precisely where decomposition is supposed to pay --- but at
+$p = 0.23$ with ten queries per class, this is a direction for a larger study
+to test, not a result we claim.
+
+%=============================================================================
+\section{Discussion}
+%=============================================================================
+
+\emph{This section is written against the results above and cannot be finalised
+until they are complete; the structure below fixes what each paragraph must
+address.}
+
+\textbf{Which structure wins, and why that is the shape it is.}
+None of them wins, and that is the result. The three topologies are separated by
+$0.07$ judge points against confidence intervals near $\pm 0.10$, with every
+pairwise test returning $p_{\text{Holm}} = 0.92$ and $|\delta| \leq 0.07$; the
+ordering even inverts between the adapted and untuned arms. We therefore cannot
+adjudicate between the three mechanisms below, and we decline to narrate a
+ranking that the statistics do not support. The one place any structure showed
+an edge was the class where the decomposition argument predicts it: on
+decomposable queries \textsc{all} led both concurrent structures by
+$\delta = +0.19$ and $+0.23$, the largest effects anywhere in the study, which
+is the direction that information flow between experts would produce --- but at
+$p_{\text{Holm}} = 0.23$ over ten queries this is a hypothesis for a larger
+study, not a finding. The mechanism matters
+more than the ranking: a win for ALL would indicate that letting experts read
+each other's output adds real information; a win for PARALLEL would indicate the
+opposite, that hand-offs mostly add noise; a win for DAG would suggest the useful
+quantity is one convergence point rather than either extreme.
+
+\textbf{What specialisation bought.} It bought a large behavioural change and no
+measurable quality gain, uniformly across topologies. Judged quality was
+statistically indistinguishable between arms in all three
+($p_{\text{Holm}} = 1.00$ throughout, $|\delta| \leq 0.08$), so the effect did
+not differ by topology --- there is no interaction to report. What did change
+was where the answer came from. Untuned, the legal expert declined on $67\%$ of
+runs; adapted, on $5\%$. Yet system-level abstention was $0.000$ in both arms
+and the final answers scored the same, because the aggregator simply composed
+from the news and general experts whenever the legal expert withdrew. The
+multi-agent structure absorbed the failure of a specialist, which is a useful
+robustness property and simultaneously the reason specialisation could not be
+detected at the output: the architecture had already covered the gap that
+fine-tuning closes. Set against a near-doubling of latency
+($\delta \geq 0.92$, $p_{\text{Holm}} \leq 8.3\times10^{-7}$) and significantly
+higher token cost, the adapters bought a cleaner internal division of labour
+that this system did not need. One asymmetry compounds this:
+all three experts read the same retrieved statutory context, so a specialised
+expert can only add value beyond what retrieval already supplies. That bounds how
+much any amount of fine-tuning can contribute in a strongly retrieval-grounded
+task, and is a reason to expect a smaller specialisation effect here than the same
+adapters would show on a closed-book benchmark.
+
+\textbf{Concurrency that is not concurrent.} The measured $1.07\times$ speedup for
+three simultaneous experts is, in our view, the most transferable practical
+finding in the paper. Topology work routinely treats parallel branches as free in
+latency terms; on a single accelerator hosting multiple specialists --- the
+configuration most likely in a privacy-constrained or on-premises deployment ---
+they are not. A concurrent topology chosen for latency reasons should be validated
+against the serving hardware before the choice is made, not after.
+
+\textbf{Heterogeneous experts complicate attribution.} Because each expert is a
+different model, a topology's result depends partly on which model sits in which
+graph position. We can say which \emph{configuration} performed best; we cannot
+fully separate that from which model happened to occupy the position the
+configuration privileges. This is the principal interpretive cost of the
+three-family design and we return to it in Threats to Validity.
+
+\textbf{Practical guidance.} Four recommendations follow from these results
+rather than from prior expectation. First, do not spend engineering effort
+selecting among these coordination structures for a retrieval-grounded task of
+this kind: they were indistinguishable on quality, on token-normalised quality
+and on latency, so the simplest structure to build and debug is the rational
+default. Second, validate concurrency against the serving hardware before
+choosing a topology for latency reasons; three co-resident experts on one
+accelerator returned $1.07\times$, and our concurrent topologies were no faster
+end to end than the sequential chain. Third, measure specialisation at the
+system output, not at the expert. Judged by its expert alone, fine-tuning here
+looks transformative --- a $67\%$ abstention rate falling to $5\%$; judged at
+the output it returned nothing measurable, because redundancy across experts had
+already compensated. A team that instrumented only the specialist would have
+concluded the opposite of what the end-to-end comparison shows. Fourth, and
+following from that, treat architectural redundancy and component quality as
+substitutes rather than independent goods: in a system with several experts and
+an aggregator, investment in any one expert is bounded by how much the others
+already supply, and that ceiling should be estimated before the fine-tuning
+budget is committed.
+
+%=============================================================================
+\section{Threats to Validity}
+\label{sec:threats}
+%=============================================================================
+
+\textbf{Model--position confounding: the principal limitation.} The three experts
+are three different base models of different sizes and families, so any difference
+between topologies is entangled with which model occupies which structural
+position. DAG, for example, places the general-purpose expert (Granite 3.1 2B, the
+smallest of the three) at its convergence point; if DAG underperforms, we cannot
+cleanly separate ``a converging structure is worse'' from ``the smallest model is
+a poor place to converge''. This is a direct and unavoidable consequence of the
+three-family design, which was adopted deliberately so that ``specialist'' would
+mean parameter-level differentiation rather than a prompt. A rotation design ---
+permuting which model holds which role and re-running --- would resolve it and is
+the single most valuable extension of this work. We state the limitation rather
+than qualifying it away, and readers should treat the topology ranking as
+applying to this assignment of models to roles.
+
+\textbf{Construct validity.} Lexical overlap with a reference answer is a weak
+proxy for legal correctness; a compliant answer phrased differently scores
+poorly. We mitigate this with judged quality alongside lexical metrics, but the
+judge is itself a language model subject to self-preference
+bias~\cite{wataoka2024selfpreference}, which we mitigate by requiring the judge,
+the models under test and the reference-drafting model to be distinct.
+\emph{Unlike our earlier study, that requirement now holds: the judge (DeepSeek V4
+Flash) generates none of the answers it scores, the three expert models are
+open-weight models from three unrelated families, and the reference-drafting model
+(Llama 3.1 8B) is distinct from all of them.} The self-preference caveat that
+constrained the earlier work therefore no longer applies. Human validation of the
+judge's agreement with expert assessment was not performed and remains a
+limitation of the judged-quality metric itself.
+
+A second construct concern is specific to the fine-tuning. Both LegalBench and
+NewsQA are short-answer evaluation benchmarks, and we transformed their targets
+into the response format the agents are served behind
+(Section~\ref{sec:finetuning}). That transformation uses only real dataset
+content, but it means the adapters are trained to produce a \emph{format} as well
+as domain content, and part of any measured PEFT gain may be format conformance
+rather than domain knowledge. Reporting both judged completeness and lexical
+overlap partially separates these, but not fully.
+
+\textbf{Internal validity.} Wall-clock latency depends on whether the serving
+stack executes concurrent branches concurrently; rather than assume it, we measure
+it and find it largely does not on a single GPU
+(Section~\ref{sec:concurrency}). Abstention propagation, if unaddressed, biases
+against topologies that run more experts; the all-abstain rule is stated
+explicitly and its two rates reported separately. The two experimental arms are
+served by separate processes, and the benchmark harness refuses to record runs
+against a server whose loaded arm disagrees with the requested one, so the arms
+cannot be silently mislabelled.
+
+One consequence of that process separation is worth stating. Because the arms run
+as consecutive passes rather than interleaved --- six co-resident models will not
+fit, so the adapters cannot be swapped per query --- anything that varies slowly
+over a multi-day run falls disproportionately on whichever arm ran second. On
+consumer hardware the obvious candidate is thermal throttling: we observed a
+same-class expert training at 7.15\,s per step against 5.5\,s earlier in the same
+session at 81\,\textdegree C. Topology comparisons are insulated from this,
+because topologies are interleaved across queries within an arm; the exposure is
+specific to comparing \emph{latency} between arms. Each run therefore records its
+absolute start time, and the analysis reports within-arm latency drift between
+the first and last decile of each pass. Where that drift is large we report the
+between-arm latency difference as uninterpretable rather than adjusting it away,
+since a regression correction would conceal a measurement problem behind a
+statistical one. Judged quality and reference-alignment metrics are unaffected.
+
+\textbf{External validity.} A single corpus, a single domain, one assignment of
+models to roles, and one 8\,GB single-GPU deployment. The concurrency finding in
+particular is a property of that deployment. Model capacity may interact with
+topology --- coordination plausibly matters more when individual agents are
+weaker, and our experts are small --- so these results should not be extrapolated
+to larger specialists without retesting.
+
+\textbf{Statistical validity.} With 30 queries the paired tests detect large
+effects reliably and small ones poorly; non-significant comparisons should be
+read as inconclusive rather than as evidence of equivalence. The two comparison
+families are Holm-corrected separately, which controls family-wise error within
+each but not across both.
+
+\textbf{Corpus provenance.} The statutory corpus was re-ingested from
+CELEX:32024R1689 via the EU Publications Office's Cellar endpoint, because the
+document URL used in our earlier work no longer serves content to
+non-browser clients. The resulting corpus is the Official Journal text of the
+Regulation and is therefore more authoritative than the pre-final adopted-text
+version used previously, but it is not chunk-for-chunk identical, so retrieval
+behaviour is not directly comparable between the two studies.
+
+%=============================================================================
+\section{Future Work}
+%=============================================================================
+
+Four extensions follow directly, in order of how much they would strengthen the
+claims.
+
+\textbf{Rotate models across roles.} The model--position confound identified above
+is the most consequential limitation, and it is straightforwardly addressable:
+permute which of the three models holds which expert role and re-run. With three
+models and three roles this is six assignments, and it would separate the effect of
+a coordination structure from the effect of which specialist sits at its critical
+position. We regard this as the necessary next step rather than an optional
+refinement.
+
+\textbf{Test whether the concurrency ceiling changes the ranking.} Our measured
+$1.07\times$ speedup means the concurrent topologies were evaluated under
+conditions that deny them their main advantage. Repeating the comparison on
+multiple accelerators, where three experts genuinely run at once, would show
+whether the ranking is a property of the structures or of the hardware --- and
+this is the experiment most likely to change the paper's conclusion.
+
+\textbf{Vary specialisation strength.} We used one adapter configuration at one
+training-set size. Sweeping LoRA rank and per-domain training volume would turn
+RQ2 from a binary into a dose--response relationship, and would show whether
+coordination structure matters more or less as agents become more sharply
+specialised --- the natural continuation of the question this paper opens.
+
+\textbf{Compare against learned topologies and a second domain.} Whether
+learned communication graphs~\cite{zhang2024gdesigner, li2025argdesigner,
+zhuge2024gptswarm} beat these canonical structures over parameter-differentiated
+experts is open; so is whether any of this transfers beyond EU AI Act compliance
+to a second retrieval-grounded domain, which is required before the conclusions
+can be stated generally.
+
+%=============================================================================
+\section{Conclusion}
+%=============================================================================
+
+Existing evidence that multi-agent coordination fails to beat a single agent was
+gathered under a condition that is easy to overlook: every agent ran the same
+unmodified model, so the specialists being coordinated were one reasoner behind
+several prompts. This paper asked what happens when that condition is removed. We
+built a retrieval-grounded EU AI Act compliance system in which three domain
+experts are three different open-weight models, each specialised by QLoRA on its
+own domain corpus and all three co-resident on a single 8\,GB consumer GPU, and
+compared three structurally distinct coordination topologies over them --- with
+every topology also run over the identical untuned base models, so that
+specialisation and structure could be separated rather than confounded.
+
+No topology won: judged quality differed by at most $0.07$ points on a
+five-point scale across \textsc{all} ($1.804$), \textsc{dag} ($1.770$) and
+\textsc{parallel} ($1.733$), every pairwise comparison was non-significant after
+Holm correction ($p = 0.92$, $|\delta| \leq 0.07$), and end-to-end latency
+separated them by under $2\%$, so the coordination structure did not pay for
+itself on any axis we measured. Nor did specialisation measurably improve
+quality: the adapted and untuned arms were statistically indistinguishable
+within every topology ($p_{\text{Holm}} = 1.00$, $|\delta| \leq 0.08$) while the
+adapters nearly doubled latency ($\delta \geq 0.92$,
+$p_{\text{Holm}} \leq 8.3\times10^{-7}$) and significantly raised token cost ---
+though they did cut the expert abstention rate from $22.3\%$ to $1.6\%$, a
+substantial change in the system's internal behaviour that its aggregator
+rendered invisible at the output.
+
+Two findings hold regardless of how those numbers land. First, on a single
+accelerator, nominal concurrency is largely fictional: three co-resident experts
+generating simultaneously ran only $1.07\times$ faster than the same work done
+sequentially, so a topology chosen for its parallelism pays the full coordination
+cost of that choice and recovers almost none of the benefit. Practitioners should
+measure this on their own serving stack before letting it drive an architectural
+decision. Second, the interpretive price of using genuinely different specialists
+is that model identity and structural position become entangled; a rotation design
+is required to pull them apart, and we identify that as the necessary next step
+rather than claiming our ranking is already free of it.
+
+We also note what this study deliberately does not claim. With three different
+models in the graph there is no coherent single-agent condition, so nothing here
+revises the single-versus-multi question --- it answers a different one, about how
+best to combine specialists once you have them.
+
+\bibliographystyle{IEEEtran}
+\bibliography{references}
+
+\end{document}

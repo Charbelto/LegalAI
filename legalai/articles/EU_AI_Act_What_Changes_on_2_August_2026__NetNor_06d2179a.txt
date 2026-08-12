@@ -1,0 +1,118 @@
+Updated
+14 Jul, 2026
+Published
+14 Jul, 2026
+Cybersecurity
+NetNordic
+Articles
+EU AI Act: What actually changes on 2 August 2026?
+On 2 August 2026, the EU AI Act enters a new phase — though not the one many organisations have been preparing for. Transparency obligations under Article 50 take effect, and the AI Office and national authorities gain full powers to enforce and sanction breaches, including for general-purpose AI (GPAI) models. What doesn’t happen on this date, following a legislative change adopted this summer, is the broad rollout of high-risk AI obligations that was originally scheduled.
+For most organisations, this isn’t primarily a story about OpenAI, Microsoft, or Google. It’s a story about how your own business uses AI — and whether you can prove you’re doing it responsibly.
+What changes on this specific date
+It’s worth being precise about what 2 August 2026 does and doesn’t cover, because the date has shifted meaning since the Act was first published:
+GPAI enforcement becomes operational — the substantive obligations for providers of general-purpose AI models (Articles 51–55) have applied since 2 August 2025. What changes now is that the AI Office can act on its enforcement and sanction powers over those providers, including investigations and administrative fines.
+Article 50 transparency obligations take effect. They cover more than generative content: disclosure requirements when people interact directly with an AI system (such as chatbots), labelling of AI-generated or manipulated content (including deepfakes), and disclosure obligations around emotion recognition and biometric categorisation systems. One exception: the specific requirement to machine-readably watermark AI-generated content from systems already on the market before this date is postponed to 2 December 2026.
+High-risk AI systems (Annex III) are, notably, not part of this date anymore. The EU’s “Digital Omnibus,” which amends the AI Act, received final approval from the Council on 29 June 2026. It pushes the compliance deadline for stand-alone high-risk systems — covering areas like recruitment, credit scoring, education, and essential services — from 2 August 2026 to 2 December 2027. High-risk AI embedded in regulated products (Annex I), such as medical devices or machinery, moves to 2 August 2028.
+A new prohibition against AI systems generating non-consensual intimate imagery or CSAM also takes effect on 2 December 2026, independent of an organisation’s high-risk status.
+The practical upshot: the Annex III deadline has genuinely moved — the requirements themselves haven’t — and that’s a reason to use the extra runway well, not a reason to stop preparing. The classification work (which systems count as high-risk, what data they touch) doesn’t get any easier by waiting, and GPAI enforcement, transparency duties, and the new content-safety prohibition are all still very much live in 2026.
+What this means if you’re not building AI models
+Most organisations aren’t GPAI providers. They’re deployers — using AI through everyday tools like Microsoft Copilot, ChatGPT, Google Gemini, or AI features built into existing business applications. The AI Act still applies to you, just through a different set of obligations: disclosure, oversight, and documentation of how AI is used rather than how it’s built.
+As AI becomes embedded in ordinary workflows, the practical challenge shifts from “should we use AI” to “do we actually know how we’re using it.” That means having real answers to:
+Which AI services are in use across the organisation
+What business data is being processed by those services
+Whether sensitive or regulated information is being shared with AI models
+How AI-generated output is reviewed before it’s acted on
+Whether your AI suppliers meet their own regulatory obligations — and how that shapes your organisation’s own risk profile
+One requirement already applies regardless of this date: the AI Act requires organisations to ensure adequate AI literacy among staff who develop or use AI systems. This has been in force since February 2025, and for many organisations it’s the first concrete compliance step still outstanding.
+For many organisations, AI adoption has moved faster than AI governance. The 2 August deadline is less a sudden new burden and more a forcing function — a reason to close a gap that’s probably already there.
+The security angle
+AI Act compliance and AI security aren’t separate workstreams; they overlap heavily. The same visibility problems that create compliance risk also create security risk:
+Shadow AI — tools employees adopt without IT’s knowledge, often processing sensitive data outside any governance framework
+Identity and access management — who can connect what data to which AI service, and under what conditions
+Third-party and supply chain risk — your AI vendors’ compliance posture becomes part of your own exposure
+Protection of sensitive information — preventing confidential or regulated data from ending up in a model’s training or output pipeline
+Existing security controls don’t need to be reinvented, but they do need to be extended to explicitly cover AI-enabled services — because most weren’t designed with AI usage in mind.
+How NetNordic can help
+We support organisations in building AI governance that’s proportionate to actual risk, not just a compliance exercise on paper:
+AI readiness and maturity assessments
+AI governance and policy development
+AI risk assessments
+Security architecture reviews
+Microsoft Copilot and Azure AI security assessments
+Identity and access management
+Security monitoring and advisory services
+Organisations that establish governance now — before the deadline forces the issue; are in a stronger position to adopt AI confidently, meet regulatory expectations, and maintain trust with customers and stakeholders.
+Most organisations already know they use AI. Fewer know where it’s used, what data is processed, or how that could be documented. That’s exactly the gap AI governance is meant to close.
+Want to know where your organisation stands?
+Get in touch with our team for a conversation about your AI risk exposure ahead of the August deadline.
+Sources
+European Commission — AI Act regulatory framework
+European Commission — European approach to artificial intelligence
+AI Office — General-Purpose AI Code of Practice
+EUR-Lex — Regulation (EU) 2024/1689 (EU AI Act)
+ENISA — ENISA’s view on cybersecurity in the frontier AI era
+Author
+John-Helge Gantz
+Advisor Information Security, NetNordic
+Table of Contents
+What changes on this specific date
+What this means if you’re not building AI models
+The security angle
+How NetNordic can help
+Want to know where your organisation stands?
+Content subjects category
+Cloud
+Cybersecurity
+NetNordic
+Network
+Content type
+Articles
+Case Studies
+eBook
+Videos
+Webinar
+Whitepaper
+Related content
+From good to great with AI-driven networks
+Cybersecurity
+Articles
+10 Jul, 2026
+NIS2 Explained: Cybersecurity Moves from IT to the Boardroom
+Cybersecurity
+Articles
+17 Jun, 2026
+From assessment to compliance: building OT maturity in practice
+Cybersecurity
+Articles
+11 Jun, 2026
+OT control is about more than security
+Cybersecurity
+Articles
+11 Jun, 2026
+From Purdue to modern OT security: why the traditional model is no longer enough
+Cybersecurity
+Articles
+11 Jun, 2026
+CyberTalk 2026: From Assumption to Evidence
+Cybersecurity
+Webinar
+28 May, 2026
+Contact Us
+Feel free to call us directly on our telephone number
++47 67 247 365
+, send us an email
+salg@netnordic.no
+, or fill in the form and we will get back to you as soon as possible! Thanks!
+Latest content
+Cybersecurity
+Articles
+Jul 10, 2026
+From good to great with AI-driven networks
+Cloud
+Articles
+Jun 30, 2026
+What Does AI Actually Cost? A Business Guide to AI Cost Management
+Cybersecurity
+Articles
+Jun 17, 2026
+NIS2 Explained: Cybersecurity Moves from IT to the Boardroom

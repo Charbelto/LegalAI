@@ -1,0 +1,104 @@
+BETA🔔 New: Try thenew AI Act Explorer, rebuilt from the ground up for 2026.Read the official text in all 24 EU languages, including the 'Code of Practice' and other documents. Compare languages side-by-open, open items in a 'side peek' for easy reference, and share URLs direct to an individual paragraph. Custom AI chatbot to answer your questions(coming soon).Go to the new AI Act Explorer →
+Section 1: Classification of AI Systems as High-Risk
+Article 6: Classification Rules for High-Risk AI Systems
+Article 13: Transparency and Provision of Information to Deployers
+Section 3: Obligations of Providers and Deployers of High-Risk AI Systems and Other Parties
+Article 16: Obligations of Providers of High-Risk AI Systems
+Article 20: Corrective Actions and Duty of Information
+Article 22: Authorised Representatives of Providers of High-Risk AI Systems
+Article 25: Responsibilities Along the AI Value Chain
+Article 26: Obligations of Deployers of High-Risk AI Systems
+Article 27: Fundamental Rights Impact Assessment for High-Risk AI Systems
+Section 4: Notifying Authorities and Notified Bodies
+Article 29: Application of a Conformity Assessment Body for Notification
+Article 31: Requirements Relating to Notified Bodies
+Article 32: Presumption of Conformity with Requirements Relating to Notified Bodies
+Article 33: Subsidiaries of Notified Bodies and Subcontracting
+Article 34: Operational Obligations of Notified Bodies
+Article 35: Identification Numbers and Lists of Notified Bodies
+Article 37: Challenge to the Competence of Notified Bodies
+Article 39: Conformity Assessment Bodies of Third Countries
+Section 5: Standards, Conformity Assessment, Certificates, Registration
+Article 40: Harmonised Standards and Standardisation Deliverables
+Article 42: Presumption of Conformity with Certain Requirements
+Article 45: Information Obligations of Notified Bodies
+Article 46: Derogation from Conformity Assessment Procedure
+Chapter IV: Transparency Obligations for Providers and Deployers of Certain AI Systems
+Article 50: Transparency Obligations for Providers and Deployers of Certain AI Systems
+Article 51: Classification of General-Purpose AI Models as General-Purpose AI Models with Systemic Risk
+Section 2: Obligations for Providers of General-Purpose AI Models
+Article 53: Obligations for Providers of General-Purpose AI Models
+Article 54: Authorised Representatives of Providers of General-Purpose AI Models
+Section 3: Obligations of Providers of General-Purpose AI Models with Systemic Risk
+Article 55: Obligations for Providers of General-Purpose AI Models with Systemic Risk
+Article 58: Detailed Arrangements for, and Functioning of, AI Regulatory Sandboxes
+Article 59: Further Processing of Personal Data for Developing Certain AI Systems in the Public Interest in the AI Regulatory Sandbox
+Article 60: Testing of High-Risk AI Systems in Real World Conditions Outside AI Regulatory Sandboxes
+Article 61: Informed Consent to Participate in Testing in Real World Conditions Outside AI Regulatory Sandboxes
+Article 62: Measures for Providers and Deployers, in Particular SMEs, Including Start-Ups
+Article 65: Establishment and Structure of the European Artificial Intelligence Board
+Article 68: Scientific Panel of Independent Experts
+Article 69: Access to the Pool of Experts by the Member States
+Article 70: Designation of National Competent Authorities and Single Point of Contact
+Article 71: EU Database for High-Risk AI Systems Listed in Annex III
+Chapter IX: Post-Market Monitoring, Information Sharing and Market Surveillance
+Article 72: Post-Market Monitoring by Providers and Post-Market Monitoring Plan for High-Risk AI Systems
+Section 2: Sharing of Information on Serious Incidents
+Article 74: Market Surveillance and Control of AI Systems in the Union Market
+Article 75: Mutual Assistance, Market Surveillance and Control of General-Purpose AI Systems
+Article 76: Supervision of Testing in Real World Conditions by Market Surveillance Authorities
+Article 77: Powers of Authorities Protecting Fundamental Rights
+Article 79: Procedure at National Level for Dealing with AI Systems Presenting a Risk
+Article 80: Procedure for Dealing with AI Systems Classified by the Provider as Non-High-Risk in Application of Annex III
+Article 82: Compliant AI Systems Which Present a Risk
+Article 85: Right to Lodge a Complaint with a Market Surveillance Authority
+Article 86: Right to Explanation of Individual Decision-Making
+Article 87: Reporting of Infringements and Protection of Reporting Persons
+Section 5: Supervision, Investigation, Enforcement and Monitoring in Respect of Providers of General-Purpose AI Models
+Article 88: Enforcement of the Obligations of Providers of General-Purpose AI Models
+Article 90: Alerts of Systemic Risks by the Scientific Panel
+Article 91: Power to Request Documentation and Information
+Article 94: Procedural Rights of Economic Operators of the General-Purpose AI Model
+Article 95: Codes of Conduct for Voluntary Application of Specific Requirements
+Article 96: Guidelines from the Commission on the Implementation of this Regulation
+Chapter XI:
+Delegation of Power and Committee Procedure
+Article 100: Administrative Fines on Union Institutions, Bodies, Offices and Agencies
+Article 101: Fines for Providers of General-Purpose AI Models
+Article 102: Amendment to Regulation (EC) No 300/2008
+Article 103: Amendment to Regulation (EU) No 167/2013
+Article 104: Amendment to Regulation (EU) No 168/2013
+Article 108: Amendments to Regulation (EU) 2018/1139
+Article 109: Amendment to Regulation (EU) 2019/2144
+Article 111: AI Systems Already Placed on the Market or put into Service and General-Purpose AI Models Already Placed on the Marked [sic]
+123456789101112131415161718192021222324252627282930313233343536373839404142434445464748495051525354555657585960616263646566676869707172737475767778798081828384858687888990919293949596979899100101102103104105106107108109110111112113114115116117118119120121122123124125126127128129130131132133134135136137138139140141142143144145146147148149150151152153154155156157158159160161162163164165166167168169170171172173174175176177178179180
+Annex II: List of Criminal Offences Referred to in Article 5(1), First Subparagraph, Point (h)(iii)
+Annex III: High-Risk AI Systems Referred to in Article 6(2)
+Annex IV: Technical Documentation Referred to in Article 11(1)
+Annex VI: Conformity Assessment Procedure Based on Internal Control
+Annex VII: Conformity Based on Assessment of the Quality Management System and an Assessment of the Technical Documentation
+Annex VIII: Information to be Submitted upon the Registration of High-Risk AI Systems in Accordance with Article 49
+Annex IX: Information to be Submitted upon the Registration of High-Risk AI Systems Listed in Annex III in Relation to Testing in Real World Conditions in Accordance with Article 60
+Annex X: Union Legislative Acts on Large-Scale IT Systems in the Area of Freedom, Security and Justice
+Annex XI: Technical Documentation Referred to in Article 53(1), Point (a) - Technical Documentation for Providers of General-Purpose AI Models
+Annex XII: Transparency Information Referred to in Article 53(1), Point (b) - Technical Documentation for Providers of General-Purpose AI Models to Downstream Providers that Integrate the Model into Their AI System
+Annex XIII: Criteria for the Designation of General-Purpose AI models with Systemic Risk Referred to in Article 51
+Part ofChapter III:
+High-Risk AI System➔Section 5: Standards, Conformity Assessment, Certificates, Registration
+This article discusses the process of assessing whether high-risk AI systems meet certain standards. If a provider has used certain standards in creating their AI system, they must choose one of two assessment procedures. If the provider hasn't used these standards, or only used part of them, they must follow a specific assessment procedure. If the AI system is for law enforcement or immigration authorities, a market surveillance authority will act as the assessment body. The article also states that if an AI system is significantly modified, it must undergo a new assessment. The Commission can update these procedures as technology advances.
+This article discusses the process of assessing whether high-risk AI systems meet certain standards. If a provider has used certain standards in creating their AI system, they must choose one of two assessment procedures. If the provider hasn't used these standards, or only used part of them, they must follow a specific assessment procedure. If the AI system is for law enforcement or immigration authorities, a market surveillance authority will act as the assessment body. The article also states that if an AI system is significantly modified, it must undergo a new assessment. The Commission can update these procedures as technology advances.
+NOTE:This translation is a machine-generated translation. It isnotthe official translation provided by the European Parliament, which can befound here.
+1. For high-risk AI systems listed in point 1 ofAnnex III, where, in demonstrating the compliance of a high-risk AI system with the requirements set out in Section 2, the provider has applied harmonised standards referred to inArticle 40, or, where applicable, common specifications referred to inArticle 41, the provider shall opt for one of the following conformity assessment procedures based on:
+(a) the internal control referred to inAnnex VI; or
+(b) the assessment of the quality management system and the assessment of the technical documentation, with the involvement of a notified body, referred to inAnnex VII. In demonstrating the compliance of a high-risk AI system with the requirements set out in Section 2, the provider shall follow the conformity assessment procedure set out inAnnex VIIwhere:
+(a) harmonised standards referred to inArticle 40do not exist, and common specifications referred to inArticle 41are not available;
+(b) the provider has not applied, or has applied only part of, the harmonised standard;
+(c) the common specifications referred to in point (a) exist, but the provider has not applied them;
+(d) one or more of the harmonised standards referred to in point (a) has been published with a restriction, and only on the part of the standard that was restricted. For the purposes of the conformity assessment procedure referred to inAnnex VII, the provider may choose any of the notified bodies. However, where the high-risk AI system is intended to be put into service by law enforcement, immigration or asylum authorities or by Union institutions, bodies, offices or agencies, the market surveillance authority referred to inArticle 74(8) or (9), as applicable, shall act as a notified body.
+2. For high-risk AI systems referred to in points 2 to 8 ofAnnex III, providers shall follow the conformity assessment procedure based on internal control as referred to inAnnex VI, which does not provide for the involvement of a notified body.
+3. For high-risk AI systems covered by the Union harmonisation legislation listed in Section A ofAnnex I, the provider shall follow the relevant conformity assessment procedure as required under those legal acts. The requirements set out in Section 2 of this Chapter shall apply to those high-risk AI systems and shall be part of that assessment. Points 4.3., 4.4., 4.5. and the fifth paragraph of point 4.6 ofAnnex VIIshall also apply. For the purposes of that assessment, notified bodies which have been notified under those legal acts shall be entitled to control the conformity of the high-risk AI systems with the requirements set out in Section 2, provided that the compliance of those notified bodies with requirements laid down inArticle 31(4), (5), (10) and (11) has been assessed in the context of the notification procedure under those legal acts. Where a legal act listed in Section A ofAnnex Ienables the product manufacturer to opt out from a third-party conformity assessment, provided that that manufacturer has applied all harmonised standards covering all the relevant requirements, that manufacturer may use that option only if it has also applied harmonised standards or, where applicable, common specifications referred to inArticle 41, covering all requirements set out in Section 2 of this Chapter.
+4. High-risk AI systems that have already been subject to a conformity assessment procedure shall undergo a new conformity assessment procedure in the event of a substantial modification, regardless of whether the modified system is intended to be further distributed or continues to be used by the current deployer. For high-risk AI systems that continue to learn after being placed on the market or put into service, changes to the high-risk AI system and its performance that have been predetermined by the provider at the moment of the initial conformity assessment and are part of the information contained in the technical documentation referred to in point 2(f) ofAnnex IV, shall not constitute a substantial modification.
+5. The Commission is empowered to adopt delegated acts in accordance withArticle 97in order to amendAnnexes VIandVIIby updating them in light of technical progress.
+6. The Commission is empowered to adopt delegated acts in accordance withArticle 97in order to amend paragraphs 1 and 2 of this Article in order to subject high-risk AI systems referred to in points 2 to 8 ofAnnex IIIto the conformity assessment procedure referred to inAnnex VIIor parts thereof. The Commission shall adopt such delegated acts taking into account the effectiveness of the conformity assessment procedure based on internal control referred to inAnnex VIin preventing or minimising the risks to health and safety and protection of fundamental rights posed by such systems, as well as the availability of adequate capacities and resources among notified bodies.
+Feedback– We are working to improve this tool. Please send feedback to Taylor Jones attaylor@futureoflife.org
+View theofficial text, or browse it online using ourAI Act Explorer. The text used in this tool is the ‘Artificial Intelligence Act (Regulation (EU) 2024/1689), Official Journal version of 13 June 2024’.Interinstitutional File: 2021/0106(COD)

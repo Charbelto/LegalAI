@@ -1,0 +1,376 @@
+﻿[RetrievalAgent] Connected to ChromaDB at chroma_storage
+[RetrievalAgent] Retrieving documents for: Under the EU AI Act, what conformity-assessment ob...
+[RetrievalAgent] Retrieved and reranked 5 documents using hybrid search.
+==============================================================================
+[validate] role=legal  base=unsloth/Llama-3.2-3B-Instruct
+[validate] longest probe ~1287 tokens (realistic)
+==============================================================================
+[validate]   generating with adapter...
+[local_models] loading role=legal base=unsloth/Llama-3.2-3B-Instruct 4bit=True adapter=yes
+python.exe : Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher 
+rate limits and faster downloads.
+At line:1 char:930
++ ... APTERS="1"; & .\.venv\Scripts\python.exe -u finetune\validate_adapter ...
++                 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (Warning: You ar...ster downloads.:String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+ 
+W0804 11:09:04.956000 43480 .venv\Lib\site-packages\torch\utils\flop_counter.py:29] triton not found; flop counting 
+will not work for triton kernels
+
+Loading weights:   0%|          | 0/254 [00:00<?, ?it/s]
+Loading weights:   0%|          | 1/254 [00:01<04:34,  1.08s/it]
+Loading weights:   1%|          | 3/254 [00:01<01:26,  2.91it/s]
+Loading weights:   2%|▏         | 5/254 [00:01<00:50,  4.89it/s]
+Loading weights:   5%|▍         | 12/254 [00:01<00:17, 13.53it/s]
+Loading weights:   6%|▌         | 15/254 [00:01<00:16, 14.88it/s]
+Loading weights:   8%|▊         | 21/254 [00:01<00:11, 20.65it/s]
+Loading weights:   9%|▉         | 24/254 [00:02<00:11, 20.47it/s]
+Loading weights:  12%|█▏        | 30/254 [00:02<00:08, 25.81it/s]
+Loading weights:  13%|█▎        | 33/254 [00:02<00:09, 24.05it/s]
+Loading weights:  15%|█▌        | 39/254 [00:02<00:07, 28.40it/s]
+Loading weights:  17%|█▋        | 43/254 [00:02<00:07, 27.58it/s]
+Loading weights:  19%|█▉        | 48/254 [00:02<00:06, 30.76it/s]
+Loading weights:  20%|██        | 52/254 [00:02<00:06, 31.22it/s]
+Loading weights:  22%|██▏       | 57/254 [00:02<00:05, 35.05it/s]
+Loading weights:  24%|██▍       | 61/254 [00:03<00:05, 34.33it/s]
+Loading weights:  26%|██▋       | 67/254 [00:03<00:05, 36.14it/s]
+Loading weights:  28%|██▊       | 72/254 [00:03<00:04, 38.17it/s]
+Loading weights:  30%|██▉       | 76/254 [00:03<00:04, 35.73it/s]
+Loading weights:  32%|███▏      | 81/254 [00:03<00:04, 38.90it/s]
+Loading weights:  33%|███▎      | 85/254 [00:03<00:04, 38.12it/s]
+Loading weights:  35%|███▌      | 90/254 [00:03<00:03, 41.21it/s]
+Loading weights:  37%|███▋      | 95/254 [00:03<00:04, 37.27it/s]
+Loading weights:  40%|████      | 102/254 [00:04<00:03, 44.87it/s]
+Loading weights:  42%|████▏     | 107/254 [00:04<00:03, 43.06it/s]
+Loading weights:  44%|████▍     | 112/254 [00:04<00:03, 42.11it/s]
+Loading weights:  46%|████▌     | 117/254 [00:04<00:03, 43.20it/s]
+Loading weights:  48%|████▊     | 122/254 [00:04<00:03, 37.38it/s]
+Loading weights:  51%|█████     | 129/254 [00:04<00:02, 44.26it/s]
+Loading weights:  53%|█████▎    | 134/254 [00:04<00:02, 42.33it/s]
+Loading weights:  55%|█████▍    | 139/254 [00:05<00:02, 40.35it/s]
+Loading weights:  57%|█████▋    | 144/254 [00:05<00:02, 42.54it/s]
+Loading weights:  59%|█████▊    | 149/254 [00:05<00:02, 38.61it/s]
+Loading weights:  61%|██████▏   | 156/254 [00:05<00:02, 46.05it/s]
+Loading weights:  63%|██████▎   | 161/254 [00:05<00:02, 43.50it/s]
+Loading weights:  65%|██████▌   | 166/254 [00:05<00:02, 41.70it/s]
+Loading weights:  67%|██████▋   | 171/254 [00:05<00:01, 43.46it/s]
+Loading weights:  69%|██████▉   | 176/254 [00:05<00:02, 38.53it/s]
+Loading weights:  72%|███████▏  | 183/254 [00:06<00:01, 44.49it/s]
+Loading weights:  74%|███████▍  | 188/254 [00:06<00:01, 42.48it/s]
+Loading weights:  76%|███████▌  | 193/254 [00:06<00:01, 40.77it/s]
+Loading weights:  78%|███████▊  | 199/254 [00:06<00:01, 44.97it/s]
+Loading weights:  80%|████████  | 204/254 [00:06<00:01, 41.08it/s]
+Loading weights:  83%|████████▎ | 210/254 [00:06<00:00, 45.06it/s]
+Loading weights:  85%|████████▍ | 215/254 [00:06<00:00, 42.84it/s]
+Loading weights:  87%|████████▋ | 220/254 [00:06<00:00, 40.52it/s]
+Loading weights:  89%|████████▉ | 226/254 [00:07<00:00, 44.62it/s]
+Loading weights:  91%|█████████ | 231/254 [00:07<00:00, 40.67it/s]
+Loading weights:  93%|█████████▎| 237/254 [00:07<00:00, 45.14it/s]
+Loading weights:  95%|█████████▌| 242/254 [00:07<00:00, 43.57it/s]
+Loading weights:  97%|█████████▋| 247/254 [00:07<00:00, 41.67it/s]
+Loading weights: 100%|█████████▉| 253/254 [00:07<00:00, 45.84it/s]
+Loading weights: 100%|██████████| 254/254 [00:07<00:00, 33.22it/s]
+[local_models]   loaded role=legal in 23.7s
+[transformers] Both `max_new_tokens` (=256) and `max_length`(=131072) seem to have been set. `max_new_tokens` will 
+take precedence. Please refer to the documentation for more information. 
+(https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+[transformers] Ignoring clean_up_tokenization_spaces=True for BPE tokenizer TokenizersBackend. The 
+clean_up_tokenization post-processing step is designed for WordPiece tokenizers and is destructive for BPE (it strips 
+spaces before punctuation). Set clean_up_tokenization_spaces=False to suppress this warning, or set 
+clean_up_tokenization_spaces_for_bpe_even_though_it_will_corrupt_output=True to force cleanup anyway.
+[transformers] Both `max_new_tokens` (=256) and `max_length`(=131072) seem to have been set. `max_new_tokens` will 
+take precedence. Please refer to the documentation for more information. 
+(https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+[transformers] Both `max_new_tokens` (=256) and `max_length`(=131072) seem to have been set. `max_new_tokens` will 
+take precedence. Please refer to the documentation for more information. 
+(https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+[validate]   generating from base weights...
+[local_models] loading role=legal base=unsloth/Llama-3.2-3B-Instruct 4bit=True adapter=no
+
+Loading weights:   0%|          | 0/254 [00:00<?, ?it/s]
+Loading weights:   0%|          | 1/254 [00:00<01:20,  3.13it/s]
+Loading weights:   4%|▍         | 10/254 [00:00<00:08, 29.83it/s]
+Loading weights:   7%|▋         | 19/254 [00:00<00:04, 47.72it/s]
+Loading weights:  11%|█         | 28/254 [00:00<00:03, 60.33it/s]
+Loading weights:  15%|█▍        | 37/254 [00:00<00:03, 69.13it/s]
+Loading weights:  18%|█▊        | 46/254 [00:00<00:02, 74.77it/s]
+Loading weights:  22%|██▏       | 55/254 [00:00<00:02, 79.28it/s]
+Loading weights:  25%|██▌       | 64/254 [00:01<00:02, 82.43it/s]
+Loading weights:  29%|██▊       | 73/254 [00:01<00:02, 84.27it/s]
+Loading weights:  32%|███▏      | 82/254 [00:01<00:02, 85.38it/s]
+Loading weights:  36%|███▌      | 91/254 [00:01<00:01, 86.69it/s]
+Loading weights:  39%|███▉      | 100/254 [00:01<00:01, 85.81it/s]
+Loading weights:  44%|████▎     | 111/254 [00:01<00:01, 86.98it/s]
+Loading weights:  47%|████▋     | 120/254 [00:01<00:01, 86.90it/s]
+Loading weights:  51%|█████     | 129/254 [00:01<00:01, 86.41it/s]
+Loading weights:  54%|█████▍    | 138/254 [00:01<00:01, 86.50it/s]
+Loading weights:  58%|█████▊    | 148/254 [00:01<00:01, 85.80it/s]
+Loading weights:  62%|██████▏   | 158/254 [00:02<00:01, 84.72it/s]
+Loading weights:  67%|██████▋   | 169/254 [00:02<00:00, 91.32it/s]
+Loading weights:  70%|███████   | 179/254 [00:02<00:00, 92.28it/s]
+Loading weights:  74%|███████▍  | 189/254 [00:02<00:00, 92.67it/s]
+Loading weights:  78%|███████▊  | 199/254 [00:02<00:00, 93.64it/s]
+Loading weights:  83%|████████▎ | 210/254 [00:02<00:00, 92.23it/s]
+Loading weights:  87%|████████▋ | 220/254 [00:02<00:00, 89.07it/s]
+Loading weights:  90%|█████████ | 229/254 [00:02<00:00, 89.25it/s]
+Loading weights:  94%|█████████▎| 238/254 [00:02<00:00, 88.46it/s]
+Loading weights:  97%|█████████▋| 247/254 [00:03<00:00, 88.45it/s]
+Loading weights: 100%|██████████| 254/254 [00:03<00:00, 81.01it/s]
+[local_models]   loaded role=legal in 7.2s
+[transformers] Both `max_new_tokens` (=256) and `max_length`(=131072) seem to have been set. `max_new_tokens` will 
+take precedence. Please refer to the documentation for more information. 
+(https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+[transformers] Both `max_new_tokens` (=256) and `max_length`(=131072) seem to have been set. `max_new_tokens` will 
+take precedence. Please refer to the documentation for more information. 
+(https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+[transformers] Both `max_new_tokens` (=256) and `max_length`(=131072) seem to have been set. `max_new_tokens` will 
+take precedence. Please refer to the documentation for more information. 
+(https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+
+--- probe: You are a legal expert on the EU AI Act. Answer using the retrieved context below, citing specific A
+    divergence from base: 85.5%
+    [TUNED] Under the EU AI Act, Article 43(1)(a) applies to a provider of a high-risk AI system before placing it on the market.
+    [BASE ] Under the EU AI Act, a provider of a high-risk AI system must follow the conformity assessment procedure required under the relevant Union harmonization legislation listed in Section A of Annex I.
+
+Specifically, the provider shall carry out the conformity assessment procedure as required under those legal acts, including the requirements set out in Section 2 of this Chapter. Additionally, the provider shall also comp
+
+--- probe: You are a legal expert on the EU AI Act. Answer using the retrieved context below, citing specific A
+    divergence from base: 93.7%
+    [TUNED] No, an AI system used to evaluate creditworthiness of natural persons is not considered high-risk under the EU AI Act. According to Article 6 of the EU AI Act, high-risk AI systems are those that meet certain criteria, including being used for applications such as healthcare, finance, transportation, education, employment, social security, public order, safety, health, environment, consumer protection, housing, energ
+    [BASE ] Based on the retrieved context, specifically Article 6 of the EU AI Act, an AI system used to evaluate the creditworthiness of natural persons could potentially be classified as a high-risk AI system if it meets certain criteria.
+
+According to Article 6, an AI system becomes a high-risk AI system if it "becomes a high-risk AI system in accordance with Article 6." However, the specific criteria for determining what co
+
+--- probe: You are a legal expert on the EU AI Act. Answer using the retrieved context below, citing specific A
+    divergence from base: 98.7%
+    [TUNED] Article 48
+    [BASE ] Based on the retrieved context, specifically Article 6 of Document 1, a Member State can impose penalties for placing a high-risk AI system on the market without having undergone the conformity assessment procedure required by the EU AI Act.
+
+According to Article 6, "Where the circumstances referred to in paragraph 1 occur, the provider that initially placed the AI system on the market or put it into service shall no
+
+[validate] legal: mean divergence 92.6%, loss improved=True -> OK
+==============================================================================
+[validate] role=news  base=Qwen/Qwen2.5-3B-Instruct
+[validate] longest probe ~72 tokens (SHORT - may hide long-context failure)
+==============================================================================
+[validate]   generating with adapter...
+[local_models] loading role=news base=Qwen/Qwen2.5-3B-Instruct 4bit=True adapter=yes
+
+Loading weights:   0%|          | 0/434 [00:00<?, ?it/s]
+Loading weights:   0%|          | 1/434 [00:00<04:20,  1.67it/s]
+Loading weights:   1%|          | 5/434 [00:00<00:50,  8.49it/s]
+Loading weights:   4%|▎         | 16/434 [00:00<00:14, 28.24it/s]
+Loading weights:   6%|▌         | 27/434 [00:00<00:09, 44.15it/s]
+Loading weights:   8%|▊         | 34/434 [00:01<00:08, 49.79it/s]
+Loading weights:   9%|▉         | 41/434 [00:01<00:08, 48.09it/s]
+Loading weights:  12%|█▏        | 52/434 [00:01<00:06, 59.82it/s]
+Loading weights:  15%|█▍        | 63/434 [00:01<00:05, 68.43it/s]
+Loading weights:  16%|█▋        | 71/434 [00:01<00:05, 68.70it/s]
+Loading weights:  18%|█▊        | 79/434 [00:01<00:05, 64.40it/s]
+Loading weights:  20%|██        | 88/434 [00:01<00:05, 67.32it/s]
+Loading weights:  23%|██▎       | 99/434 [00:01<00:04, 74.09it/s]
+Loading weights:  25%|██▍       | 107/434 [00:02<00:04, 72.14it/s]
+Loading weights:  26%|██▋       | 115/434 [00:02<00:04, 66.27it/s]
+Loading weights:  29%|██▊       | 124/434 [00:02<00:04, 68.74it/s]
+Loading weights:  31%|███       | 135/434 [00:02<00:04, 74.68it/s]
+Loading weights:  33%|███▎      | 143/434 [00:02<00:04, 70.63it/s]
+Loading weights:  35%|███▍      | 151/434 [00:02<00:04, 65.02it/s]
+Loading weights:  37%|███▋      | 160/434 [00:02<00:04, 67.34it/s]
+Loading weights:  39%|███▉      | 171/434 [00:03<00:03, 73.63it/s]
+Loading weights:  41%|████      | 179/434 [00:03<00:03, 72.02it/s]
+Loading weights:  43%|████▎     | 187/434 [00:03<00:03, 65.85it/s]
+Loading weights:  45%|████▌     | 196/434 [00:03<00:03, 67.36it/s]
+Loading weights:  48%|████▊     | 207/434 [00:03<00:03, 73.81it/s]
+Loading weights:  50%|████▉     | 215/434 [00:03<00:03, 71.17it/s]
+Loading weights:  51%|█████▏    | 223/434 [00:03<00:03, 65.29it/s]
+Loading weights:  53%|█████▎    | 232/434 [00:03<00:03, 67.02it/s]
+Loading weights:  56%|█████▌    | 243/434 [00:04<00:02, 72.75it/s]
+Loading weights:  58%|█████▊    | 251/434 [00:04<00:02, 69.97it/s]
+Loading weights:  60%|█████▉    | 259/434 [00:04<00:02, 64.15it/s]
+Loading weights:  62%|██████▏   | 268/434 [00:04<00:02, 66.68it/s]
+Loading weights:  64%|██████▍   | 279/434 [00:04<00:02, 72.13it/s]
+Loading weights:  66%|██████▌   | 287/434 [00:04<00:02, 69.03it/s]
+Loading weights:  68%|██████▊   | 294/434 [00:04<00:02, 61.59it/s]
+Loading weights:  70%|███████   | 304/434 [00:04<00:01, 67.08it/s]
+Loading weights:  73%|███████▎  | 315/434 [00:05<00:01, 72.65it/s]
+Loading weights:  74%|███████▍  | 323/434 [00:05<00:01, 70.80it/s]
+Loading weights:  76%|███████▋  | 331/434 [00:05<00:01, 65.40it/s]
+Loading weights:  78%|███████▊  | 340/434 [00:05<00:01, 66.53it/s]
+Loading weights:  81%|████████  | 351/434 [00:05<00:01, 72.12it/s]
+Loading weights:  83%|████████▎ | 359/434 [00:05<00:01, 69.44it/s]
+Loading weights:  84%|████████▍ | 366/434 [00:05<00:01, 60.51it/s]
+Loading weights:  87%|████████▋ | 376/434 [00:06<00:00, 64.83it/s]
+Loading weights:  89%|████████▉ | 387/434 [00:06<00:00, 69.98it/s]
+Loading weights:  91%|█████████ | 395/434 [00:06<00:00, 68.45it/s]
+Loading weights:  93%|█████████▎| 402/434 [00:06<00:00, 60.81it/s]
+Loading weights:  95%|█████████▍| 412/434 [00:06<00:00, 65.23it/s]
+Loading weights:  97%|█████████▋| 423/434 [00:06<00:00, 68.92it/s]
+Loading weights:  99%|█████████▉| 430/434 [00:06<00:00, 66.32it/s]
+Loading weights: 100%|██████████| 434/434 [00:06<00:00, 63.11it/s]
+[local_models]   loaded role=news in 11.1s
+[validate]   generating from base weights...
+[local_models] loading role=news base=Qwen/Qwen2.5-3B-Instruct 4bit=True adapter=no
+
+Loading weights:   0%|          | 0/434 [00:00<?, ?it/s]
+Loading weights:   0%|          | 1/434 [00:00<02:01,  3.58it/s]
+Loading weights:   3%|▎         | 14/434 [00:00<00:09, 46.22it/s]
+Loading weights:   6%|▌         | 26/434 [00:00<00:05, 70.15it/s]
+Loading weights:   9%|▉         | 39/434 [00:00<00:04, 85.65it/s]
+Loading weights:  12%|█▏        | 52/434 [00:00<00:03, 98.01it/s]
+Loading weights:  15%|█▍        | 65/434 [00:00<00:03, 106.81it/s]
+Loading weights:  20%|██        | 87/434 [00:00<00:02, 132.68it/s]
+Loading weights:  23%|██▎       | 101/434 [00:01<00:02, 125.08it/s]
+Loading weights:  27%|██▋       | 119/434 [00:01<00:02, 140.15it/s]
+Loading weights:  31%|███       | 135/434 [00:01<00:02, 143.76it/s]
+Loading weights:  35%|███▍      | 150/434 [00:01<00:02, 137.90it/s]
+Loading weights:  39%|███▉      | 171/434 [00:01<00:01, 151.96it/s]
+Loading weights:  43%|████▎     | 187/434 [00:01<00:01, 141.43it/s]
+Loading weights:  47%|████▋     | 203/434 [00:01<00:01, 145.80it/s]
+Loading weights:  50%|█████     | 219/434 [00:01<00:01, 145.64it/s]
+Loading weights:  54%|█████▍    | 234/434 [00:01<00:01, 136.46it/s]
+Loading weights:  59%|█████▉    | 255/434 [00:02<00:01, 148.85it/s]
+Loading weights:  62%|██████▏   | 271/434 [00:02<00:01, 140.83it/s]
+Loading weights:  67%|██████▋   | 291/434 [00:02<00:00, 149.79it/s]
+Loading weights:  71%|███████   | 307/434 [00:02<00:00, 142.43it/s]
+Loading weights:  75%|███████▌  | 327/434 [00:02<00:00, 151.65it/s]
+Loading weights:  79%|███████▉  | 343/434 [00:02<00:00, 144.75it/s]
+Loading weights:  84%|████████▎ | 363/434 [00:02<00:00, 150.59it/s]
+Loading weights:  87%|████████▋ | 379/434 [00:02<00:00, 143.32it/s]
+Loading weights:  91%|█████████ | 395/434 [00:03<00:00, 147.30it/s]
+Loading weights:  95%|█████████▍| 411/434 [00:03<00:00, 149.07it/s]
+Loading weights:  98%|█████████▊| 426/434 [00:03<00:00, 137.82it/s]
+Loading weights: 100%|██████████| 434/434 [00:03<00:00, 132.10it/s]
+[local_models]   loaded role=news in 6.7s
+
+--- probe: Article:
+The European Commission announced on Tuesday that it would delay parts of its digital ruleb
+    divergence from base: 98.2%
+    [TUNED] industry readiness concerns
+
+Supporting detail from the article: "The European Commission announced on Tuesday that it would delay parts of its digital rulebook by twelve months, citing industry readiness concerns."
+    [BASE ] The delay announced by the European Commission was made to address industry readiness concerns. This means that some aspects of their proposed digital rules were not yet ready for implementation according to their original schedule.
+
+This delay affects transparency obligations that were initially planned to be implemented in August. These obligations likely involve making information more accessible or transparent ab
+
+--- probe: Article:
+Regulators in three countries opened a joint inquiry into a facial recognition vendor after
+    divergence from base: 95.6%
+    [TUNED] reports it scraped images without consent.
+
+Supporting detail from the article: "Regulators in three countries opened a joint inquiry into a facial recognition vendor after reports it scraped images without consent."
+    [BASE ] The inquiry was triggered by reports that a facial recognition vendor had scraped images from various sources without obtaining consent or permission to do so. This unauthorized data collection raised concerns about privacy violations and potential misuse of personal information.
+
+[validate] news: mean divergence 96.9%, loss improved=True -> OK
+==============================================================================
+[validate] role=general_qa  base=ibm-granite/granite-3.1-2b-instruct
+[validate] longest probe ~17 tokens (SHORT - may hide long-context failure)
+==============================================================================
+[validate]   generating with adapter...
+[local_models] loading role=general_qa base=ibm-granite/granite-3.1-2b-instruct 4bit=True adapter=yes
+
+Loading weights:   0%|          | 0/362 [00:00<?, ?it/s]
+Loading weights:   0%|          | 1/362 [00:00<01:13,  4.90it/s]
+Loading weights:   1%|▏         | 5/362 [00:00<00:19, 18.74it/s]
+Loading weights:   4%|▎         | 13/362 [00:00<00:08, 40.56it/s]
+Loading weights:   6%|▌         | 21/362 [00:00<00:06, 52.64it/s]
+Loading weights:   8%|▊         | 30/362 [00:00<00:05, 57.93it/s]
+Loading weights:  10%|█         | 37/362 [00:00<00:05, 61.26it/s]
+Loading weights:  12%|█▏        | 44/362 [00:00<00:05, 58.61it/s]
+Loading weights:  14%|█▍        | 51/362 [00:01<00:05, 57.93it/s]
+Loading weights:  16%|█▋        | 59/362 [00:01<00:05, 58.73it/s]
+Loading weights:  19%|█▊        | 67/362 [00:01<00:04, 63.84it/s]
+Loading weights:  21%|██        | 75/362 [00:01<00:04, 67.76it/s]
+Loading weights:  23%|██▎       | 82/362 [00:01<00:04, 67.63it/s]
+Loading weights:  25%|██▍       | 89/362 [00:01<00:04, 64.66it/s]
+Loading weights:  27%|██▋       | 96/362 [00:01<00:04, 62.05it/s]
+Loading weights:  28%|██▊       | 103/362 [00:01<00:04, 63.92it/s]
+Loading weights:  31%|███       | 111/362 [00:01<00:03, 68.30it/s]
+Loading weights:  33%|███▎      | 120/362 [00:02<00:03, 68.11it/s]
+Loading weights:  36%|███▌      | 129/362 [00:02<00:03, 67.93it/s]
+Loading weights:  38%|███▊      | 136/362 [00:02<00:03, 67.13it/s]
+Loading weights:  40%|███▉      | 143/362 [00:02<00:03, 63.46it/s]
+Loading weights:  41%|████▏     | 150/362 [00:02<00:03, 59.12it/s]
+Loading weights:  43%|████▎     | 157/362 [00:02<00:03, 61.27it/s]
+Loading weights:  46%|████▌     | 165/362 [00:02<00:03, 64.56it/s]
+Loading weights:  48%|████▊     | 172/362 [00:02<00:02, 65.17it/s]
+Loading weights:  49%|████▉     | 179/362 [00:02<00:02, 61.89it/s]
+Loading weights:  51%|█████▏    | 186/362 [00:03<00:02, 58.76it/s]
+Loading weights:  53%|█████▎    | 193/362 [00:03<00:02, 60.79it/s]
+Loading weights:  56%|█████▌    | 201/362 [00:03<00:02, 63.85it/s]
+Loading weights:  57%|█████▋    | 208/362 [00:03<00:02, 64.90it/s]
+Loading weights:  59%|█████▉    | 215/362 [00:03<00:02, 63.57it/s]
+Loading weights:  61%|██████▏   | 222/362 [00:03<00:02, 63.20it/s]
+Loading weights:  63%|██████▎   | 229/362 [00:03<00:02, 64.91it/s]
+Loading weights:  65%|██████▌   | 237/362 [00:03<00:01, 68.16it/s]
+Loading weights:  68%|██████▊   | 246/362 [00:04<00:01, 68.35it/s]
+Loading weights:  70%|███████   | 255/362 [00:04<00:01, 68.06it/s]
+Loading weights:  73%|███████▎  | 264/362 [00:04<00:01, 68.35it/s]
+Loading weights:  75%|███████▌  | 273/362 [00:04<00:01, 67.75it/s]
+Loading weights:  78%|███████▊  | 282/362 [00:04<00:01, 67.88it/s]
+Loading weights:  80%|████████  | 291/362 [00:04<00:01, 68.58it/s]
+Loading weights:  83%|████████▎ | 300/362 [00:04<00:00, 68.96it/s]
+Loading weights:  85%|████████▌ | 309/362 [00:04<00:00, 70.09it/s]
+Loading weights:  88%|████████▊ | 318/362 [00:05<00:00, 70.31it/s]
+Loading weights:  90%|█████████ | 327/362 [00:05<00:00, 70.54it/s]
+Loading weights:  93%|█████████▎| 336/362 [00:05<00:00, 70.55it/s]
+Loading weights:  95%|█████████▌| 345/362 [00:05<00:00, 70.51it/s]
+Loading weights:  98%|█████████▊| 354/362 [00:05<00:00, 69.16it/s]
+Loading weights: 100%|██████████| 362/362 [00:05<00:00, 63.99it/s]
+[local_models]   loaded role=general_qa in 9.6s
+[validate]   generating from base weights...
+[local_models] loading role=general_qa base=ibm-granite/granite-3.1-2b-instruct 4bit=True adapter=no
+
+Loading weights:   0%|          | 0/362 [00:00<?, ?it/s]
+Loading weights:   1%|          | 4/362 [00:00<00:10, 35.19it/s]
+Loading weights:   5%|▍         | 17/362 [00:00<00:03, 87.92it/s]
+Loading weights:   8%|▊         | 30/362 [00:00<00:03, 102.52it/s]
+Loading weights:  11%|█▏        | 41/362 [00:00<00:03, 102.00it/s]
+Loading weights:  16%|█▌        | 58/362 [00:00<00:02, 119.65it/s]
+Loading weights:  21%|██        | 75/362 [00:00<00:02, 135.63it/s]
+Loading weights:  25%|██▍       | 90/362 [00:00<00:01, 140.08it/s]
+Loading weights:  29%|██▉       | 105/362 [00:00<00:01, 142.28it/s]
+Loading weights:  34%|███▎      | 122/362 [00:00<00:01, 145.61it/s]
+Loading weights:  39%|███▊      | 140/362 [00:01<00:01, 150.20it/s]
+Loading weights:  43%|████▎     | 157/362 [00:01<00:01, 154.84it/s]
+Loading weights:  48%|████▊     | 174/362 [00:01<00:01, 158.76it/s]
+Loading weights:  52%|█████▏    | 190/362 [00:01<00:01, 157.69it/s]
+Loading weights:  57%|█████▋    | 206/362 [00:01<00:01, 152.66it/s]
+Loading weights:  61%|██████▏   | 222/362 [00:01<00:00, 150.12it/s]
+Loading weights:  66%|██████▌   | 238/362 [00:01<00:00, 150.44it/s]
+Loading weights:  71%|███████   | 256/362 [00:01<00:00, 152.71it/s]
+Loading weights:  76%|███████▌  | 274/362 [00:01<00:00, 154.45it/s]
+Loading weights:  80%|████████  | 291/362 [00:02<00:00, 156.93it/s]
+Loading weights:  85%|████████▌ | 309/362 [00:02<00:00, 157.95it/s]
+Loading weights:  90%|█████████ | 327/362 [00:02<00:00, 158.83it/s]
+Loading weights:  95%|█████████▍| 343/362 [00:02<00:00, 158.79it/s]
+Loading weights:  99%|█████████▉| 359/362 [00:02<00:00, 147.72it/s]
+Loading weights: 100%|██████████| 362/362 [00:02<00:00, 144.87it/s]
+[local_models]   loaded role=general_qa in 4.9s
+
+--- probe: What is the difference between a regulation and a directive in EU law?
+    divergence from base: 98.3%
+    [TUNED] Regulations have binding effect on all member states without prejudice to national legislation; directives must be implemented into local laws or ordinances of individual countries within one year after enforcement date (article 19 TFEU). Regulations can also include provisions that allow for exemption from implementation if they don't affect public health safety security but rather economic interests such as taxes/c
+    [BASE ] In European Union (EU) law, both regulations and directives are types of legislative acts that bind member states to ensure uniformity within the EU. However, they differ in their scope, formality, and impact on national legal systems. Here's a comparison of the two:
+
+1. Scope:
+   - Directive: A directive sets out an objective for member states to achieve, providing general principles without specifying detailed meas
+
+--- probe: Explain what a vector database does, in two or three sentences.
+    divergence from base: 98.8%
+    [TUNED] Vector databases store and retrieve data as numeric vectors instead of traditional tabular formats like SQL tables; they allow for fast search operations using similarity metrics such Euclidean distance between points (typically high dimension) rather than matching exact values within narrowly defined fields/columns - this approach enables scalable deep learning applications across multiple languages & domains with e
+    [BASE ] A vector database is a specialized data management system designed to efficiently store and manage high-dimensional numerical vectors, which are mathematical representations of complex data points in machine learning models. It enables fast similarity search and distance calculations among these vectors, making it an essential tool for applications like recommendation systems, anomaly detection, and semantic search, 
+
+--- probe: Write a short, polite reply declining a meeting invitation.
+    divergence from base: 98.4%
+    [TUNED] I apologize but I cannot accept your request to meet at the time you suggested due my current commitments and other obligations; please do not worry about this decision as it was mine alone without any discomfort or hardship for either of us!
+    [BASE ] Dear [Recipient's Name],
+
+Thank you for considering me and extending the invitation to meet at your convenience. I truly appreciate the thought behind it. However, due to an unforeseen scheduling conflict, I won't be able to accommodate this particular time slot. 
+
+I hope we can arrange another opportunity in the near future when both our schedules align better. In the meantime, please feel free to share any material
+
+[validate] general_qa: mean divergence 98.5%, loss improved=True -> OK
+
+[validate] full transcripts -> adapter_validation.json
+[validate] verdict: PASS

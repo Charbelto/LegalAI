@@ -1,0 +1,51 @@
+The AI Act's governance architecture is an essential pillar of its enforcement.
+The
+AI Office
+, established within the European Commission,
+and the national market surveillance authorities are responsible for implementing, supervising and
+enforcing the AI Act
+.
+The AI Office is part of a multistakeholder governance that ensures a balanced approach to the implementation of the
+AI Act
+. This
+governance is steered by 3 advisory bodies:
+the
+European Artificial Intelligence Board
+, composed of representatives from the EU Member States
+the
+Scientific Panel
+, composed of independent experts in the field of AI
+the
+Advisory Forum
+, representing a diverse selection of stakeholders, both commercial and non-commercial
+The July 2026
+action plan on Cybersecurity and AI
+sets out a coordinated approach to help Member States, businesses and public authorities address cybersecurity and resilience challenges posed by the most advanced AI models. The Commission will launch a call to increase EU evaluation capacity of AI models, before they are placed in the EU market. Expected to be operational by 2027, this will strengthen third-party assessment of AI capabilities and risks and contribute to the regulatory function of the AI Office.
+National competent authorities
+The Commission and the AI Office work closely with national competent authorities, who supervise the implementation and application of the AI Act at national level.
+National competent authorities are the following authorities:
+Market surveillance authorities
+supervise and enforce compliance with the rules for AI systems, including prohibitions and rules for high-risk AI.
+Notifying authorities designate and supervise notified bodies, which are independent bodies that carry out pre-market conformity assessment.
+Each Member State should have designated and empowered national competent authorities until 2 August 2025
+. The Commission is working closely with the EU countries to support them in this process through the European AI Board.
+Involvement of other authorities in AI incidents
+Malfunctioning of AI systems can result in violations of fundamental rights laws, for example those protecting privacy or the right to non-discrimination. To facilitate effective investigations of such violations by the fundamental rights protection authorities, the AI Act provides rules that ensure cooperation and information flows between all authorities.
+What rights does the AI Act introduce for fundamental rights protection authorities?
+Right to be informed by market surveillance authorities, e.g. about serious incidents.
+Right to request information, documentation and cooperation from market surveillance authorities.
+What are the fundamental rights protection authorities who benefit from these rules?
+These are public authorities or bodies in the member states that are empowered to supervise or enforce the respect of obligations under Union law protecting fundamental rights.
+Each Member State must identify the relevant authorities and publish a list.
+Access the consolidated list of all identified authorities
+Related Content
+Big Picture
+The enforcement framework of the AI Act
+The enforcement of the AI Act is shared between the European Commission’s AI Office, the European Data Protection Supervisor, and national competent authorities designated by the Member States.
+Market Surveillance Authorities under the AI Act
+Market surveillance authorities supervise and enforce the rules related to AI systems in the EU...
+Fundamental rights protection authorities with special powers under the AI Act
+Under the AI Act, fundamental rights protection authorities receive additional powers to ensure they...
+Last update
+31 July 2026
+Print as PDF

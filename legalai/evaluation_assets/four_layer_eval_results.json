@@ -1,0 +1,22 @@
+{
+  "layer1_retrieval": {
+    "mean_mrr": 1.0,
+    "mean_precision": 1.0,
+    "mean_recall": 1.0
+  },
+  "layer2_multiturn": {
+    "history_length": 4,
+    "retention_score": 1.0,
+    "consistency_score": 1.0
+  },
+  "layer3_groundedness": {
+    "has_citations": true,
+    "abstention_triggered": false,
+    "groundedness_score": 1.0
+  },
+  "layer4_agent_workflow": {
+    "routing_accuracy": 1.0,
+    "dag_parallel_support": true
+  },
+  "total_elapsed_seconds": 0.08
+}

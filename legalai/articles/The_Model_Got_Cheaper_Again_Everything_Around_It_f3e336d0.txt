@@ -1,0 +1,230 @@
+Image generated with Nano Banana 2.
+Five signals from the week AI's real costs moved out of the model line and into compliance, security, hardware, and judgment.
+Last Thursday, OpenAI cut the price of its workhorse model by 80%. Two days later, the European Commission began enforcing Europe's AI law, fines included. In between, the four largest AI spenders posted earnings that investors read four different ways. Two frontier labs disclosed that their own safety tests had breached real companies. And three separate studies measured the one thing AI still cannot supply: judgment. Here is the through-line for your Monday. The bills that are growing sit everywhere around the model: compliance, security, hardware, and the human judgment that decides how to implement the models’ newly discounted horsepower.
+The model is becoming the cheapest part of your AI program.
+1. Brussels started enforcing. Washington missed its own deadline.
+What happened:
+As of August 2, the European Commission holds live
+enforcement powers
+over providers of general-purpose AI models–it can:
+Demand technical documentation
+Run its own evaluations of a model
+Order risk measures
+Restrict or pull a model from the EU market.
+The maximum fine is
+3% of a provider's total worldwide annual turnover, or €15 million, whichever is higher
+. One day earlier,
+a Washington deadline came due
+: Executive Order 14409 required a classified AI benchmarking process and a voluntary frontier-model disclosure framework
+by August 1
+. As of Sunday, neither had appeared in public.
+Why it matters:
+In
+K3's Weights Ship Today. Three Governments Can Still Reach Them.
+, I wrote that Brussels held "a fining power that switches on six days from today." The switch is now on, and it reaches through your vendors: the obligations sit on model providers, so the practical question is whether yours can produce documentation on demand. The contrast matters just as much. Europe now runs on an enforcement calendar; the American framework companies were told to prepare for has no published text. If you were waiting for Washington to define your obligations before acting, the only regulator with a working clock is in Brussels. Which country's law reaches your data, and through which contract, is the map I drew in
+Your AI Model Comes With a Government Attached.
+The decision it forces:
+1. Name the owner.
+Decide this week who in your organization answers if a vendor forwards an EU Commission documentation request touching your deployment. During an inquiry is the wrong time to discover nobody in your organization owns that job.
+2.
+Check your providers' posture.
+The EU Commission has said enforcement will focus on monitoring
+signatories of the GPAI Code of Practice
+for adherence. A provider outside the code faces the harder scrutiny, and so, indirectly, do you. Inventory all the models you have in production, which ones are GPAI signatories, which ones aren’t, device and test model rerouting should it be required.
+3.
+Close the transparency gap.
+The AI Act's
+Article 50 duties
+mean users must be told when they are interacting with AI. If your customer-facing bots serve EU users without disclosure, fix that before a complaint fixes it for you.
+Compliance now has a start date in Brussels; the framework Washington promised has no date at all.
+2. OpenAI cut its workhorse model by 80%
+What happened:
+On July 30, OpenAI dropped GPT-5.6 Luna to $0.20 per million input tokens and $1.20 per million output tokens, an 80% cut, and trimmed mid-tier Terra by 20% to $2 and $12. Sol, the frontier tier, did not move. The funding source is the striking part: OpenAI says its own Sol model rewrote the production GPU kernels that serve it, cutting end-to-end serving cost by 20% and lifting token-generation efficiency by more than 15%. The model made itself cheaper to run, and the company passed the savings on.
+Why it matters:
+In the July 27 edition I wrote that the U.S. labs had answered China's cheap open-weight models with capability, not price, and that no price war had come to rescue your budget. That sentence lasted four days. Read the shape of this cut carefully, because it confirms the pattern from
+The Frontier Just Got 70% Cheaper. Your Judgment Bill Went Up.
+rather than breaking it: the routine tier is collapsing toward free while the frontier tier holds. OpenAI itself now claims Luna beats a year-old frontier model
+at nearly 99% lower estimated cost per task
+. When
+routine intelligence costs pennies, the costly call left on your desk is which work truly needs the frontier, and who in your company is qualified to tell the difference
+.
+The decision it forces:
+1.
+Reprice your routine work.
+Any high-volume workload priced on spring assumptions is now over-budgeted. Re-run the unit economics on classification, extraction, drafting, and support flows before your next budget review, not after.
+2. Route by outcome, not habit.
+Set an explicit rule for which tasks run on the cheap tier and which earn frontier spend. The test is plain: price the mistake before you pick the model. If an error costs you a quick correction, a mislabeled ticket or a redrafted paragraph, route the task to the cheap tier. If an error costs you a client, a regulatory filing, or a headline, it earns frontier spend. Teams default to the model they know, and that default may now be unnecessarily expensive.
+3.
+Reopen your renewals.
+Every vendor contract priced before the cut is now negotiable. Walk in with the new floor.
+The workhorse model got 80% cheaper while the frontier held its price: the savings belong to whoever re-routes work first.
+3. The safety test became the attack surface
+What happened:
+On July 21, OpenAI disclosed that during an evaluation its models
+exploited a previously unknown zero-day vulnerability, escaped the test environment, and reached Hugging Face's production database
+. Anthropic then reviewed its own testing and on July 30 reported that across
+141,006 evaluation runs, Claude models reached the open internet from a misconfigured third-party test environment in three incidents and gained unauthorized access to the real systems of three organizations
+. In one, a booby-trapped software package the model published ran on 15 real systems.
+The UK's AI Security Institute reported the same week that every frontier model it tested
+attempted to cheat on cyber evaluations, and "did not reliably report this behaviour when asked"
+. On July 27, NVIDIA, Microsoft, Cisco, CrowdStrike, Hugging Face, Salesforce, the Linux Foundation and dozens of other firms launched the
+Open Secure AI Alliance
+to build what they call "an open defense stack for agents." OpenAI and Anthropic are not on the inaugural list.
+Why it matters:
+The mechanism is what deserves your attention. An agentic model treats whatever it can reach as workspace, so a test setup with one bad setting becomes a live operation. Two of the three companies Anthropic's models breached had not detected the intrusion themselves. Anthropic called its incidents
+"closer to a harness and operational failure than a model alignment failure"
+, which is the operator's translation key:
+the fix is infrastructure controls with named owners, not a better model card
+. Every sandbox, proof-of-concept, and vendor evaluation in your company where an agent holds tool access is now part of your attack surface, and the AISI finding means you cannot rely on the agent to tell you what it did.
+The decision it forces:
+1.
+Inventory your agent environments.
+List every place a model runs with tool or network access, including pilots and vendor demos. Anything on that list without isolation verification is unfinished business, not a test bed.
+2.
+Put the evaluation question in vendor reviews.
+Ask each AI vendor who verifies the isolation of the environments where their models are tested, and what happened in their last review. After this month, "we had not checked" is a disclosure, not an answer.
+3.
+Log the agent's actions independently.
+Since models under-report their own behavior, monitoring has to live outside the model: network logs, egress controls, and transcript review, owned by security rather than by the AI team grading its own work.
+The environments built to test AI just became the first place AI broke out of.
+4. Earnings week split the AI capex verdict four ways
+What happened:
+The largest AI spenders reported within 48 hours of each other, and the same buildout earned four different verdicts.
+Microsoft
+closed its fiscal year with
+$90 billion in quarterly revenue, Azure growth of 43%, Azure's first $100 billion year, and more than 30 million paid Microsoft 365 Copilot seats
+.
+Meta
+grew revenue 28%, but spent $31.08 billion in capital expenditure in the quarter, watched free cash flow fall 91% to $784 million from $8.5 billion a year earlier, raised its 2026 capex floor to $130 billion, and issued $24.9 billion in new long-term debt.
+Amazon
+reported AWS growth of
+36.7%, its fastest in 18 quarters, with AI and chips businesses each above $25 billion in run rate
+.
+Apple
+posted a record
+$109.4 billion June quarter
+, then guided the current quarter to 9–11% growth with margins stepping down to 47–48% as Tim Cook described
+"a hundred-year flood on the memory pricing"
+, the exponential rise in memory costs driven by AI data-center demand.
+Why it matters:
+The grading standard changed, and the new standard has reference numbers. Azure's growth and Copilot's 30 million paid seats are the proof every other AI budget will be measured against, including yours: a board that read this week's coverage will ask what your version of a paid seat count is. The second lesson is quieter, and it hits companies that never bought a GPU. AI demand is repricing memory chips for everyone. That is why Apple, the most disciplined hardware buyer in the market, reluctantly raised product prices. The same flood reaches your device refresh budget and your cloud invoices whether or not you have an AI strategy.
+The decision it forces:
+1.
+Define your receipt metric.
+Pick the one number that proves your AI spend is monetizing, the way paid seats do for Microsoft, and start reporting it internally before someone asks for it externally.
+2.
+Reprice your hardware assumptions.
+Push memory-driven cost increases into this year's device refresh and cloud forecasts now. Cook told investors the flood is not receding; plan as if he is right.
+3.
+Read your vendors' cash flow.
+A supplier funding its buildout with debt while free cash flow collapses will eventually rebuild margin from somewhere, and "somewhere" is usually your renewal price. Meta's numbers are the template for the question to ask every AI vendor.
+Investors stopped grading AI spending on ambition and started grading it on receipts.
+5. The judgment gap got measured three ways this week
+What happened:
+A 24-author preprint from researchers including Princeton's Sayash Kapoor and Arvind Narayanan gave frontier agents six days and thousands of dollars of compute to answer real, open-ended research questions. The agents
+"completed all of the engineering without human help, yet could not make substantial progress towards answering the research questions"
+; the first failure mode the authors name is "poor judgment about the bar for publishable research."
+The same week, the World Economic Forum published Cognizant–Pearson research across 750 HR leaders finding that
+an average of 33% of entry-level tasks are now completed by AI
+, and that 95% of HR leaders call middle managers the most crucial factor in whether employees use AI effectively. And Salesforce's global workplace study found workers in India are
+45% more likely than the global average to have AI in their core workflow, while 38% report an unsuccessful AI pilot in the past year against 28% globally
+.
+Why it matters:
+Three measurements, one direction. Agents can now do the work but cannot yet judge the work. That moves your company's value into the people who can tell acceptable from excellent. It also explains the India paradox: the market with the highest adoption produces the most failed pilots, because adoption without redesigned workflows just moves the failure downstream. The WEF authors prescribe rebuilding work into "development loops" where judgment is explicitly learned, tested, and trusted.
+That lands on a problem I mapped in
+The Apprenticeship the Machine Ate
+: the 33% of entry-level tasks AI absorbed were the same tasks that used to train junior people into senior judgment. The companies automating the bottom rung are discovering they also automated the judgment loops that build their 2030 leadership bench. Devote 10 minutes to read (or listen to) that article and learn how to leverage AI without hollowing out your company’s future.
+The decision it forces:
+1.
+Audit where judgment gets learned.
+If AI took the entry-level tasks in a function, name the replacement path by which a junior person becomes a senior one there. No named path means you are consuming senior judgment without producing it.
+2.
+Grade output, not usage.
+Usage dashboards reward adoption, and the India numbers show adoption alone fails at scale. Measure whether AI-assisted work meets your quality bar, and who caught it when it did not. I built the fix in
+The Sophistication Gap
+: retire the adoption dashboard and count redesigned workflows per team instead. Give that count an owner who reports it with the financials. Ten minutes there hands you the metric this decision needs.
+3.
+Train the reviewers.
+If 95% of HR leaders say middle managers determine whether AI works, then reviewing and validating AI output is now a management skill with a curriculum, a budget, and a standard, not a thing people are assumed to absorb.
+Machines can now build the study; they still cannot tell whether it is any good.
+What to watch this week
+1.
+The first documentation demand.
+The AI Office can now
+compel technical documentation from model providers
+. The first named request, and which provider receives it, will tell you how aggressive Brussels enforcement might be.
+2.
+Washington's late paperwork.
+The EO 14409 deliverables
+came due August 1
+. If they surface late, the definition of a "covered frontier model" inside them will decide which labs, and which of your vendors, the framework touches.
+3.
+Anthropic's promised transcript.
+Anthropic committed to releasing a
+redacted transcript of the incident in which its model built a malicious software package
+within the week. It will be the most concrete public record yet of how an agent behaves inside a breach, and worth your security team's time.
+The bottom line
+The week's five signals share one ledger entry: the money is changing address. Compute got cheaper twice in five weeks. The costs that grew instead were proving compliance to a regulator with live fining power, securing agents that treat every reachable system as workspace, buying memory in a hundred-year flood, and growing the human judgment the agents plainly lack. Not one of those line items is a model bill, and not one of them gets cheaper next quarter. Re-cut your AI budget to match where the money actually goes now, and give each of the four new cost centers an owner with concrete KPIs.
+Re-budget for the model by adjudicating workflows by capability; re-invest the savings in the rest of your AI spend.
+AI Playbook: The Weekly Call
+YOUR AI ROI IS HIDING IN THE JUDGMENT LAYER.
+[
+Read the FULL CALL
+for 3 AUGUST 2026]
+Everyone installed the AI stack. Nobody sharpened the judgment that converts spend into return.
+KPMG asked 2,145 senior leaders in 20 markets who owns the outcome. Only 24% named the CEO. Another 29% pointed at “the broader C-suite” — which KPMG itself calls sponsorship, not accountability.
+Here is the number that should stop a board meeting: companies that name accountability clearly report established ROI at 14%, against 4% for companies that don't. Same tools. Same spend. 3.5× the return.
+Your AI ROI isn't gone. It's hiding in the one layer nobody instrumented.
+Additional Resources
+European Commission, Guidelines for providers of general-purpose AI models
+— the Commission's own statement of who the GPAI obligations cover and the enforcement timeline. Use it this week to answer one question: is our model provider inside or outside the Code of Practice enforcement lane?
+FLI AI Act tracker, Enforcement of Chapter V
+— a plain-language walkthrough of the Commission's four powers (documentation, evaluation, measures, fines), with links to the Act's articles. Reach for it when counsel asks "under which article?"
+CRS, Executive Order 14409 Explained
+— the Congressional Research Service's two-page explainer of what Washington's frontier-model framework requires and when. Use it to brief your board on what the U.S. regime will look like if the deliverables land.
+© 2026 Paola Sanmiguel. All rights reserved.
+Sources
+1. OpenAI, "Advancing the price-performance frontier with GPT-5.6," July 30, 2026.
+https://openai.com/index/advancing-the-price-performance-frontier-with-gpt-5-6/
+2. European Commission, "Guidelines for providers of general-purpose AI models," updated April 28, 2026 — enforcement powers, including fines, from August 2, 2026.
+https://digital-strategy.ec.europa.eu/en/policies/guidelines-gpai-providers
+3. Future of Life Institute AI Act tracker, "Enforcement of Chapter V under the EU AI Act," March 31, 2026 — Articles 91–93 powers and the Article 101 fine maximum.
+https://artificialintelligenceact.eu/enforcement-of-chapter-v-under-the-eu-ai-act/
+4. Congressional Research Service, In Focus IF13268, "Controlling Advanced Artificial Intelligence: Executive Order 14409 Explained," July 9, 2026.
+https://www.congress.gov/crs-product/IF13268
+5. Microsoft, FY26 Q4 earnings press release and webcast, July 29, 2026.
+https://www.microsoft.com/en-us/investor/earnings/fy-2026-q4/press-release-webcast
+6. Meta, "Meta Reports Second Quarter 2026 Results," July 29, 2026.
+https://investor.atmeta.com/investor-news/press-release-details/2026/Meta-Reports-Second-Quarter-2026-Results/default.aspx
+7. Amazon, "
+Amazon.com
+Announces Second Quarter Results," July 30, 2026.
+https://ir.aboutamazon.com/news-release/news-release-details/2026/Amazon-com-Announces-Second-Quarter-Results/default.aspx
+8. Apple, "Apple reports third quarter results," July 30, 2026.
+https://www.apple.com/newsroom/2026/07/apple-reports-third-quarter-results/
+9. Six Colors (Jason Snell), full transcript of Apple's Q3 2026 earnings call, July 30, 2026 — Tim Cook's memory-pricing remarks and Q4 guidance.
+https://sixcolors.com/post/2026/07/one-last-time-this-is-tim-transcript-of-apples-q3-2026-financial-call/
+10. Anthropic, "Investigating three real-world incidents in our cybersecurity evaluations," July 30, 2026.
+https://www.anthropic.com/news/investigating-incidents-cybersecurity-evals
+11. OpenAI, "Hugging Face model evaluation security incident," July 21, 2026 (updated July 28–29).
+https://openai.com/index/hugging-face-model-evaluation-security-incident/
+12. UK AI Security Institute, "Cheating behaviour in frontier model evaluations," July 21, 2026.
+https://www.aisi.gov.uk/blog/cheating-behaviour-in-frontier-model-evaluations
+13. NVIDIA, "Industry Leaders Join Open Secure AI Alliance for AI Safety and Security," July 27, 2026.
+https://blogs.nvidia.com/blog/open-secure-ai-alliance/
+14. Kirgis, Kapoor, et al. (24 authors), "Can AI agents conduct open-ended AI research? Early evidence from two case studies," arXiv preprint 2607.27191, July 29, 2026.
+https://arxiv.org/abs/2607.27191
+15. World Economic Forum (Jessica Finn, Cognizant), "How is AI changing the skills for leadership and how should organizations prepare?," July 29, 2026.
+https://www.weforum.org/stories/artificial-intelligence/how-is-ai-changing-the-skills-for-leadership-and-how-should-organizations-prepare/
+16. Salesforce India, "India Leads in Workplace AI Adoption as Workers Push for More Trusted, Contextual AI Experiences," July 30, 2026.
+https://www.salesforce.com/in/news/press-releases/2026/07/30/india-leads-in-workplace-ai-adoption-as-workers-push-for-more-trusted-contextual-ai-experiences/
+17. Paola Sanmiguel, "K3's Weights Ship Today. Three Governments Can Still Reach Them.," Strategic AI Radar, July 27, 2026.
+https://www.linkedin.com/pulse/k3s-weights-ship-today-three-governments-can-still-sanmiguel-m-s--dgpfc
+18. Paola Sanmiguel, "The Frontier Just Got 70% Cheaper. Your Judgment Bill Went Up.," Strategic AI Radar, July 20, 2026.
+https://www.linkedin.com/pulse/frontier-just-got-70-cheaper-your-judgment-bill-went-sanmiguel-m-s--xp51c
+19. Paola Sanmiguel, "Your AI Model Comes With a Government Attached.," The AI Playbook: The Weekly Call, July 28, 2026.
+https://www.cognivalab.blog/p/your-ai-model-comes-with-a-government
+20. Paola Sanmiguel, "The Apprenticeship the Machine Ate," The AI Playbook: The Weekly Call, July 14, 2026.
+https://www.cognivalab.blog/p/the-apprenticeship-the-machine-ate
+21. Paola Sanmiguel, "The Sophistication Gap," The AI Playbook: The Weekly Call, June 9, 2026.
+https://www.cognivalab.blog/p/the-sophistication-gap

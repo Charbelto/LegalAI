@@ -1,0 +1,276 @@
+\documentclass[journal,10pt,compsoc,onecolumn]{IEEEtran}
+\usepackage[final]{graphicx}
+\usepackage{booktabs}
+\usepackage{subcaption}
+\usepackage{geometry}
+\usepackage{amsmath}
+\usepackage{hyperref}
+
+\geometry{letterpaper, margin=1in}
+
+% Setup graphics path. Put all your PNGs into a folder named "figures" in Overleaf
+\graphicspath{{figures/}}
+
+\begin{document}
+
+\title{When Is One Agent Enough? An Empirical Study of Single-Agent and Multi-Agent Routing Structures, Their Performance and Computational Cost}
+
+\author{Charbel~\dots \\
+\textit{}}
+
+\maketitle
+
+\begin{abstract}
+Multi-agent systems have become a default design choice for complex language-model applications, yet the assumption that adding and orchestrating more agents improves outcomes is rarely tested directly. This paper presents an empirical comparison of single-agent and multi-agent routing structures, using regulatory-compliance question answering (the EU AI Act) as a demanding case study. We evaluate six routing configurations that span a single dynamically-routed agent and five multi-agent topologies (fully sequential, fully parallel, partial-parallel, legal-first conditional, and a verification-only bypass) along 32 operational and text-quality metrics, scoring every configuration against an expert-curated gold standard. Our central finding is that the multi-agent topologies do not uniformly outperform the single-agent router: the single-agent configuration achieves the strongest reference alignment (highest BLEU-1, ROUGE-1, and lexical-overlap scores) while running roughly 40\% faster than the fully sequential pipeline, and the most expensive multi-agent workflow is not the most accurate. We connect these latency and quality results to show that coordination overhead does not reliably translate into better answers, and that the \emph{structure} of a multi-agent system, rather than the number of agents, drives both performance and cost. We close with architecture-selection guidance and a roadmap for extending the comparison to planner-based and DAG-based topologies on larger models.
+\end{abstract}
+
+\section{Introduction}
+An \emph{AI agent} is a system that couples a language model with a goal, memory, and the ability to act, deciding for itself which tools to call, what to retrieve, and how to compose a response rather than emitting a single forward pass. A \emph{multi-agent system} composes several such agents, often specialized by role (for example a planner, a router, domain experts, a validator, and an aggregator), and coordinates them through an orchestration layer so that the output of one agent becomes the input or trigger of another.
+
+Multi-agent architectures are increasingly popular, and for good reason: decomposing a hard problem into specialized sub-problems is intuitively appealing and mirrors how human teams work. However, this decomposition is not free. Every additional agent introduces coordination overhead, inter-agent communication, redundant context handling, and additional model invocations, all of which raise latency and computational cost. In many practical settings these costs are incurred whether or not the task actually benefits from multiple agents. A natural and underexamined question follows: \emph{is a multi-agent system always preferable to a single, well-designed agent, and if not, when is each appropriate?}
+
+This paper argues, and shows empirically, that a single agent is sometimes sufficient and can even outperform multi-agent alternatives on tasks that are not strongly decomposable. We further argue that when multiple agents are warranted, their \emph{organizational structure} (how they are wired together) matters at least as much as their number. We study these questions on a deliberately demanding application: question answering and compliance checking against the EU AI Act, where answers must align with expert-curated reference guidance. The application is a case study; the comparison and its conclusions are intended to generalize beyond the legal domain.
+
+Our research objectives are threefold: (i) to characterize when a single agent is preferable to a multi-agent system; (ii) to characterize when multi-agent coordination provides a benefit that justifies its overhead; and (iii) to study how different multi-agent structures (sequential, parallel, conditional, and bypass routing) affect accuracy, latency, and computational cost. We answer three research questions:
+\begin{enumerate}
+    \item Is a multi-agent system always better than a single agent?
+    \item Which routing structure offers the best balance of response quality and cost?
+    \item How does agent structure affect text-quality, latency, execution steps, and resource consumption?
+\end{enumerate}
+
+\section{Related Work}
+\textbf{Legal retrieval and QA benchmarks.} LegalBench-RAG evaluates retrieval quality, but largely within fixed RAG pipelines rather than dynamically routed multi-agent systems. LexRAG focuses on conversational answer quality yet offers limited analysis of latency, token usage, and topology-level execution cost. Domain systems such as Chatlaw, LegalGPT, and PAKTON improve legal accuracy and reasoning but treat the agent configuration as fixed and do not ask whether the chosen structure is the right one.
+
+\textbf{Compliance and the EU AI Act.} COMPL-AI benchmarks compliance \emph{capabilities} but does not provide interactive, runtime compliance diagnostics for a deployed system, nor does it tie those diagnostics to operational cost.
+
+\textbf{Multi-agent orchestration.} Work such as HERA and the broader agentic-RAG literature emphasizes orchestration \emph{methods}, how to route, plan, and aggregate, rather than a systematic, controlled comparison of common routing \emph{topologies} on the same task. Observability tooling (e.g., LangSmith, Langfuse) exposes execution traces but rarely connects those traces to benchmark quality and system-performance metrics in a single evaluation.
+
+\textbf{Research gap.} Across these strands, existing studies compare models and tasks but provide limited analysis of how different multi-agent \emph{organizational structures} affect performance and efficiency, and whether a single agent might match or beat them. To our knowledge there is no controlled, multi-metric comparison that places a single-agent router and several multi-agent topologies on identical inputs and a shared gold standard while simultaneously tracing latency, execution steps, token usage, and text quality. This paper targets that gap.
+
+\section{Methodology}
+We hold the underlying language model, retrieval corpus, query set, and gold standard fixed, and vary only the agent structure. This isolates the effect of topology from the effect of model capacity or data. All configurations are executed with node-level execution tracing so that latency can be attributed to individual stages.
+
+\subsection{Single-Agent Architecture}
+The single-agent configuration is a router-style agent that, given a query, selects and invokes the single most appropriate expert path and composes the answer directly. It maintains conversational context but does not fan work out to parallel collaborators or pass intermediate state through a chain of peers. Its decision process is a single routing choice followed by retrieval and generation, which minimizes coordination overhead and the number of model invocations.
+
+\subsection{Multi-Agent Architectures}
+We evaluate the single-agent router against five multi-agent topologies, all sharing the same retrieval and generation primitives but differing in how those primitives are wired:
+\begin{enumerate}
+    \item \textbf{ALL (Sequential)}: Executes all retrieval and analysis nodes in sequence ($A \rightarrow B \rightarrow C \rightarrow \dots$), so each agent sees the accumulated state of its predecessors.
+    \item \textbf{SINGLE (Router)}: The single-agent baseline above; a routing node dynamically selects the single most appropriate expert agent.
+    \item \textbf{PARALLEL}: Spawns all retrieval and logic agents concurrently and aggregates their outputs.
+    \item \textbf{LEGAL-NEWS PAR.}: Runs the legal and news retrieval agents in parallel, bypassing general Q\&A.
+    \item \textbf{LEGAL-FIRST}: Executes the legal agent first, then conditionally decides whether news or general QA is required.
+    \item \textbf{VERIFY-ONLY (Bypass)}: Routes directly to aggregation and verification, bypassing the retrieval nodes entirely.
+\end{enumerate}
+These topologies span the canonical coordination patterns: sequential chaining, full parallelism with aggregation, partial parallelism, conditional/planner-like branching, and a minimal bypass. Two further canonical structures, an explicit \emph{planner-based} dispatcher and a general \emph{DAG-based} workflow with arbitrary dependency edges, are described here as the natural next step and are deferred to future work (Section~\ref{sec:future}) because they require infrastructure beyond the current single-model setup.
+
+\subsection{Evaluation Framework}
+Outputs are evaluated against an expert-curated ``Gold Standard'' compliance check for the EU AI Act using a multi-dimensional metric framework comprising 32 metrics across three families: (i) \emph{operational and latency} metrics (end-to-end and backend latency, graph execution steps, mean step latency, generation speed, estimated tokens, and simulated run cost); (ii) \emph{text-quality and reference-matching} metrics against the gold standard (BLEU-1/4, ROUGE-1/2/L, word and character Jaccard, TF cosine, and Levenshtein similarity); and (iii) \emph{structural and domain-specific} metrics (word, sentence, and paragraph counts, lexical diversity, temporal references, and bullet counts). Reporting both families lets us separate \emph{how much work a structure does} from \emph{how good its answer is}, which is the crux of the single-versus-multi question.
+
+\section{Evaluation Results}
+The computed metrics across all configurations are summarized in Table~\ref{tab:agent_workflows_eval}. The table reports numerical values only; the interpretation of each trend is given in the figure discussions that follow, which are written to add insight beyond the raw numbers rather than restate them.
+
+\begin{table*}[htbp]
+\centering
+\caption{Comparative Analysis of Single-Agent and Multi-Agent Routing Topologies and Workflows}
+\label{tab:agent_workflows_eval}
+\small
+\begin{tabular}{lcccccc}
+\toprule
+\textbf{Metric} & \textbf{ALL (Sequential)} & \textbf{SINGLE (Router)} & \textbf{PARALLEL} & \textbf{LEGAL-NEWS PAR.} & \textbf{LEGAL-FIRST} & \textbf{VERIFY-ONLY (Bypass)} \\
+\midrule
+\multicolumn{7}{l}{\textit{Operational \& Latency Metrics}} \\
+\textbf{End-to-End Latency (s)} & 79.07 & 46.51 & 71.00 & 69.49 & 83.41 & 22.27 \\
+\textbf{Backend Graph Latency (s)} & 67.52 & 45.44 & 69.85 & 68.40 & 82.27 & 20.82 \\
+\textbf{Graph Execution Steps} & 20 & 16 & 20 & 18 & 18 & 14 \\
+\textbf{Mean Step Latency (ms)} & 3376.2 & 2839.8 & 3492.5 & 3799.9 & 4570.5 & 1487.4 \\
+\textbf{Generation Speed (words/s)} & 1.49 & 3.48 & 2.15 & 1.84 & 1.61 & 3.64 \\
+\textbf{Estimated Tokens (Words * 1.3)} & 153 & 210 & 198 & 166 & 174 & 105 \\
+\textbf{Simulated Run Cost (USD)} & \$0.0001 & \$0.0001 & \$0.0001 & \$0.0001 & \$0.0001 & \$0.0001 \\
+\midrule
+\multicolumn{7}{l}{\textit{Text Quality \& NLG Reference-Matching (vs. Gold Standard)}} \\
+\textbf{BLEU-1 Score} & 0.1206 & 0.2218 & 0.1940 & 0.1473 & 0.1557 & 0.0441 \\
+\textbf{BLEU-4 Score} & 0.0175 & 0.0399 & 0.0285 & 0.0257 & 0.0168 & 0.0066 \\
+\textbf{ROUGE-1 F1-Score} & 0.3030 & 0.3570 & 0.3302 & 0.3259 & 0.3276 & 0.2611 \\
+\textbf{ROUGE-2 F1-Score} & 0.0914 & 0.0782 & 0.0748 & 0.1042 & 0.0639 & 0.0670 \\
+\textbf{ROUGE-L F1-Score} & 0.1667 & 0.1739 & 0.1628 & 0.1877 & 0.1565 & 0.1500 \\
+\textbf{Word Jaccard Similarity} & 0.1850 & 0.2336 & 0.1728 & 0.1940 & 0.1891 & 0.1564 \\
+\textbf{Character Jaccard Similarity} & 0.5532 & 0.7551 & 0.7174 & 0.6957 & 0.6596 & 0.6087 \\
+\textbf{TF Cosine Similarity} & 0.4958 & 0.4981 & 0.6402 & 0.5683 & 0.5734 & 0.5743 \\
+\textbf{Levenshtein Similarity} & 0.2520 & 0.2706 & 0.2716 & 0.2783 & 0.2582 & 0.1924 \\
+\midrule
+\multicolumn{7}{l}{\textit{Text Structural \& Domain-Specific Metrics}} \\
+\textbf{Word Count (Verbosity)} & 118 & 162 & 153 & 128 & 134 & 81 \\
+\textbf{Sentence Count} & 8 & 10 & 8 & 9 & 10 & 4 \\
+\textbf{Paragraph Count} & 4 & 5 & 3 & 3 & 4 & 4 \\
+\textbf{Lexical Diversity (TTR)} & 0.7456 & 0.7548 & 0.6824 & 0.7561 & 0.7795 & 0.7692 \\
+\textbf{Temporal References Count} & 0 & 4 & 5 & 2 & 2 & 0 \\
+\textbf{Bullet Points Count} & 4 & 6 & 5 & 5 & 7 & 3 \\
+\bottomrule
+\end{tabular}
+\end{table*}
+
+\subsection{Latency and Operational Profiles}
+\textbf{What the figures show.} Figure~\ref{fig:macro_latency} plots end-to-end and backend latency, the network/API overhead between them, and mean latency per step; Figure~\ref{fig:graph_efficiency} plots execution steps, generation speed, estimated tokens, and simulated cost; Figure~\ref{fig:stacked_latencies} decomposes total latency into per-node contributions.
+
+\textbf{Interpretation.} The figures reveal a strongly non-monotonic relationship between how much coordination a structure performs and how long it takes. The verification-only bypass completes in 22.27\,s precisely because it skips retrieval, and the per-node decomposition in Figure~\ref{fig:stacked_latencies} makes clear that this saving comes from the \emph{absence} of retrieval stages rather than faster execution of them. At the other extreme, LEGAL-FIRST is the slowest configuration despite not having the most execution steps: its conditional branch serializes a decision after the legal agent, inflating mean step latency to the highest value in the study. The single-agent router, by contrast, reaches a low backend latency with the second-fewest steps, indicating that most of its time is productive generation rather than coordination.
+
+\textbf{Insight beyond the table.} The decomposition exposes something the aggregate latency column cannot: that latency differences between topologies are dominated by \emph{structural} decisions (whether stages run in series, in parallel, or are skipped) rather than by raw model speed, which is shared across all runs. The mean-step-latency view also shows that adding a conditional planner-like branch (LEGAL-FIRST) can cost more per step than running agents in parallel, an effect invisible in end-to-end totals alone.
+
+\subsection{Connecting Latency to Quality}
+A core message of this study emerges when the latency profiles are read against the quality metrics in Table~\ref{tab:agent_workflows_eval}. Spending more time does not buy proportionally better answers. LEGAL-FIRST is the most expensive configuration (83.41\,s) yet its reference-alignment scores are middling, and the fully sequential ALL pipeline (79.07\,s) is outscored on BLEU-1, ROUGE-1, and lexical overlap by the single-agent router, which runs in well under two-thirds the time. The verification-only bypass shows the opposite failure mode: it is fastest but, lacking retrieved context, produces the weakest answers (BLEU-1 0.0441, ROUGE-1 0.2611). The latency results therefore suggest that additional agent coordination introduces overhead whose performance payoff is, at best, inconsistent, and that there is a practical floor on quality below which speed is not worth it.
+
+\subsection{Text Quality and Reference Alignment}
+\textbf{What the figures show.} Figure~\ref{fig:nlg_quality} presents the BLEU profile and the ROUGE-1, ROUGE-2, and ROUGE-L overlap against the gold standard.
+
+\textbf{Interpretation.} The single-agent router attains the best unigram-level alignment (BLEU-1 and ROUGE-1) and the strongest lexical overlap (word and character Jaccard), indicating that a focused single pass tends to reproduce the gold standard's core vocabulary most faithfully. The partial-parallel LEGAL-NEWS configuration, however, leads on the higher-order overlap metrics (ROUGE-2, ROUGE-L, and Levenshtein), suggesting it better reproduces multi-word phrasing and ordering. PARALLEL leads on TF cosine similarity, consistent with aggregation across agents broadening topical coverage.
+
+\textbf{Insight beyond the table.} The split between unigram metrics (won by SINGLE) and sequence-level metrics (won by LEGAL-NEWS PAR.) is the kind of structural insight the figures add: no single topology dominates every quality dimension, and the ``best'' structure depends on whether an application values vocabulary fidelity or phrase-level fluency. This nuance is lost if one reads only a single headline score.
+
+\subsection{Sequential versus Parallel}
+Comparing the two ``do everything'' topologies beyond raw time is instructive. Sequential (ALL) and PARALLEL execute the same 20 steps, but PARALLEL is about 8\,s faster end-to-end and achieves higher TF cosine and character-Jaccard similarity, consistent with concurrent agents contributing complementary content that aggregation then combines. Sequential execution, where each agent conditions on its predecessors, yields slightly higher ROUGE-2 than PARALLEL, hinting at more coherent multi-word structure from staged reasoning, but it pays for this with the higher latency inherent to serialization and shows no overall quality advantage. In short, parallelism reduces wall-clock time and can improve topical coverage, while sequential chaining offers marginal structural coherence at a latency premium, and neither beats the single-agent router on the headline alignment metrics.
+
+\subsection{Single-Agent versus Multi-Agent Trade-Offs}
+\textbf{What the figures show.} Figure~\ref{fig:multidim_analysis} plots the quality (ROUGE-L) versus latency trade-off space and a multi-dimensional performance radar.
+
+\textbf{Interpretation.} The trade-off plot places the single-agent router in the favorable region of the space, high alignment at low latency, while the most coordination-heavy multi-agent topologies sit at higher latency without a commensurate quality gain. The radar shows the single-agent configuration covering a large area across the alignment dimensions, dominating several axes simultaneously.
+
+\textbf{Insight beyond the table.} The figure makes concrete what the per-metric columns only imply: multi-agent systems are not universally superior, and on this task the coordination overhead frequently outweighs its benefit. Multi-agent structures appear most justified where tasks are genuinely decomposable and agents bring complementary expertise (reflected here in LEGAL-NEWS PAR.'s lead on sequence-level metrics), and least justified where a single focused pass already captures the answer.
+
+\begin{figure*}[htbp]
+  \centering
+  \begin{subfigure}[b]{0.48\textwidth}
+    \centering
+    \includegraphics[width=\textwidth]{chart1_e2e_latency.png}
+    \caption{End-to-End Latency}
+    \label{fig:e2e_latency}
+  \end{subfigure}
+  \hfill
+  \begin{subfigure}[b]{0.48\textwidth}
+    \centering
+    \includegraphics[width=\textwidth]{chart2_backend_latency.png}
+    \caption{Backend Graph Latency}
+    \label{fig:backend_latency}
+  \end{subfigure}
+  \\ \vspace{1em}
+  \begin{subfigure}[b]{0.48\textwidth}
+    \centering
+    \includegraphics[width=\textwidth]{chart3_network_overhead.png}
+    \caption{Network \& API Overhead}
+    \label{fig:net_overhead}
+  \end{subfigure}
+  \hfill
+  \begin{subfigure}[b]{0.48\textwidth}
+    \centering
+    \includegraphics[width=\textwidth]{chart5_latency_per_step.png}
+    \caption{Mean Latency per Step}
+    \label{fig:latency_per_step}
+  \end{subfigure}
+  \caption{Macro Latency and Execution Profiles across Configurations.}
+  \label{fig:macro_latency}
+\end{figure*}
+
+\begin{figure*}[htbp]
+  \centering
+  \begin{subfigure}[b]{0.48\textwidth}
+    \centering
+    \includegraphics[width=\textwidth]{chart4_execution_steps.png}
+    \caption{State Transitions (Steps)}
+  \end{subfigure}
+  \hfill
+  \begin{subfigure}[b]{0.48\textwidth}
+    \centering
+    \includegraphics[width=\textwidth]{chart6_generation_speed.png}
+    \caption{Generation Speed (Words/s)}
+  \end{subfigure}
+  \\ \vspace{1em}
+  \begin{subfigure}[b]{0.48\textwidth}
+    \centering
+    \includegraphics[width=\textwidth]{chart7_token_usage.png}
+    \caption{Estimated Generated Tokens}
+  \end{subfigure}
+  \hfill
+  \begin{subfigure}[b]{0.48\textwidth}
+    \centering
+    \includegraphics[width=\textwidth]{chart8_run_cost.png}
+    \caption{Simulated Operational Cost}
+  \end{subfigure}
+  \caption{Graph Efficiency and Operational Metrics.}
+  \label{fig:graph_efficiency}
+\end{figure*}
+
+\begin{figure*}[htbp]
+  \centering
+  \includegraphics[width=0.85\textwidth]{chart9_node_latency_stacked.png}
+  \caption{Cumulative Stacked Bar Chart of Node-level Latency profiles across Workflows.}
+  \label{fig:stacked_latencies}
+\end{figure*}
+
+\begin{figure*}[htbp]
+  \centering
+  \begin{subfigure}[b]{0.48\textwidth}
+    \centering
+    \includegraphics[width=\textwidth]{chart18_bleu_scores.png}
+    \caption{BLEU-1 to BLEU-4 Profile}
+  \end{subfigure}
+  \hfill
+  \begin{subfigure}[b]{0.48\textwidth}
+    \centering
+    \includegraphics[width=\textwidth]{chart19_rouge1_scores.png}
+    \caption{ROUGE-1 Overlap}
+  \end{subfigure}
+  \\ \vspace{1em}
+  \begin{subfigure}[b]{0.48\textwidth}
+    \centering
+    \includegraphics[width=\textwidth]{chart20_rouge2_scores.png}
+    \caption{ROUGE-2 Overlap}
+  \end{subfigure}
+  \hfill
+  \begin{subfigure}[b]{0.48\textwidth}
+    \centering
+    \includegraphics[width=\textwidth]{chart21_rougeL_scores.png}
+    \caption{ROUGE-L Longest Common Subseq.}
+  \end{subfigure}
+  \caption{Text Quality and Overlap Comparison against Gold Standard.}
+  \label{fig:nlg_quality}
+\end{figure*}
+
+\begin{figure*}[htbp]
+  \centering
+  \begin{subfigure}[b]{0.48\textwidth}
+    \centering
+    \includegraphics[width=\textwidth]{chart28_quality_vs_latency.png}
+    \caption{Quality (ROUGE-L) vs. Latency Trade-off}
+  \end{subfigure}
+  \hfill
+  \begin{subfigure}[b]{0.48\textwidth}
+    \centering
+    \includegraphics[width=\textwidth]{chart29_performance_radar.png}
+    \caption{Multi-dimensional Performance Radar}
+  \end{subfigure}
+  \caption{Comprehensive Multi-dimensional Trade-off Profiles.}
+  \label{fig:multidim_analysis}
+\end{figure*}
+
+\section{Contributions}
+This work makes the following contributions:
+\begin{enumerate}
+    \item A controlled, multi-metric comparison of a single-agent router against five multi-agent routing topologies on an identical task and gold standard, holding the model and data fixed so that observed differences are attributable to structure.
+    \item Empirical evidence that multi-agent systems are not always superior to a single agent: the single-agent router leads on the headline reference-alignment metrics while running far faster than the sequential pipeline.
+    \item A demonstration that agent \emph{structure} significantly affects performance, latency, and execution cost, including the result that the most coordination-heavy topology is not the most accurate.
+    \item Architecture-selection guidance linking task characteristics (decomposability, need for complementary expertise) to the structure most likely to pay for its overhead.
+    \item An evaluation methodology that connects node-level execution telemetry to text-quality metrics, enabling latency to be attributed to specific structural decisions.
+\end{enumerate}
+
+\section{Discussion}
+Several findings recur across the metrics. First, a single agent sometimes achieves equal or better performance than multi-agent alternatives, particularly on tasks that a focused pass can answer without decomposition. Second, adding agents does not automatically improve results: the relationship between coordination and quality is non-monotonic. Third, a poorly matched structure introduces overhead without benefit, as the slowest configuration here illustrates. Fourth, the \emph{organization} of agents (series, parallel, conditional, or bypass) is as consequential as their number, and the best structure differs by quality dimension, with parallel coverage favoring topical similarity and partial-parallel routing favoring phrase-level fidelity. Fifth, certain multi-agent architectures do outperform others on specific axes, confirming that structural design, not merely the multi-agent label, is what determines value.
+
+\section{Future Work}
+\label{sec:future}
+This study is bounded by a single underlying model and a single application corpus. Three extensions follow directly. First, we will implement and evaluate two additional canonical structures, an explicit \emph{planner-based} dispatcher and a general \emph{DAG-based} workflow with arbitrary dependency edges, to test whether a more expressive topology can finally and consistently beat the single-agent router. Second, we will repeat the comparison on larger models, contingent on securing high-performance computing and GPU resources, to test whether the single-agent advantage narrows or widens with model capacity. Third, we will broaden the task suite beyond legal compliance to confirm that the structure-over-number conclusion generalizes, and will expand the literature search for prior reports of single agents matching or beating multi-agent systems and of coordination overhead degrading performance.
+
+\section{Conclusion}
+We presented a controlled empirical comparison of single-agent and multi-agent routing structures across operational, text-quality, and structural metrics. Multi-agent systems should not be treated as a default solution. While they can provide advantages for complex and decomposable tasks, a single, well-designed agent often achieves comparable or superior alignment with reference answers at substantially lower latency and computational cost, and the most expensive multi-agent configuration is not the most accurate. Furthermore, the effectiveness of a multi-agent system depends heavily on its organizational structure: how agents are wired together shapes both quality and cost. Careful structural design, rather than the mere addition of agents, is therefore the decisive factor in achieving performance gains that justify the additional overhead.
+
+\end{document}

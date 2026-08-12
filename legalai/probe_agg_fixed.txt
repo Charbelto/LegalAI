@@ -1,0 +1,67 @@
+﻿real expert outputs available: {'legal': 99, 'news': 89, 'general_qa': 56} words
+[RetrievalAgent] Connected to ChromaDB at chroma_storage
+[RetrievalAgent] Retrieving documents for: What is a high-risk AI system under the EU AI Act?...
+[RetrievalAgent] Retrieved and reranked 5 documents using hybrid search.
+[local_models] loading role=general_qa base=ibm-granite/granite-3.1-2b-instruct 4bit=True adapter=no
+python.exe : Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher 
+rate limits and faster downloads.
+At line:1 char:710
++ ... NISTIC="0"; & .\.venv\Scripts\python.exe -u probe_aggregator.py > pro ...
++                 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (Warning: You ar...ster downloads.:String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+ 
+W0804 16:01:51.388000 29340 .venv\Lib\site-packages\torch\utils\flop_counter.py:29] triton not found; flop counting 
+will not work for triton kernels
+
+Loading weights:   0%|          | 0/362 [00:00<?, ?it/s]
+Loading weights:   0%|          | 1/362 [00:00<00:41,  8.66it/s]
+Loading weights:   1%|▏         | 5/362 [00:00<00:14, 24.80it/s]
+Loading weights:   6%|▌         | 22/362 [00:00<00:04, 84.87it/s]
+Loading weights:  11%|█         | 39/362 [00:00<00:02, 113.80it/s]
+Loading weights:  15%|█▍        | 53/362 [00:00<00:02, 122.24it/s]
+Loading weights:  19%|█▉        | 68/362 [00:00<00:02, 125.01it/s]
+Loading weights:  23%|██▎       | 85/362 [00:00<00:02, 136.99it/s]
+Loading weights:  28%|██▊       | 102/362 [00:00<00:01, 144.82it/s]
+Loading weights:  32%|███▏      | 117/362 [00:00<00:01, 143.23it/s]
+Loading weights:  36%|███▋      | 132/362 [00:01<00:01, 139.89it/s]
+Loading weights:  41%|████      | 148/362 [00:01<00:01, 142.23it/s]
+Loading weights:  46%|████▌     | 165/362 [00:01<00:01, 145.65it/s]
+Loading weights:  50%|████▉     | 180/362 [00:01<00:01, 145.75it/s]
+Loading weights:  54%|█████▍    | 195/362 [00:01<00:01, 141.62it/s]
+Loading weights:  58%|█████▊    | 210/362 [00:01<00:01, 140.05it/s]
+Loading weights:  62%|██████▏   | 225/362 [00:01<00:00, 137.45it/s]
+Loading weights:  66%|██████▌   | 239/362 [00:01<00:00, 130.49it/s]
+Loading weights:  71%|███████   | 256/362 [00:01<00:00, 135.68it/s]
+Loading weights:  75%|███████▌  | 273/362 [00:02<00:00, 138.39it/s]
+Loading weights:  79%|███████▉  | 287/362 [00:02<00:00, 131.65it/s]
+Loading weights:  83%|████████▎ | 301/362 [00:02<00:00, 120.08it/s]
+Loading weights:  87%|████████▋ | 314/362 [00:02<00:00, 117.90it/s]
+Loading weights:  90%|█████████ | 327/362 [00:02<00:00, 115.99it/s]
+Loading weights:  94%|█████████▎| 339/362 [00:02<00:00, 113.18it/s]
+Loading weights:  98%|█████████▊| 355/362 [00:02<00:00, 120.54it/s]
+Loading weights: 100%|██████████| 362/362 [00:02<00:00, 126.84it/s]
+[local_models]   loaded role=general_qa in 13.0s
+aggregator model: ibm-granite/granite-3.1-2b-instruct  adapter=None
+[transformers] Ignoring clean_up_tokenization_spaces=True for BPE tokenizer TokenizersBackend. The 
+clean_up_tokenization post-processing step is designed for WordPiece tokenizers and is destructive for BPE (it strips 
+spaces before punctuation). Set clean_up_tokenization_spaces=False to suppress this warning, or set 
+clean_up_tokenization_spaces_for_bpe_even_though_it_will_corrupt_output=True to force cleanup anyway.
+
+=== 1 expert (legal) | prompt 1546 tokens ===
+    out: 228 words, 331 tokens, hit_cap=False, 42s
+    Under the EU AI Act, a high-risk AI system refers to those listed in Annex III, with exceptions noted in point 2 of Annex III. These systems involve areas like law enforcement, migration, asylum, border control management, and critical infrastructure. They must comply with specific requirements set forth in Chapter III, Section 2, including robustness and accuracy standards.
+    
+    High-risk AI systems in these sectors necessitate registration in the EU database, accessible only to the Commission and 
+
+=== 2 experts (legal+news) | prompt 1690 tokens ===
+    out: 233 words, 352 tokens, hit_cap=False, 43s
+    In the context of the EU AI Act, a high-risk AI system refers to those listed in Annex III, excluding specific exceptions. These systems involve areas like law enforcement, migration, asylum, border control management, and critical infrastructure. They are subject to stringent registration and compliance-assessment procedures outlined in Articles 43 and 49 of the Regulation.
+    
+    High-risk AI systems must be registered in the EU database, accessible only to the Commission and national market surveil
+
+=== 3 experts (all) | prompt 2102 tokens ===
+    out: 214 words, 312 tokens, hit_cap=False, 37s
+    A high-risk AI system, as defined by the EU AI Act, encompasses specific types of artificial intelligence systems outlined in Annex III of the Regulation. These systems correspond to sectors like law enforcement, migration, asylum, border control management, and critical infrastructure. For high-risk AI systems in these areas, substantial modifications necessitate registration in the EU database, accessible only to the Commission and national market surveillance authorities.
+    
+    In addition to regi

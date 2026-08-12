@@ -1,0 +1,90 @@
+8
+min read
+Key Takeaways
+High-risk AI system obligations under Annex III become enforceable 2 August 2026, covering AI in hiring, credit scoring, biometric identification, and access to essential services.
+Articles 9–15 require ongoing risk management, pre-deployment technical documentation, automatic logging, human oversight with physical stop procedures, and conformity assessment before deployment.
+Most Annex III systems may self-certify via the internal control procedure; biometric systems require third-party assessment by a notified body — DEKRA received the first EU accreditation in March 2026.
+The Digital Omnibus delay proposal requires trilogue agreement before June 2026 to affect the August deadline — compliance teams treating it as settled fact are taking an unsupported position.
+Key Claim:
+The EU AI Act’s August 2026 high-risk deadline is real, the compliance requirements are specific and operationally demanding, and the Digital Omnibus delay proposal has not passed — organisations that defer action on that assumption bear the resulting enforcement risk.
+On 2 August 2026, the EU AI Act’s obligations for high-risk AI systems become fully enforceable. That means companies deploying AI to screen job candidates, score creditworthiness, identify people using biometric data, or allocate essential services must have completed conformity assessments, drawn up technical documentation, implemented human oversight mechanisms, registered their systems in an EU database, and affixed CE markings — or face fines of up to €15 million or 3% of global annual turnover. The European Commission has proposed delaying this deadline to December 2027 via the Digital Omnibus legislative package, but that proposal has not passed. Compliance teams treating the delay as settled fact are taking a regulatory position that the legislative record does not support.
+Table of Contents
+Toggle
+EU AI Act: Which Systems Qualify as High-Risk
+The EU AI Act creates two routes to high-risk classification under Article 6. The first covers AI embedded as a safety component in products already regulated under EU product law — medical devices, machinery, toys, civil aviation equipment — and these face a compliance deadline of 2 August 2027. The second, and more immediately pressing, route is Annex III: a list of eight standalone AI application categories that attract the full compliance framework by August 2026.
+The eight Annex III categories are: biometric identification and categorisation; safety components in critical digital infrastructure, road traffic, and energy supply; education and vocational training (admissions, exam scoring, outcomes tracking); employment and worker management (recruitment, performance assessment, promotion, dismissal); access to essential private and public services including credit scoring, insurance pricing, and social benefit eligibility; law enforcement; migration and border control; and administration of justice and democratic processes. Within each category, the classification turns on whether the AI system poses a significant risk to the health, safety, or fundamental rights of individuals — a threshold that the
+EU AI Act Annex III text
+does not define numerically, leaving classification as a judgment call that providers must document and defend.
+The sectors with the densest concentration of Annex III exposure are HR technology (AI-assisted hiring and performance management are explicitly listed), financial services (credit scoring, insurance risk models), and biometric technology (remote identification, emotion recognition, biometric categorisation). Medical device AI qualifies via Annex I and faces the later deadline, but teams building AI into regulated products should not interpret that as a reprieve — the requirements are identical, the timeline is simply shifted.
+EU AI Act Compliance Stack: Requirements by Article
+High-risk system providers face a layered set of obligations that operate simultaneously, not sequentially. The core requirements span Articles 9 through 15 of the Act.
+Risk management (Article 9)
+demands an ongoing process covering the entire AI lifecycle — design, deployment, update, and decommission. Providers must identify known and foreseeable risks to health, safety, and fundamental rights and document the controls applied. “Ongoing” is operative: a one-time pre-launch assessment does not satisfy the requirement.
+Technical documentation (Article 11, Annex IV)
+must be completed before the system is placed on the market and kept current. The
+Annex IV structure
+requires eight content categories: a general system description including intended purpose, hardware requirements, and integration interfaces; the design and development process including architecture and algorithm descriptions; monitoring and control specifications; performance metrics and test results; the risk management system output; a change log covering every substantive modification; a list of applied harmonised standards; and a signed EU declaration of conformity. Records must be retained for 10 years under Article 18. No finalised harmonised standards exist yet — CEN/CENELEC has drafts in progress — meaning providers must currently document their approach to standards that have not been formally adopted, a structural gap the Commission acknowledged as a primary rationale for the Digital Omnibus proposal.
+Automatic logging (Article 12)
+requires systems to generate tamper-resistant event logs throughout operation to support traceability after incidents. The regulation does not specify log granularity or retention periods beyond the general 10-year documentation requirement; implementing guidance from the AI Office remains pending.
+Transparency to deployers (Article 13)
+requires providers to supply instructions for use that clearly describe the system’s intended purpose, performance characteristics, limitations, accuracy levels across different populations, and conditions under which it should not be used.
+Human oversight (Article 14)
+is among the most operationally demanding requirements. Providers must design systems so that human overseers can: understand the AI’s capabilities and limitations; identify and address failures and anomalies; avoid automation bias; and — per Article 14(4)(e) — physically or digitally halt the system via a stop procedure that brings it to a safe state. Deployers must be able to override, disregard, or reverse any system output. For remote biometric identification systems used in law enforcement, the Act goes further: any decision or action based on system output must be verified by at least two competent individuals. The design burden here falls on providers; they must build the oversight architecture before sale, not leave it entirely to deployers to implement.
+Accuracy, robustness, and cybersecurity (Article 15)
+require systems to maintain appropriate performance levels throughout their lifecycle, with resilience against attempts to alter outputs through adversarial input. What constitutes “appropriate” accuracy is not numerically defined and remains one of the open implementation questions.
+Conformity Assessment: Who Can Self-Certify and Who Cannot
+The conformity assessment pathway under Article 43 is a decisive variable in compliance timelines. Most Annex III systems — HR tools, credit scoring systems, education assessment platforms — may follow the internal control procedure (Annex VI), meaning the provider conducts the assessment, draws up the technical documentation, and issues the EU declaration of conformity without involving a third party. This is structurally similar to GDPR’s self-assessment model and gives large enterprises significant control over pace and scope.
+Third-party assessment by an accredited notified body is mandatory in two situations: when the system uses remote biometric identification, and when the AI is embedded in a product category that already requires third-party certification under EU product safety law (for example, medical devices under MDR). For biometric systems, this mandatory third-party route is a bottleneck — as of March 2026, DEKRA became the first laboratory accredited by the Dutch Accreditation Council to conduct conformity assessments for high-risk biometric AI, covering remote identification systems, emotion recognition, and biometric categorisation systems. The notified body infrastructure across the EU is nascent; organisations building timelines around biometric AI compliance should factor in queue time at the handful of accredited assessors that exist.
+Once assessment is complete, providers must affix the CE marking — for digitally delivered systems, this may be a digital marking accessible via the product interface or a machine-readable code — and register the system in the EU database for high-risk AI systems before deployment. The EU database registration requirement applies to providers, not deployers, and is a public-facing obligation.
+The Digital Omnibus: Genuine Uncertainty, Not a Postponement
+In November 2025, the European Commission proposed the Digital Omnibus on AI, a legislative package that would materially reshape high-risk compliance timelines. The proposal’s core change is conditional, milestone-based enforcement: high-risk obligations would not activate until sufficient compliance infrastructure exists — defined primarily as finalised harmonised standards. If standards remain incomplete, fallback dates would apply: 2 December 2027 for Annex III systems, 2 August 2028 for Annex I systems.
+The Commission cited three rationales: no finalised harmonised standards; no practical conformity tools; and uneven readiness among national supervisory authorities. These are factually accurate observations. However, the proposal remains a proposal. It must complete trilogue negotiations between the Commission, Council, and Parliament. For the Digital Omnibus to affect the August 2026 deadline, political agreement must be reached by approximately June 2026 — roughly two months from the date of this article. Amendments during negotiation are expected, and the final text could differ materially from the draft.
+The proposal also contains a legacy-system carve-out that merits attention independently of whether the deadline shifts. Under the current draft, high-risk AI systems lawfully placed on the market before the new compliance dates activate would be exempt from retrofit requirements, provided their design is not substantially modified. Legal scholar Laura Caroli has noted that a system deployed before the deadline “may remain outside the AI Act indefinitely, unless it is substantially altered after that date.” MEP Sergey Lagodinsky has publicly warned that the delay creates an incentive for companies to accelerate deployment of high-risk systems before regulatory obligations kick in. Compliance teams at companies deploying, not just building, AI systems should flag this dynamic to procurement and risk functions.
+An analysis by Corporate Europe Observatory and LobbyControl found that 69% of Commission meetings on the Digital Omnibus involved business groups versus 16% with NGOs — context worth holding alongside the Commission’s official rationale for delay.
+What Compliance Teams Should Be Doing Now
+The six-month window to August 2026 is insufficient to build a compliance programme from scratch for an organisation that has not started. The immediate priorities divide into three phases.
+Inventory and classify.
+An
+appliedAI study
+found 40% of enterprise AI systems have unclear risk classifications. The first task is a systematic audit of all AI systems in production and in development, including third-party tools, to determine which fall within Annex I or Annex III. Role identification matters here: the Act distinguishes providers (who build or place systems on market) from deployers (who use them in a professional context). Both have obligations, but they differ.
+Prioritise documentation and assessment for Annex III systems.
+For systems that can self-certify, begin technical documentation now. The Annex IV structure provides a clear template; the absence of harmonised standards does not excuse incomplete documentation, it shifts the burden to demonstrating compliance against the Act’s text directly. For systems requiring notified body assessment — any remote biometric identification capability — initiate contact with accredited assessors immediately. DEKRA’s March 2026 accreditation means there is now at least one accredited option; capacity constraints are real.
+Build human oversight architecture into system design, not post-deployment policy.
+Article 14’s requirements are provider obligations that must be reflected in how the system is built. Oversight interfaces, stop procedures, override capabilities, and — where required — dual-person verification are not compliance policies that can be bolted on. They are design requirements. Teams that have shipped production systems without these capabilities face retrofit costs or potential market withdrawal obligations.
+On the Digital Omnibus: monitor the legislative calendar, but do not treat potential delay as a reason to defer action. An organisation that completes conformity documentation for August 2026 loses nothing if the deadline moves. An organisation that waits for legislative certainty and the deadline holds faces enforcement exposure with no compliant path to market.
+What to Watch
+Trilogue calendar.
+The Digital Omnibus on AI must reach political agreement before June 2026 to affect the August deadline. European Parliament rapporteur assignments and Council working party sessions will signal pace. Watch for formal position documents from both institutions — divergence between them is the primary risk to a swift agreement.
+Harmonised standards.
+CEN/CENELEC is developing standards under a standardisation request from the Commission. Publication of finalised standards — which has not yet occurred — would simultaneously resolve the compliance uncertainty cited in the Digital Omnibus rationale and provide providers a cleaner self-certification pathway. Any CEN/CENELEC publication in the next three months deserves immediate attention from compliance functions.
+Notified body accreditations.
+DEKRA’s March 2026 accreditation is the first under the AI Act for biometric systems. Additional accreditations from other national accreditation bodies will determine whether assessment capacity scales fast enough to serve the biometric AI market before August 2026. Follow the NANDO (New Approach Notified and Designated Organisations) database for new designations.
+National authority activity.
+Member states were required to designate national competent authorities by 2 August 2025. Enforcement posture will vary; early guidance documents or investigation announcements from Bundesamt für Justiz (Germany) or CNIL (France) will signal supervisory priorities. Sectoral regulators — financial supervisors for credit AI, data protection authorities for biometric systems — may enforce alongside general AI market surveillance authorities.
+Further Reading
+EU AI Act Official Text — EUR-Lex
+EU AI Act Explorer — artificialintelligenceact.eu
+Article 14 Human Oversight — AI Act Service Desk
+Digital Omnibus on AI — Cooley analysis
+EU AI Act Delays and High-Risk Oversight — TechPolicy.Press
+DEKRA biometric AI accreditation — Biometric Update
+Orrick 6 Steps Before August 2026
+This article was produced with AI assistance and reviewed by the editorial team.
+Related posts:
+The US Has No Federal AI Law. Here’s What the Regulatory Vacuum Means for Enterprise Teams.
+$300 Billion in AI Infrastructure Spending: Where the Hyperscaler Capex Is Actually Going
+Section 232 Semiconductor Tariff Report: What AI Infrastructure Buyers Must Model Now
+Multimodal AI at Work: Document Processing Has Scaled, Video and Vision Still Piloting
+About
+Marcus Webb
+Marcus Webb covers AI policy, regulation, and geopolitics — from EU legislation to DARPA programmes to US-China technology competition. He has a background in technology law and previously worked as a policy analyst at a nonpartisan technology policy institute. He tracks standards bodies, government procurement signals, and legislative developments that others miss.
+Meet the team →
+Share:
+𝕏
+in
+✉
+The NextWave Signal
+Subscribe free
+The NextWave Signal
+Enjoyed this analysis?
+One AI market analysis + one emerging-tech signal, every Tuesday and Friday — written for engineers, PMs, and CTOs tracking what shifts before it goes mainstream.

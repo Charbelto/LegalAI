@@ -1,0 +1,15 @@
+April 28, 2026
+U.S. Companies Face EU AI Act's Possible August 2026 Compliance Deadline
+Holland & Knight Cybersecurity and Privacy Blog
+Melissa Pregasen
+U.S.-based businesses that operate high-risk artificial intelligence (AI) systems should be mindful of the August 2, 2026, compliance deadline under the
+European Union Artificial Intelligence Act
+(EU AI Act). The EU AI Act has been implemented in phases since February 2025, with most remaining provisions taking effect on August 2, 2026, excluding
+Article 6(1)
+, which will apply in August 2027. The upcoming regulation will apply to operators of high-risk AI systems that were placed on the market prior to August 2, 2026. Although the regulation is by a European authority, U.S. companies operating high-risk AI systems may be required to follow compliance measures.
+High-risk AI systems include those that are intended to be used for product safety measures as described in
+Annex I
+of the EU AI Act or among the specific use-case categories listed in
+Annex III
+. The use cases that fall under the high-risk system classification include AI systems used for biometric identification, critical infrastructure, education, employment, access to essential services including credit scoring and insurance, law enforcement, migration and administration of justice.
+And yet, the European Parliament recently voted to delay key compliance deadlines for the EU AI Act, pushing the requirements for high-risk AI systems to December 2027 and further to August 2028 for sector-specific obligations. In part, the delay has been attributed to pressure from tech companies and the Trump Administration. However, to ensure the delay takes legal effect before the original August 2, 2026, deadline, a political agreement must also be reached in the Council of the European Union in the coming months, likely before June.

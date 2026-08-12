@@ -1,0 +1,54 @@
+% Place this in your Overleaf document. Requires \usepackage{booktabs} and \usepackage{multirow}
+\begin{table*}[t]
+\centering
+\caption{Coordination topologies compared across three PEFT-specialised expert agents (PEFT arm). Values are means over queries and repeats; $\pm$ is the 95\% confidence interval margin.}
+\label{tab:agent_workflows_eval}
+\small
+\begin{tabular}{lccc}
+\toprule
+\textbf{Metric} & \textbf{ALL (Sequential)} & \textbf{DAG (Converging)} & \textbf{PARALLEL} \\
+\midrule
+\multicolumn{4}{l}{\textit{Operational \& Latency Metrics}} \\
+\textbf{End-to-End Latency (s)} & 249.08 $\pm$ 20.10 & 246.77 $\pm$ 16.15 & 244.16 $\pm$ 18.76 \\
+\textbf{Backend Graph Latency (s)} & 248.81 $\pm$ 20.10 & 246.51 $\pm$ 16.15 & 243.90 $\pm$ 18.76 \\
+\textbf{Graph Execution Steps} & 20.0 $\pm$ 0.0 & 20.0 $\pm$ 0.0 & 20.0 $\pm$ 0.0 \\
+\textbf{Mean Step Latency (ms)} & 12440.5 $\pm$ 1005.0 & 12325.5 $\pm$ 807.4 & 12195.0 $\pm$ 937.8 \\
+\textbf{Generation Speed (words/s)} & 0.83 $\pm$ 0.05 & 0.84 $\pm$ 0.05 & 0.86 $\pm$ 0.05 \\
+\textbf{Prompt Tokens (measured)} & 8512 $\pm$ 151 & 8492 $\pm$ 150 & 8606 $\pm$ 165 \\
+\textbf{Completion Tokens (measured)} & 1636 $\pm$ 102 & 1600 $\pm$ 90 & 1692 $\pm$ 105 \\
+\textbf{Execution Cost (USD)} & \$0.0023 $\pm$ \$0.0001 & \$0.0022 $\pm$ \$0.0001 & \$0.0023 $\pm$ \$0.0001 \\
+\textbf{System Abstention Rate (\%)} & 0.0 $\pm$ 0.0 & 0.0 $\pm$ 0.0 & 0.0 $\pm$ 0.0 \\
+\textbf{Expert Abstention Rate (\%)} & 1.9 $\pm$ 1.6 & 1.5 $\pm$ 1.4 & 1.5 $\pm$ 1.4 \\
+\midrule
+\multicolumn{4}{l}{\textit{Text Quality \& NLG Reference-Matching (vs. Gold Standard)}} \\
+\textbf{BLEU-1 Score} & 0.2224 $\pm$ 0.0154 & 0.2209 $\pm$ 0.0157 & 0.2269 $\pm$ 0.0153 \\
+\textbf{BLEU-4 Score} & 0.0372 $\pm$ 0.0047 & 0.0388 $\pm$ 0.0049 & 0.0404 $\pm$ 0.0049 \\
+\textbf{ROUGE-1 F1-Score} & 0.3301 $\pm$ 0.0106 & 0.3276 $\pm$ 0.0098 & 0.3306 $\pm$ 0.0113 \\
+\textbf{ROUGE-2 F1-Score} & 0.0901 $\pm$ 0.0066 & 0.0898 $\pm$ 0.0066 & 0.0913 $\pm$ 0.0069 \\
+\textbf{ROUGE-L F1-Score} & 0.1688 $\pm$ 0.0053 & 0.1704 $\pm$ 0.0054 & 0.1683 $\pm$ 0.0059 \\
+\textbf{Word Jaccard Similarity} & 0.1789 $\pm$ 0.0062 & 0.1779 $\pm$ 0.0056 & 0.1794 $\pm$ 0.0069 \\
+\textbf{Character Jaccard Similarity} & 0.7752 $\pm$ 0.0145 & 0.7748 $\pm$ 0.0142 & 0.7728 $\pm$ 0.0125 \\
+\textbf{TF Cosine Similarity} & 0.6317 $\pm$ 0.0185 & 0.6257 $\pm$ 0.0180 & 0.6250 $\pm$ 0.0192 \\
+\textbf{Levenshtein Similarity} & 0.2792 $\pm$ 0.0047 & 0.2787 $\pm$ 0.0040 & 0.2807 $\pm$ 0.0043 \\
+\midrule
+\multicolumn{4}{l}{\textit{LLM Judge Quality Scopes}} \\
+\textbf{Judge Accuracy Score} & 2.11 $\pm$ 0.14 & 2.04 $\pm$ 0.14 & 2.02 $\pm$ 0.12 \\
+\textbf{Judge Completeness Score} & 1.74 $\pm$ 0.11 & 1.77 $\pm$ 0.10 & 1.71 $\pm$ 0.11 \\
+\textbf{Judge Groundedness Score} & 1.56 $\pm$ 0.12 & 1.50 $\pm$ 0.11 & 1.47 $\pm$ 0.11 \\
+\textbf{Judge Average Score} & 1.80 $\pm$ 0.10 & 1.77 $\pm$ 0.10 & 1.73 $\pm$ 0.09 \\
+\midrule
+\multicolumn{4}{l}{\textit{Document Retrieval Layer Performance}} \\
+\textbf{Retrieval Precision@5} & -- & -- & -- \\
+\textbf{Retrieval Recall@5} & -- & -- & -- \\
+\textbf{Retrieval MRR} & -- & -- & -- \\
+\midrule
+\multicolumn{4}{l}{\textit{Text Structural \& Domain-Specific Metrics}} \\
+\textbf{Word Count (Verbosity)} & 194.3 $\pm$ 9.6 & 193.9 $\pm$ 9.8 & 197.2 $\pm$ 8.8 \\
+\textbf{Sentence Count} & 11.6 $\pm$ 1.1 & 11.0 $\pm$ 1.0 & 11.3 $\pm$ 1.0 \\
+\textbf{Paragraph Count} & 5.4 $\pm$ 0.4 & 5.3 $\pm$ 0.4 & 5.3 $\pm$ 0.4 \\
+\textbf{Lexical Diversity (TTR)} & 0.6786 $\pm$ 0.0122 & 0.6785 $\pm$ 0.0149 & 0.6650 $\pm$ 0.0126 \\
+\textbf{Temporal References Count} & 2.6 $\pm$ 0.7 & 2.5 $\pm$ 0.6 & 2.3 $\pm$ 0.6 \\
+\textbf{Bullet Points Count} & 4.1 $\pm$ 0.8 & 3.7 $\pm$ 0.7 & 4.4 $\pm$ 0.8 \\
+\bottomrule
+\end{tabular}
+\end{table*}

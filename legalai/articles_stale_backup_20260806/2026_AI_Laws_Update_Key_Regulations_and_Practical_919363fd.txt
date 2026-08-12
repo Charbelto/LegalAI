@@ -1,0 +1,60 @@
+2026 AI Laws Update: Key Regulations and Practical Guidance
+Print
+PDF
+Share this page
+Insights
+February 5, 2026
+Overview
+This client alert provides a high-level overview of key AI laws enacted or taking effect in 2026.
+With President Trump’s December 2025 Executive Order signaling federal intent to consolidate AI oversight, new comprehensive governance frameworks in Colorado and California, and evolving international requirements under the EU AI Act, companies developing or deploying AI systems face a rapidly shifting compliance landscape.
+For ease of use, this alert is organized by topic, and the links below allow you to navigate directly to sections.
+National AI Regulation
+U.S. Executive Order on “Ensuring a National Policy Framework for AI”
+:
+On December 11, 2025, President Trump signed an Executive Order titled “Ensuring a National Policy Framework for Artificial Intelligence” (the “
+EO
+”). The EO signals an intent to consolidate AI oversight at the federal level, counter the expanding patchwork of state AI rules, and maintain U.S. global AI dominance by: (1) discouraging states’ authority to regulate AI through litigation, spending, and standard-setting levers; (2) targeting state regulatory action in areas such as algorithmic transparency, bias mitigation, and regulation of high-risk AI uses; and (3) promoting minimally burdensome national AI standards. Implementation of the EO is likely to face significant legal and political challenges. Notably, the EO maintains that federal efforts will not preempt state authority in areas such as child safety, AI infrastructure, and governmental AI procurement. The EO itself does not preempt, suspend, or invalidate current and enacted state AI laws and further federal action is required. Companies should continue efforts to comply with existing state laws until courts and agencies clarify the EO’s reach.
+International AI Regulations
+:
+Outside the U.S., many governments have released AI regulations, some of which will have global effect and applicability.
+For example, the European Union (the “
+EU
+”) has adopted binding legal frameworks that extend to non-EU based organizations, most notably the EU AI Act, which imposes significant obligations on high‑risk and general‑purpose AI models. These obligations will come into force over the next few years on a staggered basis, and include controls on data quality, transparency, human oversight, and monitoring discrimination. The EU Data Act adds  data‑sharing obligations. Additionally, under the GDPR’s Article 22, individuals, including job applicants and employees, already have the right to not be subject to fully automated decisions (e.g., hiring, promotions and performance reviews) that significantly affect them, unless specific legal safeguards are in place.
+State AI Regulation
+Comprehensive AI Governance
+:
+Several states have enacted or finalized broad AI governance statutes that impose affirmative risk management, documentation, and oversight obligations for certain high-impact AI systems, with enforcement beginning in late 2025 and 2026. While most startup companies will not meet statutory applicability thresholds, these laws are already shaping vendor contracting practices and downstream compliance expectations, particularly through AI-specific addenda and third-party risk allocation.
+Consumer AI Interactions
+:
+States have also begun targeting consumer-facing AI interactions (e.g., chatbots, AI companions, and algorithmic pricing based on consumer personal data) by requiring clear disclosures, safety protocols around high-risk use (e.g., self-harm or minors), and limits on use of personal data. Even for companies operating outside the most heavily regulated AI features, this regulatory trend may affect company choices regarding product design and contracting norms, including expectations for transparent AI labeling, crisis-response playbooks, and tighter representations and warranties around use of AI in consumer interactions.
+AI Content Transparency
+:
+States have begun to address AI content transparency by requiring developers, platforms, and advertisers to disclose when content is AI-generated, summarize AI training data, and display warning labels tied to AI‑mediated or “addictive” experiences, particularly for young users. Companies are expected to make conscientious design decisions around provenance tooling, on‑content AI labels, and risk‑oriented warnings.
+Automated Decision-Making Tools (ADMTs):
+States and cities are treating ADMTs, including resume screeners, interviewing tools, HR tools used managing and evaluating talent, and other tools that “substantially assist or replace” human discretion, as an early beachhead for AI regulation. Emerging laws and bills in jurisdictions such as New York City, Colorado, Illinois, and New York State layer bias‑audit, notice, recordkeeping, and human‑review requirements onto these tools, and often require companies to allocate responsibility for compliance and algorithmic performance in their contracts with technology vendors.
+Anti-Discrimination and Civil Rights
+:
+Civil rights regulators are making clear that automated systems do not sit outside traditional anti‑discrimination frameworks. Federal and state agencies, such as the EEOC, FTC, and state civil rights departments, have emphasized that existing employment, credit, housing, disability, and consumer protection laws apply equally to AI‑mediated decisions, and that organizations can face liability for disparate impact, failure to accommodate, or unfair practices even when they rely on third‑party models.
+U.S. Executive Order on “Ensuring a National Policy Framework for AI
+On December 11, 2025, the President issued an EO titled
+“Ensuring a National Policy Framework for Artificial Intelligence”
+. The EO broadly calls for a national policy framework on AI and tasks  U.S. agencies “to sustain and enhance U.S. global AI dominance through a minimally burdensome national policy framework for AI” by preempting state regulation of AI through federal lawsuits and withholding federal funds. While the EO does not immediately overrule existing state laws, it introduces mechanisms that could narrow or challenge the expanding patchwork of state-level AI obligations. Key takeaways include:
+Streamlining AI governance at the federal level.
+The EO aims to reduce multi-state compliance burdens that fall heavily on startups with lean compliance functions. Federal agencies are directed to evaluate whether uniform federal standards should replace or supersede differing state requirements.
+Federal oversight of state AI laws and federal funding as leverage.
+A new litigation task force may challenge state regulations that federal policymakers view as “onerous,” burdensome, or otherwise obstructing innovation. The EO directs agencies to evaluate whether federal grants may be conditioned on states aligning with the federal AI framework. While this does not impose direct compliance obligations on startups, it could materially change the regulatory landscape in innovation-heavy states.
+Companies must closely monitor further developments.
+The EO is likely to face substantial implementation and legal challenges, further complicating an already fragmented regulatory landscape that also includes evolving international AI regimes, particularly in the EU and UK. Companies should closely monitor agency actions implementing the EO, anticipated state resistance, and additional federal agency efforts to advance a “minimally burdensome national policy framework for AI.”
+The EO directs several agencies to establish enforcement procedures, as summarized in the table below:
+EO Mandate
+Details
+Potential Impact
+Evaluation of State AI Laws
+Within 30 days of the EO
+, the Department of Justice and Attorney General (“AG”) must establish an “AI Litigation Task Force” to identify and challenge state AI laws that the U.S. administration deems unconstitutional, unlawful, or preempted by federal policies and regulations. The Task Force is instructed to consult with senior White House advisors, including the Special Advisor for AI and Crypto, the Assistant to the President for Science and Technology, and the Assistant to the President for Economic Policy, to determine which state laws should be subject to legal challenge.
+Within 90 days of the EO
+, the Secretary of Commerce, Special Advisor for AI and Crypto, Assistant to the President for Economic Policy, the Assistant to the President for Science and Technology, and Assistant to the President and Counsel to the President must identify state laws that: (1) are “onerous” and conflict with “minimally burdensome” federal policy and should be referred to the AI Litigation Task Force for potential legal challenge, and (2) promote AI innovation consistent with the aim of the EO (together, the “Evaluation”). In particular, the Evaluation must identify state laws that require disclosure or reporting compliance obligations that infringe about First Amendment rights (e.g., laws that “require AI models to alter their truthful outputs” or that otherwise “compel AI developers or deployers to disclose or report information” in a manner that would violate constitutional rights).
+Action by the AI Litigation Task Force may modify, limit, or invalidate existing state AI regulations. For example, the EO specifically cites the Colorado AI Act as a state law that bans algorithmic discrimination in a manner that compels AI models to produce false outputs. The Colorado AI Act will likely be subject to review by the AI Litigation Task Force this year.
+Companies must closely monitor any challenges of state AI laws by the AI Litigation Task Force. However, for the time being, companies should continue compliance efforts to meet existing state AI regulations.
+Federal AI Legislation and Preemption of State AI Laws
+Within 90 days after publication of the Evaluation, the Federal Communications Commission (“FCC”) must begin a process to determine whe

@@ -1,0 +1,14 @@
+The most consequential of the EU AI Act updates 2026 is also the most misread. In May 2026, EU institutions reached a political agreement on the Digital Omnibus, pushing the headline high-risk compliance deadline out by sixteen months. A lot of US boards heard “delay” and quietly moved AI governance back down the priority list. That is the wrong read, and it is an expensive one.
+Here is the part the relief headlines buried:
+the deadlines that moved are not the deadlines most US companies were actually going to be measured against on August 2, 2026.
+The obligations that land first – general-purpose AI (GPAI) enforcement and Article 50 transparency – did not move at all. So the calendar got more generous in one place and stayed exactly as binding in another. Treating the whole thing as a reprieve is how a US enterprise walks into August 2026 out of compliance on the rules it assumed were postponed.
+This is a US-market briefing on what changed, what didn’t, and the governance sequence that separates the two.
+The Two-Clock Reality of the 2026 Reset
+Which Clock Are You On?
+The Two-Clock Problem
+The Distinction
+The EU AI Act now runs on two clocks, and US companies keep reading the wrong one.
+Clock one governs high-risk AI systems – the obligations the Digital Omnibus deferred. Clock two governs GPAI models and transparency duties under Article 50, which arrive on August 2, 2026 regardless of the Omnibus. We call this the
+two-clock problem
+because nearly every compliance plan we review at EWSolutions is calibrated to clock one while the business’s actual August exposure sits on clock two.
+The distinction matters because the two clocks demand different work. Clock one is a conformity-assessment and product-documentation problem that you now have until late 2027 to solve. Clock two is a transparency, model-documentation, and provenance problem that is due in weeks, not years.

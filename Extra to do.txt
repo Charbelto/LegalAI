@@ -1,0 +1,78 @@
+Interpretation for each graph
+
+What is the meaning of this
+
+and no repeated interpretation and something about this graph that the tables dont tell us about it
+
+No overlap between this and the table
+
+Details about each plot
+
+
+and I should interpret exactly what is the meaning of each graph
+
+
+Compare sequential single and parallel not only for computational time, we compared all of this structure 
+
+
+Conenct the latency graph with the table above and the results show that? If we spend more time.
+
+For some problems a single agent is better than parallel agent 
+
+Sometimes we dont need multiagent one single agent can cover everything for us
+
+Otherwise if we want to use a multiagent we should have a multitask and second we should have a good structure between agents
+
+A single agents is sometimes better performance
+
+Check papers maybe someone already released the same thing that single agent is better
+
+Add some interpretation for each plot
+
+highlight the resilt and contribution and what is the final decision
+
+
+
+
+Change title to be aligned with (comparing single agents with multiagents)
+
+Start introduction what is multiagebt what is agent
+
+sometimes we dont need multiagent because of blabla vla and in this paper we want to show that a single agent sometimes has a better performance that multiagent
+
+and then methodoligal 2 or 3 page whwat is multiagent what is the planner 
+
+Maybe try with bigger models
+
+For computational times check what the university provides
+
+
+Check for HPC access with university
+
+
+
+
+Check for this contribution
+Structuring the multiagent in a nice way to get better result
+A model that is sequential or parallel better than single
+
+So maybe check multiple structures 
+
+Return DAG version
+
+One of them is better than a single one
+
+Structure of agent affect performance and computation time and so on
+
+
+
+
+make it broader not just Legal
+
+Structure of multiagent different structure of multiagent for title
+
+what is a multiagent 
+
+Literature review there is nothing about how to structure different agents (check for a paper)
+
+

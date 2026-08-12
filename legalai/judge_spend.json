@@ -1,0 +1,13 @@
+{
+  "total_usd": 0.526337,
+  "calls": 1173,
+  "prompt_tokens": 1038628,
+  "completion_tokens": 1360524,
+  "last_call_usd": 0.000119,
+  "provider": "deepseek",
+  "model": "deepseek-v4-flash",
+  "prices_per_m": {
+    "in": 0.14,
+    "out": 0.28
+  }
+}

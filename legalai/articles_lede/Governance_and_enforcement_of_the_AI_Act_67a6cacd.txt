@@ -1,0 +1,31 @@
+The AI Act's governance architecture is an essential pillar of its enforcement.
+The
+AI Office
+, established within the European Commission,
+and the national market surveillance authorities are responsible for implementing, supervising and
+enforcing the AI Act
+.
+The AI Office is part of a multistakeholder governance that ensures a balanced approach to the implementation of the
+AI Act
+. This
+governance is steered by 3 advisory bodies:
+the
+European Artificial Intelligence Board
+, composed of representatives from the EU Member States
+the
+Scientific Panel
+, composed of independent experts in the field of AI
+the
+Advisory Forum
+, representing a diverse selection of stakeholders, both commercial and non-commercial
+The July 2026
+action plan on Cybersecurity and AI
+sets out a coordinated approach to help Member States, businesses and public authorities address cybersecurity and resilience challenges posed by the most advanced AI models. The Commission will launch a call to increase EU evaluation capacity of AI models, before they are placed in the EU market. Expected to be operational by 2027, this will strengthen third-party assessment of AI capabilities and risks and contribute to the regulatory function of the AI Office.
+National competent authorities
+The Commission and the AI Office work closely with national competent authorities, who supervise the implementation and application of the AI Act at national level.
+National competent authorities are the following authorities:
+Market surveillance authorities
+supervise and enforce compliance with the rules for AI systems, including prohibitions and rules for high-risk AI.
+Notifying authorities designate and supervise notified bodies, which are independent bodies that carry out pre-market conformity assessment.
+Each Member State should have designated and empowered national competent authorities until 2 August 2025
+.

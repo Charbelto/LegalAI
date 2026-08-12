@@ -1,0 +1,82 @@
+﻿real expert outputs available: {'legal': 99, 'news': 89, 'general_qa': 56} words
+[RetrievalAgent] Connected to ChromaDB at chroma_storage
+[RetrievalAgent] Retrieving documents for: What is a high-risk AI system under the EU AI Act?...
+[RetrievalAgent] Dense vector search failed: Failed to connect to Ollama. Please check that Ollama is downloaded, running and accessible. https://ollama.com/download
+[RetrievalAgent] Retrieved and reranked 5 documents using hybrid search.
+[local_models] loading role=general_qa base=ibm-granite/granite-3.1-2b-instruct 4bit=True adapter=yes
+python.exe : Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher 
+rate limits and faster downloads.
+At line:1 char:462
++ ... NISTIC="0"; & .\.venv\Scripts\python.exe -u probe_aggregator.py > pro ...
++                 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (Warning: You ar...ster downloads.:String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+ 
+W0804 15:50:35.969000 10672 .venv\Lib\site-packages\torch\utils\flop_counter.py:29] triton not found; flop counting 
+will not work for triton kernels
+
+Loading weights:   0%|          | 0/362 [00:00<?, ?it/s]
+Loading weights:   0%|          | 1/362 [00:00<01:42,  3.53it/s]
+Loading weights:   1%|          | 3/362 [00:00<00:47,  7.59it/s]
+Loading weights:   3%|▎         | 12/362 [00:00<00:12, 28.56it/s]
+Loading weights:   6%|▌         | 21/362 [00:00<00:08, 41.58it/s]
+Loading weights:   8%|▊         | 30/362 [00:00<00:06, 49.80it/s]
+Loading weights:  11%|█         | 39/362 [00:00<00:05, 57.13it/s]
+Loading weights:  13%|█▎        | 48/362 [00:01<00:05, 61.22it/s]
+Loading weights:  15%|█▌        | 55/362 [00:01<00:04, 62.67it/s]
+Loading weights:  17%|█▋        | 62/362 [00:01<00:04, 60.62it/s]
+Loading weights:  19%|█▉        | 69/362 [00:01<00:04, 59.74it/s]
+Loading weights:  21%|██▏       | 77/362 [00:01<00:04, 61.14it/s]
+Loading weights:  24%|██▍       | 86/362 [00:01<00:04, 64.34it/s]
+Loading weights:  26%|██▌       | 94/362 [00:01<00:03, 67.19it/s]
+Loading weights:  28%|██▊       | 102/362 [00:01<00:03, 69.26it/s]
+Loading weights:  30%|███       | 109/362 [00:02<00:03, 68.66it/s]
+Loading weights:  32%|███▏      | 116/362 [00:02<00:03, 64.98it/s]
+Loading weights:  34%|███▍      | 123/362 [00:02<00:03, 61.99it/s]
+Loading weights:  36%|███▌      | 130/362 [00:02<00:03, 62.80it/s]
+Loading weights:  38%|███▊      | 138/362 [00:02<00:03, 66.93it/s]
+Loading weights:  41%|████      | 147/362 [00:02<00:03, 68.62it/s]
+Loading weights:  43%|████▎     | 156/362 [00:02<00:02, 71.16it/s]
+Loading weights:  46%|████▌     | 165/362 [00:02<00:02, 72.54it/s]
+Loading weights:  48%|████▊     | 174/362 [00:02<00:02, 71.84it/s]
+Loading weights:  51%|█████     | 183/362 [00:03<00:02, 72.52it/s]
+Loading weights:  53%|█████▎    | 192/362 [00:03<00:02, 74.13it/s]
+Loading weights:  56%|█████▌    | 201/362 [00:03<00:02, 72.56it/s]
+Loading weights:  58%|█████▊    | 210/362 [00:03<00:02, 73.79it/s]
+Loading weights:  60%|██████    | 219/362 [00:03<00:01, 74.47it/s]
+Loading weights:  63%|██████▎   | 228/362 [00:03<00:01, 75.54it/s]
+Loading weights:  65%|██████▌   | 237/362 [00:03<00:01, 76.35it/s]
+Loading weights:  68%|██████▊   | 246/362 [00:03<00:01, 74.11it/s]
+Loading weights:  70%|███████   | 254/362 [00:04<00:01, 74.92it/s]
+Loading weights:  72%|███████▏  | 262/362 [00:04<00:01, 71.76it/s]
+Loading weights:  75%|███████▍  | 270/362 [00:04<00:01, 71.65it/s]
+Loading weights:  77%|███████▋  | 278/362 [00:04<00:01, 72.21it/s]
+Loading weights:  79%|███████▉  | 286/362 [00:04<00:01, 72.56it/s]
+Loading weights:  81%|████████  | 294/362 [00:04<00:00, 68.20it/s]
+Loading weights:  83%|████████▎ | 301/362 [00:04<00:00, 67.18it/s]
+Loading weights:  86%|████████▌ | 310/362 [00:04<00:00, 67.92it/s]
+Loading weights:  88%|████████▊ | 318/362 [00:04<00:00, 70.84it/s]
+Loading weights:  90%|█████████ | 326/362 [00:05<00:00, 73.10it/s]
+Loading weights:  92%|█████████▏| 334/362 [00:05<00:00, 69.69it/s]
+Loading weights:  94%|█████████▍| 342/362 [00:05<00:00, 69.80it/s]
+Loading weights:  97%|█████████▋| 350/362 [00:05<00:00, 70.10it/s]
+Loading weights:  99%|█████████▉| 358/362 [00:05<00:00, 70.49it/s]
+Loading weights: 100%|██████████| 362/362 [00:05<00:00, 65.38it/s]
+[local_models]   loaded role=general_qa in 19.4s
+aggregator model: ibm-granite/granite-3.1-2b-instruct  adapter=C:\Users\Charbel\Desktop\Legal AI\legalai\adapters\general_qa
+[transformers] Ignoring clean_up_tokenization_spaces=True for BPE tokenizer TokenizersBackend. The 
+clean_up_tokenization post-processing step is designed for WordPiece tokenizers and is destructive for BPE (it strips 
+spaces before punctuation). Set clean_up_tokenization_spaces=False to suppress this warning, or set 
+clean_up_tokenization_spaces_for_bpe_even_though_it_will_corrupt_output=True to force cleanup anyway.
+
+=== 1 expert (legal) | prompt 1546 tokens ===
+    out: 431 words, 1024 tokens, hit_cap=True, 159s
+    Regulations available since July Sept Nationwide disclosure provisions including French Government public records subsets linked to local district court databases distinctive guidelines enacted later confirmed during Chief Justices' Summit January via multistate accord demanding companies transmit verified electronic info daily compulsory markings reflect status valid till Dec 1924 whilst maintaining exact certificants capped unimpeded barracks impressions pact foreboding leviathans thou jurisdi
+
+=== 2 experts (legal+news) | prompt 1690 tokens ===
+    out: 398 words, 1024 tokens, hit_cap=True, 165s
+    Given your description summarizing text excerpts across distinct references reflective individual inputs integrating verified discrepancies outlined below per postulate encompass criteria elucidated prior consideration mandate quantified societal impact contemplating forefront exploitation core facets align counterweigh caution glean remedies legitimate jurisdiction substance obfuscation mitigator detracting litter misidentifying narrowly bask hasty wealth unscrupulous quintessentially foxfossar
+
+=== 3 experts (all) | prompt 2102 tokens ===
+    out: 621 words, 1024 tokens, hit_cap=True, 165s
+    Based solely your search protocol results above & mapped criteria below reflect quantifiable outcomes potentially eligible distinct low vs medium two subfield categories encompass entire mandate proclivities implied per nuanced definitions presented narrow strict perspectives demonstrably achieves dual status exemption meeting federal standard compliance versus merely designers intent verified effective transparent execution via international experts respectively corroborate certificant validate

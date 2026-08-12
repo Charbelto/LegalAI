@@ -1,0 +1,38 @@
+Home
+Artificial Intelligence
+EU AI Act 2026: Penalties, Risk Tiers & New Deadlines
+Artificial Intelligence
+Bez kategorii
+Cybersecurity
+Guides
+Technology
+EU AI Act 2026: Penalties, Risk Tiers & New Deadlines
+By
+Ignacy
+2026-04-02
+9
+16926
+Share
+Facebook
+X
+Pinterest
+WhatsApp
+Last updated: June 2026
+The EU AI Act (Regulation 2024/1689) is the world’s first comprehensive AI law. It classifies AI systems into four risk tiers — unacceptable, high, limited, and minimal — with fines up to €35 million or 7% of global annual turnover under Article 99. As of June 2026, prohibited practices (since 2 February 2025) and GPAI model rules (since 2 August 2025) are already enforceable. The biggest 2026 change: under the Digital Omnibus — a provisional agreement reached on 7 May 2026 and pending formal adoption — the high-risk AI deadline for Annex III systems is deferred from 2 August 2026 to 2 December 2027.
+EU AI Act
+AI Regulation
+Risk-Based Framework
+GPAI
+Compliance 2026
+If you build, deploy, or even procure AI systems that touch anyone in the European Union, the EU AI Act applies to you — regardless of where your company is headquartered. This is not a set of guidelines or a voluntary code of conduct. It is a binding regulation with extraterritorial scope, conformity assessments, and penalties that make GDPR fines look modest.
+This article breaks down the full regulation as of June 2026: what’s already in force, the penalty structure, and how the Digital Omnibus has reshaped the high-risk timeline (provisional agreement of 7 May 2026, with formal adoption expected mid-2026). I’ll include practical code examples for developers building with
+large language models
+,
+RAG pipelines
+, and
+AI agents
+— because understanding regulation at the abstract level is not enough when you’re shipping production code.
+Table of Contents
+Toggle
+What Is the EU AI Act and Why Does It Matter?
+The EU AI Act (Regulation (EU) 2024/1689) entered into force on August 1, 2024.

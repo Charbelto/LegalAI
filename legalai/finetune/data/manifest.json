@@ -1,0 +1,129 @@
+{
+  "seed": 20260803,
+  "max_examples_per_domain": 1500,
+  "val_fraction": 0.05,
+  "domains": {
+    "legal": {
+      "source": {
+        "hf_id": "nguha/legalbench",
+        "tasks_available": 162,
+        "tasks_used": 113,
+        "tasks_failed": 0,
+        "tasks_failed_detail": [],
+        "sampling": "round-robin across tasks, test split",
+        "answer_format": "irac",
+        "mean_raw_answer_chars": 4.0
+      },
+      "dedupe": {
+        "duplicates_removed": 0
+      },
+      "train_examples": 1425,
+      "val_examples": 75,
+      "train_file": "legal_train.jsonl",
+      "val_file": "legal_val.jsonl",
+      "mean_output_chars": 436.3,
+      "token_lengths": {
+        "tokenizer": "unsloth/Llama-3.2-3B-Instruct",
+        "train_seq_tokens": 1024,
+        "median_tokens": 299,
+        "p95_tokens": 641,
+        "max_tokens": 914,
+        "examples_over_limit": 0,
+        "pct_over_limit": 0.0
+      }
+    },
+    "news": {
+      "source": {
+        "hf_id": "lucadiliello/newsqa",
+        "rows_available": 74160,
+        "columns": [
+          "answers",
+          "context",
+          "key",
+          "labels",
+          "question"
+        ],
+        "answer_format": "grounded",
+        "mean_raw_answer_chars": 24.5,
+        "note": "preprocessed mirror of Trischler et al. (2017) NewsQA"
+      },
+      "dedupe": {
+        "duplicates_removed": 0
+      },
+      "train_examples": 1425,
+      "val_examples": 75,
+      "train_file": "news_train.jsonl",
+      "val_file": "news_val.jsonl",
+      "mean_output_chars": 217.2,
+      "token_lengths": {
+        "tokenizer": "Qwen/Qwen2.5-3B-Instruct",
+        "train_seq_tokens": 1024,
+        "median_tokens": 642,
+        "p95_tokens": 724,
+        "max_tokens": 818,
+        "examples_over_limit": 0,
+        "pct_over_limit": 0.0
+      }
+    },
+    "general": {
+      "source": {
+        "hf_id": "databricks/databricks-dolly-15k",
+        "rows_available": 15011,
+        "license": "CC BY-SA 3.0",
+        "context_fraction_requested": 0.7,
+        "context_bearing_available": 4465,
+        "context_bearing_selected": 1050,
+        "categories": {
+          "closed_qa": 432,
+          "information_extraction": 348,
+          "summarization": 270,
+          "open_qa": 153,
+          "classification": 96,
+          "general_qa": 88,
+          "brainstorming": 85,
+          "creative_writing": 28
+        }
+      },
+      "dedupe": {
+        "duplicates_removed": 3
+      },
+      "train_examples": 1423,
+      "val_examples": 74,
+      "train_file": "general_train.jsonl",
+      "val_file": "general_val.jsonl",
+      "mean_output_chars": 339.4,
+      "token_lengths": {
+        "tokenizer": "ibm-granite/granite-3.1-2b-instruct",
+        "train_seq_tokens": 1024,
+        "median_tokens": 301,
+        "p95_tokens": 907,
+        "max_tokens": 6815,
+        "examples_over_limit": 35,
+        "pct_over_limit": 2.5
+      }
+    }
+  },
+  "cross_domain_overlap": {
+    "news_dropped_exact_match": 0,
+    "news_dropped_near_duplicate": 0,
+    "jaccard_threshold": 0.6,
+    "news_kept": 1500
+  },
+  "target_length_check": {
+    "min_mean_output_chars": 40,
+    "domains": {
+      "legal": {
+        "mean_output_chars": 436.3,
+        "ok": true
+      },
+      "news": {
+        "mean_output_chars": 217.2,
+        "ok": true
+      },
+      "general": {
+        "mean_output_chars": 339.4,
+        "ok": true
+      }
+    }
+  }
+}

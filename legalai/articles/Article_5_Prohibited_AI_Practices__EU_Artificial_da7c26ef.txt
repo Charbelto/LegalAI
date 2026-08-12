@@ -1,0 +1,113 @@
+BETA🔔 New: Try thenew AI Act Explorer, rebuilt from the ground up for 2026.Read the official text in all 24 EU languages, including the 'Code of Practice' and other documents. Compare languages side-by-open, open items in a 'side peek' for easy reference, and share URLs direct to an individual paragraph. Custom AI chatbot to answer your questions(coming soon).Go to the new AI Act Explorer →
+Section 1: Classification of AI Systems as High-Risk
+Article 6: Classification Rules for High-Risk AI Systems
+Article 13: Transparency and Provision of Information to Deployers
+Section 3: Obligations of Providers and Deployers of High-Risk AI Systems and Other Parties
+Article 16: Obligations of Providers of High-Risk AI Systems
+Article 20: Corrective Actions and Duty of Information
+Article 22: Authorised Representatives of Providers of High-Risk AI Systems
+Article 25: Responsibilities Along the AI Value Chain
+Article 26: Obligations of Deployers of High-Risk AI Systems
+Article 27: Fundamental Rights Impact Assessment for High-Risk AI Systems
+Section 4: Notifying Authorities and Notified Bodies
+Article 29: Application of a Conformity Assessment Body for Notification
+Article 31: Requirements Relating to Notified Bodies
+Article 32: Presumption of Conformity with Requirements Relating to Notified Bodies
+Article 33: Subsidiaries of Notified Bodies and Subcontracting
+Article 34: Operational Obligations of Notified Bodies
+Article 35: Identification Numbers and Lists of Notified Bodies
+Article 37: Challenge to the Competence of Notified Bodies
+Article 39: Conformity Assessment Bodies of Third Countries
+Section 5: Standards, Conformity Assessment, Certificates, Registration
+Article 40: Harmonised Standards and Standardisation Deliverables
+Article 42: Presumption of Conformity with Certain Requirements
+Article 45: Information Obligations of Notified Bodies
+Article 46: Derogation from Conformity Assessment Procedure
+Chapter IV: Transparency Obligations for Providers and Deployers of Certain AI Systems
+Article 50: Transparency Obligations for Providers and Deployers of Certain AI Systems
+Article 51: Classification of General-Purpose AI Models as General-Purpose AI Models with Systemic Risk
+Section 2: Obligations for Providers of General-Purpose AI Models
+Article 53: Obligations for Providers of General-Purpose AI Models
+Article 54: Authorised Representatives of Providers of General-Purpose AI Models
+Section 3: Obligations of Providers of General-Purpose AI Models with Systemic Risk
+Article 55: Obligations for Providers of General-Purpose AI Models with Systemic Risk
+Article 58: Detailed Arrangements for, and Functioning of, AI Regulatory Sandboxes
+Article 59: Further Processing of Personal Data for Developing Certain AI Systems in the Public Interest in the AI Regulatory Sandbox
+Article 60: Testing of High-Risk AI Systems in Real World Conditions Outside AI Regulatory Sandboxes
+Article 61: Informed Consent to Participate in Testing in Real World Conditions Outside AI Regulatory Sandboxes
+Article 62: Measures for Providers and Deployers, in Particular SMEs, Including Start-Ups
+Article 65: Establishment and Structure of the European Artificial Intelligence Board
+Article 68: Scientific Panel of Independent Experts
+Article 69: Access to the Pool of Experts by the Member States
+Article 70: Designation of National Competent Authorities and Single Point of Contact
+Article 71: EU Database for High-Risk AI Systems Listed in Annex III
+Chapter IX: Post-Market Monitoring, Information Sharing and Market Surveillance
+Article 72: Post-Market Monitoring by Providers and Post-Market Monitoring Plan for High-Risk AI Systems
+Section 2: Sharing of Information on Serious Incidents
+Article 74: Market Surveillance and Control of AI Systems in the Union Market
+Article 75: Mutual Assistance, Market Surveillance and Control of General-Purpose AI Systems
+Article 76: Supervision of Testing in Real World Conditions by Market Surveillance Authorities
+Article 77: Powers of Authorities Protecting Fundamental Rights
+Article 79: Procedure at National Level for Dealing with AI Systems Presenting a Risk
+Article 80: Procedure for Dealing with AI Systems Classified by the Provider as Non-High-Risk in Application of Annex III
+Article 82: Compliant AI Systems Which Present a Risk
+Article 85: Right to Lodge a Complaint with a Market Surveillance Authority
+Article 86: Right to Explanation of Individual Decision-Making
+Article 87: Reporting of Infringements and Protection of Reporting Persons
+Section 5: Supervision, Investigation, Enforcement and Monitoring in Respect of Providers of General-Purpose AI Models
+Article 88: Enforcement of the Obligations of Providers of General-Purpose AI Models
+Article 90: Alerts of Systemic Risks by the Scientific Panel
+Article 91: Power to Request Documentation and Information
+Article 94: Procedural Rights of Economic Operators of the General-Purpose AI Model
+Article 95: Codes of Conduct for Voluntary Application of Specific Requirements
+Article 96: Guidelines from the Commission on the Implementation of this Regulation
+Chapter XI:
+Delegation of Power and Committee Procedure
+Article 100: Administrative Fines on Union Institutions, Bodies, Offices and Agencies
+Article 101: Fines for Providers of General-Purpose AI Models
+Article 102: Amendment to Regulation (EC) No 300/2008
+Article 103: Amendment to Regulation (EU) No 167/2013
+Article 104: Amendment to Regulation (EU) No 168/2013
+Article 108: Amendments to Regulation (EU) 2018/1139
+Article 109: Amendment to Regulation (EU) 2019/2144
+Article 111: AI Systems Already Placed on the Market or put into Service and General-Purpose AI Models Already Placed on the Marked [sic]
+123456789101112131415161718192021222324252627282930313233343536373839404142434445464748495051525354555657585960616263646566676869707172737475767778798081828384858687888990919293949596979899100101102103104105106107108109110111112113114115116117118119120121122123124125126127128129130131132133134135136137138139140141142143144145146147148149150151152153154155156157158159160161162163164165166167168169170171172173174175176177178179180
+Annex II: List of Criminal Offences Referred to in Article 5(1), First Subparagraph, Point (h)(iii)
+Annex III: High-Risk AI Systems Referred to in Article 6(2)
+Annex IV: Technical Documentation Referred to in Article 11(1)
+Annex VI: Conformity Assessment Procedure Based on Internal Control
+Annex VII: Conformity Based on Assessment of the Quality Management System and an Assessment of the Technical Documentation
+Annex VIII: Information to be Submitted upon the Registration of High-Risk AI Systems in Accordance with Article 49
+Annex IX: Information to be Submitted upon the Registration of High-Risk AI Systems Listed in Annex III in Relation to Testing in Real World Conditions in Accordance with Article 60
+Annex X: Union Legislative Acts on Large-Scale IT Systems in the Area of Freedom, Security and Justice
+Annex XI: Technical Documentation Referred to in Article 53(1), Point (a) - Technical Documentation for Providers of General-Purpose AI Models
+Annex XII: Transparency Information Referred to in Article 53(1), Point (b) - Technical Documentation for Providers of General-Purpose AI Models to Downstream Providers that Integrate the Model into Their AI System
+Annex XIII: Criteria for the Designation of General-Purpose AI models with Systemic Risk Referred to in Article 51
+The EU AI Act prohibits certain uses of artificial intelligence (AI). These include AI systems that manipulate people's decisions or exploit their vulnerabilities, systems that evaluate or classify people based on their social behavior or personal traits, and systems that predict a person's risk of committing a crime. The Act also bans AI systems that scrape facial images from the internet or CCTV footage, infer emotions in the workplace or educational institutions, and categorize people based on their biometric data. However, some exceptions are made for law enforcement purposes, such as searching for missing persons or preventing terrorist attacks.
+The EU AI Act prohibits certain uses of artificial intelligence (AI). These include AI systems that manipulate people's decisions or exploit their vulnerabilities, systems that evaluate or classify people based on their social behavior or personal traits, and systems that predict a person's risk of committing a crime. The Act also bans AI systems that scrape facial images from the internet or CCTV footage, infer emotions in the workplace or educational institutions, and categorize people based on their biometric data. However, some exceptions are made for law enforcement purposes, such as searching for missing persons or preventing terrorist attacks.
+NOTE:This translation is a machine-generated translation. It isnotthe official translation provided by the European Parliament, which can befound here.
+(a) the placing on the market, the putting into service or the use of an AI system that deploys subliminal techniques beyond a person’s consciousness or purposefully manipulative or deceptive techniques, with the objective, or the effect of materially distorting the behaviour of a person or a group of persons by appreciably impairing their ability to make an informed decision, thereby causing them to take a decision that they would not have otherwise taken in a manner that causes or is reasonably likely to cause that person, another person or group of persons significant harm;Related:Recital 29
+(b) the placing on the market, the putting into service or the use of an AI system that exploits any of the vulnerabilities of a natural person or a specific group of persons due to their age, disability or a specific social or economic situation, with the objective, or the effect, of materially distorting the behaviour of that person or a person belonging to that group in a manner that causes or is reasonably likely to cause that person or another person significant harm;Related:Recital 29
+(c) the placing on the market, the putting into service or the use of AI systems for the evaluation or classification of natural persons or groups of persons over a certain period of time based on their social behaviour or known, inferred or predicted personal or personality characteristics, with the social score leading to either or both of the following:
+(i) detrimental or unfavourable treatment of certain natural persons or groups of persons in social contexts that are unrelated to the contexts in which the data was originally generated or collected;
+(ii) detrimental or unfavourable treatment of certain natural persons or groups of persons that is unjustified or disproportionate to their social behaviour or its gravity;
+(d) the placing on the market, the putting into service for this specific purpose, or the use of an AI system for making risk assessments of natural persons in order to assess or predict the risk of a natural person committing a criminal offence, based solely on the profiling of a natural person or on assessing their personality traits and characteristics; this prohibition shall not apply to AI systems used to support the human assessment of the involvement of a person in a criminal activity, which is already based on objective and verifiable facts directly linked to a criminal activity;Related:Recital 42
+(e) the placing on the market, the putting into service for this specific purpose, or the use of AI systems that create or expand facial recognition databases through the untargeted scraping of facial images from the internet or CCTV footage;Related:Recital 43
+(f) the placing on the market, the putting into service for this specific purpose, or the use of AI systems to infer emotions of a natural person in the areas of workplace and education institutions, except where the use of the AI system is intended to be put in place or into the market for medical or safety reasons;Related:Recital 44
+(g) the placing on the market, the putting into service for this specific purpose, or the use of biometric categorisation systems that categorise individually natural persons based on their biometric data to deduce or infer their race, political opinions, trade union membership, religious or philosophical beliefs, sex life or sexual orientation; this prohibition does not cover any labelling or filtering of lawfully acquired biometric datasets, such as images, based on biometric data or categorizing of biometric data in the area of law enforcement;Related:Recital 30
+(h) the use of ‘real-time’ remote biometric identification systems in publicly accessible spaces for the purposes of law enforcement, unless and in so far as such use is strictly necessary for one of the following objectives:
+(i) the targeted search for specific victims of abduction, trafficking in human beings or sexual exploitation of human beings, as well as the search for missing persons;
+(ii) the prevention of a specific, substantial and imminent threat to the life or physical safety of natural persons or a genuine and present or genuine and foreseeable threat of a terrorist attack;
+(iii) the localisation or identification of a person suspected of having committed a criminal offence, for the purpose of conducting a criminal investigation or prosecution or executing a criminal penalty for offences referred to inAnnex IIand punishable in the Member State concerned by a custodial sentence or a detention order for a maximum period of at least four years. Point (h) of the first subparagraph is without prejudice to Article 9 of Regulation (EU) 2016/679 for the processing of biometric data for purposes other than law enforcement.
+2. The use of ‘real-time’ remote biometric identification systems in publicly accessible spaces for the purposes of law enforcement for any of the objectives referred to in paragraph 1, first subparagraph, point (h), shall be deployed for the purposes set out in that point only to confirm the identity of the specifically targeted individual, and it shall take into account the following elements:
+(a) the nature of the situation giving rise to the possible use, in particular the seriousness, probability and scale of the harm that would be caused if the system were not used;
+(b) the consequences of the use of the system for the rights and freedoms of all persons concerned, in particular the seriousness, probability and scale of those consequences. In addition, the use of ‘real-time’ remote biometric identification systems in publicly accessible spaces for the purposes of law enforcement for any of the objectives referred to in paragraph 1, first subparagraph, point (h), of this Article shall comply with necessary and proportionate safeguards and conditions in relation to the use in accordance with the national law authorising the use thereof, in particular as regards the temporal, geographic and personal limitations. The use of the ‘real-time’ remote biometric identification system in publicly accessible spaces shall be authorised only if the law enforcement authority has completed a fundamental rights impact assessment as provided for inArticle 27and has registered the system in the EU database according toArticle 49. However, in duly justified cases of urgency, the use of such systems may be commenced without the registration in the EU database, provided that such registration is completed without undue delay.
+3. For the purposes of paragraph 1, first subparagraph, point (h) and paragraph 2, each use for the purposes of law enforcement of a ‘real-time’ remote biometric identification system in publicly accessible spaces shall be subject to a prior authorisation granted by a judicial authority or an independent administrative authority whose decision is binding of the Member State in which the use is to take place, issued upon a reasoned request and in accordance with the detailed rules of national law referred to in paragraph 5. However, in a duly justified situation of urgency, the use of such system may be commenced without an authorisation provided that such authorisation is requested without undue delay, at the latest within 24 hours. If such authorisation is rejected, the use shall be stopped with immediate effect and all the data, as well as the results and outputs of that use shall be immediately discarded and deleted. The competent judicial authority or an independent administrative authority whose decision is binding shall grant the authorisation only where it is satisfied, on the basis of objective evidence or clear indications presented to it, that the use of the ‘real-time’ remote biometric identification system concerned is necessary for, and proportionate to, achieving one of the objectives specified in paragraph 1, first subparagraph, point (h), as identified in the request and, in particular, remains limited to what is strictly necessary concerning the period of time as well as the geographic and personal scope. In deciding on the request, that authority shall take into account the elements referred to in paragraph 2. No decision that produces an adverse legal effect on a person may be taken based solely on the output of the ‘real-time’ remote biometric identification system.Related: Recitals35,38,39,40, and41
+4. Without prejudice to paragraph 3, each use of a ‘real-time’ remote biometric identification system in publicly accessible spaces for law enforcement purposes shall be notified to the relevant market surveillance authority and the national data protection authority in accordance with the national rules referred to in paragraph 5. The notification shall, as a minimum, contain the information specified under paragraph 6 and shall not include sensitive operational data.Related: Recitals36,38,39,40, and41
+5. A Member State may decide to provide for the possibility to fully or partially authorise the use of ‘real-time’ remote biometric identification systems in publicly accessible spaces for the purposes of law enforcement within the limits and under the conditions listed in paragraph 1, first subparagraph, point (h), and paragraphs 2 and 3. Member States concerned shall lay down in their national law the necessary detailed rules for the request, issuance and exercise of, as well as supervision and reporting relating to, the authorisations referred to in paragraph 3. Those rules shall also specify in respect of which of the objectives listed in paragraph 1, first subparagraph, point (h), including which of the criminal offences referred to in point (h)(iii) thereof, the competent authorities may be authorised to use those systems for the purposes of law enforcement. Member States shall notify those rules to the Commission at the latest 30 days following the adoption thereof. Member States may introduce, in accordance with Union law, more restrictive laws on the use of remote biometric identification systems.Related: Recitals37,38,39,40, and41
+6. National market surveillance authorities and the national data protection authorities of Member States that have been notified of the use of ‘real-time’ remote biometric identification systems in publicly accessible spaces for law enforcement purposes pursuant to paragraph 4 shall submit to the Commission annual reports on such use. For that purpose, the Commission shall provide Member States and national market surveillance and data protection authorities with a template, including information on the number of the decisions taken by competent judicial authorities or an independent administrative authority whose decision is binding upon requests for authorisations in accordance with paragraph 3 and their result.Related: Recitals38,39,40, and41
+7. The Commission shall publish annual reports on the use of real-time remote biometric identification systems in publicly accessible spaces for law enforcement purposes, based on aggregated data in Member States on the basis of the annual reports referred to in paragraph 6. Those annual reports shall not include sensitive operational data of the related law enforcement activities.Related: Recitals38,39,40, and41
+8. This Article shall not affect the prohibitions that apply where an AI practice infringes other Union law.
+Suitable Recitals3282930313233343536373839404142434445
+Feedback– We are working to improve this tool. Please send feedback to Taylor Jones attaylor@futureoflife.org
+View theofficial text, or browse it online using ourAI Act Explorer. The text used in this tool is the ‘Artificial Intelligence Act (Regulation (EU) 2024/1689), Official Journal version of 13 June 2024’.Interinstitutional File: 2021/0106(COD)

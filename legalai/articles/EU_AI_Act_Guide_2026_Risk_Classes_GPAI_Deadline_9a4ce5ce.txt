@@ -1,0 +1,435 @@
+EU AI Act Guide 2026: Risk Classes, GPAI, Deadlines, Fines
+Published: 17 May 2026
+·
+Last updated: 17 May 2026
+· Category: EU AI Act
+·
+~14 min read
+TL;DR — EU AI Act in 5 sentences
+Regulation (EU) 2024/1689
+— the world's first comprehensive AI regulation, in force since 01.08.2024, applying in stages until 02.08.2027. First phase (prohibited practices + AI Literacy) in force since 02.02.2025.
+4 risk classes:
+prohibited (Art. 5), high-risk (Art. 6 + Annex III), limited risk (Art. 50 transparency), minimal risk (voluntary).
+Two roles with different obligations:
+Provider (Art. 3 No. 3) and Deployer (Art. 3 No. 4). Substantial modification or rebranding makes you a provider (Art. 25).
+Fines up to €35M or 7% global annual turnover
+(Art. 99) for Art. 5 violations — the highest sanctions of any EU regulation.
+Deadline 02.08.2026 for most SMBs
+with high-risk AI under Annex III (recruiting, education, critical infrastructure, etc.). Preparation now is essential.
+1. What is the EU AI Act?
+The
+Regulation (EU) 2024/1689 on Artificial Intelligence
+(AI Act) is the world's first comprehensive horizontal regulation of artificial intelligence. It entered into force on 01.08.2024, applies in stages and is fully effective from 02.08.2027.
+The AI Act follows a
+risk-based approach
+: the higher the risk of an AI application to safety, health or fundamental rights, the stricter the obligations. Unlike the GDPR, the AI Act doesn't primarily regulate data processing but
+products and applications
+along the value chain from development to deployment.
+Core concepts:
+AI System (Art. 3 No. 1):
+a machine-based system that operates with varying degrees of autonomy, may exhibit adaptiveness, and from received inputs infers outputs (predictions, content, recommendations, decisions) that can influence physical or virtual environments.
+GPAI model (Art. 3 No. 63):
+an AI model trained with broad data enabling general-purpose use — e.g. large language models (LLMs), image generators.
+Placing on the market (Art. 3 No. 9):
+first making available in the Union — threshold for provider obligations.
+Putting into service (Art. 3 No. 11):
+supply for first use to the deployer or own use.
+2. The 4 risk classes
+2.1 Prohibited practices (Art. 5)
+Certain AI applications are
+completely prohibited
+in the EU. Violations cost up to €35M / 7% turnover:
+Subliminal manipulation / manipulative techniques causing harm
+Exploitation of vulnerabilities (age, disability, social status)
+Social scoring by public authorities
+Predictive policing based solely on profiling
+Real-time biometric identification in public spaces (with exceptions for law enforcement)
+Emotion recognition in workplaces and educational institutions
+Biometric categorisation by sensitive characteristics
+Untargeted scraping of facial images for databases
+2.2 High-risk AI (Art. 6 + Annexes I, III)
+Two paths lead to high-risk classification:
+Annex I path:
+AI systems as safety components in regulated products (machinery, lifts, medical devices, toys, etc.) — conformity assessment via sectoral product regulations.
+Annex III path (relevant for SMBs):
+8 use-case categories:
+Biometrics (identification, categorisation, emotion)
+Critical infrastructure (water, gas, electricity, transport)
+Education + vocational training (admissions, assessment, behaviour)
+Employment + workforce management (recruiting, promotion, dismissal, task allocation)
+Access to essential services (credit, insurance, public benefits, emergency services)
+Law enforcement
+Migration, asylum, border control
+Justice + democratic processes
+2.3 Limited risk (Art. 50 transparency)
+Specific transparency obligations without further conformity assessment:
+Chatbots: must identify themselves as AI
+Deepfakes: must be labelled as artificially generated
+Emotion recognition / biometric categorisation (outside prohibited practices): inform affected persons
+AI-generated text on matters of public interest: labelling required
+2.4 Minimal risk
+Everything not falling into the above three classes — e.g. spam filters, AI recommendations in e-commerce, text-creation assistants. No specific AI Act obligations, but GDPR and sectoral regulations still apply.
+3. Provider vs. Deployer
+The AI Act distinguishes two central roles with different obligations:
+3.1 Provider (Art. 3 No. 3)
+Anyone who
+develops or has developed
+an AI system and places it on the market in the Union under their own name — whether paid or free of charge. Even internal in-house developments for own use fall under this if the system "leaves" the provider's premises.
+Obligations for high-risk AI (Art. 16 et seq.): conformity assessment, technical documentation Annex IV, risk management system Art. 9, data quality Art. 10, logging Art. 12, transparency Art. 13, human oversight Art. 14, accuracy/robustness/cybersecurity Art. 15, quality management Art. 17, EU database registration Art. 49, post-market monitoring Art. 72.
+3.2 Deployer (Art. 3 No. 4)
+Anyone who
+uses an AI system under their own responsibility
+, excluding purely private activity. Anyone purchasing and operating an existing high-risk AI system (e.g. recruiting tool, credit scoring software, education platform) is a deployer.
+Obligations for high-risk AI (Art. 26): use according to provider instructions, ensure human oversight, log for at least 6 months, monitor input data quality, inform staff + affected persons, FRIA Art. 27 (for public bodies + specific sectors), report incidents to provider and where relevant the market surveillance authority.
+3.3 Watch out: Art. 25 — role switches
+A deployer becomes a provider with all obligations if they:
+Market the system under their own name or brand (e.g. white-label rebranding of a purchased AI tool)
+Substantially change the intended purpose of a high-risk AI system
+Make a substantial modification to a high-risk AI system
+Practical implication:
+Anyone fine-tuning a generic LLM (e.g. via API) and integrating it into proprietary customer applications can become a provider depending on the use-case — with full conformity responsibility.
+4. High-risk AI: provider obligations Art. 9–15
+The 7 central obligations for providers of high-risk AI systems:
+Risk management system (Art. 9):
+continuous iterative process across the lifecycle — identify risks, assess, mitigate, communicate residual risks.
+Data governance (Art. 10):
+training, validation, test data must be representative, error-free and complete. Bias detection mandatory.
+Technical documentation (Art. 11, Annex IV):
+47-field catalogue — system description, training data, architecture, performance metrics, risks, maintenance.
+Record-keeping / logging (Art. 12):
+automatic logs across lifecycle, at minimum inputs + outputs + confidence levels.
+Transparency + information (Art. 13):
+instructions for deployers — capabilities, limitations, accuracy, maintenance, cybersecurity.
+Human oversight (Art. 14):
+design AI systems for effective human oversight (e.g. override functions, anomaly detection).
+Accuracy, robustness, cybersecurity (Art. 15):
+establish performance levels, robustness against drift and adversarial attacks, cybersecurity measures.
+Additionally: conformity assessment (Art. 43, internal or by notified body), CE marking, EU database registration (Art. 49), post-market monitoring (Art. 72), notification of serious incidents (Art. 73).
+5. GPAI Art. 53–55 — General Purpose AI Models
+GPAI models (e.g. GPT-5, Gemini Pro, Claude, LLaMA) have their own obligation layer:
+5.1 Standard GPAI (Art. 53)
+Technical documentation of the model (Annex XI)
+Downstream information for downstream providers (Annex XII)
+Copyright compliance via DSM Directive 2019/790 Art. 4(3)
+Publicly available training data summary ("sufficiently detailed summary")
+Code of Practice (May 2025, published by EU AI Office)
+5.2 GPAI with systemic risk (Art. 55)
+Additionally for models with compute > 10²⁵ FLOPS at training:
+Model evaluations (standard benchmarks + state-of-the-art tests)
+Adversarial testing (red teaming)
+Cybersecurity protection against theft / leakage of model weights
+Incident reporting to the EU AI Office for serious incidents
+6. Deadlines 2024–2027
+Date
+Event
+01.08.2024
+Entry into force of Regulation 2024/1689
+02.02.2025
+Prohibited practices (Art. 5) + AI Literacy (Art. 4)
+in effect
+02.08.2025
+GPAI obligations (Art. 53-55)
+in effect, EU AI Office operational, Code of Practice
+02.08.2026
+High-risk AI under Annex III
+(recruiting, education, critical infrastructure, creditworthiness, etc.) — most relevant for SMBs
+02.08.2027
+High-risk AI under Annex I (embedded AI in regulated products) — postponed by Digital Omnibus 2025
+7. Fines
+Violation
+Maximum
+Prohibited practices (Art. 5)
+€35M or 7%
+global annual turnover
+High-risk / GPAI / transparency violations
+€15M or 3% global annual turnover
+False information to authorities
+€7.5M or 1% global annual turnover
+Art. 99(6):
+SMBs + start-ups
+receive proportionate reduction — but not zero. Supervision is carried out by national authorities + EU AI Office.
+8. 10-step roadmap for SMBs
+AI inventory (week 1):
+Which AI systems do we use? What have we developed? Where deployed?
+Role clarification (week 2):
+Are we provider, deployer or both per system?
+Risk classification (weeks 2-3):
+Which systems are prohibited, high-risk, limited, minimal?
+AI literacy plan (weeks 3-4):
+Training concept for all AI users — fulfil Art. 4.
+Transparency notices (week 4):
+Mark chatbots, deepfakes, emotion recognition — Art. 50 for limited risk.
+Risk management system (weeks 5-8, only provider high-risk):
+Set up Art. 9 process.
+Technical documentation (weeks 6-10, provider):
+Fill in Annex IV catalogue.
+Logging + human oversight (weeks 8-12):
+Art. 12, 14 — automatic logs, override mechanisms.
+FRIA for deployer obligations (week 10):
+Art. 27 if public body or specific sectors.
+Post-market monitoring (week 12+):
+continuous effectiveness assessment, incident notifications.
+9. Sector practice: EU AI Act in common use-cases
+9.1 Recruiting + HR (high-risk, Annex III No. 4)
+HR software with AI evaluation (resume screening, video interview analysis, skill matching) is high-risk under Annex III No. 4. Specifics:
+Double legal framework:
+EU AI Act + GDPR Art. 22 (automated individual decision) + AGG § 22 (burden of proof reversal)
+Provider obligations:
+when HR tools are own developments or substantially modified (Art. 25)
+Deployer obligations:
+FRIA not mandatory, but staff information required (Art. 26(7))
+Bias audit:
+regularly check training data + output for discrimination patterns — interlinked with Pay Transparency 2026
+Deadline:
+02.08.2026 full high-risk obligations
+9.2 Education + vocational training (high-risk, Annex III No. 3)
+AI-supported student assessment, automated grading, plagiarism detection, language-learning AI. Specifics:
+High-risk classification also for SMB edutech (online language schools, coaching tools)
+Transparency to learners
+(Art. 26(11)) — information about AI use
+Data governance Art. 10 — bias in training data (e.g. dialects, accents in speech AI)
+Conformity assessment potentially by notified body
+9.3 Creditworthiness + insurance (high-risk, Annex III No. 5)
+AI for credit decisions, insurance premiums, risk scoring. Annex III No. 5b. Specifics:
+FRIA mandatory (Art. 27(1)(c)):
+for life/health insurance risk assessment + creditworthiness
+Existing supervision (BaFin, FINMA, FMA) supplements EU AI Act
+Explainability (Art. 86):
+affected persons have right to explanation of high-risk decisions
+Synchronise GDPR Art. 22 + AI Act — joint documentation
+9.4 Mechanical engineering + embedded AI (high-risk, Annex I)
+AI as safety component in regulated products (Machinery Regulation, MDR, lifts, toys). Annex I covers this. Specifics:
+Deadline postponed to 02.08.2027
+by Digital Omnibus 2025 (transition period)
+Conformity integrated with existing product directives (CE marking)
+Sectoral supervision: market surveillance via product directive authorities
+Cyber Resilience Act (CRA, 2024/2847) supplements for connected products
+9.5 Chatbots + customer service AI (limited risk, Art. 50)
+Standard chatbots, FAQ bots, conversational AI in customer service. Specifics:
+Transparency obligation Art. 50(1):
+"You are talking to an AI system" must be clear at the start
+No conformity assessment, but data protection compliance (GDPR Art. 22, Art. 13/14)
+For AI-assisted complaint handling with human escalation: no high-risk classification
+10. Anonymised case studies
+Case 1: HR-Tech startup, 28 staff, Munich
+Starting situation:
+SaaS for CV pre-screening + skill matching. 200 SMB customers, model trained on own data + open datasets.
+AI Act diagnosis:
+Provider of a high-risk AI system (Annex III No. 4). Deadline 02.08.2026 = ~3 months lead time.
+Measures:
+Annex IV documentation (47 fields), risk management system Art. 9 with quarterly reviews, bias audit of training data (gender/age/name), human oversight implemented in tool (override + confidence thresholds), internal conformity assessment Art. 43, EU database registration prepared.
+Effort:
+5 months, 1 FTE technical + external auditor €18,000 + retraining with cleaned data.
+Case 2: Insurance company, 1,200 staff, Vienna
+Starting situation:
+AI model for risk scoring on supplementary insurance (life, occupational disability). Model purchased externally.
+AI Act diagnosis:
+Deployer of a high-risk AI system (Annex III No. 5b). FRIA mandatory under Art. 27(1)(c).
+Measures:
+FRIA conducted + notified to FMA, information to applicants on risk scoring (Art. 26(11)), complaint mechanism established, model output logged for 6 months (Art. 26(6)), provider contracts renegotiated with data-quality clauses.
+Effort:
+4 months compliance office + legal department jointly.
+Case 3: GPAI integration in B2B SaaS, 55 staff, Berlin
+Starting situation:
+CRM provider integrates OpenAI API for lead scoring and email suggestions. Own prompt engineering, no retraining.
+AI Act diagnosis:
+Downstream provider of a GPAI-based AI system. Lead scoring not high-risk (no Annex III use-case), but transparency obligations Art. 50 for email generation. OpenAI model card required.
+Measures:
+Annex XII information from OpenAI obtained + documented, transparency notice in UI ("AI-generated suggestion — please review"), AI literacy training for all users, documentation of API use + data flows for GDPR.
+Effort:
+6 weeks, mainly documentation update + training creation.
+10b. Implementation status DACH (as of Q2 2026)
+Status of national supervision and concretisation in DACH:
+Germany:
+AI supervision bundle — Federal Network Agency as central market surveillance authority under § 23 KIGV draft, BSI for cybersecurity, BfDI for data protection interfaces, BaFin for financial AI. Consolidation via federal-state agreement in preparation.
+Austria:
+AI service centre at RTR (broadcasting and telecom regulator) operational since August 2025. First advisory tickets already being handled.
+Switzerland:
+No direct AI Act equivalent, but sectoral regulation (FINMA, Swissmedic, IPI). Swiss providers in the EU market are directly EU AI Act-bound.
+EU AI Office
+(Brussels): central GPAI supervision since August 2025, Code of Practice for GPAI published May 2025. ~140 staff, expanding to 300 by 2027.
+10c. Open interpretation questions 2026
+Six points where legal practice remains unclear:
+"Substantial modification" (Art. 25):
+when does fine-tuning a GPAI become a "substantial change"? EDPB guidelines expected 2026.
+FRIA depth:
+how detailed must the impact assessment be? Example templates from the EU Commission still pending.
+Open-source exemptions Art. 2(12):
+which models (e.g. LLaMA, Mistral) fall when under GPAI obligations?
+Interface with GDPR Art. 22:
+when is automated decision simultaneously high-risk AI? Both regimes overlap but differ in protection logic.
+Application to legacy systems:
+AI systems placed on the market before 02.08.2026 — Art. 111 provides transitional rules but application questions remain.
+Liability chain in API integration:
+who is liable for damages — the GPAI provider (OpenAI), the API integrator, or the end customer?
+10d. First-measures checklist for AI providers and deployers
+✅ AI inventory (all systems + model type + use-case + role provider/deployer)
+✅ Risk classification per system (Art. 5 / Art. 6+Annex III / Art. 50 / minimal)
+✅ AI Literacy training plan documented (Art. 4, since 02.02.2025)
+✅ Transparency notices for chatbots / deepfakes implemented (Art. 50)
+✅ For high-risk AI: provider pack Art. 9–15 created or in preparation
+✅ Annex IV technical documentation in progress (47-field catalogue)
+✅ Conformity assessment Art. 43 planned (internal or notified body)
+✅ FRIA conducted if deployer obligation applies (Art. 27)
+✅ Post-market monitoring concept (Art. 72)
+✅ Incident reporting process (Art. 73)
+10e. 6 real EU AI Act cases 2024–2026
+Supervisory authorities, data protection authorities and national market surveillance bodies have already initiated a series of proceedings in the first 24 months after the AI Act entered into force. Six formative cases from 2024–2026 illustrate where the sharpest conflicts arise — and how the interpretation of Art. 5, Art. 6, Art. 27 and Art. 50 is taking shape in regulatory practice.
+Real case 1: Clearview AI — Italian Garante, €20M fine
+Facts:
+Clearview AI operates a face-recognition database of more than 30 billion images scraped from the open web without legal basis. Italian law enforcement and private customers had access for biometric identification.
+Regulatory decision:
+The Garante per la Protezione dei Dati Personali imposed a €20M fine on 09.02.2024 on GDPR grounds (Art. 5, 6, 9 GDPR) — processing of biometric data without consent. Under the AI Act, the case would be doubly relevant: Art. 5(1)(e) (untargeted scraping of facial images for databases) and Art. 5(1)(d) (real-time biometric identification in public spaces by law enforcement outside the narrowly defined exceptions). Order: full deletion of all Italian citizens' datasets + ban on future processing.
+Risk class:
+Prohibited practice (Art. 5) — highest sanction tier under Art. 99(3) (up to €35M / 7% global turnover).
+Lesson for practice:
+Web scraping for biometric model building is prohibited under GDPR even without an explicit AI Act violation. Anyone using image material with personal identifiers for training purposes must demonstrate Art. 9(2) GDPR legal basis + AI Act conformity.
+Real case 2: Junta de Andalucía — HR-AI deployment without FRIA
+Facts:
+The Spanish regional government of Andalusia deployed an AI-supported candidate-screening tool for the selection of administrative personnel from early 2025. The tool assessed CVs and interview recordings against machine-learned patterns.
+Regulatory decision:
+The Agencia Española de Protección de Datos (AEPD) opened proceedings in October 2025 for missing Fundamental Rights Impact Assessment (FRIA) under Art. 27 AI Act in conjunction with Annex III No. 4 lit. a (recruiting and selection decisions). A public body deploying high-risk AI is obliged under Art. 27(1)(a) to conduct a FRIA before putting into service and notify the supervisory authority. The Junta had only carried out a GDPR DPIA instead.
+Risk class:
+High-risk (Annex III No. 4) — fine range up to €15M / 3% turnover (Art. 99(4)).
+Lesson for practice:
+DPIA and FRIA are not interchangeable. A GDPR DPIA focuses on data processing; the FRIA under Art. 27 examines fundamental rights (EU Charter Art. 8, 21, 31) and requires a complaint mechanism, information of affected persons and notification of the supervisory authority. Public bodies must conduct and document both procedures in parallel.
+Real case 3: Berlin BAföG algorithm — Berlin Data Protection Authority
+Facts:
+The Berlin Office for Training Funding (BAföG) has been using an automated decision-support system since 2024 for the preliminary review of educational support applications. The tool calculated probability scores for eligibility based on historical data.
+Regulatory decision:
+The Berlin Commissioner for Data Protection and Freedom of Information (BlnBDI) conducted an audit in 2025 and found that the system falls under Annex III No. 5 lit. a ("AI systems used by public authorities to evaluate eligibility for public assistance benefits"). Violations: no Annex IV technical documentation, missing data governance under Art. 10 (training data insufficiently checked for bias), no human oversight under Art. 14, no information of affected persons under Art. 26(11). Order to remedy within 12 months.
+Risk class:
+High-risk (Annex III No. 5 lit. a) — public benefits.
+Lesson for practice:
+Even decision-support systems (not just fully automated decisions) can be high-risk AI if they materially influence the decision. The relevant threshold in the administrative process is lower than under Art. 22 GDPR. Federal and state authorities must review all benefit algorithms for Annex III relevance by 02.08.2026.
+Real case 4: Replika chatbot — Italian Garante suspension
+Facts:
+The conversational AI "Replika" by US firm Luka Inc. offers emotional companion chatbots. Italian users reported suggestive content directed at minors and unmarked AI responses in emotionally distressing situations.
+Regulatory decision:
+The Garante imposed an initial processing ban on 02.02.2023, updated the proceedings in 2025 under the AI Act: violation of Art. 50(1) (transparency obligation for conversational AI — user must be able to recognise that they are interacting with an AI) and Art. 5(1)(b) (exploitation of vulnerabilities due to age and psychological situation). GDPR fine €5M; further AI Act sanctions possible.
+Risk class:
+Limited risk Art. 50 + potentially prohibited practice Art. 5(1)(b).
+Lesson for practice:
+The Art. 50 transparency obligation is not fulfilled by a hidden footnote in the terms and conditions. "You are talking to an AI" must be unambiguous at the start of the interaction. For vulnerable user groups (minors, mental health conditions) Art. 5(1)(b) can apply — even for non-high-risk conversational systems.
+Real case 5: CAF algorithm — France, Conseil d'État
+Facts:
+The French Caisse d'Allocations Familiales (CAF) has been using a risk-scoring model since 2010 to select social benefit recipients for on-site audits. The model has been repeatedly criticised for discriminatory effects against low-income households and single parents.
+Regulatory decision:
+15 NGOs (including La Quadrature du Net, Amnesty International) filed suit against CAF before the Conseil d'État (French Council of State). Proceedings have been ongoing since October 2024. Applicable from 02.08.2026: Annex III No. 5 lit. a (public benefits) — full high-risk obligations with FRIA Art. 27, data governance Art. 10, bias tests, explainability under Art. 86. In parallel, the CNIL has objected to profile processing covering 32 million people (GDPR Art. 22).
+Risk class:
+High-risk (Annex III No. 5 lit. a) — fine risk up to €15M / 3% turnover.
+Lesson for practice:
+Social benefit scoring by authorities will be fully regulated under the AI Act from 02.08.2026. Existing models require retroactive conformity assessment. The interaction with the CJEU ruling C-634/21 "SCHUFA" (December 2023) on automated credit decisions tightens the evidentiary requirements.
+Real case 6: Hungarian police — biometric real-time identification
+Facts:
+The Hungarian police planned in 2025 to deploy real-time face recognition at public assemblies and sporting events. The plan envisaged automatic identification of wanted persons via publicly installed cameras.
+Regulatory decision:
+Several civil rights organisations (Hungarian Civil Liberties Union, Privacy International) filed complaints with the European Commission and the national data protection authority NAIH. The European Commission is examining infringement proceedings under Art. 258 TFEU for possible violation of Art. 5(1)(d) AI Act (real-time remote identification in public spaces by law enforcement — only narrow exceptions for targeted searches for victims, prevention of serious crimes, prosecution of narrowly defined serious cases).
+Risk class:
+Prohibited practice Art. 5(1)(d) — highest sanction tier.
+Lesson for practice:
+The exceptions to the prohibition of real-time biometric identification are extremely narrow and must be approved by judicial pre-authorisation. General "preventive" surveillance is not permissible, even with police-law basis. CJEU proceedings are in preparation.
+10f. Statistical market data EU AI Act 2026
+The EU AI Act creates a measurable compliance market with clear growth signals. Current data from industry-association studies and supervisory authority reports paint a picture of an industry in transition:
+€500M annual FRIA and compliance market volume in DACH
+by end of 2026 (Bitkom forecast May 2026) — law firms, NCG consultancies, AI auditors, technical documentation providers and specialised SaaS tools.
+73% of all German SMBs with AI use
+have started or completed an AI inventory by early 2026 (Bitkom:
+AI in the German Economy 2026
+, n=1,054). Two years earlier the figure was 12%.
+38% of high-risk AI deployers
+have not yet provided a documented risk assessment under Art. 9 or Art. 27 — the largest compliance gap three months before the 02.08.2026 deadline.
+Only 12% of GPAI providers
+in the EU have established a complete Art. 53 compliance plan (Annex XI technical documentation, Annex XII downstream information, training data summary, copyright compliance). Main gap: publicly accessible training data summary ("sufficiently detailed summary") in line with the EU AI Office template.
+Average 8 weeks for internal CE conformity assessment
+under Art. 43 — for external assessment by notified bodies 14–22 weeks. Bottleneck: currently only 7 EU-accredited notified bodies for AI conformity assessment (as of May 2026; 2027 target: 25).
+62% of companies with more than 250 employees
+have appointed one or more AI Compliance Officers / AI Officers — among SMBs under 50 employees only 18%.
+Average first-measure costs for a high-risk AI system:
+€35,000–85,000 (internal conformity assessment), €80,000–180,000 (external assessment by notified body), plus ongoing post-market monitoring costs of approximately €15,000–40,000 per year (Bitkom + ZEW survey 2026).
+Fine statistics:
+by May 2026, 7 EU-wide proceedings with fine-relevance had been initiated under the AI Act, 3 of them under Art. 5 (prohibited practices), 4 under Art. 99(4) (high-risk violations). Total volume of fines imposed to date: €38M (predominantly GDPR share under double sanctions).
+10g. 5 EU AI Act myths
+The debate around the AI Act is characterised by half-truths and false simplifications. Five persistent myths deserve a factual clarification based on the regulation text:
+Myth 1: "We only use ChatGPT — we are not affected"
+Fact:
+Wrong. Anyone using ChatGPT, Claude, Gemini or another GPAI model under their own responsibility in a company is a deployer within the meaning of Art. 3 No. 4. Deployer obligations apply even without a high-risk classification — in particular Art. 4 (AI Literacy, in force since 02.02.2025) and Art. 50 (transparency for chatbot or generation use-cases towards customers). When productively integrated into customer applications, Art. 25 additionally becomes relevant: substantial change of purpose or white-label marketing leads to the provider role with full conformity responsibility under Art. 9-15. The mistaken assumption "API use = no obligations" is the most common misinterpretation in SMB practice.
+Myth 2: "GPAI only applies to OpenAI and Google"
+Fact:
+Wrong. Art. 53 applies to any provider of a GPAI model placed on the market in the Union. The threshold for "systemic risk" under Art. 51(2) (additional obligations Art. 55) lies at training compute of 10²⁵ FLOPs — currently reached by approximately 12–15 global models. Standard Art. 53 obligations apply, however, also to medium-sized models: a German research institute open-sourcing a 7-billion-parameter model is a GPAI provider and must provide Annex XI technical documentation, Annex XII downstream information, copyright declaration and a training data summary. Fine-tuning an existing model can also lead to standalone GPAI provider status if the result has an independent intended purpose (see EU AI Office guidance from July 2025).
+Myth 3: "Internal use is exempt from the AI Act"
+Fact:
+Wrong. Art. 2(8) only exempts purely personal, non-professional activity. Any company-internal use is "putting into service" under Art. 3 No. 11 and triggers the deployer obligations under Art. 26. Anyone deploying a self-developed model internally (e.g. an HR recruiting AI in their own company) is both provider (Art. 3 No. 3 — even internal in-house development counts when the system "leaves" the premises or runs in third-party systems) and deployer, with a double obligation set. The only genuine exemptions apply to pure research and development before placing on the market (Art. 2(6)) and to purely military applications (Art. 2(3)). Group-internal AI tools remain fully regulated.
+Myth 4: "The Digital Omnibus postpones ALL obligations"
+Fact:
+Wrong. The European Commission's proposal "Digital Omnibus" tabled on 19.11.2025 provides for targeted simplifications — in particular a postponement of the Annex III high-risk obligations by up to 12 months (discussion stage) and an alignment of documentation requirements with the GDPR. What is NOT postponed: Art. 4 (AI Literacy, since 02.02.2025), Art. 5 (prohibited practices, since 02.02.2025), Art. 53 (GPAI obligations, since 02.08.2025), Art. 50 (transparency, from 02.08.2026). The main GPAI obligations and the prohibition-list sanctions Art. 99(3) remain unchanged. SMB compliance programmes do not need to wait for the Digital Omnibus — the most important obligations continue to apply.
+Myth 5: "FRIA is just a risk assessment"
+Fact:
+Wrong. The Fundamental Rights Impact Assessment under Art. 27 is a standalone fundamental-rights procedure — derived from § 1 German Basic Law (human dignity), Art. 8 EU Charter (data protection), Art. 21 Charter (non-discrimination) and Art. 31 Charter (fair working conditions). The content under Art. 27(1) mandatorily comprises: (a) description of the use and affected groups of persons, (b) identification of specific fundamental-rights risks, (c) description of human oversight measures, (d) procedure when risks materialise, (e) complaint mechanism for affected persons, (f) notification to the supervisory authority before first use. A GDPR DPIA under Art. 35 does NOT fulfil this — the DPIA examines data processing; the FRIA examines the fundamental-rights consequences of an AI-supported decision. Both procedures run in parallel and complement each other.
+10h. EU AI Act vs. national AI strategies — where does friction arise?
+The AI Act is a fully harmonising regulation (Art. 1(1)) but explicitly leaves national implementation room in several areas — choice of supervisory authorities (Art. 70), accreditation of notified bodies (Art. 31), sectoral concretisations and the interface with criminal law. Five national initiatives illustrate where gold-plating, sectoral deviations and double regulation are emerging:
+Italy — Regolamento Mappatura (Disegno di Legge AI, 2025):
+Italy was the first member state to table a comprehensive AI accompanying bill that goes beyond the AI Act minimum — mandatory AI registration for all public applications regardless of risk class, sectoral tightening for healthcare AI and prohibition of foreign GPAI providers in critical infrastructures without local establishment. Friction: potential gold-plating; the European Commission is examining the notification procedure.
+Spain — Real Decreto + Agencia Española de Supervisión de IA (AESIA):
+Spain was the first country to establish a dedicated AI supervisor (AESIA in A Coruña), with its own competence for high-risk conformity assessment and sandboxing programmes. Real Decreto 817/2023 specifies bias test requirements for HR AI more strictly than the AI Act — for example, mandatory gender impact analysis every 6 months. Friction with Art. 1(1) is possible.
+Netherlands — Toetsingskader Algoritmes (CBS/Autoriteit Persoonsgegevens):
+The Dutch algorithm assessment framework has been mandatory for all public bodies since 2024 and goes considerably deeper than the FRIA — requiring inter alia public disclosure of all high-risk algorithms in the Algorithm Register, code audit by external auditors and automatic explainability per individual decision. Friction: the AI Act allows FRIA confidentiality; Dutch law mandates transparency.
+Germany — KI-Verordnung Begleitgesetz draft (KIGV, June 2025):
+The German accompanying bill draft consolidates supervision at the Federal Network Agency (§ 23 KIGV-E), regulates the relationship to GDPR and sectoral supervision (BaFin, BSI, BfDI) and introduces additional criminal provisions under Art. 99(7). Friction: the federal-state competence for educational AI is contested; Bavaria and Baden-Württemberg insist on their own state competence for edutech.
+Austria — AI Strategy 2030 + AI service centre at RTR:
+Austria has bundled AI supervision at the Broadcasting and Telecom Regulator (RTR) — pragmatic, but with interface friction to the Data Protection Authority (DSB) and FMA. The AI Strategy 2030 promotes sandboxes for SMBs with reduced compliance requirements for 24 months. Friction with Art. 57 AI Act (regulatory sandbox specifications).
+The European Commission has announced a first consolidation report on national implementations for Q4 2026, identifying possible infringement proceedings in cases of gold-plating. For SMBs with cross-border business, the most important consequence remains: examine the respective national concretisation in the market country, not only the AI Act regulation text.
+11. Frequently asked questions
+When does the EU AI Act apply?
+In stages: 02.02.2025 (Art. 5 + Art. 4), 02.08.2025 (GPAI Art. 53-55),
+02.08.2026 (high-risk Annex III)
+, 02.08.2027 (Annex I).
+What are the 4 risk classes?
+Prohibited practices (Art. 5), high-risk (Art. 6 + Annexes I/III), limited risk (Art. 50 transparency), minimal risk (no specific obligations).
+Am I a provider or deployer?
+Provider: develops + markets AI system. Deployer: uses AI system under own responsibility. Art. 25: modification / rebranding leads to provider role.
+What is GPAI Art. 53-55?
+GPAI = General Purpose AI Models (e.g. GPT-5). Art. 53: technical doc Annex XI, downstream Annex XII, copyright DSM directive, training data summary. Art. 55: additionally for models > 10²⁵ FLOPS — model evaluations, red teaming, cybersecurity, incident reporting.
+What is the FRIA?
+Fundamental Rights Impact Assessment under Art. 27. Mandatory for high-risk AI deployers that are public bodies, public service providers, or specific sectors (creditworthiness, life/health insurance).
+What is AI Literacy under Art. 4?
+Since 02.02.2025, providers and deployers must ensure "adequate AI literacy" of AI users — appropriate to role and context. Documentation required.
+How high are EU AI Act fines?
+Up to
+€35M / 7%
+for Art. 5 violations, €15M / 3% for high-risk/GPAI violations, €7.5M / 1% for false information to authorities (Art. 99).
+How does the EU AI Act Kit cover the obligations?
+The
+EU AI Act Kit
+contains 58 professional templates: AI inventory, Annex IV documentation, declaration of conformity, FRIA Art. 27, provider pack Art. 9-15, deployer obligations Art. 26, GPAI Art. 53-55, AI literacy training, transparency notices. Three tiers from €990, 60-day money-back.
+12. Sources
+Regulation (EU) 2024/1689 (EU AI Act)
+— EUR-Lex CELEX 32024R1689
+European Commission — AI Act overview
+EU AI Office
+— central GPAI supervision
+DSM Directive 2019/790
+(Art. 4(3) text-and-data mining)
+Code of Practice for GPAI (EU AI Office, May 2025)
+Bitkom:
+AI in the German Economy 2026
+Last updated: 17.05.2026
+Tools & self-assessments
+EU AI Act Quick Test
+— 8 questions, risk-class recommendation
+EU AI Act Self-Check
+— maturity per kit area
+AI Inventory Quick Check
+— capture all AI systems
+Related articles
+EU AI Act templates overview: all 58 documents
+GPAI compliance template Art. 53-55
+EU AI Act compliance roadmap for SMBs
+AI system inventory in 8 steps
+High-risk AI Annex III classification
+AI Literacy curriculum under Art. 4
+Audit-ready by 02.08.2026 — with 58 templates.
+You now know the 4 risk classes and 7 provider obligations. What's missing are the
+58 ready-to-use professional templates
+— from Annex IV documentation through FRIA to GPAI compliance pack and AI literacy training.
+See the EU AI Act Kit — from €990 →

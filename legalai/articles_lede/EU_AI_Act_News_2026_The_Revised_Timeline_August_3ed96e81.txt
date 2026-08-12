@@ -1,0 +1,15 @@
+EU AI Act News 2026
+By Sarah Mitchell
+| August 2, 2026 | Next scheduled update: September 2026
+Update, August 2, 2026:
+This article was written and last substantively revised on June 16, 2026, when August 2 was still a future date. Nothing below was factually wrong at the time — but countdown language (“47 days away”) has now aged into today, and two developments have occurred since: the AI-generated content marking Code was finalized and gathered roughly 190 signatories, and the Future of Life Institute’s national-authority tracker now shows a precise 9/12/6 split across the EU-27. Both are reflected below, and the full country-by-country breakdown now lives on a dedicated page — see “The Enforcement Gap,” below — rather than being restated here, per our canonical-figure policy.
+Quick Answer:
+The EU AI Act’s enforcement timeline was substantially rewritten on May 7, 2026, when the EU institutions reached a provisional agreement on the Digital Omnibus on AI. High-risk AI system obligations (Annex III) are now deferred to December 2, 2027 — 16 months later than originally scheduled.
+August 2, 2026 — today — is the date Article 50 transparency obligations, GPAI penalty powers, and full national market surveillance authority activate.
+Three new compliance deadlines also emerged from the deal.
+EU AI Act Compliance Checker
+⚡ The Situation on Day 0: What Changed, What Didn’t, What’s Next
+The article you may have read in December 2025 described August 2, 2026 as the moment when “full enforcement activates” for high-risk AI systems. That was never accurate for the Annex III high-risk tier, and as of today it is a moot point: the Digital Omnibus superseded it months ago.
+On May 7, 2026 — after a first trilogue collapsed on April 28 — the European Council, the European Parliament, and the European Commission reached provisional political agreement on the
+Digital Omnibus on AI
+.

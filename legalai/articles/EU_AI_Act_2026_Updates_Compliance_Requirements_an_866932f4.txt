@@ -1,0 +1,304 @@
+Home
+>
+Startup Legal
+>
+EU AI Act 2026 Updates: Compliance Requirements and Business Risks
+Back
+Startup Legal
+by
+Rostyslav Prystai
+Compliance
+Regulations
+Compliance
+Regulations
+April 10, 2026
+EU AI Act 2026 Updates: Compliance Requirements and Business Risks
+SHARE
+LEGAL NODES
+Are you ready for the August 2026 Deadline?
+Book a call to get started
+Schedule free discovery call
+400+ companies already use Legal Nodes
+Following the transitional periods established by the European Parliament and the European Commission, the remaining provisions of the Artificial Intelligence Act will become applicable on 2 August 2026.
+Most of them, in turn, are set to apply from this date, and others are being phased in over a period of six to 36 months from the date of entry into force.
+‍
+A number of additional obligations will take effect ahead of the Regulation’s full applicability, triggering new compliance requirements and increasing regulatory exposure for stakeholders.
+‍
+In light of the associated business risks and the accelerating regulatory timeline, this article has been updated to reflect the latest developments and the obligations that will soon become applicable.
+‍
+The EU Artificial Intelligence Act overview
+‍
+Adopted on 21 May 2024, the EU Artificial Intelligence Act lays down harmonized rules on artificial intelligence and is the first-ever comprehensive legal framework on AI worldwide. It sets out risk-based rules for AI developers and deployers regarding specific uses of AI. Please, find more about AI Act applicability here.
+‍
+The EU’s regulatory model for artificial intelligence is founded on a graduated, risk-oriented structure. Rather than targeting specific technologies, the framework differentiates AI systems by the potential harm they may pose, imposing escalating obligations where risks increase. AI systems which significantly impact fundamental rights, are therefore either prohibited or subject to stricter requirements and human oversight.
+‍
+In practice, multiple issues, arise for AI providers and deployers:
+Is their product considered High-risk or prohibited practice under the Act?
+Which obligations specifically apply to their product?
+How the EU regulator ensures enforcement and what business risks may arise as a result?
+What measures should be implemented to ensure regulatory compliance and mitigate the risk of fines?
+What are the key deadlines and optimal strategy to establish a strong AI compliance framework at this stage?
+We have prepared a short update on the AI Act review to address these questions for you ahead of 2 August 2026.
+‍
+Prohibited AI practices and classification of High-risk AI systems
+‍
+As stated in the AI Act, AI technology has many beneficial uses.
+At the same time, it can also be misused and provide novel and powerful tools for manipulative, exploitative and social control practices.
+Such practices are particularly harmful and abusive and should be prohibited because they contradict Union values of respect for human dignity, freedom, equality, democracy and the rule of law and fundamental rights.
+For example, AI systems providing social scoring of natural persons by public or private actors may lead to discriminatory outcomes and the exclusion of certain groups. They may violate the right to dignity and non-discrimination and the values of equality and justice. Huge business entities already use social scoring –
+Uber
+uses scoring to evaluate customer and driver behavior and create black-lists of users. Uber relies on Open AI models, which use a combination of qualitative and quantitative metrics, including customer experience scores.
+Based on the potential risks associated with the use of such AI systems,
+Chapter II of the Act
+has been dedicated to the list of prohibited AI practices.
+‍
+The prohibited practices are listed exhaustively in Article 5 and provide a framework for what AI Systems can and cannot do within the EU.
+The list of prohibited practices in Article 5 is exhaustive, but not final. The Commission will assess the need for amendment of the list of prohibited practices annually. There are detailed exceptions to many of the prohibitions and each practice should be considered on a case-by-case basis, which requires professional approach within the Company to avoid potential financial and opportunity losses.
+‍
+With the adoption of the prohibited practices list,
+Section III of the AI Act
+regulates High-risk AI systems. These are AI systems that pose a significant risk of harm to the health, safety and fundamental rights of persons in the EU. There are two criterias to defining that  AI system may be classified as High-risk:
+‍
+The AI system is used as a safety component in a product that is regulated by certain EU product safety legislation and is subject to the conformity assessment procedure with a third-party conformity assessment body under such legislation, or constitutes on its own such a product; or
+‍
+The AI system falls within one of the eight categories set out in Annex III of the AI Act – unless the provider can demonstrate and document that such AI system does not pose a significant risk of harm
+‍
+We recommend assessing and documenting whether your product falls within the material and territorial scope of the EU AI Act, and determining whether any AI systems or AI models you develop or deploy fall within one or more of the regulated categories. It is critical to verify that the AI system is not classified as a prohibited practice and to monitor regulatory updates on an ongoing basis, as the list of prohibited practices may be revised annually.
+‍
+Obligations for providers and deployers of High-risk AI systems
+Requirements for High-risk AI systems are outlined in the Section II of the Act with the detailed list of obligations for providers and deployers of High-risk AI systems in
+Sections 2, 3 and 4.
+‍
+Providers of High-risk AI systems must ensure compliance with the requirements set out in Articles 8–15 throughout the system’s lifecycle, including the establishment of a documented risk management system, robust data governance measures, detailed technical documentation, automatic logging, appropriate human oversight, and safeguards for accuracy, robustness, and cybersecurity. Prior to placing a system on the market or putting it into service, providers must carry out the applicable conformity assessment, draw up an EU declaration of conformity, affix the CE marking, and register the system in the EU database. Ongoing obligations include corrective actions, cooperation with competent authorities, and maintaining a quality management system that enables continuous compliance.
+‍
+Deployers of High-risk AI systems are required to use such systems strictly in accordance with the provider’s instructions and to implement appropriate technical and organisational measures, including assigning trained and competent human oversight.
+‍
+Where deployers control input data, they are responsible for ensuring its relevance and representativeness, and they must continuously monitor system performance and report serious incidents or risks without delay. Deployers must also retain system logs, comply with transparency obligations towards affected individuals and workers, and, where applicable, conduct data protection impact assessments or fundamental rights impact assessments prior to deployment, particularly in sensitive use cases such as creditworthiness assessments, insurance pricing, or public-sector decision-making.
+‍
+If deployers of High-risk AI systems are required to perform a Data Protection Impact Assessment under the Regulation (EU) 2016/679 (GDPR) they should use information provided by the provider under article 13 of the AI Act.
+‍
+Although the EU AI Act focuses primarily on providers and deployers of High-risk AI systems, it also imposes targeted obligations on other actors in the AI value chain – importers, distributors, and suppliers. Importers and distributors must carry out verification checks before placing a system on or making it available in the EU market, including confirming that the required conformity assessment has been completed, technical documentation and the EU declaration of conformity are in place, the CE marking has been affixed, and storage and transport conditions do not undermine compliance.
+‍
+General transparency requirements for AI systems
+Transparency means that AI systems are developed and used in a way that allows appropriate traceability and explainability, while making humans aware that they communicate or interact with an AI system, as well as duly informing deployers of the capabilities and limitations of that AI system and affected persons about their rights.
+‍
+Chapter IV of the Act contains main requirements for providers and deployers of AI systems. Both providers and deployers are required that users are informed clearly when they interact with AI (Article 50(1)), when content is artificially generated or manipulated (including deepfakes and public-interest text), and when emotion recognition or biometric categorisation systems are used, with information provided in an accessible and timely manner. It mandates labelling of synthetic content in a machine-readable and detectable way where technically feasible (Article 50(2)), while carving out exceptions for law-enforcement uses authorised by law, minor assistive editing, and certain artistic or editorial contexts.
+‍
+‍
+We recommend to take the following measures in order to comply with general transparency requirements under the Act:
+Identify and classify all AI use cases at an early stage, determining the role of the organisation (provider or deployer), the risk category of the system, and whether specific transparency obligations or exemptions apply under the AI Act;
+‍
+Design and integrate transparency measures by default, ensuring that clear, accessible disclosures (e.g. AI interaction notices or system-use notifications) are provided to individuals at the latest at the point of first interaction or exposure.
+‍
+Techniques such as watermarks, fingerprints, metadata identifications or other methods should be employed to indicate the content’s artificial nature. It is important that these labels are easily, instantly and constantly visible to the audience.
+‍
+Implement appropriate technical solutions for marking AI-generated or manipulated content, selecting methods that are effective, interoperable, and proportionate to the type of content and the state of the art.
+‍
+Establish operational processes for deployer obligations, including informing individuals about emotion recognition, biometric categorisation, or deepfake use, and aligning these practices with applicable data-protection and editorial responsibility requirements.
+‍
+Document, review, and maintain compliance on an ongoing basis, including records of transparency measures, human oversight, reliance on exemptions, and monitoring of evolving standards, codes of practice, and regulatory guidance.
+‍
+Regulatory penalties and enforcement under the AI Act and national laws
+AI Act emphasizes that Member states should take all necessary measures to ensure that the provisions of this Regulation are implemented, including by laying down effective, proportionate and dissuasive penalties for their infringement. Member states will lay down the upper limits for setting the administrative fines for certain specific infringements.
+For example, The Artificial Intelligence Law in Italy (Law No. 132/2025) which entered into force on October 10, 2025, establishes fine of up to maximum EUR 774,685 and – in the most serious cases – the disqualifying measures provided under Decree 231 for up to one year. These include: disqualification from conducting business; suspension or revocation of authorisations, licences, or concessions instrumental to the offence; a ban on contracting with the public administration; exclusion from grants, financing, contributions, or subsidies (and possible revocation of those already awarded) and a prohibition on advertising goods or services. Law 132/2025 also introduces a new aggravating circumstance for crimes committed with the support of AI. A new criminal offence is established for the unlawful dissemination of AI-generated or altered content (e.g., deepfakes), punishable by imprisonment ranging from one to five years. Market manipulation offences committed through AI are subject to increased penalties under the Financial Consolidated Act (TUF) and Italian Civil Code.
+The provisions on penalties under the AI Act exceed even those provided for in the GDPR. The maximum fine was set at EUR 35,000,000 or 7% of annual worldwide turnover. Such fines can be imposed by national authorities, the European Data Protection Supervisor, or the European Commission. The European Data Protection Supervisor can impose fines on Union institutions, agencies and bodies. The European Commission can impose fines on providers of general-purpose AI models. National authorities can impose fines on other operators.
+We recommend closely monitoring national legislative proposals and draft laws implementing the AI Act, and adopting a continuously updated approach to AI compliance. This is particularly important as liability for violations of AI-related obligations may extend beyond administrative sanctions and, in certain jurisdictions, may also include criminal liability.
+‍
+AI Act application timeline and key deadlines
+The AI Act establishes a gradual application of its provisions, including transitional arrangements for AI systems placed on the market or put into service before certain dates. Obligations under the Act will apply to all operators of High-risk AI systems in place before 2 August 2026. The key transitional dates are as follows:
+from 2 February 2025:
+Prohibitions and general provisions concerning AI systems that pose unacceptable risks come into effect, allowing for early mitigation of such risks and their impact on civil law procedures.
+from 2 August 2025:
+Governance infrastructure, including notified bodies and the conformity assessment system, must be operational. Obligations for providers of general-purpose AI models also begin on this date.
+The AI Act applies in full to all remaining obligations, including High-risk AI systems placed on the market or put into service prior to this date.
+‍
+This phased approach ensures both early risk mitigation and sufficient time for operators and governance bodies to prepare for full compliance. Please find the relevant transitional dates outlined in the table below.
+Managing business risks and compliance strategy
+‍
+The EU AI Act introduces a comprehensive regulatory framework for artificial intelligence, creating significant compliance obligations for providers, deployers, importers, and distributors of AI systems. Failure to comply can result not only in administrative fines but also civil and criminal liability, depending on the jurisdiction and the nature of the violation. Organizations must therefore adopt a proactive and structured approach to risk management and regulatory compliance. Key business risks arising from the AI Act include:
+‍
+Administrative fines or sanctions as a result of failure to meet the AI Act’s requirements for High-risk AI systems, transparency, documentation, and human oversight.
+Large fines (up to EUR 35 million or 7% of worldwide turnover) and negative publicity from non-compliance or misuse of AI can damage brand reputation and investor confidence.
+Misclassification of AI systems as High-risk or prohibited practices may lead to mandatory recalls, suspension of deployment, or restrictions on market access.
+Civil claims from affected individuals, including claims related to fundamental rights violations, discrimination, or inaccurate AI decisions.
+Certain AI-related practices, such as unlawful dissemination of deepfakes or manipulation of AI systems for fraud, may constitute criminal offences under national laws.
+Improper handling of personal data by AI systems, especially in biometric or emotion recognition applications, may lead to GDPR-related penalties and enforcement actions (up to EUR 20,000,000 or 4% of annual worldwide turnover).
+‍
+Until 2 August 2026, we recommend classifying all AI systems, assessing whether they fall under High-risk or prohibited categories, and implementing relevant measures for risk management, human oversight, data governance, and transparency. By 2 August 2026, conformity assessments should be completed, technical documentation finalized, CE marking affixed, and EU database registration for High-risk systems completed. After 2 August 2026, organizations should continuously monitor regulatory updates, respond to consultations, cooperate with authorities, report incidents promptly, and update compliance processes to mitigate administrative, civil, and criminal risks.
+‍
+We welcome you to book a consultation with one of the Legal Nodes' legal professionals to
+kickstart your AI compliance journey
+.
+by
+Rostyslav Prystai
+Privacy Expert @ Legal Nodes
+SHARE
+TAGS
+Marketing
+Legal cases
+Opinion
+Artificial intelligence
+Data Protection Officer
+GDPR
+Privacy
+Regulations
+FEATURED
+Web3 Legal
+CARF and DAC8: Do You Fall Under the New Crypto Tax Reporting Rules?
+by
+Legal Nodes Team
+Taxes
+Compliance
+Startup Legal
+Why Cancellation Just Became a Cross-Border Compliance Issue
+by
+Iryna Kuzyk
+Regulations
+Incorporation
+Web3 Legal
+Are You in Scope for MiCA in 2026? A Practical Guide for Token Issuers
+by
+Ilona Maklakova
+MiCA
+Token issuance
+TABLE OF CONTENTS
+Explore popular resources
+Startup Legal
+How to Comply with EU AI Act August 2026 Deadline
+by
+Rostyslav Prystai
+Compliance
+Artificial intelligence
+Web3 Legal
+RWA Tokenization in the EU: Most Suitable Jurisdictions and Regulatory Frameworks for 2025 and Beyond
+by
+Ilona Maklakova
+Tokenomics
+Regulations
+Web3 Legal
+Fractional Real Estate Ownership in the UAE: Tokenization, Crowdfunding and REIT Models
+by
+Iryna Kuzyk
+Tokenomics
+Legal structures
+Startup Legal
+Legal Belongs in the GTM Engine. Here's Why
+by
+Nestor Dubnevych
+Legal roadmap
+Legal structures
+Startup Legal
+The Startup Legal Dilemma: Why Traditional Solutions Fall Short
+by
+Legal Nodes Team
+Legal roadmap
+Opinion
+Web3 Legal
+Utility Token Launch Legal Guide
+by
+Legal Nodes Team
+Token issuance
+Legal structures
+Web3 Legal
+How to Build a Legal Strategy for a Token Project
+by
+Legal Nodes Team
+Token issuance
+Legal roadmap
+Privacy and Data Protection
+ChatGPT Privacy Risks for Business: How to Ensure GDPR Compliance of the OpenAI's API
+by
+Kostiantyn Ponomarov, CIPP/E
+Privacy
+Compliance
+Web3 Legal
+The EU Markets in Crypto-Assets (MiCA) Regulation Explained
+by
+Legal Nodes Team
+MiCA
+Regulations
+Web3 Legal
+Swiss Foundation as a DAO Legal Wrapper: What You Need to Know
+by
+Legal Nodes Team
+DAO legal
+Legal structures
+Web3 Legal
+Choosing a Web3 Fundraising Document in 2024: a Playbook for Founders
+by
+Nestor Dubnevych
+Fundraising
+Tokenomics
+Web3 Legal
+Wyoming LLC as a DAO Legal Wrapper: What You Need to Know
+by
+Legal Nodes Team
+DAO legal
+Legal structures
+Startup Legal
+How to Choose a Residence Country as a Digital Nomad Entrepreneur
+by
+Legal Nodes Team
+Taxes
+Web3 Legal
+Models of Token Distribution and How to Legally Structure Them
+by
+Nestor Dubnevych
+Token distribution
+Web3 Legal
+Token Cap Table: Why Web3 Investors Need One and How to Use It
+by
+Nestor Dubnevych
+Tokenomics
+Web3 Legal
+How to Prepare a Web3 Startup for Fundraising
+by
+Nestor Dubnevych
+Fundraising
+Web3 Legal
+Marshall Islands LLC as a DAO Legal Wrapper
+by
+Legal Nodes Team
+DAO legal
+Legal structures
+Web3 Legal
+Token Types, Their Legal Status, and Choosing the Best Jurisdiction For Token Issuance
+by
+Nestor Dubnevych
+Tokenomics
+Token issuance
+Web3 Legal
+How to Choose a Crypto-Friendly Country for a Blockchain Business
+by
+Nestor Dubnevych
+Legal structures
+Regulations
+Startup Legal
+What is a Virtual Legal Officer and How Can They Solve Legal Matters for Digital Nomads?
+by
+Legal Nodes Team
+Virtual Legal Officer
+Web3 Legal
+Issuing Tokens: How to Choose the Best Country, Set Up Your Legal Strategy and Get It Right
+by
+Nestor Dubnevych
+Token issuance
+Legal structures
+Startup Legal
+Best Practices For Startup Legal Structuring
+by
+Legal Nodes Team
+Legal structures
+Incorporation
+Web3 Legal
+The Most Popular Entities and Countries for DAO Registration
+by
+Nestor Dubnevych
+DAO legal
+Legal structures
+Web3 Legal
+Cayman Islands Foundation as a DAO Legal Wrapper
+by
+Nestor Dubnevych
+DAO legal
+Legal structures

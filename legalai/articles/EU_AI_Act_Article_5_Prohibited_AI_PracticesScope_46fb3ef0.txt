@@ -1,0 +1,35 @@
+The EU Artificial Intelligence Act, Regulation (EU) 2024/1689, establishes a harmonised, EU‑wide legal regime for the regulation of AI technology across the EU. Under Article 5 of the EU AI Act, AI uses considered to present unacceptable risks to EU values and fundamental rights are prohibited. This Practice Note analyses each prohibited practice under Article 5, sets out associated enforcement and liability ramifications, and offers guidance on relevant contractual points.
+For more information on the EU AI Act in general, see:
+Regulation (EU) 2024/1689—the EU Artificial Intelligence Act (EU AI Act)—creates a consistent, EU-wide legal framework for the regulation of AI technology. It follows a risk-based approach, categorising AI systems by the degree of risk they pose to health, safety and fundamental rights within the Union. For details on this classification, see Practice Note: The EU AI Act—The four-tiered risk framework. AI practices assessed as creating unacceptable risks to EU values and fundamental rights are prohibited under Article 5 of the EU...
+When evaluating a general damages claim, the practitioner ought initially to refer to the Judicial College Guidelines (JCG)...
+This Practice Note
+This Practice Note reviews mechanisms used in settling litigation. A Tomlin order consists of a consent order paired with a schedule. It operates to stay proceedings on terms that have been agreed. The provisions contained in the schedule may remain confidential. This Practice Note describes the scope of confidentiality attaching to the schedule and sets out how it differs from a standard consent order. Sample wording for a Tomlin order is included, alongside links to precedents, as well as guidance on court approval. It also addresses varying, setting aside and enforcing a Tomlin order, including the considerations the court will take into account when handling applications for each. Further guidance is provided on interpreting and applying the relevant provisions of the CPR; however, some courts and divisions impose very specific requirements for both drafting and approval, and for approaching the schedule and confidentiality issues. Accordingly, you must consider the particular rules and court guide provisions in the forum where your claim is proceeding when drawing up the Tomlin order...
+Date
+[ date ]
+Parties
+[ name of Landlord ] [ of OR incorporated in England and Wales (company registration number [ number ]) with its registered office at ] [ address ] (Landlord)
+[ name of Tenant ] [ of OR incorporated in England and Wales (company registration number [ number ]) with its registered office at ] [ address ] (Tenant)
+[ [ name of Guarantor ] [ of OR incorporated in England and Wales (company registration number [ number ]) with its registered office at ] [ address ] (Guarantor) ]
+[ [ name of Mortgagee ] [ of OR incorporated in England and Wales (company registration number [ number ]) with its registered office at ] [ address ] (Mortgagee) ]
+Definitions
+Within this Deed, the terms below shall be interpreted as follows:
+[ Annual Rent • the annual sum reserved under the Lease; ]
+[ Insurance Rent • the Tenant’s share of the Landlord’s costs of insuring the Property (as set out in the Lease); ]
+Lease • the lease of the Property dated [ date ], entered into between (1) [ the Landlord OR [ name
+...
+I, [ name ], of [ address ], solemnly and sincerely state that:
+[ Matters to be verified, set out in numbered paragraphs ]
+I make this solemn statement in good conscience, believing it to be true, and pursuant to the provisions of the Statutory Declarations Act 1835.
+DECLARED at [ details ] this [ day ] day of [ month and year ]
+Before me
+................................................................................
+[ signature of the person before whom the declaration is made ]
+A [ commissioner for oaths OR [ solicitor OR [ insert other qualification ] ] authorised to administer oaths ]...
+**Trials are provided to all LexisNexis
+content, excluding Practice Compliance, Practice Management and Risk and
+Compliance, subscription packages are tailored to your specific needs. To
+discuss trialling these LexisNexis services please email customer service via
+our online form. Free trials are only available to individuals based in the UK,
+Ireland and selected UK overseas territories and Caribbean countries. We may
+terminate this trial at any time or decide not to give a trial, for any reason.
+Trial includes one question to LexisAsk during the length of the trial.

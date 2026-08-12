@@ -1,0 +1,81 @@
+April 28, 2026
+U.S. Companies Face EU AI Act's Possible August 2026 Compliance Deadline
+Holland & Knight Cybersecurity and Privacy Blog
+Melissa Pregasen
+U.S.-based businesses that operate high-risk artificial intelligence (AI) systems should be mindful of the August 2, 2026, compliance deadline under the
+European Union Artificial Intelligence Act
+(EU AI Act). The EU AI Act has been implemented in phases since February 2025, with most remaining provisions taking effect on August 2, 2026, excluding
+Article 6(1)
+, which will apply in August 2027. The upcoming regulation will apply to operators of high-risk AI systems that were placed on the market prior to August 2, 2026. Although the regulation is by a European authority, U.S. companies operating high-risk AI systems may be required to follow compliance measures.
+High-risk AI systems include those that are intended to be used for product safety measures as described in
+Annex I
+of the EU AI Act or among the specific use-case categories listed in
+Annex III
+. The use cases that fall under the high-risk system classification include AI systems used for biometric identification, critical infrastructure, education, employment, access to essential services including credit scoring and insurance, law enforcement, migration and administration of justice.
+And yet, the European Parliament recently voted to delay key compliance deadlines for the EU AI Act, pushing the requirements for high-risk AI systems to December 2027 and further to August 2028 for sector-specific obligations. In part, the delay has been attributed to pressure from tech companies and the Trump Administration. However, to ensure the delay takes legal effect before the original August 2, 2026, deadline, a political agreement must also be reached in the Council of the European Union in the coming months, likely before June. This uncertainty leaves businesses with a tough choice: stand down on compliance and assume a delay will be confirmed or rush ahead with compliance efforts and product releases in case the act goes into effect in August, as previously expected. The decision is actually quite critical, because the EU AI Act is not retroactive – AI systems already in the market before the law goes into effect may be grandfathered in and exempt from certain obligations.
+Primary Triggers for U.S. Businesses
+The EU AI Act follows a similar jurisdictional model as the General Data Protection Regulation (GDPR). The EU AI Act regulates AI systems based on the location of their impacts. Companies do not need to have a European office or hire European employees to fall under the coverage of the EU AI Act. The EU AI Act applies to providers placing "AI models in the Union, irrespective of whether those providers are established or located within the Union or in a third country." If a non-EU company sells, licenses or makes an AI product available to EU customers, the respective model could be considered as placed on the EU market. For instance, a software as a service (SaaS) platform that uses an AI model to assist with adaptive learning and has EU users, either directly or through resellers, could be covered by the EU AI Act.
+The EU AI Act also regulates companies "where the output produced by the AI system is used in the Union." Even if a company's servers are outside the EU, if the AI system's output affects EU residents, then the company may arguably be in scope. For instance, a non-EU employer that uses an AI model to screen or assist with the hiring of EU-based candidates or a financial institution that processes credit or insurance information from EU residents using an AI model could both fall within the scope.
+Any U.S. business that imports or distributes AI systems into products sold in the EU is also directed to comply with the EU AI Act. The business need not be the producer of the AI system; deploying the AI system can be deemed to require compliance – for example, a U.S. company that offers AI models to developers building EU-facing applications or a U.S. hosted AI application programming interface that is embedded into an EU company's product.
+Note that the extent to which the EU can actually exercise jurisdiction and enforcement with respect to a U.S. business can heavily depend on the circumstances, as has been seen with respect to the GDPR.
+A Company Using a High-Risk AI System in the Operation of Its Business May Be a Provider or Deployer of the AI System
+Under
+Article 3
+, a "provider" is an entity that develops the AI system, while a "deployer" is an entity that uses an AI system in its professional capacity. Providers and deployers of high-risk AI systems have different compliance obligations.
+The EU AI Act deems businesses that import or distribute AI systems into the EU market as providers. In the example above, a company that offers AI models to developers building EU-facing applications or an AI application programming interface in an EU product can be deemed providers of a high-risk AI system. Developing or having the AI model developed on its behalf can classify the company as a provider.
+Covered providers of high-risk systems must be responsible for ensuring the system meets the EU AI Act's conformity assessments, documentation and registration requirements and other data governance requirements per
+Article 16
+. The requirements for deployers are governed by
+Article 26
+, and deployers of high-risk systems must use the system in accordance with the provider's instructions, assign human oversight, retain automatically generated logs for six months and notify all individuals affected by the AI system.
+A company that licenses high-risk AI systems or output in the EU may be a deployer if it did not develop or significantly modify the AI system. For instance, if a company merely licenses and integrates a third-party AI model into its SaaS platform without substantial modifications, the company would be a deployer. If a deployer makes a substantial modification to their high-risk AI system or puts the system on the market under its own name, the entity can be reclassified as a provider, subject to compliance obligations for providers.
+Providers of High-Risk AI Systems Must Complete a Conformity Assessment Before Placing the System on the EU Market
+Article 43
+governs the conformity assessment process to verify that the AI system meets the EU AI Act's safety, transparency and governance requirements before it can be offered to users. The provision creates two tracks of compliance based on the industry of the AI system.
+Providers with AI systems used in critical infrastructure, education, employment, essential services, law enforcement, migration and administration of justice must self-certify compliance. This process requires the provider of the AI system to abide by the quality management system requirements listed in
+Article 17
+and maintain accurate technical documentation.
+AI systems used for biometric identification must abide by stricter guidelines. Companies providing biometric identification systems may either self-certify compliance or undergo a third-party assessment by a notified body under
+Annex VII
+.
+Once the conformity assessment is successfully completed, the provider of the system must issue a declaration of conformity and keep it in its records. Any substantial changes to the AI system will require the provider to repeat the conformity assessment process.
+Companies Are Required Under the EU AI Act to Register High-Risk AI Systems and Draw Up Technical Documentation Before the System Is Placed on the Market
+High-risk AI systems are required to be registered in the EU database before the system is placed on the market or put into service, even those based outside of the EU. The database will be publicly accessible through the
+AI Act Service Desk
+and maintained by the European Commission.
+Companies must prepare technical documentation describing the AI system's purpose, functionality, design specifications, performance metrics and other relevant operational information per
+Article 11
+. The documentation should be maintained and readily available upon request by national or EU regulatory authorities.
+Covered Providers Outside the EU Are Required to Appoint an Authorized Representative
+Non-EU companies are directed to appoint by written mandate an authorized representative within the EU before placing their high-risk AI system on the market. The representative will serve as a regulatory contact point for the provider of the AI system and must be empowered to verify the AI model conforms with documentation and the conformity assessment, retain all records – including the written mandate, conformity declaration and technical documentation – for 10 years, cooperate with authorities, comply with registration obligations referenced in
+Article 49
+of the EU AI Act and terminate the mandate if the authorized representative believes the provider of the AI system is violating the EU AI Act.
+Noncompliance May Result in Financial or Commercial Penalties
+In addition to the prohibited practices in
+Article 5
+that are already in effect, the EU AI Act imposes significant financial penalties on providers or deployers of high-risk systems that fail to comply with the EU AI Act in
+Article 99
+. Companies may be fined for up to 15 million euros or 3 percent of the company's global annual turnover. Supplying incorrect or misleading information to authorities may result in fines of up to 7.5 million euros or 1 percent of the company's global annual turnover. Regulators will consider the nature and gravity of the infringement, history of prior infringements, impact of the fine to the market and other mitigating factors when determining the penalty amount.
+In addition to financial penalties, national authorities have the power to withdraw any noncompliant AI system from the EU market entirely. Companies that rely on AI models for core operations in the EU may face an immediate commercial risk if their systems are removed from the market.
+Key Takeaways
+The EU AI Act focuses on the reach of the AI system. If the AI system's output touches the EU in a meaningful way, such as through sales, access or downstream integrations, the company's model is potentially in scope. Given that conformity assessments and technical documentation for complex AI models typically require significant preparation, U.S. companies operating in high-risk categories should consider the compliance process in anticipation of the August 2, 2026, deadline or pay close attention to EU legislative developments to assess whether a delay does postpone this new law into 2027 or beyond.
+Related Blog
+Cybersecurity and Privacy Blog
+Editors
+Ashley L. Shively
+Mark H. Francis
+Related Practices
+Artificial Intelligence
+Artificial Intelligence Policy & Regulation
+Data Strategy, Security & Privacy
+Technology
+Intellectual Property
+Emerging Technologies Law and Policy
+Litigation and Dispute Resolution
+International Arbitration and Litigation
+Related Industry
+Technology & Telecommunications
+Subscribe to Updates and Events
+Sign Up Now
+Related Insights
+View More

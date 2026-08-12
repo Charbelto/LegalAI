@@ -1,0 +1,9 @@
+On 18 July 2025, the European Commission published draft Guidelines clarifying key provisions of the EU AI Act applicable to General Purpose AI (GPAI) models. The Guidelines provide interpretive guidance on the definition and scope of GPAI models, related lifecycle obligations, systemic risk criteria, and notification duties for providers. Once translated into all EU languages, the Guidelines will be formally adopted and carry legal and operational relevance for AI providers.
+The Guidelines expand on the statutory definition of GPAI in the AI Act, introducing key thresholds and criteria for classification:
+Once a model qualifies as a GPAI model, lifecycle-wide obligations under the AI Act apply from the start of its pre-training run and extend to all subsequent development phases, including post-market modifications.
+Any model trained using ≥10²⁵ FLOPs is presumed to have high-impact capabilities and may be classified as systemic-risk GPAI.
+Not all modifications trigger provider obligations for downstream actors. Minor changes typically do not reclassify a modifier as a GPAI provider.
+Open source GPAI providers benefit from limited exemptions under the AI Act:
+If designated as a GPAI model with systemic risk, they must fully meet all applicable obligations, including systemic risk management, model evaluations, incident reporting, and cybersecurity.
+To qualify as open source under the AI Act, the model must be released under a free and open-source licence that:
+Our goal is to build themost useful, authoritative, and comprehensive guide to the AI Act anywhere on the internet. We’ll never put this behind a paywall or use it to sell you a service.

@@ -1,0 +1,20 @@
+Research Gaps Filled by This Project:
+
+1. Head-to-Head Routing Topology Comparison:
+   - Existing Gap: Most studies evaluate a single, fixed multi-agent setup or generic single-agent RAG.
+   - What it fills: Side-by-side empirical comparison of 6 distinct topologies (Sequential, Routed Single-Agent, Parallel, Legal-News Parallel, Legal-First Selective, and Verification Bypass) in a controlled environment.
+
+2. Domain-Specific Regulatory Benchmarking (EU AI Act):
+   - Existing Gap: Lack of multi-agent evaluations tailored specifically for high-stakes regulatory compliance requiring fresh temporal news and strict citation precision.
+   - What it fills: Custom evaluation pipeline benchmarked against an expert-curated "Gold Standard" compliance check for the EU AI Act.
+
+3. Multi-Dimensional 32-Metric Evaluation Framework:
+   - Existing Gap: Performance studies typically separate operational metrics (speed/cost) from generation quality metrics (BLEU/ROUGE) or ignore structural domain-specific requirements.
+   - What it fills: A unified framework measuring 32 metrics across three tiers:
+     - Operational & Latency (latency, step counts, token speed, and costs).
+     - Text Quality (BLEU-1/4, ROUGE-1/2/L, Cosine, and Levenshtein similarity).
+     - Domain Structural Requirements (AI Act citations, temporal references, formatting).
+
+4. Quantitative Speed-Quality Trade-Offs:
+   - Existing Gap: Lack of empirical evidence clarifying the cost-benefit curve of adding agent coordination overhead.
+   - What it fills: Proves that a Routed Single-Agent (SINGLE) topology out-performs Sequential (ALL) on response fidelity (BLEU/ROUGE) while reducing latency by ~41% (46.51s vs. 79.07s), refuting the assumption that longer/sequential workflows produce better legal guidance.

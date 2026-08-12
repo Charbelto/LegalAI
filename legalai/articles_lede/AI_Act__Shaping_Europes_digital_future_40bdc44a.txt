@@ -1,0 +1,23 @@
+The AI Act is the first-ever legal framework on AI, which addresses the risks of AI and positions Europe to play a leading role globally.
+The
+AI Act
+(Regulation (EU) 2024/1689 laying down harmonised rules on artificial intelligence) is the first-ever comprehensive legal framework on AI worldwide. The aim of the rules is to foster trustworthy AI in Europe. For any
+questions on the AI Act
+, check out the
+AI Act Single Information platform
+.
+The AI Act sets out a risk-based rules for AI developers and deployers regarding specific uses of AI. It is part of a wider package of policy measures to support the development of trustworthy AI, which includes the
+AI Continent Action Plan
+, the
+AI Innovation Package
+and the launch of
+AI Factories
+. Together, these measures guarantee safety, fundamental rights and human-centric AI, and strengthen uptake, investment and innovation in AI across the EU.
+To facilitate the transition to the new regulatory framework, the Commission has launched the
+AI Pact
+, a voluntary initiative that seeks to support the future implementation, engage with stakeholders and invite AI providers and deployers from Europe and beyond to comply with the key obligations of the AI Act. In parallel, the
+AI Act Service Desk
+is also providing information and support for a smooth and effective implementation of the AI Act across the EU.
+Why do we need rules on AI?
+The AI Act ensures that Europeans can trust what AI has to offer. While most AI systems pose limited to no risk and can contribute to solving many societal challenges, certain AI systems create risks that we must address to avoid undesirable outcomes.
+For example, it is often not possible to find out why an AI system has made a decision or prediction and taken a particular action.

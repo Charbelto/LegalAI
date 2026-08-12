@@ -1,0 +1,542 @@
+[
+  {
+    "id": "q01",
+    "type": "simple",
+    "query": "What is a high-risk AI system under the EU AI Act?",
+    "gold": "**Issue:** What is a high-risk AI system under the EU AI Act?\n\n**Rule:** Article 3(1) of the EU AI Act defines high-risk AI systems as those that pose significant risks to health, safety, and fundamental rights, including profiling, biometric identification, or decisions affecting fundamental rights. (EU AI Act, Article 3(1))\n\n**Application:** High-risk AI systems must undergo pre-deployment assessments, extensive documentation, post-market monitoring, and incident reporting. Deployers are required to assess impacts on fundamental rights, a process privacy teams already manage through Data Protection Impact Assessments (DPIAs). (EU AI Act, Articles 12-14)\n\n**Conclusion:** A high-risk AI system under the EU AI Act is one that poses significant risks to health, safety, and fundamental rights, including profiling, biometric identification, or decisions affecting fundamental rights. Such systems must undergo rigorous assessments, documentation, and monitoring to ensure compliance with the Act's requirements.",
+    "gold_status": "draft",
+    "needs_review": true,
+    "gold_model": "llama3.1:8b",
+    "retriever_ids_at_gold_draft": [
+      "37",
+      "6",
+      "33",
+      "16",
+      "35"
+    ],
+    "gold_doc_ids": [],
+    "relevance_annotated": false
+  },
+  {
+    "id": "q02",
+    "type": "simple",
+    "query": "What are the penalties for violating prohibited AI practices under Article 71 of the EU AI Act?",
+    "gold": "**Issue:** The penalties for violating prohibited AI practices under Article 71 of the EU AI Act.\n\n**Rule:** Pursuant to Article 71(1) of the EU AI Act, where an artificial intelligence system is used in a way that infringes on the rights and freedoms of individuals, the provider or developer shall be liable for any damage caused. The penalties for violating prohibited AI practices are set out in Article 81 of the EU AI Act.\n\n**Application:** Article 71(1) applies to all artificial intelligence systems that are used in a way that infringes on the rights and freedoms of individuals. This includes, but is not limited to, general-purpose AI models and high-impact AI systems.\n\n**Conclusion:** In accordance with Article 81 of the EU AI Act, the penalties for violating prohibited AI practices may include fines or other administrative penalties, as well as damages awarded to individuals affected by the infringement. The specific penalty will depend on the nature and severity of the infringement, as well as any aggravating or mitigating circumstances.\n\nNote: This answer is based on the retrieved passages and my pre-trained knowledge of the EU AI Act.",
+    "gold_status": "draft",
+    "needs_review": true,
+    "gold_model": "llama3.1:8b",
+    "retriever_ids_at_gold_draft": [
+      "16",
+      "29",
+      "32",
+      "38",
+      "40"
+    ],
+    "gold_doc_ids": [],
+    "relevance_annotated": false
+  },
+  {
+    "id": "q03",
+    "type": "simple",
+    "query": "What does Article 5 of the EU AI Act prohibit?",
+    "gold": "**Issue:** What does Article 5 of the EU AI Act prohibit?\n\n**Rule:** According to Article 5 of the EU AI Act, high-risk artificial intelligence (AI) systems must be designed and developed in such a way that they do not pose risks to the health, safety, and fundamental rights of individuals.\n\n**Application:** This prohibition applies to all high-risk AI systems, including those used for biometric identification, social scoring, and other applications where there is a significant risk of harm to individuals.\n\n**Conclusion:** Article 5 of the EU AI Act prohibits the development and deployment of high-risk AI systems that pose risks to the health, safety, and fundamental rights of individuals.",
+    "gold_status": "draft",
+    "needs_review": true,
+    "gold_model": "llama3.1:8b",
+    "retriever_ids_at_gold_draft": [
+      "16",
+      "29",
+      "17",
+      "19",
+      "35"
+    ],
+    "gold_doc_ids": [],
+    "relevance_annotated": false
+  },
+  {
+    "id": "q04",
+    "type": "simple",
+    "query": "What is the CE marking requirement for high-risk AI systems?",
+    "gold": "**Structured IRAC-like Compliance Format**\n\n**Issue:** What is the CE marking requirement for high-risk AI systems?\n\n**Rule:** The EU AI Act does not explicitly mention CE marking requirements for high-risk AI systems. However, Article 12 of the Act requires that high-risk AI systems undergo a conformity assessment procedure before being placed on the market.\n\n**Application:** Since there is no specific provision in the EU AI Act regarding CE marking for high-risk AI systems, we must refer to general principles of product safety and conformity assessment under EU law. The CE marking is typically required for products that fall within the scope of EU directives or regulations, such as the Machinery Directive (2006/42/EC) or the Medical Devices Regulation (2017/745). However, these directives do not specifically address AI systems.\n\n**Conclusion:** There is no specific requirement for CE marking under the EU AI Act for high-risk AI systems. The conformity assessment procedure mentioned in Article 12 of the Act may be applicable to ensure that such systems meet general safety and performance requirements, but this does not necessarily involve CE marking.",
+    "gold_status": "draft",
+    "needs_review": true,
+    "gold_model": "llama3.1:8b",
+    "retriever_ids_at_gold_draft": [
+      "33",
+      "35",
+      "6",
+      "37",
+      "20"
+    ],
+    "gold_doc_ids": [],
+    "relevance_annotated": false
+  },
+  {
+    "id": "q05",
+    "type": "simple",
+    "query": "What is the definition of a general-purpose AI (GPAI) model?",
+    "gold": "**Simple Query Response**\n\nA general-purpose AI (GPAI) model is a type of artificial intelligence system that is subject to centralized oversight through the EU AI Office, as mentioned in Article [not specified] of the EU AI Act. According to Document 4, GPAI models are specifically addressed by the AI Office's powers to oversee AI systems built on such models.\n\n**IRAC-like Compliance Format (for completeness)**\n\nIssue: Definition of a general-purpose AI (GPAI) model\n\nRule: The EU AI Act addresses GPAI models through centralized oversight and documentation requirements. (Article [not specified])\n\nApplication: The definition of GPAI models is relevant to understanding the scope of the EU AI Office's powers and the obligations of deployers.\n\nConclusion: A general-purpose AI (GPAI) model is a type of artificial intelligence system that is subject to centralized oversight through the EU AI Office, as mentioned in Article [not specified] of the EU AI Act.",
+    "gold_status": "draft",
+    "needs_review": true,
+    "gold_model": "llama3.1:8b",
+    "retriever_ids_at_gold_draft": [
+      "29",
+      "30",
+      "33",
+      "6",
+      "16"
+    ],
+    "gold_doc_ids": [],
+    "relevance_annotated": false
+  },
+  {
+    "id": "q06",
+    "type": "simple",
+    "query": "Who is defined as a 'provider' under the EU AI Act?",
+    "gold": "**Simple Query Response**\n\nUnder the EU AI Act, a 'provider' is defined as an organization that provides an artificial intelligence (AI) system to another person, business, or organization. This includes providers of pre-trained models, software development kits, and other tools used for developing, deploying, or operating AI systems.\n\n(Article 3(1)(a) of the EU AI Act)\n\nThe definition of a provider is broad and encompasses various types of organizations that offer AI-related services, including those that provide AI-powered solutions to businesses or individuals.",
+    "gold_status": "draft",
+    "needs_review": true,
+    "gold_model": "llama3.1:8b",
+    "retriever_ids_at_gold_draft": [
+      "19",
+      "16",
+      "8",
+      "31",
+      "29"
+    ],
+    "gold_doc_ids": [],
+    "relevance_annotated": false
+  },
+  {
+    "id": "q07",
+    "type": "simple",
+    "query": "Who is defined as a 'deployer' under the EU AI Act?",
+    "gold": "**Simple Query Response**\n\nThe EU AI Act defines a 'deployer' as an organisation that deploys high-risk artificial intelligence (AI) systems, including those used for processing personal data on a large scale. According to Article 3(1)(a) of the EU AI Act, a deployer is responsible for ensuring compliance with the obligations set out in the regulation.\n\n**Cited Article:** Article 3(1)(a), EU AI Act",
+    "gold_status": "draft",
+    "needs_review": true,
+    "gold_model": "llama3.1:8b",
+    "retriever_ids_at_gold_draft": [
+      "12",
+      "30",
+      "19",
+      "15",
+      "16"
+    ],
+    "gold_doc_ids": [],
+    "relevance_annotated": false
+  },
+  {
+    "id": "q08",
+    "type": "simple",
+    "query": "What are the transparency obligations for AI systems that interact with natural persons under Article 50?",
+    "gold": "**Structured IRAC-like Compliance Format**\n\n**Issue:** What are the transparency obligations for AI systems that interact with natural persons under Article 50?\n\n**Rule:** The EU AI Act imposes significant obligations on high-risk and general-purpose AI models, including controls on data quality, transparency, human oversight, and monitoring discrimination. (EU AI Act)\n\n**Application:** Article 50 of the EU AI Act specifically addresses transparency requirements for AI systems that interact with natural persons. It mandates that developers and deployers of such systems provide clear information about their functioning, decision-making processes, and potential biases.\n\n**Conclusion:** Therefore, under Article 50 of the EU AI Act, AI systems interacting with natural persons must ensure transparency by providing clear information to users, including details on data quality, human oversight, and decision-making processes.",
+    "gold_status": "draft",
+    "needs_review": true,
+    "gold_model": "llama3.1:8b",
+    "retriever_ids_at_gold_draft": [
+      "35",
+      "38",
+      "31",
+      "19",
+      "30"
+    ],
+    "gold_doc_ids": [],
+    "relevance_annotated": false
+  },
+  {
+    "id": "q09",
+    "type": "simple",
+    "query": "What is a conformity assessment under the EU AI Act?",
+    "gold": "**Conformity Assessment under the EU AI Act**\n\n**Issue:** What is a conformity assessment under the EU AI Act?\n\n**Rule:** Article 12 of the EU AI Act requires that high-risk AI systems undergo a conformity assessment before being placed on the market. This involves an evaluation by a third-party conformity assessment body to ensure that the system meets the requirements set out in the Act.\n\n**Application:** The conformity assessment process applies to high-risk AI systems, which are defined as those that pose significant risks to health and safety or fundamental rights and freedoms of individuals. This includes systems such as biometric identification systems, real-time risk evaluation systems, and social scoring systems.\n\n**Conclusion:** A conformity assessment under the EU AI Act is a critical step in ensuring that high-risk AI systems meet the necessary standards before being placed on the market. It involves an independent evaluation by a third-party body to verify compliance with the requirements set out in the Act.",
+    "gold_status": "draft",
+    "needs_review": true,
+    "gold_model": "llama3.1:8b",
+    "retriever_ids_at_gold_draft": [
+      "16",
+      "38",
+      "29",
+      "15",
+      "37"
+    ],
+    "gold_doc_ids": [],
+    "relevance_annotated": false
+  },
+  {
+    "id": "q10",
+    "type": "simple",
+    "query": "What are the record-keeping requirements under Article 12?",
+    "gold": "**Issue:** What are the record-keeping requirements under Article 12?\n\n**Rule:** The EU AI Act imposes significant obligations on high-risk and general-purpose AI models, including controls on data quality, transparency, human oversight, and monitoring discrimination (Article 12).\n\n**Application:** Article 12 of the EU AI Act requires organizations to maintain documentation and records related to their AI systems, including information on data quality, transparency, human oversight, and monitoring discrimination.\n\n**Conclusion:** Organizations subject to the EU AI Act must comply with the record-keeping requirements under Article 12, which includes maintaining documentation and records related to their AI systems.",
+    "gold_status": "draft",
+    "needs_review": true,
+    "gold_model": "llama3.1:8b",
+    "retriever_ids_at_gold_draft": [
+      "16",
+      "41",
+      "19",
+      "43",
+      "30"
+    ],
+    "gold_doc_ids": [],
+    "relevance_annotated": false
+  },
+  {
+    "id": "q11",
+    "type": "decomposable",
+    "query": "What are the compliance obligations for providers of high-risk AI systems and how do they compare to deployers' obligations?",
+    "gold": "**Compliance Obligations for Providers of High-Risk AI Systems**\n\n**Issue:** What are the compliance obligations for providers of high-risk AI systems, and how do they compare to deployers' obligations?\n\n**Rule:** The EU AI Act (Article 4) defines high-risk AI systems as those that pose significant risks to health, safety, or fundamental rights. Providers of such systems must undergo pre-deployment assessments (Article 12), maintain extensive documentation (Article 13), and engage in post-market monitoring (Article 14). Deployers are required to assess impacts on fundamental rights (Article 15) and conduct DPIAs.\n\n**Application:** The obligations for providers of high-risk AI systems include:\n- Conducting pre-deployment assessments\n- Maintaining extensive documentation\n- Engaging in post-market monitoring\n- Incident reporting\n\nDeployers' obligations, as defined by the EU AI Act, include:\n- Assessing impacts on fundamental rights\n- Conducting DPIAs\n- Ensuring transparency when consumers interact with AI (Article 15)\n\n**Conclusion:** Providers of high-risk AI systems have more stringent compliance obligations than deployers. While both parties must engage in risk assessments and documentation, providers are required to undergo pre-deployment assessments and post-market monitoring, reflecting their role in developing and deploying the system.",
+    "gold_status": "draft",
+    "needs_review": true,
+    "gold_model": "llama3.1:8b",
+    "retriever_ids_at_gold_draft": [
+      "20",
+      "31",
+      "41",
+      "33",
+      "35"
+    ],
+    "gold_doc_ids": [],
+    "relevance_annotated": false
+  },
+  {
+    "id": "q12",
+    "type": "decomposable",
+    "query": "Explain the timeline for when different provisions of the EU AI Act enter into force, specifically Article 5 and Chapter V.",
+    "gold": "**Issue:** The timeline for when different provisions of the EU AI Act enter into force, specifically Article 5 and Chapter V.\n\n**Rule:**\n\n* Article 58(1) of the EU AI Act states that the Act shall apply from 18 months after its entry into force.\n* Article 59(2) specifies that certain provisions, including those related to high-risk AI, shall apply from 24 months after the entry into force of the Act.\n\n**Application:**\n\n* The EU AI Act entered into force in August 2024.\n* Therefore, the provisions related to high-risk AI, including Chapter V, will enter into force on August 2026 (24 months after the entry into force).\n* Article 5 is not explicitly mentioned as a separate provision with its own timeline. However, it is likely that this article is part of the broader framework for high-risk AI and will be subject to the same timeline.\n\n**Conclusion:**\n\nBased on the EU AI Act's provisions, the timeline for when different provisions enter into force is as follows:\n\n* August 2026: Provisions related to high-risk AI, including Chapter V, will enter into force.\n* By 2027: Organizations will already be subject to rules covering prohibited AI practices, general-purpose AI models, transparency requirements, and penalties.",
+    "gold_status": "draft",
+    "needs_review": true,
+    "gold_model": "llama3.1:8b",
+    "retriever_ids_at_gold_draft": [
+      "29",
+      "16",
+      "17",
+      "6",
+      "32"
+    ],
+    "gold_doc_ids": [],
+    "relevance_annotated": false
+  },
+  {
+    "id": "q13",
+    "type": "decomposable",
+    "query": "What are the risk classification tiers in the EU AI Act and what obligations correspond to each tier?",
+    "gold": "**Issue:** The EU AI Act introduces a risk classification system for AI systems, categorizing them into different tiers based on their potential impact on individuals and society.\n\n**Rule:** Article 4 of the EU AI Act outlines the risk classification system, which is based on the level of risk posed by an AI system to the health, safety, or fundamental rights of individuals. The Act distinguishes between four categories: (1) low-risk systems, (2) limited high-risk systems, (3) high-risk systems, and (4) unacceptable risk systems.\n\n**Application:** According to Article 5 of the EU AI Act, each category is associated with specific obligations for developers, deployers, distributors, and providers. For example:\n\n* Low-risk systems: No specific obligations are imposed on developers, deployers, distributors, or providers.\n* Limited high-risk systems: Developers must conduct a risk assessment and implement appropriate measures to mitigate risks. Deployers must also assess the impact of AI systems on fundamental rights.\n* High-risk systems: In addition to the above requirements, high-risk systems must undergo pre-deployment assessments, extensive documentation, post-market monitoring, and incident reporting. Deployers must also assess impacts on fundamental rights through a Data Protection Impact Assessment (DPIA).\n* Unacceptable risk systems: The use of unacceptable risk systems is prohibited.\n\n**Conclusion:** The EU AI Act introduces a risk classification system that categorizes AI systems into four tiers based on their potential impact on individuals and society. Each tier is associated with specific obligations for developers, deployers, distributors, and providers, aimed at mitigating risks and ensuring the safe development and deployment of AI systems.",
+    "gold_status": "draft",
+    "needs_review": true,
+    "gold_model": "llama3.1:8b",
+    "retriever_ids_at_gold_draft": [
+      "37",
+      "31",
+      "33",
+      "16",
+      "6"
+    ],
+    "gold_doc_ids": [],
+    "relevance_annotated": false
+  },
+  {
+    "id": "q14",
+    "type": "decomposable",
+    "query": "Explain the role and responsibilities of the European AI Board and how it interacts with national supervisory authorities.",
+    "gold": "**Issue:** The European AI Board's role and responsibilities in relation to national supervisory authorities.\n\n**Rule:** Article 43 of the EU AI Act establishes the European Artificial Intelligence Board (EU AI Board), which is responsible for providing guidance on the application of the AI Act, including its interaction with national supervisory authorities. (Source: Not explicitly stated in retrieved passages, but inferred from general knowledge of the EU AI Act)\n\n**Application:** The EU AI Board will interact with national supervisory authorities through a collaborative framework, ensuring consistency and coherence in the application of the AI Act across Member States.\n\n**Conclusion:** In accordance with Article 43 of the EU AI Act, the European AI Board will play a crucial role in providing guidance on the interaction between the AI Act and national supervisory authorities, promoting a harmonized approach to AI regulation within the EU.",
+    "gold_status": "draft",
+    "needs_review": true,
+    "gold_model": "llama3.1:8b",
+    "retriever_ids_at_gold_draft": [
+      "16",
+      "12",
+      "39",
+      "10",
+      "29"
+    ],
+    "gold_doc_ids": [],
+    "relevance_annotated": false
+  },
+  {
+    "id": "q15",
+    "type": "decomposable",
+    "query": "Compare the requirements for post-market monitoring and market surveillance under the EU AI Act for high-risk AI systems.",
+    "gold": "**Issue:** The requirements for post-market monitoring and market surveillance under the EU AI Act for high-risk AI systems need to be compared.\n\n**Rule:** According to Article 12 of the EU AI Act, high-risk AI systems must undergo post-market monitoring, which includes regular assessments of their performance and impact on fundamental rights. Additionally, Article 13 requires deployers to report incidents related to these systems.\n\n**Application:** The post-market monitoring requirements under the EU AI Act are more extensive than those in other jurisdictions mentioned, such as Colorado's AI Act or Texas's Responsible Artificial Intelligence Governance Act. While these state laws also require documentation and risk mitigation, they do not impose the same level of centralized oversight and incident reporting as the EU AI Act.\n\n**Conclusion:** The EU AI Act imposes stricter requirements for post-market monitoring and market surveillance on high-risk AI systems compared to other jurisdictions. Deployers must regularly assess their performance and report incidents, ensuring a higher level of accountability and transparency in the use of these systems.",
+    "gold_status": "draft",
+    "needs_review": true,
+    "gold_model": "llama3.1:8b",
+    "retriever_ids_at_gold_draft": [
+      "33",
+      "35",
+      "29",
+      "19",
+      "38"
+    ],
+    "gold_doc_ids": [],
+    "relevance_annotated": false
+  },
+  {
+    "id": "q16",
+    "type": "decomposable",
+    "query": "How does the EU AI Act address general-purpose AI (GPAI) models with systemic risks compared to regular GPAI models?",
+    "gold": "**Issue:** The EU AI Act's treatment of general-purpose AI (GPAI) models with systemic risks compared to regular GPAI models.\n\n**Rule:** Article 4(1)(a) and (b) of the EU AI Act, which defines high-risk AI systems as those that pose a significant risk to health or safety, or that affect fundamental rights. Additionally, Recital 14 of the Preamble emphasizes the need for specific rules for GPAI models.\n\n**Application:** The EU AI Act introduces a risk-based approach to regulating AI, with a focus on high-risk AI systems. For GPAI models with systemic risks, Article 4(1)(a) and (b) applies, requiring pre-deployment assessments, extensive documentation, post-market monitoring, and incident reporting. This is in addition to the centralized oversight through the EU AI Office, as mentioned in Recital 14 of the Preamble.\n\n**Conclusion:** The EU AI Act treats GPAI models with systemic risks more stringently than regular GPAI models by applying specific rules under Article 4(1)(a) and (b), requiring additional documentation, monitoring, and oversight. This approach aims to mitigate potential harm from these systems while promoting innovation in the field of AI.",
+    "gold_status": "draft",
+    "needs_review": true,
+    "gold_model": "llama3.1:8b",
+    "retriever_ids_at_gold_draft": [
+      "12",
+      "6",
+      "16",
+      "33",
+      "29"
+    ],
+    "gold_doc_ids": [],
+    "relevance_annotated": false
+  },
+  {
+    "id": "q17",
+    "type": "decomposable",
+    "query": "What are the rights of deployers and individuals when AI systems make automated decisions, and how can they seek explanations?",
+    "gold": "**Issue**\n\nThe rights of deployers and individuals when AI systems make automated decisions, and how they can seek explanations.\n\n**Rule**\n\nPursuant to Article 52(1) of the EU AI Act, which requires that high-risk AI systems provide transparent and understandable information about their decision-making processes, deployers have a responsibility to ensure that such systems are designed and implemented in a way that allows for explanation and understanding. Furthermore, Article 60 of the EU AI Act emphasizes the importance of accountability and transparency in AI decision-making, stating that organizations must be able to demonstrate compliance with these principles.\n\n**Application**\n\nIn applying these rules, deployers must take steps to ensure that their AI systems are transparent and explainable, including providing clear information about how decisions are made and ensuring that individuals have access to explanations for any adverse outcomes. Individuals also have the right to seek explanations from deployers under Article 52(2) of the EU AI Act, which requires that organizations provide information on how to request an explanation.\n\n**Conclusion**\n\nIn conclusion, both deployers and individuals have rights and responsibilities when it comes to AI systems making automated decisions. Deployers must ensure that their AI systems are transparent and explainable, while individuals have the right to seek explanations for any adverse outcomes. By understanding these rights and responsibilities, organizations can better navigate the complex landscape of AI regulation and ensure compliance with relevant laws and regulations.\n\n**Additional Guidance**\n\nRegulators around the world, including federal and state agencies in the United States (such as the EEOC, FTC, and state civil rights departments), have emphasized that existing employment, credit, housing, disability, and consumer protection laws apply equally to AI-mediated decisions. Organizations can face liability for disparate impact, failure to accommodate, or unfair practices even when they rely on third-party models.\n\nIn terms of seeking explanations, individuals may need to follow specific procedures outlined by the organization, such as submitting a request in writing or through an online portal. Deployers must also ensure that their AI systems are designed and implemented in a way that allows for explanation and understanding, including providing clear information about how decisions are made and ensuring that individuals have access to explanations for any adverse outcomes.\n\nIt is essential for organizations to map AI use cases, clarify internal ownership across developers and deployers, and ensure assessment and documentation processes can scale. Tracking regulatory developments across regions remains essential as enforcement approaches.",
+    "gold_status": "draft",
+    "needs_review": true,
+    "gold_model": "llama3.1:8b",
+    "retriever_ids_at_gold_draft": [
+      "24",
+      "31",
+      "30",
+      "41",
+      "12"
+    ],
+    "gold_doc_ids": [],
+    "relevance_annotated": false
+  },
+  {
+    "id": "q18",
+    "type": "decomposable",
+    "query": "Explain the role of the EU AI Office, its structure, and how it enforces compliance for general purpose AI models.",
+    "gold": "**Issue:** The EU AI Office's role in enforcing compliance for general-purpose AI models.\n\n**Rule:** Article 60 of the EU AI Act establishes the EU AI Office as a central authority responsible for overseeing the implementation and enforcement of the AI Act, including monitoring compliance with obligations related to general-purpose AI models. (EU AI Act, Article 60)\n\n**Application:** The EU AI Office will enforce compliance through various means, including:\n\n* Conducting risk assessments and audits\n* Issuing guidelines and recommendations\n* Providing training and capacity-building programs for stakeholders\n* Monitoring and enforcing transparency requirements\n* Imposing penalties on non-compliant entities\n\n**Conclusion:** The EU AI Office plays a crucial role in ensuring compliance with the EU AI Act's obligations related to general-purpose AI models. Its central authority will oversee the implementation of the Act, monitor compliance, and enforce penalties for non-compliance.\n\nNote: The above response is based on the provided context and relevant Articles of the EU AI Act.",
+    "gold_status": "draft",
+    "needs_review": true,
+    "gold_model": "llama3.1:8b",
+    "retriever_ids_at_gold_draft": [
+      "19",
+      "30",
+      "33",
+      "41",
+      "32"
+    ],
+    "gold_doc_ids": [],
+    "relevance_annotated": false
+  },
+  {
+    "id": "q19",
+    "type": "decomposable",
+    "query": "What documentation must be prepared for high-risk AI systems under Article 11 and how does it relate to the conformity assessment?",
+    "gold": "**Issue:** What documentation must be prepared for high-risk AI systems under Article 11 and how does it relate to conformity assessment?\n\n**Rule:** Under Article 11 of the EU AI Act, high-risk AI systems require extensive documentation as part of their pre-deployment assessments. This includes assessing impacts on fundamental rights, a process that aligns with existing GDPR principles (Article 11(1)).\n\n**Application:**\n\n* The documentation must cover the assessment of impacts on fundamental rights, including profiling, biometric identification, and decisions affecting fundamental rights (Article 11(2)).\n* Deployers are required to maintain records of these assessments, which will be subject to post-market monitoring and incident reporting (Article 11(3)).\n* Conformity assessment is a critical component of this process, ensuring that high-risk AI systems meet the necessary standards before deployment.\n\n**Conclusion:** To comply with Article 11 of the EU AI Act, deployers of high-risk AI systems must prepare comprehensive documentation that includes assessments of impacts on fundamental rights and records of conformity assessments. This documentation will be subject to post-market monitoring and incident reporting, emphasizing the importance of ongoing compliance and risk management.",
+    "gold_status": "draft",
+    "needs_review": true,
+    "gold_model": "llama3.1:8b",
+    "retriever_ids_at_gold_draft": [
+      "33",
+      "35",
+      "16",
+      "38",
+      "41"
+    ],
+    "gold_doc_ids": [],
+    "relevance_annotated": false
+  },
+  {
+    "id": "q20",
+    "type": "decomposable",
+    "query": "Describe the concept of 'human oversight' under Article 14 and how it must be implemented in high-risk AI systems.",
+    "gold": "**Issue**\n\nThe concept of \"human oversight\" under Article 14 of the EU AI Act requires clarification in relation to its implementation in high-risk AI systems.\n\n**Rule**\n\nPursuant to Article 14(1) of the EU AI Act, human oversight is a critical component of ensuring accountability and transparency in high-risk AI systems. The Article mandates that organizations implement effective human oversight mechanisms to monitor and correct the decisions made by such systems (Article 14(1)). Furthermore, Article 14(2) emphasizes the importance of providing explanations for the decisions made by high-risk AI systems, which is a key aspect of human oversight.\n\n**Application**\n\nIn applying the rule to high-risk AI systems, organizations must ensure that they have implemented robust human oversight mechanisms. This includes assigning personnel with appropriate expertise and authority to review and correct the decisions made by such systems (Article 14(1)). Additionally, organizations must provide explanations for the decisions made by high-risk AI systems, which can be achieved through various means, including documentation, reporting, or other forms of transparency.\n\n**Conclusion**\n\nIn conclusion, human oversight under Article 14 of the EU AI Act is a critical component of ensuring accountability and transparency in high-risk AI systems. Organizations must implement effective human oversight mechanisms to monitor and correct the decisions made by such systems, provide explanations for those decisions, and ensure that personnel with appropriate expertise and authority are assigned to review and correct the decisions made by high-risk AI systems.",
+    "gold_status": "draft",
+    "needs_review": true,
+    "gold_model": "llama3.1:8b",
+    "retriever_ids_at_gold_draft": [
+      "19",
+      "30",
+      "37",
+      "39",
+      "35"
+    ],
+    "gold_doc_ids": [],
+    "relevance_annotated": false
+  },
+  {
+    "id": "q21",
+    "type": "routing",
+    "query": "What are the latest news updates regarding the establishment and active operations of the EU AI Office?",
+    "gold": "**Routing Query: EU AI Office Establishment and Active Operations**\n\n**Issue:** The query seeks information on the establishment and active operations of the EU AI Office, specifically in relation to its current status and any recent news updates.\n\n**Rule:** Article 56 of the EU AI Act establishes the European Artificial Intelligence Board (EU AI Board), which is responsible for providing guidance and support to Member States on the implementation of the AI Act. The EU AI Board is also tasked with overseeing the establishment of a network of national contact points, including the EU AI Office.\n\n**Application:** According to recent news updates, the EU AI Office has been established as part of the staged implementation of the EU AI Act, which began in August 2024. However, due to the publication of the digital omnibus and the focus on the EU's competitiveness, some rules around high-risk AI have been delayed.\n\n**Conclusion:** The EU AI Office is currently operational, although its powers to oversee AI systems built on General Purpose AI (GPAI) models are being reinforced as part of proposed changes to the Act. Businesses should be aware of these developments and monitor updates from regulatory authorities for further guidance on compliance with the EU AI Act.\n\n**Current Status/News:** The current focus is on the EU's competitiveness, and some rules around high-risk AI have been delayed due to the availability of tools and standards to help organisations comply. The EU AI Office's powers are being reinforced, and SMEs may benefit from extended exemptions and the availability of sandboxes.",
+    "gold_status": "draft",
+    "needs_review": true,
+    "gold_model": "llama3.1:8b",
+    "retriever_ids_at_gold_draft": [
+      "16",
+      "10",
+      "6",
+      "42",
+      "31"
+    ],
+    "gold_doc_ids": [],
+    "relevance_annotated": false
+  },
+  {
+    "id": "q22",
+    "type": "routing",
+    "query": "How does the EU AI Act regulate general-purpose AI (GPAI) models and what recent announcements or updates happened this week?",
+    "gold": "**Routing Query Response**\n\n**Issue:** The EU AI Act's regulation of General-Purpose AI (GPAI) models and recent announcements or updates.\n\n**Rule:** Article 3(1)(a) of the EU AI Act defines high-risk AI as including systems that use GPAI models. According to Article 12, organisations using such systems must ensure they comply with the requirements for transparency, explainability, and human oversight.\n\n**Application:** The current implementation of the EU AI Act has been delayed due to the availability of tools and standards to help organisations comply (Document 2). Proposed changes include extending exemptions granted to SMEs and reinforcing the AI Office's powers to oversee GPAI models. Additionally, the European Data Protection Board is developing guidance on the interaction between the GDPR and the EU AI Act.\n\n**Conclusion:** The EU AI Act regulates GPAI models by requiring transparency, explainability, and human oversight for high-risk systems that use such models. Recent announcements include proposed changes to the Act's implementation timeline and the development of guidelines for organisations using GPAI models.\n\nRegarding recent updates, the European Commission has published a digital omnibus proposal that includes amendments to the EU AI Act (Document 1). The UK's Information Commissioner's Office (ICO) has also announced updated guidance on Artificial Decision-Making (ADM), including a new AI code of practice (Document 4).\n\n**Recent Announcements/Updates:** \n\n* Proposed changes to the EU AI Act, including delayed implementation and extended exemptions for SMEs.\n* Development of guidelines by the European Data Protection Board on the interaction between the GDPR and the EU AI Act.\n* Updated guidance from the UK's ICO on ADM, including a new AI code of practice.",
+    "gold_status": "draft",
+    "needs_review": true,
+    "gold_model": "llama3.1:8b",
+    "retriever_ids_at_gold_draft": [
+      "16",
+      "6",
+      "42",
+      "10",
+      "29"
+    ],
+    "gold_doc_ids": [],
+    "relevance_annotated": false
+  },
+  {
+    "id": "q23",
+    "type": "routing",
+    "query": "What recent updates or announcements were made regarding the EU-US AI safety cooperation agreement?",
+    "gold": "**Routing Query: EU-US AI Safety Cooperation Agreement Updates**\n\n**Issue:** The user seeks information on recent updates or announcements regarding the EU-US AI safety cooperation agreement.\n\n**Rule:** While there is no specific mention of the EU-US AI safety cooperation agreement in the retrieved passages, Article 32 of the EU AI Act emphasizes the importance of international cooperation and collaboration in ensuring the safe development and deployment of AI systems. This article encourages Member States to engage with other countries and international organizations to establish common standards and best practices for AI governance.\n\n**Application:** The current status of the EU-US AI safety cooperation agreement is not explicitly mentioned in the retrieved passages. However, Document 4 mentions that the European Data Protection Board is developing guidance to support organizations in navigating the interaction between the EU General Data Protection Regulation and the EU AI Act. This suggests a focus on international cooperation and collaboration in ensuring the safe development and deployment of AI systems.\n\n**Conclusion:** While there are no specific updates or announcements regarding the EU-US AI safety cooperation agreement, the EU AI Act emphasizes the importance of international cooperation and collaboration in ensuring the safe development and deployment of AI systems. The European Data Protection Board's efforts to develop guidance on the interaction between the EU General Data Protection Regulation and the EU AI Act indicate a focus on international cooperation and collaboration.\n\n**Current Status/News:** There is no specific information on recent updates or announcements regarding the EU-US AI safety cooperation agreement in the retrieved passages. However, Document 4 mentions that some of the rules around high-risk AI in the EU AI Act are being delayed due to the availability of tools and standards to help organizations comply. This suggests a focus on ensuring the safe development and deployment of AI systems through international cooperation and collaboration.\n\n**Recommendation:** For more information on the current status of the EU-US AI safety cooperation agreement, we recommend consulting official sources such as the European Commission's website or contacting relevant authorities directly.",
+    "gold_status": "draft",
+    "needs_review": true,
+    "gold_model": "llama3.1:8b",
+    "retriever_ids_at_gold_draft": [
+      "42",
+      "16",
+      "10",
+      "6",
+      "21"
+    ],
+    "gold_doc_ids": [],
+    "relevance_annotated": false
+  },
+  {
+    "id": "q24",
+    "type": "routing",
+    "query": "What are the latest news developments regarding member states appointing their national market surveillance authorities?",
+    "gold": "**Routing Query Response**\n\n**Issue:** The query seeks information on the latest news developments regarding member states appointing their national market surveillance authorities.\n\n**Rule:** According to Article 60 of the EU AI Act, Member States are responsible for designating and authorizing national market surveillance authorities (NMAs) to ensure compliance with the Act's provisions. These NMAs will be responsible for monitoring and enforcing the implementation of the AI Act at the national level.\n\n**Application:** The European Commission has introduced the EU Digital Omnibus proposal in late 2025, which aims to simplify and align elements of the GDPR, the AI Act, and the ePrivacy framework. This proposal includes adjustments to definitions of personal data, data subject rights, and legitimate interest, with greater flexibility for certain AI training activities.\n\n**Conclusion:** While there is no specific news article directly addressing the appointment of national market surveillance authorities, the EU Digital Omnibus proposal reflects Europe's effort to pair enforcement maturity with competitiveness. Member States are expected to designate and authorize their NMAs in accordance with Article 60 of the EU AI Act, ensuring compliance with the Act's provisions.\n\n**Current Status/News:** The European Commission is actively working on implementing the EU AI Act, including designating national market surveillance authorities. However, specific news developments regarding member states appointing their national market surveillance authorities are not readily available in the provided context.",
+    "gold_status": "draft",
+    "needs_review": true,
+    "gold_model": "llama3.1:8b",
+    "retriever_ids_at_gold_draft": [
+      "31",
+      "39",
+      "42",
+      "12",
+      "34"
+    ],
+    "gold_doc_ids": [],
+    "relevance_annotated": false
+  },
+  {
+    "id": "q25",
+    "type": "routing",
+    "query": "Are there any recent announcements or guidelines released by the EU AI Office regarding general-purpose AI model classification?",
+    "gold": "**Routing Query Response**\n\n**Issue:** The query seeks information on recent announcements or guidelines released by the EU AI Office regarding general-purpose AI model classification.\n\n**Rule:** Article 7 of the EU AI Act outlines the role and responsibilities of the EU AI Office, including overseeing the development and deployment of high-risk AI systems, including those built on General Purpose AI (GPAI) models. The Act also emphasizes the importance of transparency and explainability in AI decision-making processes.\n\n**Application:** According to Document 1, the EU AI Office's powers to oversee AI systems built on GPAI models are being reinforced as part of proposed changes to the Act. Additionally, Document 4 mentions that the European Data Protection Board is developing guidance to support organisations in navigating the interaction between the EU General Data Protection Regulation and the EU AI Act.\n\n**Conclusion:** While there may not be specific recent announcements or guidelines released by the EU AI Office regarding general-purpose AI model classification, the EU AI Act emphasizes the importance of transparency, explainability, and oversight in AI decision-making processes. The proposed changes to the Act, including reinforcing the EU AI Office's powers, suggest a continued focus on regulating GPAI models.\n\n**Current Status/News:** As mentioned in Document 1, some rules around high-risk AI are being delayed due to the availability of tools and standards to help organisations comply. Additionally, the European Data Protection Board is developing guidance to support organisations in navigating the interaction between the EU General Data Protection Regulation and the EU AI Act.\n\n**Recommendation:** For up-to-date information on recent announcements or guidelines released by the EU AI Office regarding general-purpose AI model classification, we recommend checking the official website of the EU AI Office or consulting with relevant authorities.",
+    "gold_status": "draft",
+    "needs_review": true,
+    "gold_model": "llama3.1:8b",
+    "retriever_ids_at_gold_draft": [
+      "6",
+      "42",
+      "29",
+      "10",
+      "33"
+    ],
+    "gold_doc_ids": [],
+    "relevance_annotated": false
+  },
+  {
+    "id": "q26",
+    "type": "routing",
+    "query": "What recent news highlights the global impact of the EU AI Act on US technology companies?",
+    "gold": "**Routing Query Response**\n\n**Issue:** The global impact of the EU AI Act on US technology companies.\n\n**Rule:** The EU AI Act imposes significant obligations on high-risk and general-purpose AI models, including controls on data quality, transparency, human oversight, and monitoring discrimination (Article 3-15). Non-EU based organizations are also subject to these regulations, as they extend to all organizations that offer goods or services to individuals within the EU or monitor their behavior (Article 3(1)).\n\n**Application:** The EU AI Act's global impact on US technology companies is significant. As mentioned in Document 3, the EU has adopted binding legal frameworks that extend to non-EU based organizations, including those from the US. This means that US technology companies must comply with the EU AI Act's regulations, even if they do not have a physical presence within the EU.\n\n**Conclusion:** The recent news highlights the global impact of the EU AI Act on US technology companies. As the EU continues to implement its AI regulatory framework, US companies must closely monitor and adapt to these changes to avoid non-compliance risks. This includes ensuring that high-risk and general-purpose AI models meet the EU's data quality, transparency, human oversight, and monitoring discrimination requirements.\n\n**Recent News:** The recent news articles (Document 3-5) emphasize the increasing complexity of AI regulation worldwide. Regulators are assigning responsibility across the AI lifecycle, with developers, deployers, distributors, and providers assigned distinct duties. This mirrors how privacy law differentiates between controllers and processors, reinforcing the need for clear internal ownership.\n\n**Current Status:** The EU AI Act is currently in the implementation phase, with obligations coming into force over the next few years on a staggered basis. US technology companies must closely monitor these developments to ensure compliance with the EU's regulations.",
+    "gold_status": "draft",
+    "needs_review": true,
+    "gold_model": "llama3.1:8b",
+    "retriever_ids_at_gold_draft": [
+      "16",
+      "29",
+      "19",
+      "31",
+      "42"
+    ],
+    "gold_doc_ids": [],
+    "relevance_annotated": false
+  },
+  {
+    "id": "q27",
+    "type": "routing",
+    "query": "What are the latest news updates regarding the conformity assessment bodies for high-risk AI systems?",
+    "gold": "**Routing Query: Conformity Assessment Bodies for High-Risk AI Systems**\n\n**Issue:** The query seeks information on the latest news updates regarding conformity assessment bodies for high-risk AI systems.\n\n**Rule:** Article 12 of the EU AI Act outlines the requirements for conformity assessment bodies, which are responsible for evaluating the conformity of AI systems with the Union's regulatory framework. These bodies must be designated by Member States and meet specific criteria, including independence, impartiality, and expertise in AI (Article 12(2)).\n\n**Application:** The current status of conformity assessment bodies for high-risk AI systems is that they are still being developed and implemented in accordance with the EU AI Act. As mentioned in Document 4, some rules around high-risk AI were delayed due to the availability of tools and standards to help organizations comply. This delay affects the entry into application of certain provisions related to conformity assessment bodies.\n\n**Conclusion:** The latest news updates indicate that conformity assessment bodies for high-risk AI systems are still being developed and implemented in accordance with the EU AI Act. While some rules have been delayed, the overall trend is towards increased regulation and oversight of AI systems, including the establishment of conformity assessment bodies to ensure compliance with Union law.\n\n**Additional Context:** Document 3 mentions Brazil's Bill No. 2338, which introduces a comprehensive AI framework aligned with the EU AI Act. This bill includes provisions for conformity assessment bodies, highlighting the global trend towards establishing similar regulatory frameworks for AI systems.",
+    "gold_status": "draft",
+    "needs_review": true,
+    "gold_model": "llama3.1:8b",
+    "retriever_ids_at_gold_draft": [
+      "16",
+      "35",
+      "37",
+      "6",
+      "31"
+    ],
+    "gold_doc_ids": [],
+    "relevance_annotated": false
+  },
+  {
+    "id": "q28",
+    "type": "routing",
+    "query": "What news updates exist regarding the enforcement of Article 5 prohibitions which entered into force recently?",
+    "gold": "**Routing Query Response:**\n\n**Issue:** The enforcement of Article 5 prohibitions under the EU AI Act, which entered into force recently.\n\n**Rule:** Pursuant to Article 5 of the EU AI Act, certain prohibited practices are identified, including those that infringe on human rights and freedoms. These prohibitions include, but are not limited to, the use of AI systems that manipulate or distort information in a way that is likely to cause harm to individuals or society.\n\n**Application:** The enforcement of Article 5 prohibitions is subject to the EU AI Act's phased implementation schedule, with obligations phasing in through 2027. By 2026, organizations will already be subject to rules covering prohibited AI practices, general-purpose AI models, transparency requirements, and penalties.\n\n**Conclusion:** As of February 2026, several APAC jurisdictions have implemented binding AI frameworks, including China's Generative AI Services Management Measures and South Korea's Basic AI Act. The EU AI Act also imposes significant obligations on high-risk and general-purpose AI models, with a focus on data quality, transparency, human oversight, and monitoring discrimination.\n\n**Current Status/News:** Recent news articles highlight the enforcement of Article 5 prohibitions in various jurisdictions. For instance, the European Commission has indicated that it has several algorithmic pricing investigations underway, including probes into whether Google and Meta are favoring their own AI services. Additionally, the South Korean Basic AI Act enters into force in January 2026, applying extraterritorially where systems affect Korean users.\n\n**Recommendation:** Organizations developing or deploying AI systems should ensure compliance with Article 5 prohibitions under the EU AI Act and relevant national laws, such as those in APAC jurisdictions. This includes implementing transparency requirements, conducting risk assessments, and ensuring human oversight and documentation of AI decision-making processes.",
+    "gold_status": "draft",
+    "needs_review": true,
+    "gold_model": "llama3.1:8b",
+    "retriever_ids_at_gold_draft": [
+      "32",
+      "19",
+      "17",
+      "38",
+      "14"
+    ],
+    "gold_doc_ids": [],
+    "relevance_annotated": false
+  },
+  {
+    "id": "q29",
+    "type": "routing",
+    "query": "Are there any recent articles or news on the penalties imposed on companies under the EU AI Act?",
+    "gold": "**Routing Query Response: Penalties Imposed on Companies under the EU AI Act**\n\n**Issue:** The query seeks information on recent articles or news regarding penalties imposed on companies under the EU AI Act.\n\n**Rule:** According to Article 65 of the EU AI Act, non-compliance with the regulation's provisions may result in administrative fines. These fines can range from €20 million to €100 million or up to 4% of the total worldwide turnover of the preceding financial year for undertakings.\n\n**Application:** The application of these penalties is subject to the discretion of the competent authorities, who will assess the severity of the non-compliance and determine the appropriate fine. Recent news articles suggest that companies are taking steps to comply with the EU AI Act, but there have been no major announcements regarding specific penalties imposed on companies.\n\n**Conclusion:** While there is no recent news on specific penalties imposed on companies under the EU AI Act, it is essential for companies to remain vigilant and ensure compliance with the regulation's provisions. The potential administrative fines can be substantial, and companies should take proactive steps to avoid non-compliance.\n\nRecent articles suggest that companies are closely monitoring developments in AI regulations, including the EU AI Act. For example, an article by Gunderson Dettmer Stough Villeneuve Franklin & Hachigian, LLP provides a high-level overview of key AI laws enacted or taking effect in 2026, including the EU AI Act (Document 5). Another article by Wilson Sonsini highlights the importance of monitoring state and federal AI laws and announcements (Document 3).\n\nIt is essential for companies to stay informed about developments in AI regulations and take proactive steps to ensure compliance with the EU AI Act.",
+    "gold_status": "draft",
+    "needs_review": true,
+    "gold_model": "llama3.1:8b",
+    "retriever_ids_at_gold_draft": [
+      "29",
+      "19",
+      "42",
+      "16",
+      "17"
+    ],
+    "gold_doc_ids": [],
+    "relevance_annotated": false
+  },
+  {
+    "id": "q30",
+    "type": "routing",
+    "query": "What is the latest news about standardisation requests for AI systems under the EU AI Act?",
+    "gold": "**Routing Query Response: Standardisation Requests for AI Systems under the EU AI Act**\n\n**Issue:** The user seeks information about the latest news regarding standardization requests for AI systems under the EU AI Act.\n\n**Rule:** Article 12 of the EU AI Act requires that high-risk AI systems be subject to a conformity assessment, which may involve standardization. However, the specific requirements and timelines for standardization are still being developed through the digital omnibus proposal (Article 13).\n\n**Application:** The current status of standardization requests under the EU AI Act is that some rules around high-risk AI have been delayed due to the availability of tools and standards to help organizations comply. The entry into application of these rules is linked to the publication of necessary standards.\n\n**Conclusion:** While there are ongoing efforts to develop standardization requirements for AI systems under the EU AI Act, the current focus is on the digital omnibus proposal and the development of necessary tools and standards to support compliance.",
+    "gold_status": "draft",
+    "needs_review": true,
+    "gold_model": "llama3.1:8b",
+    "retriever_ids_at_gold_draft": [
+      "16",
+      "29",
+      "40",
+      "35",
+      "6"
+    ],
+    "gold_doc_ids": [],
+    "relevance_annotated": false
+  }
+]

@@ -1,0 +1,28 @@
+# Local generation + QLoRA fine-tuning stack (GENERATION_PROVIDER=local_peft).
+#
+# Kept separate from requirements.txt on purpose: this is ~3GB of wheels and is
+# only needed to fine-tune or to serve the three local expert models. The
+# Ollama and DeepSeek generation paths, the benchmark harness, the analysis and
+# the figures all work without any of it - local_models.py defers every import
+# and raises an actionable error if something here is missing.
+#
+# Install torch FIRST, from PyTorch's own index, or pip will fetch the CPU-only
+# build from PyPI and every model will silently run on the CPU:
+#
+#   pip install torch --index-url https://download.pytorch.org/whl/cu126
+#   pip install -r requirements-finetune.txt
+#
+# Verified working combination on the experiment machine (RTX 4070 Laptop, 8GB,
+# Windows 11, Python 3.11):
+#   torch 2.13.0+cu126, transformers 5.14.1, peft 0.20.0, trl 1.9.2,
+#   bitsandbytes 0.50.0, accelerate 1.14.0, datasets 5.0.1
+
+torch>=2.4                 # install from the cu* index, see above
+transformers>=4.44
+peft>=0.12
+trl>=0.9
+bitsandbytes>=0.43         # 4-bit NF4 quantisation; has Windows wheels from 0.43
+accelerate>=0.33
+datasets>=2.20
+sentencepiece              # tokenizer dependency for the Llama/Mistral families
+protobuf                   # ditto

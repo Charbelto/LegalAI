@@ -1,0 +1,69 @@
+\documentclass[journal,10pt,compsoc,onecolumn]{IEEEtran}
+\usepackage[final]{graphicx}
+\usepackage{booktabs}
+\usepackage{subcaption}
+\usepackage{geometry}
+\usepackage{amsmath}
+\usepackage{hyperref}
+
+\geometry{letterpaper, margin=1in}
+
+% Setup graphics path. Put all your PNGs into a folder named "figures" in Overleaf
+\graphicspath{{figures/}}
+
+\begin{document}
+
+\title{When Is One Agent Enough? An Empirical Study of Single-Agent and Multi-Agent Routing Structures, Their Performance and Computational Cost}
+
+\author{Charbel~\dots \\
+\textit{}}
+
+\maketitle
+
+\begin{abstract}
+Multi-agent systems have become a default design choice for complex language-model applications, yet the assumption that adding and orchestrating more agents improves outcomes is rarely tested directly. This paper presents an empirical comparison of single-agent and multi-agent routing structures, using regulatory-compliance question answering (the EU AI Act) as a demanding case study. We evaluate six routing configurations that span a single dynamically-routed agent and five multi-agent topologies (fully sequential, fully parallel, partial-parallel, legal-first conditional, and a verification-only bypass) along 32 operational and text-quality metrics, scoring every configuration against an expert-curated gold standard. Our central finding is that the multi-agent topologies do not uniformly outperform the single-agent router: the single-agent configuration achieves the strongest reference alignment (highest BLEU-1, ROUGE-1, and lexical-overlap scores) while running roughly 40\% faster than the fully sequential pipeline, and the most expensive multi-agent workflow is not the most accurate. We connect these latency and quality results to show that coordination overhead does not reliably translate into better answers, and that the \emph{structure} of a multi-agent system, rather than the number of agents, drives both performance and cost. We close with architecture-selection guidance and a roadmap for extending the comparison to planner-based and DAG-based topologies on larger models.
+\end{abstract}
+
+\section{Introduction}
+An \emph{AI agent} is a system that couples a language model with a goal, memory, and the ability to act, deciding for itself which tools to call, what to retrieve, and how to compose a response rather than emitting a single forward pass. A \emph{multi-agent system} composes several such agents, often specialized by role (for example a planner, a router, domain experts, a validator, and an aggregator), and coordinates them through an orchestration layer so that the output of one agent becomes the input or trigger of another.
+
+Multi-agent architectures are increasingly popular, and for good reason: decomposing a hard problem into specialized sub-problems is intuitively appealing and mirrors how human teams work. However, this decomposition is not free. Every additional agent introduces coordination overhead, inter-agent communication, redundant context handling, and additional model invocations, all of which raise latency and computational cost. In many practical settings these costs are incurred whether or not the task actually benefits from multiple agents. A natural and underexamined question follows: \emph{is a multi-agent system always preferable to a single, well-designed agent, and if not, when is each appropriate?}
+
+This paper argues, and shows empirically, that a single agent is sometimes sufficient and can even outperform multi-agent alternatives on tasks that are not strongly decomposable. We further argue that when multiple agents are warranted, their \emph{organizational structure} (how they are wired together) matters at least as much as their number. We study these questions on a deliberately demanding application: question answering and compliance checking against the EU AI Act, where answers must align with expert-curated reference guidance. The application is a case study; the comparison and its conclusions are intended to generalize beyond the legal domain.
+
+Our research objectives are threefold: (i) to characterize when a single agent is preferable to a multi-agent system; (ii) to characterize when multi-agent coordination provides a benefit that justifies its overhead; and (iii) to study how different multi-agent structures (sequential, parallel, conditional, and bypass routing) affect accuracy, latency, and computational cost. We answer three research questions:
+\begin{enumerate}
+    \item Is a multi-agent system always better than a single agent?
+    \item Which routing structure offers the best balance of response quality and cost?
+    \item How does agent structure affect text-quality, latency, execution steps, and resource consumption?
+\end{enumerate}
+
+\section{Related Work}
+\textbf{Legal retrieval and QA benchmarks.} LegalBench-RAG evaluates retrieval quality, but largely within fixed RAG pipelines rather than dynamically routed multi-agent systems. LexRAG focuses on conversational answer quality yet offers limited analysis of latency, token usage, and topology-level execution cost. Domain systems such as Chatlaw, LegalGPT, and PAKTON improve legal accuracy and reasoning but treat the agent configuration as fixed and do not ask whether the chosen structure is the right one.
+
+\textbf{Compliance and the EU AI Act.} COMPL-AI benchmarks compliance \emph{capabilities} but does not provide interactive, runtime compliance diagnostics for a deployed system, nor does it tie those diagnostics to operational cost.
+
+\textbf{Multi-agent orchestration.} Work such as HERA and the broader agentic-RAG literature emphasizes orchestration \emph{methods}, how to route, plan, and aggregate, rather than a systematic, controlled comparison of common routing \emph{topologies} on the same task. Observability tooling (e.g., LangSmith, Langfuse) exposes execution traces but rarely connects those traces to benchmark quality and system-performance metrics in a single evaluation.
+
+\textbf{Research gap.} Across these strands, existing studies compare models and tasks but provide limited analysis of how different multi-agent \emph{organizational structures} affect performance and efficiency, and whether a single agent might match or beat them. To our knowledge there is no controlled, multi-metric comparison that places a single-agent router and several multi-agent topologies on identical inputs and a shared gold standard while simultaneously tracing latency, execution steps, token usage, and text quality. This paper targets that gap.
+
+\section{Methodology}
+We hold the underlying language model, retrieval corpus, query set, and gold standard fixed, and vary only the agent structure. This isolates the effect of topology from the effect of model capacity or data. All configurations are executed with node-level execution tracing so that latency can be attributed to individual stages.
+
+\subsection{Single-Agent Architecture}
+The single-agent configuration is a router-style agent that, given a query, selects and invokes the single most appropriate expert path and composes the answer directly. It maintains conversational context but does not fan work out to parallel collaborators or pass intermediate state through a chain of peers. Its decision process is a single routing choice followed by retrieval and generation, which minimizes coordination overhead and the number of model invocations.
+
+\subsection{Multi-Agent Architectures}
+We evaluate the single-agent router against five multi-agent topologies, all sharing the same retrieval and generation primitives but differing in how those primitives are wired:
+\begin{enumerate}
+    \item \textbf{ALL (Sequential)}: Executes all retrieval and analysis nodes in sequence ($A \rightarrow B \rightarrow C \rightarrow \dots$), so each agent sees the accumulated state of its predecessors.
+    \item \textbf{SINGLE (Router)}: The single-agent baseline above, a routing node dynamically selects the single most appropriate expert agent.
+    \item \textbf{PARALLEL}: Spawns all retrieval and logic agents concurrently and aggregates their outputs.
+    \item \textbf{LEGAL-NEWS PAR.}: Runs the legal and news retrieval agents in parallel, bypassing general Q\&A.
+    \item \textbf{LEGAL-FIRST}: Executes the legal agent first, then conditionally decides whether news or general QA is required.
+    \item \textbf{VERIFY-ONLY (Bypass)}: Routes directly to aggregation and verification, bypassing the retrieval nodes entirely.
+\end{enumerate}
+These topologies span the canonical coordination patterns: sequential chaining, full parallelism with aggregation, partial parallelism, conditional/planner-like branching, and a minimal bypass. Two further canonical structures, an explicit \emph{planner-based} dispatcher and a general \emph{DAG-based} workflow with arbitrary dependency edges, are described here as the natural next step and are deferred to future work (Section~\ref{sec:future}) because they require infrastructure beyond the current single-model setup.
+
+\subsection{Evaluation Framework}
+Outputs are evaluated against an expert-curated ``Gold St

@@ -1,0 +1,177 @@
+2026-06-02
+·
+5
+min read
+·
+sota.io Team
+EU AI Act Conformity Assessment: Which High-Risk AI Systems Need Review Before August 2026
+Post #1457 in the sota.io EU Regulatory Compliance Series — EU AI Act Conformity Assessment Sprint 2026 #1/5
+August 2, 2026 is the compliance deadline for high-risk AI system providers under the EU AI Act. If your SaaS product or AI system falls into one of the eight high-risk categories defined in Annex III of the regulation, you need to complete a conformity assessment — and that process takes time. Waiting until July is not a strategy.
+This is the first post in a five-part series on EU AI Act conformity assessment. We cover what conformity assessment is, which systems are affected, and what the path to the CE marking declaration looks like for SaaS providers building or deploying high-risk AI.
+What Is Conformity Assessment Under the EU AI Act?
+Conformity assessment is the formal process that high-risk AI system providers must complete to demonstrate compliance with the EU AI Act's substantive requirements before placing their system on the EU market.
+Under
+Article 43
+, providers of high-risk AI systems must conduct a conformity assessment before making the system available. The assessment verifies that the system meets the requirements set out in Articles 9 through 15:
+Article 9
+: Risk management system
+Article 10
+: Data and data governance
+Article 11
+: Technical documentation
+Article 13
+: Transparency and provision of information to deployers
+Article 14
+: Human oversight measures
+Article 15
+: Accuracy, robustness, and cybersecurity
+After successful assessment, the provider issues an
+EU declaration of conformity
+under
+Article 47
+and affixes the CE marking. The system is then registered in the EU database under
+Article 49
+before deployment.
+This is not a paper exercise. The conformity assessment documentation must be technically substantive, retained for ten years after the system is placed on the market, and made available to market surveillance authorities on request.
+Two Assessment Paths: Self-Assessment vs. Notified Body
+The EU AI Act provides two conformity assessment procedures under Article 43, differentiated by the risk category and the applicable legislation:
+Path A: Internal Control (Provider Self-Assessment)
+For most high-risk AI systems listed in
+Annex III
+— covering employment, education, essential services, administration of justice, and migration use cases — providers can conduct the conformity assessment themselves following the procedure in
+Annex VI
+of the regulation.
+Internal control means the provider:
+Prepares the technical documentation demonstrating compliance with Articles 9–15
+Implements the quality management system required by
+Article 17
+Signs the EU declaration of conformity under Article 47
+Registers in the EU AI Act database before deploying
+No external auditor or notified body is required. The provider is fully responsible for the completeness and accuracy of the assessment.
+Path B: Notified Body Assessment
+Third-party conformity assessment by an accredited
+notified body
+is required in two scenarios:
+Scenario 1 — Annex I product safety overlap:
+When a high-risk AI system is a safety component of a product already covered by Annex I harmonised legislation (such as machinery, medical devices, or aviation equipment), the product's existing conformity assessment procedure under that sectoral legislation governs. The AI-Act-specific requirements are assessed as part of that process.
+Scenario 2 — Remote biometric identification under public authority use:
+For remote biometric identification systems used in publicly accessible spaces, the specific constraints in Article 5 (prohibited practices) and the high-risk classification requirements require careful legal review. Where the system does not fall under a prohibition, the notified body route ensures regulatory defensibility.
+For most SaaS providers — building AI systems for employment screening, educational assessment, creditworthiness evaluation, or benefits administration —
+internal control (Path A) is the applicable procedure
+. The question is not whether to use a notified body, but whether the provider's technical documentation and quality management system meet the required standard.
+The Eight High-Risk Categories in Annex III
+Understanding whether your system is high-risk at all is the foundational step.
+Article 6
+and
+Annex III
+define eight categories:
+1. Biometric Identification and Categorisation
+Systems intended for remote biometric identification of natural persons. Real-time RBI in publicly accessible spaces for law enforcement purposes is prohibited under Article 5. However, post-hoc RBI and biometric categorisation in other contexts may qualify as high-risk under this category.
+SaaS relevance:
+Identity verification, facial recognition for access control, emotion recognition in workplace monitoring.
+2. Critical Infrastructure
+AI systems used as safety components in the management and operation of critical digital infrastructure, road traffic, water, gas, heating, and electricity supply.
+SaaS relevance:
+Predictive maintenance platforms for infrastructure, AI-assisted SCADA systems, anomaly detection in utility networks.
+3. Education and Vocational Training
+Systems that determine access to educational institutions, assess students, or evaluate learning outcomes in ways that significantly affect access to opportunities.
+SaaS relevance:
+AI-powered admissions tools, automated grading systems, proctoring technology, competency assessment platforms.
+4. Employment, Workers Management, and Access to Self-Employment
+AI used for recruitment, promotion, task allocation, or monitoring of workers.
+SaaS relevance:
+CV screening and ranking tools, performance management AI, hiring pipeline tools, employee monitoring analytics.
+5. Essential Private and Public Services
+AI used to evaluate creditworthiness, set insurance premiums, determine eligibility for social benefits, assess emergency services dispatch, or evaluate public housing eligibility.
+SaaS relevance:
+Credit scoring APIs, insurance underwriting models, benefits eligibility platforms.
+6. Law Enforcement
+AI used by law enforcement for risk assessments, polygraph testing, emotion recognition, crime analytics, or evidence evaluation.
+SaaS relevance:
+Primarily law enforcement agency software. SaaS providers building tools sold to police or security services should review this category carefully.
+7. Migration, Asylum, and Border Control Management
+AI for risk assessment of asylum seekers, document authentication, or irregular migration detection.
+SaaS relevance:
+Identity document verification for government clients, travel and border management software.
+8. Administration of Justice and Democratic Processes
+AI used to assist courts, interpret legislation, or influence elections.
+SaaS relevance:
+Legal analytics tools used by courts, electoral systems.
+What SaaS Providers Get Wrong About Scope
+The most common misreading of Annex III is treating the category descriptions as absolute. Three scoping principles matter:
+Purpose, not capability.
+The high-risk classification attaches to the
+intended purpose
+of the system, not its technical capabilities. A general-purpose NLP model trained on employment data is not automatically high-risk. A system
+marketed for
+recruitment decision support and used by employers to screen candidates
+is
+high-risk, regardless of its underlying architecture.
+Significant risk, not every impact.
+Article 6 limits the high-risk classification to systems that "pose significant risks to health, safety or the fundamental rights of persons." The Annex III categories describe the
+context
+of high-risk use. A system must actually be used in that context in a way that has significant impact on individuals to fall within scope.
+The registrant is the provider.
+The entity that developed and placed the high-risk AI system on the market is the provider for Article 16 and Article 43 purposes. If you build an AI-powered employment screening product and license it to customers, you are the provider. Your customers are deployers.
+Timeline: What Must Be Done Before August 2, 2026
+For providers with high-risk AI systems already in use or near market-ready, the conformity assessment must be completed before August 2, 2026. The practical timeline:
+Task
+Minimum Lead Time
+Classify system against Annex III and Article 6
+1–2 weeks
+Gap analysis against Articles 9–15 requirements
+2–4 weeks
+Implement risk management system (Art.9)
+4–8 weeks
+Compile technical documentation (Art.11)
+3–6 weeks
+Establish quality management system (Art.17)
+4–8 weeks
+Internal assessment, review, sign-off
+1–2 weeks
+Issue EU declaration of conformity (Art.47)
+1 week
+Register in EU AI Act database (Art.49)
+1–2 days
+End-to-end: 10–18 weeks for a well-resourced team starting from scratch. If you have not started, you are already behind the minimum timeline for a clean August 2 compliance position.
+What the EU Declaration of Conformity Must Contain
+Under
+Article 47
+, the EU declaration of conformity is a legal document signed by the provider or its authorised representative. It must include:
+The name and address of the provider
+A statement that the EU declaration is issued under the sole responsibility of the provider
+Identification of the AI system (name, version, intended purpose)
+A statement that the AI system meets the requirements of the EU AI Act
+References to the relevant harmonised standards applied (where applicable)
+The place and date of issue, signature, and name and function of the signatory
+The declaration must be issued in one of the official EU languages and translated into the language required by each member state where the system is deployed.
+Practical Starting Point for SaaS Providers
+If you are assessing whether your system is in scope, start here:
+Step 1:
+Map your product's intended use against the eight Annex III categories. Apply the purpose test, not the capability test.
+Step 2:
+For each potential Annex III match, assess whether the system has significant impact on individuals in the ways the category describes (access to opportunity, economic decisions, law enforcement use).
+Step 3:
+If in scope, identify which assessment path applies — internal control under Annex VI is the default for most SaaS use cases.
+Step 4:
+Begin the gap analysis against Articles 9–15. The five-part series will walk through each requirement in detail.
+What's Next in This Series
+This series walks through the complete conformity assessment process for SaaS and AI system providers:
+Part 1 (this post):
+Scope determination — is your system high-risk under Annex III and Article 6?
+Part 2:
+Article 9 risk management system — what the EU AI Act actually requires
+Part 3:
+Technical documentation under Article 11 — what a complete compliance package looks like
+Part 4:
+Quality management system under Article 17 — building the operational infrastructure
+Part 5 (finale):
+Conformity assessment completion checklist — the pre-August 2026 readiness audit
+The August 2 deadline applies. Start with scope classification — and if your system qualifies as high-risk, the clock is running.
+This post is part of sota.io's EU AI Act Compliance Series. sota.io is an EU-native managed PaaS — no US parent, no CLOUD Act exposure, deployed on Hetzner Germany.
+Start deploying on sovereign EU infrastructure today.
+EU-Native Hosting
+Ready to move to EU-sovereign infrastructure?
+sota.io is a German-hosted PaaS — no CLOUD Act exposure, no US jurisdiction, full GDPR compliance by design. Deploy your first app in minutes.
+Join the waitlist
+View plans

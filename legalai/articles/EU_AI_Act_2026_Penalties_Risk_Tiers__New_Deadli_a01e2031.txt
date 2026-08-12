@@ -1,0 +1,787 @@
+Home
+Artificial Intelligence
+EU AI Act 2026: Penalties, Risk Tiers & New Deadlines
+Artificial Intelligence
+Bez kategorii
+Cybersecurity
+Guides
+Technology
+EU AI Act 2026: Penalties, Risk Tiers & New Deadlines
+By
+Ignacy
+2026-04-02
+9
+16926
+Share
+Facebook
+X
+Pinterest
+WhatsApp
+Last updated: June 2026
+The EU AI Act (Regulation 2024/1689) is the world’s first comprehensive AI law. It classifies AI systems into four risk tiers — unacceptable, high, limited, and minimal — with fines up to €35 million or 7% of global annual turnover under Article 99. As of June 2026, prohibited practices (since 2 February 2025) and GPAI model rules (since 2 August 2025) are already enforceable. The biggest 2026 change: under the Digital Omnibus — a provisional agreement reached on 7 May 2026 and pending formal adoption — the high-risk AI deadline for Annex III systems is deferred from 2 August 2026 to 2 December 2027.
+EU AI Act
+AI Regulation
+Risk-Based Framework
+GPAI
+Compliance 2026
+If you build, deploy, or even procure AI systems that touch anyone in the European Union, the EU AI Act applies to you — regardless of where your company is headquartered. This is not a set of guidelines or a voluntary code of conduct. It is a binding regulation with extraterritorial scope, conformity assessments, and penalties that make GDPR fines look modest.
+This article breaks down the full regulation as of June 2026: what’s already in force, the penalty structure, and how the Digital Omnibus has reshaped the high-risk timeline (provisional agreement of 7 May 2026, with formal adoption expected mid-2026). I’ll include practical code examples for developers building with
+large language models
+,
+RAG pipelines
+, and
+AI agents
+— because understanding regulation at the abstract level is not enough when you’re shipping production code.
+Table of Contents
+Toggle
+What Is the EU AI Act and Why Does It Matter?
+The EU AI Act (Regulation (EU) 2024/1689) entered into force on August 1, 2024. It is the first comprehensive legal framework for artificial intelligence anywhere in the world. Where GDPR governs personal data, the AI Act governs the design, deployment, and market placement of AI systems themselves.
+The core philosophy is risk-based: rather than regulating all AI equally, the Act imposes stricter requirements on systems that pose higher risks to health, safety, and fundamental rights. A spam filter and a criminal sentencing algorithm are not treated the same way — which is exactly the point.
+Three things make this regulation uniquely consequential for anyone in the AI space. First, the extraterritorial scope: if your AI system’s outputs are used within the EU, you’re in scope, even if you’re a startup in San Francisco or a research lab in Singapore. Second, the penalty structure is genuinely punitive — up to 7% of global annual turnover exceeds even GDPR’s maximum 4%. Third, the Act creates new categories of legal obligation that didn’t exist before, including mandatory conformity assessments for high-risk AI and transparency duties for general-purpose AI models like GPT-4, Claude, and Gemini.
+💡 For developers
+If you’re integrating any foundation model into a product deployed in the EU — whether through the
+Model Context Protocol (MCP)
+, direct API calls, or
+LoRA fine-tuning
+— the AI Act creates obligations for you as a “deployer” and potentially as a “provider” if you substantially modify the model.
+How Does the AI Act Classify Risk? The 4-Tier Framework
+The risk pyramid is the structural backbone of the entire regulation. Each tier carries different obligations, and misclassifying your system can mean either unnecessary compliance costs or — worse — penalties for non-compliance with requirements you didn’t know applied.
+EU AI Act Risk Classification Pyramid — 4 Tiers
+Diagram showing the EU AI Act’s four risk tiers: unacceptable (banned), high-risk (strict obligations), limited risk (transparency duties), and minimal risk (no regulation). Penalties range from €35M/7% turnover for prohibited practices down to no specific obligations for minimal risk systems.
+EU AI Act Risk Classification Pyramid
+DecodeTheFuture.org
+EU AI Act, risk tiers, AI regulation, prohibited AI, high-risk AI systems
+Visual pyramid showing the four risk categories defined in the EU AI Act (Regulation 2024/1689) with associated obligations and penalty levels.
+Diagram
+image/svg+xml
+en
+© DecodeTheFuture.org
+UNACCEPTABLE
+Banned outright
+€35M / 7% turnover
+Social scoring, manipulation
+HIGH RISK
+Conformity assessment required
+€15M / 3% turnover
+Biometrics, hiring, credit scoring,
+education, law enforcement
+LIMITED RISK
+Transparency obligations
+Chatbots, deepfakes, emotion
+recognition → must disclose AI use
+Art. 50(2) marking → Dec 2026
+MINIMAL / NO RISK
+No specific obligations
+Spam filters, video games,
+AI-enabled search, recommendations
+Increasing regulatory burden
+Source: EU AI Act (Regulation 2024/1689) · © DecodeTheFuture.org
+Tier 1: Unacceptable Risk — Banned Since February 2025
+Article 5 of the AI Act outright prohibits AI practices considered incompatible with EU fundamental rights. These have been banned since February 2, 2025, and include: government-run social scoring systems that evaluate citizens based on behavior; AI that exploits vulnerabilities of specific groups (children, people with disabilities) to distort their behavior in ways likely to cause harm; real-time remote biometric identification in public spaces for law enforcement (with narrow exceptions for terrorism, missing persons, and serious crime); emotion recognition systems in workplaces and educational institutions; and untargeted scraping of facial images from the internet or CCTV to build facial recognition databases.
+The Digital Omnibus on AI — reaching a provisional agreement on 7 May 2026 — adds two new prohibited practices to Article 5, expected to take effect on 2 December 2026: AI-generated non-consensual intimate imagery (so-called “nudification” tools) and AI-generated child sexual abuse material (CSAM under Directive 2011/93/EU). The nudification ban is a direct response to the Grok deepfake incident involving X (formerly Twitter).
+Tier 2: High-Risk AI — The Compliance-Heavy Category
+This is where most of the regulatory substance sits. High-risk AI systems are defined in two ways: Annex I covers AI embedded in products already regulated by EU safety legislation (medical devices, vehicles, toys, machinery), while Annex III covers standalone high-risk uses across eight domains — biometric identification, critical infrastructure management, education and vocational training, employment and worker management, access to essential services (
+credit scoring
+, insurance), law enforcement, migration and border control, and administration of justice.
+If your AI system falls into either category, you must comply with a comprehensive set of requirements: a risk management system maintained throughout the entire lifecycle, data governance standards for training and validation datasets, technical documentation detailed enough for regulatory audits, automatic logging of system operations, transparency provisions for deployers, human oversight mechanisms, and accuracy/robustness/cybersecurity standards appropriate to the system’s purpose.
+Critically, Article 6(3) introduces a self-assessment opt-out: if a provider can demonstrate their AI system does not pose a significant risk to health, safety, or fundamental rights, they can self-assess it as non-high-risk and register this assessment in the EU database. However, the Digital Omnibus retains these registration requirements — Parliament and Council both moved to maintain regulatory visibility over self-assessments.
+Tier 3: Limited Risk — Transparency Duties (Article 50)
+Limited-risk systems face one core obligation: transparency. Under Article 50, you must inform users when they are interacting with an AI system (chatbots), when content has been AI-generated (deepfakes, synthetic media), or when emotion recognition or biometric categorization is being used. Under the Digital Omnibus, the Article 50(2) synthetic-content marking duty is deferred from 2 August 2026 to 2 December 2026. The Commission published a second draft of its Code of Practice on marking and labelling AI-generated content in March 2026, with finalization planned by mid-2026.
+For developers building chatbots or
+NLP
+-powered interfaces: this means your system must clearly disclose its AI nature before or during interaction, unless it is already obvious to a reasonable user (e.g., a voice assistant that is clearly non-human).
+Tier 4: Minimal Risk — No Specific Obligations
+The vast majority of AI systems in production today fall here: spam filters, recommendation engines, AI-powered video games, search ranking algorithms. No AI Act-specific requirements apply, though general EU law (GDPR, consumer protection, non-discrimination) still does.
+What Are the Rules for General-Purpose AI (GPAI) Models?
+One of the most consequential provisions targets general-purpose AI models — foundation models like GPT-4, Claude, Gemini, Llama, and Mistral that can perform a wide range of tasks and serve as the backbone for countless downstream applications. The GPAI rules became legally applicable on August 2, 2025, though the EU AI Office’s full enforcement powers (fines, model recalls, information requests) don’t activate until August 2, 2026.
+Every provider of a GPAI model placed on the EU market must: maintain detailed technical documentation covering model architecture, training procedures, and performance characteristics; provide documentation to downstream providers (i.e., anyone integrating the model into their own AI system); publish a sufficiently detailed summary of training data content using the AI Office’s template; and comply with EU copyright law, including respecting text-and-data-mining opt-out mechanisms under the Copyright Directive.
+There’s a notable carve-out for free and open-source models: they only need to comply with the copyright and training data summary requirements — unless they’re classified as posing systemic risk.
+Systemic Risk: The 10²⁵ FLOPs Threshold
+Models trained with more than 10²⁵ floating-point operations (FLOPs) are presumed to have high-impact capabilities and face additional obligations: adversarial testing and red-teaming before release, serious incident reporting to the AI Office within 72 hours, energy efficiency metric disclosure, and development of a cutting-edge Safety and Security Framework that must be regularly updated. For context, this threshold currently captures only the largest models — GPT-4, Claude Opus-tier models, and Gemini Ultra — but as compute scales, more models will cross it.
+The GPAI Code of Practice, finalized by independent experts in July 2025, provides voluntary guidance across three chapters: Transparency, Copyright, and Safety & Security. While signing the Code is technically optional, it provides a “presumption of conformity” — essentially a safe harbor that carries significant weight in enforcement proceedings.
+💡 Practical implication for developers
+If you’re building a
+RAG pipeline
+or an
+AI agent
+on top of a foundation model, you are likely a “deployer” under the AI Act. But if you substantially modify the model — through extensive
+fine-tuning
+, for instance — you could be reclassified as a “provider” with significantly heavier obligations. The EU AI Office’s guidelines define the boundary, but it’s a grey area worth tracking.
+What Does the Implementation Timeline Look Like?
+The AI Act doesn’t land all at once. It follows a phased rollout designed to give organizations time to prepare. The headline 2026 development: the Digital Omnibus (provisional agreement of 7 May 2026) pushes the main high-risk deadline for Annex III systems back from 2 August 2026 to 2 December 2027 — buying compliance teams roughly 16 extra months.
+EU AI Act Implementation Timeline 2024–2027
+Vertical timeline showing the phased implementation of the EU AI Act: entry into force August 2024, prohibited practices February 2025, GPAI rules August 2025. Under the Digital Omnibus (provisional agreement 7 May 2026), high-risk Annex III obligations are deferred from August 2026 to 2 December 2027, and Annex I product AI from August 2027 to 2 August 2028.
+EU AI Act Implementation Timeline 2024–2027
+DecodeTheFuture.org
+EU AI Act timeline, AI regulation deadlines, GPAI compliance, high-risk AI systems 2026
+Phased implementation schedule of EU AI Act showing 5 key milestones from August 2024 to August 2027.
+Diagram
+image/svg+xml
+en
+© DecodeTheFuture.org
+✓
+Aug 1, 2024 — Entry into Force
+AI Act published in Official Journal
+20-day vacatio legis period
+✓
+Feb 2, 2025 — Phase 1
+Prohibited AI practices banned
+AI literacy obligations apply
+✓
+Aug 2, 2025 — Phase 2
+GPAI model rules apply (new models)
+AI Office governance operational
+Member States set up penalty systems
+📍 YOU ARE HERE — June 2026 (Omnibus agreed 7 May 2026)
+!
+Originally Aug 2, 2026 — Deferred
+High-risk Annex III → Dec 2, 2027
+Art. 50(2) content marking → Dec 2026
+National sandboxes → Aug 2027
+New Art. 5 bans (nudifiers, CSAM) → Dec 2026
+Deferred under Digital Omnibus (agreed 7 May 2026)
+Dec 2, 2027 — High-Risk (Annex III)
+Standalone high-risk uses apply
+(hiring, credit scoring, biometrics)
+Annex I product AI → Aug 2, 2028
+New deadlines per Digital Omnibus
+2029–2031 — Review & Legacy
+Commission evaluation, public authority
+AI systems, large-scale EU IT systems
+© DecodeTheFuture.org · Data: EUR-Lex Reg. 2024/1689, Art. 113
+What Is the Digital Omnibus and How Does It Change the AI Act?
+In November 2025, the European Commission proposed the “Digital Omnibus on AI” — a package of targeted simplifications to the AI Act aimed at reducing administrative burden by at least 25% by 2029 (35% for SMEs). After trilogue negotiations, Parliament, Council, and Commission reached a
+provisional political agreement on 7 May 2026
+. The text is not yet formally adopted — final approval is expected in mid-2026, with publication in the Official Journal anticipated shortly after — but the political deal sets the direction.
+The agreed changes include: delaying the high-risk AI deadline to fixed dates —
+2 December 2027 for Annex III (standalone) systems and 2 August 2028 for Annex I (product-embedded) systems
+— rather than the Commission’s conditional “moveable” start date; deferring the Article 50(2) synthetic-content marking duty to 2 December 2026 and national regulatory sandboxes to 2 August 2027; adding two new Article 5 prohibitions (AI nudification tools and AI-generated CSAM), effective 2 December 2026; simplifying conformity assessment by allowing a single application across the AI Act and sector-specific legislation; and streamlining post-market monitoring documentation requirements.
+⚠️ What this means for your timeline
+The provisional agreement of 7 May 2026 buys most organizations roughly 16 extra months on high-risk Annex III obligations (now 2 December 2027). But the prohibited-practices ban (since February 2025) and GPAI rules (since August 2025) are already in force and unchanged — and the deal still needs formal adoption. Treat 2 December 2027 as your planning anchor while confirming final adoption later in 2026.
+What Are the Penalties for Non-Compliance?
+The EU AI Act establishes a three-tier penalty structure under Article 99, designed to be effective, proportionate, and dissuasive — with the maximum fines exceeding those under GDPR.
+Violation Type
+Max Fine
+% of Turnover
+Prohibited AI practices (Art. 5)
+€35 million
+7% global annual
+High-risk AI / GPAI non-compliance
+€15 million
+3% global annual
+Supplying incorrect information to authorities
+€7.5 million
+1% global annual
+For SMEs and startups, the fine is capped at the lower of the two amounts (fixed sum vs. percentage). Still, even the lowest tier — €7.5M for providing false information — is enough to sink most early-stage companies.
+Beyond fines, the AI Office has enforcement tools that go further: it can request information from providers, demand access to models, order mitigations, and even recall models from the EU market. These powers activate fully on August 2, 2026.
+Article 86 also introduces a new individual right: anyone subject to a decision significantly affected by a high-risk AI system is entitled to a clear explanation of the AI’s role in the decision, the main parameters that influenced the output, and the level of human oversight involved. This goes beyond GDPR’s Article 22, which only covers fully automated decisions.
+How Should Developers Prepare? A Practical Compliance Checklist
+Regulatory text is one thing; knowing what to do on Monday morning is another. Here’s how the AI Act translates into concrete engineering and organizational tasks, particularly if you’re building systems using
+machine learning
+,
+deep learning
+, or
+transformer architectures
+.
+Start by inventorying every AI system your organization builds, deploys, or procures — and classify each one against the Act’s risk tiers. This sounds straightforward, but the boundary between “high-risk” and “limited-risk” is not always obvious, especially for systems using
+computer vision
+or biometric data.
+Below is a simplified Python script that demonstrates the logic of risk classification. This is not legal advice — it’s a starting framework to help engineering teams think systematically about where their systems fall.
+Python
+Copy
+"""
+EU AI Act Risk Classifier — Simplified Decision Logic
+Based on Regulation (EU) 2024/1689, Articles 5, 6, 50
+NOTE: This is educational, not legal advice.
+"""
+from dataclasses import dataclass
+from enum import Enum
+class RiskTier(Enum):
+UNACCEPTABLE = "unacceptable"
+# Art. 5 — BANNED
+HIGH = "high"
+# Annex I/III — conformity assessment
+LIMITED = "limited"
+# Art. 50 — transparency duties
+MINIMAL = "minimal"
+# No specific obligations
+PROHIBITED_PRACTICES = {
+"social_scoring",
+"subliminal_manipulation",
+"vulnerability_exploitation",
+"real_time_biometric_public",
+"emotion_recognition_workplace",
+"untargeted_facial_scraping",
+"predictive_policing_profiling",
+}
+ANNEX_III_DOMAINS = {
+"biometric_identification",
+"critical_infrastructure",
+"education_vocational",
+"employment_worker_mgmt",
+"essential_services_credit",
+"law_enforcement",
+"migration_border",
+"justice_democracy",
+}
+TRANSPARENCY_TRIGGERS = {
+"chatbot_interaction",
+"deepfake_generation",
+"synthetic_media",
+"emotion_recognition",
+"biometric_categorization",
+}
+@dataclass
+class AISystem:
+name: str
+use_case: str
+domain: str
+eu_regulated_product: bool = False
+# Annex I
+interacts_with_users: bool = False
+def classify_risk(system: AISystem) -> RiskTier:
+"""Classify an AI system under the EU AI Act risk framework."""
+# Step 1: Check prohibited practices
+if system.use_case in PROHIBITED_PRACTICES:
+return RiskTier.UNACCEPTABLE
+# Step 2: Check high-risk — Annex I (regulated products)
+if system.eu_regulated_product:
+return RiskTier.HIGH
+# Step 3: Check high-risk — Annex III (standalone uses)
+if system.domain in ANNEX_III_DOMAINS:
+return RiskTier.HIGH
+# Step 4: Check transparency obligations
+if system.use_case in TRANSPARENCY_TRIGGERS:
+return RiskTier.LIMITED
+if system.interacts_with_users:
+return RiskTier.LIMITED
+return RiskTier.MINIMAL
+# ---- Example usage ----
+systems = [
+AISystem("CV Screener", "employment_ranking", "employment_worker_mgmt"),
+AISystem("Customer Bot", "chatbot_interaction", "retail", interacts_with_users=True),
+AISystem("Spam Filter", "email_filtering", "communications"),
+AISystem("Facial DB", "untargeted_facial_scraping", "surveillance"),
+]
+for s in systems:
+tier = classify_risk(s)
+print(f"{s.name:20s} → {tier.value:15s}")
+if tier == RiskTier.UNACCEPTABLE:
+print(f"
+⛔ BANNED — Remove from production immediately")
+elif tier == RiskTier.HIGH:
+print(f"
+📋 Requires: conformity assessment, risk mgmt, documentation")
+elif tier == RiskTier.LIMITED:
+print(f"
+💬 Requires: transparency disclosure to users")
+The output illustrates how different systems map to different tiers: the CV screener is high-risk (employment domain), the chatbot needs transparency disclosure, the spam filter is minimal risk, and the facial scraping database is outright banned.
+Beyond classification, high-risk system teams need to implement: a risk management system documented across the entire lifecycle (not just a one-time assessment), data governance procedures for training data with bias detection processes, automatic logging with at least six months of log retention, and human oversight mechanisms that allow operators to understand, monitor, and override the system’s decisions.
+How Does the AI Act Compare to Regulation in the US, UK, and China?
+The EU took a horizontal, risk-based approach — one law covering all AI applications across all sectors. The United States has taken the opposite path: no single federal AI law as of mid-2026, instead relying on a patchwork of executive orders, sector-specific guidance, and state-level initiatives (California’s proposed SB-1047, NIST AI Risk Management Framework). The UK explicitly rejected a comprehensive AI act in favor of extending existing regulators’ remits to cover AI within their domains — a “pro-innovation” approach that intentionally avoids creating a new regulatory body.
+China has moved faster on targeted regulations: the Deep Synthesis Provisions (regulating deepfakes), the Generative AI Management Measures, and the Algorithm Recommendation Provisions together create something approaching comprehensive coverage, but through separate instruments rather than one unified framework.
+The strategic implication is that the EU AI Act, like GDPR before it, is likely to become a de facto global standard — the “Brussels effect.” Any company building AI for a global market will find it easier to comply with the EU Act everywhere than to maintain region-specific compliance branches. This is already visible in how major foundation model providers (OpenAI, Anthropic, Google, Meta) are structuring their documentation and transparency practices.
+What Does This Mean in Practice for AI in 2026?
+The most important thing to understand about the EU AI Act is that it does not try to stop AI innovation — it tries to make the risks of AI systems proportionate to their benefits. The vast majority of AI systems (spam filters, recommendation engines, productivity tools) face zero new obligations. The regulation’s weight falls on a narrow set of high-risk applications where getting it wrong has serious consequences for people’s lives: hiring decisions, credit scoring, criminal justice, medical devices.
+For teams building with foundation models, the practical impact is real but manageable. If you’re a deployer (using an API to build an application), your main obligations are transparency, human oversight, and ensuring the model provider has done their documentation homework. If you’re a provider (releasing a model or substantially modifying one), the obligations are heavier — but the GPAI Code of Practice provides a clear compliance roadmap.
+What concerned me most through late 2025 and early 2026 was the uncertainty of the Digital Omnibus process. The 7 May 2026 provisional agreement removes much of that ambiguity: high-risk Annex III obligations now anchor to 2 December 2027, Annex I to 2 August 2028, with two new Article 5 bans landing 2 December 2026. The remaining open question is formal adoption — expected mid-2026 — but compliance teams finally have firm dates to plan against. The lesson stands: the worst outcome for industry was never strict regulation, it was ambiguous timing, and that has largely been resolved.
+As someone who builds and
+trades with AI systems
+and closely tracks the intersection of AI architecture and regulation, my assessment is that the Act’s risk-based structure is fundamentally sound. The question is execution — whether harmonized standards, enforcement infrastructure, and regulatory sandboxes arrive fast enough to make compliance achievable rather than performative.
+Related Guides: The Regulated-AI Cluster
+The EU AI Act is the regulatory backbone for a broader set of compliance and risk topics. If you are operationalising any of this, these deep-dives go further on the specific workflows the Act touches:
+AI Compliance Workflows
+— turning AI Act obligations into repeatable, auditable processes.
+AI for Risk Management
+— frameworks and code for the lifecycle risk-management system high-risk providers must maintain.
+AI Credit Scoring under the EU AI Act
+— the rules that apply to credit decisioning, an Annex III high-risk use.
+Agentic Workflows in Finance
+— where LLMs draft, where deterministic systems decide, and where humans must approve in regulated finance.
+Algorithmic Pricing in Fintech
+— pricing models, the risks they create, and how EU rules apply.
+FAQ
+Does the EU AI Act apply to companies outside the EU?
+Yes. The AI Act has extraterritorial scope. It applies to any organization — regardless of where it is headquartered — if it places AI systems on the EU market, deploys AI systems within the EU, or produces AI outputs that are used by people in the EU. This means a US-based startup whose SaaS product serves EU customers must comply.
+What is the difference between an AI “provider” and a “deployer” under the Act?
+A provider is the entity that develops an AI system (or has one developed) and places it on the market under its own name or trademark. A deployer is the entity that uses the AI system in its operations. A company building a hiring tool using GPT-4 is a deployer of GPT-4 but a provider of the hiring tool itself. If the tool is classified as high-risk (employment domain), the company bears provider obligations — conformity assessment, risk management, documentation — for that system.
+Are open-source AI models exempt from the AI Act?
+Partially. Free and open-source GPAI models are exempt from most transparency and documentation requirements — but they must still comply with copyright rules and publish a training data summary. And crucially, if an open-source model is classified as posing systemic risk (trained above the 10²⁵ FLOPs threshold), all obligations apply in full, including adversarial testing and incident reporting.
+When do the high-risk AI rules start applying?
+Following the Digital Omnibus provisional agreement of 7 May 2026, high-risk AI obligations for Annex III systems (standalone uses like hiring, credit scoring, biometrics) are deferred from 2 August 2026 to 2 December 2027, and Annex I (product-embedded) systems from 2 August 2027 to 2 August 2028. The deal is pending formal adoption (expected mid-2026), but 2 December 2027 is now the planning anchor. Prohibited practices (since February 2025) and GPAI rules (since August 2025) remain in force and unchanged.
+What is the GPAI Code of Practice and is it mandatory?
+The GPAI Code of Practice is a voluntary framework published by the EU AI Office in July 2025, developed by independent experts. It covers transparency, copyright, and safety/security for foundation model providers. While technically optional, signing the Code creates a “presumption of conformity” — meaning regulators will assume you comply unless evidence suggests otherwise. It is the closest thing to a safe harbor that the AI Act offers.
+How do AI Act fines compare to GDPR fines?
+AI Act maximum fines exceed GDPR fines. GDPR’s maximum is €20 million or 4% of global annual turnover. The AI Act’s top tier (prohibited AI practices) reaches €35 million or 7% of global turnover — nearly double GDPR’s ceiling. For context, 7% of Alphabet’s 2024 revenue would exceed $21 billion. Even the mid-tier (high-risk non-compliance at 3%) aligns closely with GDPR’s maximum.
+Does the AI Act affect AI used in trading and finance?
+It depends on the use case. AI systems used for credit scoring or insurance pricing fall under Annex III (essential services) and are classified as high-risk. Algorithmic trading systems, however, may fall under existing financial regulation (MiFID II) rather than the AI Act directly — though the intersection is complex and guidance is still evolving. From personal experience with
+AI-driven trading systems
+, the practical impact is that any model making decisions about individual access to financial products needs careful risk assessment.
+Bibliography
+Regulation (EU) 2024/1689 — EU AI Act, Official Journal of the European Union.
+EUR-Lex
+European Commission — AI Act Overview & Implementation.
+digital-strategy.ec.europa.eu
+European AI Office — GPAI Code of Practice (Final, July 2025).
+artificialintelligenceact.eu
+European AI Office — Draft Guidelines on GPAI Model Obligations (July 2025).
+artificialintelligenceact.eu
+European Commission — Digital Omnibus on AI Regulation Proposal (November 2025).
+digital-strategy.ec.europa.eu
+European Parliament — Digital Omnibus Plenary Vote, 26 March 2026.
+europarl.europa.eu
+IAPP — EU Digital Omnibus: Analysis of Key Changes.
+iapp.org
+Covington (Inside Privacy) — EU AI Act Update: Timeline Relief, Targeted Simplification, and New Prohibitions (provisional agreement of 7 May 2026; high-risk Annex III deferred to 2 December 2027, Annex I to 2 August 2028).
+insideprivacy.com
+Latham & Watkins — EU AI Act: GPAI Model Obligations and Code of Practice (August 2025).
+lw.com
+ENISA — AI Cybersecurity and the EU AI Act.
+enisa.europa.eu
+European Parliament Legislative Observatory — AI Act Full Text.
+europarl.europa.eu
+I
+Written by
+Ignacy Kwiecień
+Twórca DecodeTheFuture.org · Trader CFD · Pasjonat AI
+Founder of DecodeTheFuture.org — an educational platform covering AI, economics, and financial markets. Active CFD trader. I write about what I personally test and analyze.
+decodeTheFuture.org
+Tags
+AI Act penalties
+AI compliance
+AI governance
+AI regulation
+AI transparency
+Article 50
+Digital Omnibus
+EU AI Act
+foundation models
+GPAI
+high-risk AI
+risk classification
+Share
+Facebook
+X
+Pinterest
+WhatsApp
+Previous article
+Claude Buddy Explained: 18 Species, 5 Rarities & How It Works
+Next article
+AI for Risk Management: 7 Frameworks, Code & 2026 Compliance
+RELATED ARTICLES
+Bez kategorii
+Private Pilot Hours USA: FAA Minimum vs Average
+2026-07-28
+Bez kategorii
+UK PPL(A) Cost: A Realistic Training Budget
+2026-07-28
+Artificial Intelligence
+LLM Structured Outputs: JSON Schema and Validation
+2026-07-26
+9 COMMENTS
+[…] consolidation trend also matters for compliance. Under the EU AI Act, high-risk AI systems must maintain data provenance records — a requirement that is significantly […]
+Reply
+[…] the EU regulatory context. The EU AI Act (full implementation by 2026) classifies AI systems used in financial advisory contexts as […]
+Reply
+[…] networks moved from research to production at Mastercard and Stripe, and where EU rules — the EU AI Act, PSD3/PSR, and the brand-new AMLA authority — draw the […]
+Reply
+[…] is where you implement demographic parity, equalised odds, or whatever your DPIA committed to under EU AI Act Art. […]
+Reply
+[…] for real people, you must assess the risks and put mitigation steps in place. This guide on the EU AI Act risk tiers breaks down what each tier means for your […]
+Reply
+[…] to the Decode the Future analysis of the EU AI Act, certain particularly invasive uses of AI have already been banned in the […]
+Reply
+[…] EU AI Act 2026: Penalties, Risk Tiers & New Deadlines […]
+Reply
+[…] Extraterritoriale reikwijdte AI Act — wereldwijde impactDe AI Act heeft extraterritoriale werking: elke organisatie die AI-systemen op de EU-markt plaatst, AI inzet binnen de EU, of AI-outputs produceert die door EU-burgers worden gebruikt, valt onder de wet — ongeacht waar het hoofdkantoor staat. Dit heeft grote gevolgen voor Amerikaanse en Aziatische techbedrijven.📌 Analyse: Net als de AVG ervoor creëert de extraterritoriale reikwijdte van de AI Act een ‘Brussel-effect’ — wereldwijde bedrijven moeten voldoen aan EU-normen of riskeren uitsluiting van de €18 biljoen Europese markt. Dit beïnvloedt al AI-reguleringsdebatten in de VS, VK, Japan en Brazilië.🔗 Bron: Decode The Future […]
+Reply
+[…] Decifrando o Futuro. Lei de IA da UE de 2026: Penalidades, Níveis de Risco e Novos Prazos, junho de 2026 .  […]
+Reply
+LEAVE A REPLY
+Cancel reply
+Comment:
+Please enter your comment!
+Name:*
+Please enter your name here
+Email:*
+You have entered an incorrect email address!
+Please enter your email address here
+Website:
+- Advertisment -
+Most Popular
+Private Pilot Hours USA: FAA Minimum vs Average
+2026-07-28
+UK PPL(A) Cost: A Realistic Training Budget
+2026-07-28
+How to Become a Private Pilot in the USA: FAA Guide
+2026-07-27
+How to Become a Private Pilot in the UK: PPL(A)
+2026-07-27
+Load more
+Recent Comments
+Pre-Commitment: Deciding Now So Your Tired, Emotional Future Self Doesn’t Have To – The Dispatch
+on
+Save More Tomorrow Explained — Thaler’s SMarT Plan
+How to Stop Lifestyle Creep After a Raise on One Income - Worthwise
+on
+Save More Tomorrow Explained — Thaler’s SMarT Plan
+Você sabe qual a conta que ninguém colocou no orçamento de IA? - Jump
+on
+EU AI Act 2026: Penalties, Risk Tiers & New Deadlines
+Strona nie została znaleziona - Decode the future
+on
+How to Build an AI Agent with the Claude Agent SDK
+EU AI & Soevereiniteit — 30 juni 2026 - AI Podium
+on
+EU AI Act 2026: Penalties, Risk Tiers & New Deadlines
+NVIDIA NIM Economics: Where Self-Host Beats Every API
+on
+NVIDIA NIM API Pricing 2026: Free Tier, 40 RPM & Real Cost
+Loss Aversion Goes Deeper Than Money: What Kahneman Never Told You About Financial Identity
+on
+Prospect Theory: 7 Ways Loss Aversion Shapes Your Decisions
+Etica dell'Intelligenza Artificiale nel 2026: Tra AI Act Applicabile e Sfide Globali - Epistemica
+on
+EU AI Act 2026: Penalties, Risk Tiers & New Deadlines
+What Is AI Ethics and Why Should Everyone Care - WiseAIWorld
+on
+EU AI Act 2026: Penalties, Risk Tiers & New Deadlines
+Claude Opus 4 Review 2026: Still the Best AI Model?
+on
+Claude Opus 4.8: Release Date, Model ID and Availability
+Machine Learning in Fraud Prevention: A 2026 Guide
+on
+Fraud Detection Machine Learning
+Claude Opus 4.8 + Dynamic Workflows 2026: Full Breakdown
+on
+Claude Opus 4.8: Release Date, Model ID and Availability
+AI Regulations 2026 for Businesses Using AI Generated Visuals | Tech Regulation News Today
+on
+EU AI Act 2026: Penalties, Risk Tiers & New Deadlines
+Anthropic主導「Project Glasswing」にIBM参画｜AI時代のセキュリティ防衛連合へ - digitopia
+on
+Project Glasswing: Anthropic’s $100M Cyber Defense Push
+Sean Carter
+on
+Claude Sonnet 4.8 & Capybara Leak: What Shipped
+DeepSeek R2衝撃｜RTX1枚で動く格安最強推論AI | AIフレンズ
+on
+DeepSeek R2: Release Status, Rumors & DeepSeek V4 (2026)
+Best Online Brokers for Stock Trading 2026 (US & UK)
+on
+Disposition Effect Explained: Why Traders Sell Winners Too Early
+Best Online Brokers for Stock Trading 2026 (US & UK)
+on
+12 Cognitive Biases That Distort Your Decisions in 2026
+Mental Accounting Explained — Thaler's 4 Hidden Wallets
+on
+Loss Aversion Explained: Why Losses Hurt 2x More
+Mental Accounting Explained — Thaler's 4 Hidden Wallets
+on
+Richard Thaler Explained: 4 Ideas, Nobel, and Nudge
+Efekt dyspozycji — dlaczego inwestor sprzedaje za wcześnie
+on
+Disposition Effect Explained: Why Traders Sell Winners Too Early
+Algorithmic pricing fintech: Models, Risks & EU Rules
+on
+EU AI Act 2026: Penalties, Risk Tiers & New Deadlines
+Algorithmic pricing fintech: Models, Risks & EU Rules
+on
+Price Elasticity of Demand: Formula and 5 Examples
+Practical CFD Trading: SMC, Risk Rules & 6 Habits
+on
+Disposition Effect Explained: Why Traders Sell Winners Too Early
+Practical CFD Trading: SMC, Risk Rules & 6 Habits
+on
+12 Cognitive Biases That Distort Your Decisions in 2026
+Practical CFD Trading: SMC, Risk Rules & 6 Habits
+on
+Loss Aversion Explained: Why Losses Hurt 2x More
+Ist die digitale Zukunft im Jahr 2026 wirklich gesichert? | ITCurated
+on
+AI Agent Traps: 6 Attack Types Hijacking AI Agents in 2026
+Fraud Detection Machine Learning
+on
+EU AI Act 2026: Penalties, Risk Tiers & New Deadlines
+Disposition Effect Explained: Why Traders Sell Winners Too Early
+on
+Loss Aversion Explained: Why Losses Hurt 2x More
+Claude Design AI Prototyping Tool: What Figma Didn't See Coming
+on
+Claude Design: Anthropic’s Figma Killer in Opus 4.7
+Introducing GPT-5.5: 9 Key Benchmarks and API Facts
+on
+Loss Aversion Explained: Why Losses Hurt 2x More
+Introducing GPT-5.5: 9 Key Benchmarks and API Facts
+on
+Claude Design: Anthropic’s Figma Killer in Opus 4.7
+Introducing GPT-5.5: 9 Key Benchmarks and API Facts
+on
+Claude Opus 4.7: 7 Biggest Changes + Benchmarks
+Richard Thaler Explained: 4 Ideas, Nobel, and Nudge
+on
+Loss Aversion Explained: Why Losses Hurt 2x More
+Richard Thaler Explained: 4 Ideas, Nobel, and Nudge
+on
+Behavioral Finance: 7 Biases That Cost You Money in 2026
+What Is Market Equilibrium? Formula and 5 Examples
+on
+Price Elasticity of Demand: Formula and 5 Examples
+¡Nvidia API gratis por 1 año! Acceso completo para devs - DonWeb News
+on
+NVIDIA NIM API Explained: Models, Architecture and Use Cases
+AI Credit Scoring in 2026: 7 Rules Under EU AI Act
+on
+Behavioral Finance: 7 Biases That Cost You Money in 2026
+AI Credit Scoring in 2026: 7 Rules Under EU AI Act
+on
+Anchoring Effect: 7 Examples & Why It Tricks AI Too
+Price Elasticity of Demand: Formula and 5 Examples
+on
+Behavioral Finance: 7 Biases That Cost You Money in 2026
+Loss Aversion Explained: Why Losses Hurt 2x More
+on
+Nudge Theory Explained: 7 Real-World Examples (2026)
+Loss Aversion Explained: Why Losses Hurt 2x More
+on
+Prospect Theory: 7 Ways Loss Aversion Shapes Your Decisions
+Claude Design: Anthropic's Figma Killer in Opus 4.7
+on
+Claude Sonnet 4.8 & Capybara Leak: What Shipped
+Claude Design: Anthropic's Figma Killer in Opus 4.7
+on
+Claude Code for Free: Ollama + OpenRouter Setup Guide (2026)
+Claude Opus 4.7 Release: Features, Benchmarks, And Access After Launch
+on
+Claude Opus 4.7: 7 Biggest Changes + Benchmarks
+Claude Opus 4.7: 7 Biggest Changes + Benchmarks
+on
+What Is Context Engineering? 5 Pillars Behind Reliable AI
+Claude Opus 4.7: 7 Biggest Changes + Benchmarks
+on
+Claude Mythos 5: Current Status, Access and Fable 5
+Anchoring Effect: 7 Examples & Why It Tricks AI Too
+on
+12 Cognitive Biases That Distort Your Decisions in 2026
+LLM Wiki: Karpathy's 3-Layer Pattern That Replaces RAG (2026 Guide)
+on
+What Is Context Engineering? 5 Pillars Behind Reliable AI
+What Is RLHF—And Why It's the Reason AI Models Don't Tell You How to Make Bombs - Frontierbeat
+on
+RLHF Explained: How Human Feedback Trains AI Models in 2026
+NVIDIA NIM 免费 API：DeepSeek-R1、GLM-5 等百亿参数模型白嫖指南 – AIMAO
+on
+NVIDIA NIM API Explained: Models, Architecture and Use Cases
+LLM Wiki: Karpathy's 3-Layer Pattern That Replaces RAG (2026 Guide)
+on
+What Is an LLM? Large Language Models Explained — A Practical Guide for 2026
+LLM Wiki: Karpathy's 3-Layer Pattern That Replaces RAG (2026 Guide)
+on
+RAG Explained: 10 Steps to Production-Ready Retrieval-Augmented Generation in 2026
+NVIDIA NIM API：100+模型免费推理额度 | Hello World
+on
+NVIDIA NIM API Explained: Models, Architecture and Use Cases
+NVIDIA NIM API：100+模型免费推理额度
+on
+NVIDIA NIM API Explained: Models, Architecture and Use Cases
+Claude Code Free: Ollama + OpenRouter Setup Guide (2026)
+on
+What Is an LLM? Large Language Models Explained — A Practical Guide for 2026
+Claude Code Free: Ollama + OpenRouter Setup Guide (2026)
+on
+How Autonomous AI Works in 2026
+Anthropic Advisor Strategy: 5 Key Facts + Code (2026)
+on
+How Autonomous AI Works in 2026
+Anthropic Advisor Strategy: 5 Key Facts + Code (2026)
+on
+What Is MCP? Model Context Protocol Explained for 2026
+Linux Kernel Maintainers Deploy AI-Driven "Clanker" Fuzzing To Combat Frontier Vulnerabilities
+on
+Project Glasswing: Anthropic’s $100M Cyber Defense Push
+Breaking Claude Mythos: 7 Things You Need to Know in 2026
+on
+Claude Mythos 5: Current Status, Access and Fable 5
+Anthropic Google TPU deal : 7 Things to Know
+on
+Project Glasswing: Anthropic’s $100M Cyber Defense Push
+DeepSeek R2 Explained: 92.7% AIME, 32B Open-Weight
+on
+LoRA Fine-Tuning: 7 Steps to Adapt Any LLM on One GPU
+Project Glasswing: Anthropic's $100M Cyber Defense Push
+on
+How Autonomous AI Works in 2026
+Project Glasswing: Anthropic's $100M Cyber Defense Push
+on
+Claude Mythos 5: Current Status, Access and Fable 5
+Adversarial Distillation 2026: OpenAI, Anthropic vs China
+on
+AI for Risk Management: 7 Frameworks, Code & 2026 Compliance
+Adversarial Distillation 2026: OpenAI, Anthropic vs China
+on
+LoRA Fine-Tuning: 7 Steps to Adapt Any LLM on One GPU
+Nudge Theory Explained: 7 Real-World Examples (2026)
+on
+Behavioral Finance: 7 Biases That Cost You Money in 2026
+Nudge Theory Explained: 7 Real-World Examples (2026)
+on
+12 Cognitive Biases That Distort Your Decisions in 2026
+12 Cognitive Biases That Distort Your Decisions in 2026
+on
+Vector Databases Explained: 7 Key Concepts for 2026
+12 Cognitive Biases That Distort Your Decisions in 2026
+on
+Prospect Theory: 7 Ways Loss Aversion Shapes Your Decisions
+Heurystyki poznawcze — 7 skrótów myślowych, które rządzą Twoimi decyzjami
+on
+AI in Trading: 5 Types, Real Tools & Limits in 2026
+AI Agent Traps: 6 Attack Types Hijacking AI Agents in 2026
+on
+What Is MCP? Model Context Protocol Explained for 2026
+Behavioral Finance: 7 Biases That Cost You Money in 2026
+on
+EU AI Act 2026: Penalties, Risk Tiers & New Deadlines
+AI Agent Traps: 6 Attack Types Hijacking AI Agents in 2026
+on
+How Autonomous AI Works in 2026
+TradingView MCP Jackson: 81 AI Tools for Chart Analysis in 2026
+on
+How Autonomous AI Works in 2026
+TradingView MCP Jackson: 81 AI Tools for Chart Analysis in 2026
+on
+What Is MCP? Model Context Protocol Explained for 2026
+Vector Databases Explained: 7 Key Concepts for 2026
+on
+EU AI Act 2026: Penalties, Risk Tiers & New Deadlines
+Vector Databases Explained: 7 Key Concepts for 2026
+on
+RAG Explained: 10 Steps to Production-Ready Retrieval-Augmented Generation in 2026
+Memvid Explained: 7 Reasons It Replaces Your RAG Stack (2026)
+on
+RAG Explained: 10 Steps to Production-Ready Retrieval-Augmented Generation in 2026
+AutoAgent Explained: 5 Ways Self-Improving AI Agents Change Everything
+on
+What Is an LLM? Large Language Models Explained — A Practical Guide for 2026
+Anthropic Blocks Third-Party Tools From Claude Subscriptions — 5 Things to Know
+on
+AutoAgent Explained: 5 Ways Self-Improving AI Agents Change Everything
+Anthropic Blocks Third-Party Tools From Claude Subscriptions — 5 Things to Know
+on
+Claude Code Undercover Mode, Killswitches & Telemetry: 6 Hidden Controls Exposed
+Anthropic Blocks Third-Party Tools From Claude Subscriptions — 5 Things to Know
+on
+Claude Code Source Leak 2026: The Complete Guide to What Was Exposed
+AutoAgent Explained: 5 Ways Self-Improving AI Agents Change Everything
+on
+How Autonomous AI Works in 2026
+Google Gemma 4 Explained: 4 Open Models Under Apache 2.0
+on
+What Is an LLM? Large Language Models Explained — A Practical Guide for 2026
+Claude Has Functional Emotions: 5 Key Findings from Anthropic's Research
+on
+What Is an LLM? Large Language Models Explained — A Practical Guide for 2026
+Claude Has Functional Emotions: 5 Key Findings from Anthropic's Research
+on
+OpenAI Model Spec Explained: System, Developer, User and Tool Hierarchy
+Claude Has Functional Emotions: 5 Key Findings from Anthropic's Research
+on
+What Is Deep Learning? 6 Core Concepts Explained
+Claude Has Functional Emotions: 5 Key Findings from Anthropic's Research
+on
+Claude Code Source Leak 2026: The Complete Guide to What Was Exposed
+AI for Risk Management: 7 Frameworks, Code & 2026 Compliance
+on
+What Is Deep Learning? 6 Core Concepts Explained
+AI for Risk Management: 7 Frameworks, Code & 2026 Compliance
+on
+What Is Machine Learning? 7 Core Concepts Explained in 2026
+EU AI Act Explained: 7 Risk Tiers, Penalties & 2026 Timeline
+on
+AI in Trading: 5 Types, Real Tools & Limits in 2026
+EU AI Act Explained: 7 Risk Tiers, Penalties & 2026 Timeline
+on
+RAG Explained: 10 Steps to Production-Ready Retrieval-Augmented Generation in 2026
+EU AI Act Explained: 7 Risk Tiers, Penalties & 2026 Timeline
+on
+What Is Deep Learning? 6 Core Concepts Explained
+EU AI Act Explained: 7 Risk Tiers, Penalties & 2026 Timeline
+on
+What Is an LLM? Large Language Models Explained — A Practical Guide for 2026
+Claude Buddy Explained: 18 Species, 5 Rarities & How It Works
+on
+Claude Code Source Leak 2026: The Complete Guide to What Was Exposed
+Claude Code Undercover Mode, Killswitches & Telemetry: 6 Hidden Controls Exposed
+on
+The Always-On AI Agent Hidden in Claude Code’s Leaked Source
+Claude Code Undercover Mode, Killswitches & Telemetry: 6 Hidden Controls Exposed
+on
+Claude Code Source Leak 2026: The Complete Guide to What Was Exposed
+GLM-OCR Explained: 0.9B Model That Beats Gemini 3 Pro at OCR
+on
+What Is an LLM? Large Language Models Explained — A Practical Guide for 2026
+NVIDIA NIM API Explained: Free AI Inference in 2026
+on
+RAG Explained: 10 Steps to Production-Ready Retrieval-Augmented Generation in 2026
+Claude Code Source Leak 2026: The Complete Guide to What Was Exposed
+on
+Claude Code Source Code Leaked — 7 Things We Learned
+Claude Code Source Leak 2026: The Complete Guide to What Was Exposed
+on
+What Is Machine Learning? 7 Core Concepts Explained in 2026
+Claude Code Source Leak 2026: The Complete Guide to What Was Exposed
+on
+Claude Mythos 5: Current Status, Access and Fable 5
+Axios npm Attack: RAT Hits 100M-Download Package on Claude Code Leak Day
+on
+The Always-On AI Agent Hidden in Claude Code’s Leaked Source
+Axios npm Attack: RAT Hits 100M-Download Package on Claude Code Leak Day
+on
+Claude Code Source Code Leaked — 7 Things We Learned
+Opus 4.7, Sonnet 4.8, Capybara: Anthropic's Model Roadmap Decoded
+on
+What Is an LLM? Large Language Models Explained — A Practical Guide for 2026
+Opus 4.7, Sonnet 4.8, Capybara: Anthropic's Model Roadmap Decoded
+on
+Claude Code Source Code Leaked — 7 Things We Learned
+Kairos The Always-On AI Agent Hidden in Claude Code's Leak
+on
+What Is MCP? Model Context Protocol Explained for 2026
+Kairos The Always-On AI Agent Hidden in Claude Code's Leak
+on
+How Autonomous AI Works in 2026
+Prospect Theory: 7 Ways Loss Aversion Shapes Your Decisions
+on
+AI in Trading: 5 Types, Real Tools & Limits in 2026
+Claude Code Source Code Leaked — 7 Things We Learned
+on
+How Autonomous AI Works in 2026
+TurboQuant Explained: 3-Bit KV Cache at 6× Compression
+on
+What Is a Transformer? Architecture, Attention & 7 Facts
+What Is Claude Mythos? 7 Facts About Anthropic's Leaked AI
+on
+What Is a Transformer? Architecture, Attention & 7 Facts
+What Is a Neural Network? 5 Key Concepts for 2026
+on
+RAG Explained: 10 Steps to Production-Ready Retrieval-Augmented Generation in 2026
+What Is a Neural Network? 5 Key Concepts for 2026
+on
+LoRA Fine-Tuning: 7 Steps to Adapt Any LLM on One GPU
+What Is a Neural Network? 5 Key Concepts for 2026
+on
+What Is an LLM? Large Language Models Explained — A Practical Guide for 2026
+What Is a Neural Network? 5 Key Concepts for 2026
+on
+What Is Machine Learning? 7 Core Concepts Explained in 2026
+What Is a Neural Network? 5 Key Concepts for 2026
+on
+What Is Artificial Intelligence? A Complete 2025 Guide
+What Is MCP? Model Context Protocol Explained for 2026
+on
+What Is Artificial Intelligence? A Complete 2025 Guide
+What Is MCP? Model Context Protocol Explained for 2026
+on
+What Is an LLM? Large Language Models Explained — A Practical Guide for 2026
+AI Agents Explained: How Autonomous AI Works in 2026
+on
+What Is an LLM? Large Language Models Explained — A Practical Guide for 2026

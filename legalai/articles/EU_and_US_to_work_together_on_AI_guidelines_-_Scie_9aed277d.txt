@@ -1,0 +1,64 @@
+AI
+Digital
+Semiconductors
+International news
+R&D Policy
+More collaboration on AI safety, 6G research and semiconductors were among the announcements made following the sixth EU-US Trade and Technology Council
+By
+Martin Greenacre
+US Secretary of Commerce
+Gina Raimondo (right), EU E
+xecutive Vice-President
+Margrethe Vestager and
+US Secretary of State
+Antony Blinken speaking at th
+e sixth EU-US Trade and Technology Council meeting in Leuven, Belgium
+. Photo credit: Aurore Martignoni / European Union
+The EU AI Office and the US AI Safety Institute will work together on tools to evaluate artificial intelligence models, leaders announced today after the sixth EU-US Trade and Technology Council meeting in Leuven, Belgium.
+The European Commission was represented during the talks by Executive Vice-Presidents Margrethe Vestager and Valdis Dombrovskis, and Commissioner Thierry Breton, and were joined by US Secretary of State Antony Blinken, Secretary of Commerce Gina Raimondo and Trade Representative Katherine Tai.
+It follows a
+commitment this month
+by the UK and US to work together on safety tests for advanced AI systems. “I think it’s a great thing that we forge these collaborations, both with the UK and the US, eventually probably also us with the UK,” Vestager said, adding that she believes the EU-US commitment is “broader in scope” than the UK-US deal.
+“It’s not just testing, it’s everything that comes with it, so benchmarks, methodologies, how to understand and interpret regulatory approaches in both jurisdictions,” she said in a press conference following the meeting.
+Vestager said she was mainly concerned about threats AI can pose to individuals, “if you are not allowed into university because of your colour or your background, if you cannot get a mortgage because of AI not recognising you”. In contrast, the UK’s
+AI Safety Summit
+last November focused on threats to national security, such as preventing the use of the technology for the creation of biological weapons.
+In the first TTC meeting in 2021, the partners agreed to take a risk-based approach to AI regulation, which focuses on evaluating the use cases while promoting the development of responsible AI systems, and this is reflected in the
+EU’s AI Act
+. In a
+joint statement
+published today, they reaffirmed their commitment to that approach.
+The new dialogue between the two respective agencies is in line with the
+joint roadmap
+for trustworthy AI that was agreed upon at the third TTC meeting in December 2022, although Vestager believes it will “lead to something much more tangible”.
+The partners have also published an updated
+list of joint definitions
+for key AI terms, following stakeholder consultations, which is intended to contribute to regulatory convergence and international standards.
+As well as mitigating risks, they are working together to promote the use of AI in helping to find solutions to global challenges. Over the past six months, teams from both sides of the Atlantic have spent over 100 hours in scientific meetings to discuss how to advance the use of AI in areas such as energy optimisation, emergency response, and climate forecasting, according to an
+overview
+published today.
+Semiconductors
+When it comes to semiconductors, the EU and US plan to step up research collaboration to find alternatives to per- and polyfluoroalkyl substances (PFAS), also known as forever chemicals, in chips. This will include the use of AI and digital twins to accelerate the discovery of alternative materials.
+They already cooperate through a joint early warning mechanism to identify and address potential supply chain disruptions, and a mechanism for sharing information about public support to the semiconductor sector, and they plan to extend these agreements for another three years.
+In Friday’s meeting, the representatives also discussed strengthening collaboration in response to economic coercion, and so-called non-market practices including excessive subsidies and anti-competitive actions from third countries.
+“The role of advanced technology has changed the game when it comes to national security and economic security,” said Raimondo.
+The collaboration is particularly focused on so-called ‘legacy chips’ – mature chips which are found in everything from cars to medical devices, and which will continue to be used alongside cutting-edge chips.
+“We know that based on China’s own reporting, about 60% of all new legacy chips coming to the market in the next handful of years will be produced by China, and we know there’s a massive subsidisation of that industry on behalf of the Chinese government which could lead to huge market distortion,” Raimondo said.
+In January, the US launched a mandatory industry survey to assess the use of legacy chips in supply chains that support national security and critical infrastructure, and the EU has launched a similar, voluntary survey. They will share the data in order to identify evidence of market distortion, and will consult each other on planned actions.
+“We have been coordinating from the very first day [of the TTC] on how to avoid a subsidy race, and make the very best use of the incentives available, for both the US and Europe to increase our global footprint when it comes to semiconductors,” Vestager said.
+The EU and US are also seeking to foster collaboration in research and innovation for 6G technologies. Today they adopted a common
+6G vision
+, which focuses on technology challenges and areas for collaboration such as microelectronics, AI and cloud solutions for 6G, and security and resilience.
+This builds on the
+6G outlook
+adopted in May 2023, and the
+industry roadmap on 6G
+from December 2023. To implement the strategy, the US National Science Foundation (NSF) and the Directorate
+‑
+General for Communications Networks, Content and Technology (DG Connect) have signed an administrative arrangement for research collaboration.
+Other areas for cooperation highlighted in the joint statement include quantum technologies, digital skills, and clean energy.
+Uncertain future
+Questions have been raised about the effectiveness of the TTC. When it comes to AI, for instance, it is just one of many international forums working on the issue, including the UK’s AI Safety Summit, the G7, and the Council of Europe. There have even been suggestions that today’s TTC meeting could be the last, with the prospect of a second Donald Trump presidency threatening US-EU relations. But both sides sought to reaffirm the importance of the partnership.
+“If you look at where the EU and US were three years ago with regards to our collaboration on issues of technology and trade, its nearly night and day,” Raimondo said. “The TTC had been very successful in bringing our partnership together.”
+Blinken said the TTC had enabled growing alignment on issues such as economic security. “Together we represent almost half of world GDP, and that means there’s a certain weight that comes with having a shared position on something, whether that’s dealing with China or any other challenge,” he said.
+Commission Executive Vice-President Dombrovskis said the “complicated” geopolitical environment means it is essential for both sides to work together as trusted partners.

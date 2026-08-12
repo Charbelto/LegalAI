@@ -1,0 +1,35 @@
+{
+  "legal": {
+    "base_model": "unsloth/Llama-3.2-3B-Instruct",
+    "val_examples": 75,
+    "base_eval_loss": 2.9585,
+    "base_mean_token_accuracy": 0.5518,
+    "epoch1_eval_loss": 0.8604,
+    "best_eval_loss": 0.8163,
+    "base_to_epoch1_gain": 2.0981,
+    "epoch1_to_best_gain": 0.0441,
+    "learned_from_base": true
+  },
+  "news": {
+    "base_model": "Qwen/Qwen2.5-3B-Instruct",
+    "val_examples": 75,
+    "base_eval_loss": 2.994,
+    "base_mean_token_accuracy": 0.4913,
+    "epoch1_eval_loss": 1.63,
+    "best_eval_loss": 1.63,
+    "base_to_epoch1_gain": 1.364,
+    "epoch1_to_best_gain": 0.0,
+    "learned_from_base": true
+  },
+  "general_qa": {
+    "base_model": "ibm-granite/granite-3.1-2b-instruct",
+    "val_examples": 74,
+    "base_eval_loss": 3.4494,
+    "base_mean_token_accuracy": 0.5539,
+    "epoch1_eval_loss": 1.107,
+    "best_eval_loss": 1.096,
+    "base_to_epoch1_gain": 2.3424,
+    "epoch1_to_best_gain": 0.011,
+    "learned_from_base": true
+  }
+}

@@ -1,0 +1,10 @@
+8
+min read
+Key Takeaways
+High-risk AI system obligations under Annex III become enforceable 2 August 2026, covering AI in hiring, credit scoring, biometric identification, and access to essential services.
+Articles 9–15 require ongoing risk management, pre-deployment technical documentation, automatic logging, human oversight with physical stop procedures, and conformity assessment before deployment.
+Most Annex III systems may self-certify via the internal control procedure; biometric systems require third-party assessment by a notified body — DEKRA received the first EU accreditation in March 2026.
+The Digital Omnibus delay proposal requires trilogue agreement before June 2026 to affect the August deadline — compliance teams treating it as settled fact are taking an unsupported position.
+Key Claim:
+The EU AI Act’s August 2026 high-risk deadline is real, the compliance requirements are specific and operationally demanding, and the Digital Omnibus delay proposal has not passed — organisations that defer action on that assumption bear the resulting enforcement risk.
+On 2 August 2026, the EU AI Act’s obligations for high-risk AI systems become fully enforceable. That means companies deploying AI to screen job candidates, score creditworthiness, identify people using biometric data, or allocate essential services must have completed conformity assessments, drawn up technical documentation, implemented human oversight mechanisms, registered their systems in an EU database, and affixed CE markings — or face fines of up to €15 million or 3% of global annual turnover. The European Commission has proposed delaying this deadline to December 2027 via the Digital Omnibus legislative package, but that proposal has not passed.

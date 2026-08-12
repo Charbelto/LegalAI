@@ -1,0 +1,19 @@
+Summary of intended coverage by CEN-CENELEC standards
+Interactive mapping created by Adam Leon Smith, for updates, subscribe for free tomy substack
+Harmonised standards are technical specifications developed by European Standardisation
+Organisations (CEN-CENELEC in this case) that provide a presumption of conformity with EU
+legislation. When a standard is cited in the Official Journal of the EU (OJEU), following it
+creates a rebuttable presumption that you comply with the corresponding legal requirements. For
+the AI Act, this means demonstrating compliance becomes significantly more straightforward.
+Standards development follows a structured process with defined stages:
+Only standards that reach Stage 60 and are then cited in the OJEU provide presumption of
+conformity. Learn more about the processhere.
+Not yet for presumption of conformity. Standards only provide presumption of conformity once they're published (Stage 60+) and cited in the OJEU. However, draft standards at Enquiry stage (Stage 40+) can provide valuable guidance on emerging best practices and indicate the direction of regulatory expectations. Always consult the official AI Act text and wait for OJEU citations for formal compliance.
+This mapping shows theintended coverageof standards being developed by CEN-CENELEC JTC 21. The standards are designed to address specific articles of the AI Act, particularly Chapter III Section 2 requirements for high-risk AI systems (Articles 9-15) plus the quality management system (Article 17). Each standard's scope has been carefully designed to align with these legal requirements.
+Yes. ISO/IEC JTC 1/SC 42 develops international AI standards that may become harmonised standards through adoption by CEN-CENELEC. Additionally,
+sector-specific standards and cybersecurity standards (like those from ETSI) may be relevant. However, only standards cited in the OJEU provide presumption of conformity with the AI Act.
+Standard development typically takes 2-4 years from project start to publication. Current estimates suggest the first CEN-CENELEC AI Act standards may reach publication in 2026. However, citation in the OJEU is a separate process that occurs after publication and is at the discretion of the European Commission.
+Standards development occurs through National Standards Bodies (NSBs). In the UK, this is BSI; in Germany, DIN; in France, AFNOR, etc. Organizations and experts can participate by joining relevant technical committees through their NSB. CEN-CENELEC JTC 21 develops AI standards with input from national mirror committees.
+Supported by Trustora Digital, yourtrusted Authorised Representative under Article 22 of the EU AI Act.
+Published under CC BY 4.0. This license enables reusers to distribute, remix, adapt, and build upon the material
+in any medium or format, so long as attribution is given to the creator. The license allows for commercial use.More details.

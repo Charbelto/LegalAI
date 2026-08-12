@@ -1,0 +1,47 @@
+Methodology by
+Daniela Piskáčková
+—
+Co-founder & AI Audit Lead
+·
+Published
+July 13, 2026
+How large are the fines under the EU AI Act, and are they live yet? Both questions have hard answers. The Act sets three penalty tiers in
+Article 99
+, reaching up to
+€35 million or 7%
+of a company's total worldwide annual turnover — whichever is higher — and they have been enforceable since
+2 August 2025
+. This article sets out what triggers each tier, how the figure is worked out, the little-known rule that flips the maths for smaller companies, and the documentation that lowers your exposure.
+Quick Answer.
+EU AI Act fines run in three tiers under Article 99: up to
+€35 million or 7%
+of total worldwide annual turnover for prohibited AI practices,
+€15 million or 3%
+for most other breaches, and
+€7.5 million or 1%
+for supplying incorrect information. For companies the higher figure applies — but for SMEs and start-ups it is the
+lower
+of the two. Penalties have applied since 2 August 2025.
+Last updated: 13 July 2026 · Verified against Regulation (EU) 2024/1689 as amended by the Digital Omnibus (adopted and signed; awaiting Official Journal publication).
+Summary
+EU AI Act fines — three Article 99 tiers, live since 2 Aug 2025, plus the SME twist
+│
+├─
+How much — the HIGHER of a fixed sum or a % of worldwide turnover
+│
+├─ €35M or 7% — prohibited AI practices (Art. 5 red lines)
+│
+├─ €15M or 3% — most other provider/deployer breaches, incl. Art. 50
+│
+└─ €7.5M or 1% — wrong or misleading info to an authority
+│
+├─
+When and who — already enforceable, handed down nationally
+│
+├─ Penalties applicable since 2 Aug 2025 (Art. 113) — the Omnibus left Art. 99 intact
+│
+└─ National market-surveillance authorities enforce; AI Office covers GPAI (Art. 101)
+│
+└─
+The twist and the payoff
+├─ SMEs and start-ups pay the LOWER of the two, not the higher (Art.

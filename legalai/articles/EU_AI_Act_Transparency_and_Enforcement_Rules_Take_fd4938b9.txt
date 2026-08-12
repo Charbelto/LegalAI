@@ -1,0 +1,54 @@
+Steven Farmer
+Scott Morton
+Mark Booth
+Samson Verebes
+The European Union’s AI Act entered a new phase on August 2, 2026, marking two years since its entry into force. Most immediately, the transparency obligations in Article 50 now apply to a broad range of AI systems and their providers and deployers, and the AI Act’s enforcement machinery is operational for obligations that are already in force.
+August 2, 2026, was also the date on which the core requirements for “high-risk” AI systems were due to become applicable. That did not happen, however. Following political agreement reached by the EU institutions and the later publication of the Digital Omnibus Regulation on AI (“AI Omnibus Regulation”), those requirements have been postponed until December 2, 2027, for Annex III standalone use cases and August 2, 2028, for most product-related systems.
+For an overview of the AI Act’s scope and risk categories, see our earlier
+client alert
+.
+Article 50 Transparency Rules Are Now in Force
+Article 50 applies independently of whether an AI system is treated as ”high risk.”
+Its obligations are divided between providers (broadly, entities that develop or market systems under their own name) and deployers (businesses using those systems under their authority).
+The key requirements are:
+Interactive AI.
+Providers must ensure that individuals are informed when they interact directly with AI, unless this is obvious in the circumstances. The European Commission’s
+final Article 50 guidelines
+state that notice should be clear, accessible and given at the start of the first interaction.
+Generative AI outputs.
+Providers of systems that produce AI-generated or manipulated content must mark outputs in a machine-readable and detectable format. For systems placed on the market before August 2, 2026, the AI Omnibus Regulation gives providers until December 2, 2026, to comply with this requirement.
+Emotion recognition and biometric categorization.
+Deployers must inform individuals exposed to these systems of their operation, alongside any applicable data-protection notices.
+Deepfakes and public-interest text.
+Deployers must disclose when image, audio or video content constitutes a deepfake (i.e., has been artificially generated but resembles existing persons, objects, places, entities or events and would appear to be authentic or truthful). AI-generated or manipulated text published to inform the public on certain “matters of public interest” must also be labelled, unless it has undergone substantive human review or sufficient editorial responsibility is retained.
+These rules cut across technology supply chains. A provider may control the interaction notice and machine-readable marking, while its customer remains responsible for deployer disclosures.
+As of the entry into force of the transparency obligations, around 190 organizations have signed the voluntary
+Code of Practice on Transparency of AI-Generated Content
+. The Code, which has been endorsed by both the European Commission and the AI Board as an adequate means of demonstrating compliance, provides practical measures for providers and deployers to meet the Article 50 marking and labelling obligations. Although adherence remains voluntary, signatories benefit from greater legal certainty and a common compliance framework, while organizations choosing alternative approaches will need to demonstrate that their measures are equally effective.
+High-Risk Requirements Have Been Deferred, Not Removed
+The AI Act’s high-risk regime imposes extensive lifecycle compliance obligations on AI systems used in specified high-impact contexts, originally due to be in effect from August 2, 2026. Following the introduction of the AI Omnibus Regulation, the high-risk obligations will now apply from:
+December 2, 2027
+, for AI systems classified as high-risk because they fall within one of the Annex III high-risk use cases (such as AI systems used in certain recruitment, employment, and educational contexts, and AI systems used for credit scoring); and
+August 2, 2028
+, for AI systems classified as high-risk because they are safety components of, or are themselves, products covered by Annex I product safety legislation (such as medical devices, toys, lifts, vehicles, aviation systems and radio equipment).
+The AI Omnibus Regulation also removes products covered by the EU Machinery Regulation from the AI Act’s direct high-risk framework and permits certain overlapping requirements to be limited where sectoral legislation provides equivalent protection.
+Organizations should nevertheless continue classification and readiness work. The European Commission’s
+draft high-risk classification guidelines
+published in May 2026 provide a useful, although non-binding, starting point.
+New Prohibited AI Practices
+The AI Omnibus Regulation also added a substantive new “prohibited AI practice” to the AI Act, which will apply from December 2, 2026. The provision prohibits, in specified circumstances, the placing on the market, putting into service or use of AI systems that generate or manipulate realistic non-consensual intimate material, as well as AI systems that generate or manipulate child sexual abuse material, subject to specified scope limitations and defenses. This reflects a broader global trend in the fight against deepfake pornography and so-called “nudification” apps and their output (e.g., in the UK under the Data (Use and Access) Act 2025).
+The Enforcement Framework Is Now Operational
+The AI Act’s enforcement framework is now more fully operational. In particular, the Article 50 transparency obligations are enforceable, and the European Commission may exercise its fining powers in relation to general-purpose AI model providers. National market-surveillance authorities will principally enforce rules for AI systems, while the European AI Office directly supervises general-purpose AI model providers and certain other systems within its expanded remit.
+Authorities may require information, investigate suspected infringements and order corrective action. Breaching Article 50 may attract fines of up to €15 million or 3% of worldwide annual turnover. Breaching the AI Act’s prohibited practices regime carries a maximum of €35 million or 7%, while supplying incorrect, incomplete or misleading information to authorities can attract up to €7.5 million or 1%.
+Natural and legal persons may complain to the relevant market-surveillance authority where they consider that the AI Act has been infringed. The AI Office has also launched complaint and whistleblowing tools for matters falling within its enforcement remit.
+EU Preparation and a Fragmented National Picture
+The European Commission has steadily built out the AI Act’s implementation architecture. It has also consulted on and issued guidelines on key definitions and obligations, developed codes of practice, and launched information-access platforms to assist compliance.
+Institutionally, the European AI Office and European AI Board now provide the principal EU coordination layer, supported by a Scientific Panel and Advisory Forum. At the national level, Member States must designate authorities and provide enforcement powers and procedures. Several Member States have enacted implementing legislation, although those national models are not uniform. Some use a relatively centralized lead authority; others distribute competence among data-protection, consumer, product-safety, financial, communications and other sectoral regulators. EU-level guidance and coordination should reduce divergence, but it remains to be seen how consistently the regime will be enforced in practice, particularly for cross-border systems engaging several regulatory regimes at once.
+Key Takeaways
+Although the AI Omnibus Regulation gives businesses more time to prepare for the AI Act’s most burdensome high-risk AI obligations, it does not fundamentally alter the direction of travel of the regime.
+With enforcement of the AI Act now operational and further key deadlines approaching in the near future, suppliers and customers should ensure that their contracts, technical controls and governance can withstand regulatory scrutiny.
+RELATED ARTICLES
+UK Data Protection Reform: New Complaints-Handling Duties Take Effect
+Share this:
+Click to print (Opens in new window)
+Print

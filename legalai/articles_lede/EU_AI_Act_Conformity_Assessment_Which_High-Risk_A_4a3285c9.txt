@@ -1,0 +1,35 @@
+2026-06-02
+·
+5
+min read
+·
+sota.io Team
+EU AI Act Conformity Assessment: Which High-Risk AI Systems Need Review Before August 2026
+Post #1457 in the sota.io EU Regulatory Compliance Series — EU AI Act Conformity Assessment Sprint 2026 #1/5
+August 2, 2026 is the compliance deadline for high-risk AI system providers under the EU AI Act. If your SaaS product or AI system falls into one of the eight high-risk categories defined in Annex III of the regulation, you need to complete a conformity assessment — and that process takes time. Waiting until July is not a strategy.
+This is the first post in a five-part series on EU AI Act conformity assessment. We cover what conformity assessment is, which systems are affected, and what the path to the CE marking declaration looks like for SaaS providers building or deploying high-risk AI.
+What Is Conformity Assessment Under the EU AI Act?
+Conformity assessment is the formal process that high-risk AI system providers must complete to demonstrate compliance with the EU AI Act's substantive requirements before placing their system on the EU market.
+Under
+Article 43
+, providers of high-risk AI systems must conduct a conformity assessment before making the system available. The assessment verifies that the system meets the requirements set out in Articles 9 through 15:
+Article 9
+: Risk management system
+Article 10
+: Data and data governance
+Article 11
+: Technical documentation
+Article 13
+: Transparency and provision of information to deployers
+Article 14
+: Human oversight measures
+Article 15
+: Accuracy, robustness, and cybersecurity
+After successful assessment, the provider issues an
+EU declaration of conformity
+under
+Article 47
+and affixes the CE marking. The system is then registered in the EU database under
+Article 49
+before deployment.
+This is not a paper exercise.

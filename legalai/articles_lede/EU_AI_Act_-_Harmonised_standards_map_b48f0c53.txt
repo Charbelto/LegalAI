@@ -1,0 +1,14 @@
+Summary of intended coverage by CEN-CENELEC standards
+Interactive mapping created by Adam Leon Smith, for updates, subscribe for free tomy substack
+Harmonised standards are technical specifications developed by European Standardisation
+Organisations (CEN-CENELEC in this case) that provide a presumption of conformity with EU
+legislation. When a standard is cited in the Official Journal of the EU (OJEU), following it
+creates a rebuttable presumption that you comply with the corresponding legal requirements. For
+the AI Act, this means demonstrating compliance becomes significantly more straightforward.
+Standards development follows a structured process with defined stages:
+Only standards that reach Stage 60 and are then cited in the OJEU provide presumption of
+conformity. Learn more about the processhere.
+Not yet for presumption of conformity. Standards only provide presumption of conformity once they're published (Stage 60+) and cited in the OJEU. However, draft standards at Enquiry stage (Stage 40+) can provide valuable guidance on emerging best practices and indicate the direction of regulatory expectations. Always consult the official AI Act text and wait for OJEU citations for formal compliance.
+This mapping shows theintended coverageof standards being developed by CEN-CENELEC JTC 21. The standards are designed to address specific articles of the AI Act, particularly Chapter III Section 2 requirements for high-risk AI systems (Articles 9-15) plus the quality management system (Article 17). Each standard's scope has been carefully designed to align with these legal requirements.
+Yes. ISO/IEC JTC 1/SC 42 develops international AI standards that may become harmonised standards through adoption by CEN-CENELEC. Additionally,
+sector-specific standards and cybersecurity standards (like those from ETSI) may be relevant.

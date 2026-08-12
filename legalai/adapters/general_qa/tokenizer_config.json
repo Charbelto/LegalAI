@@ -1,0 +1,16 @@
+{
+  "add_prefix_space": false,
+  "backend": "tokenizers",
+  "bos_token": "<|end_of_text|>",
+  "clean_up_tokenization_spaces": true,
+  "eos_token": "<|end_of_text|>",
+  "errors": "replace",
+  "is_local": false,
+  "local_files_only": false,
+  "model_max_length": 9223372036854775807,
+  "pad_token": "<fim_pad>",
+  "padding_side": "right",
+  "tokenizer_class": "TokenizersBackend",
+  "unk_token": "<|end_of_text|>",
+  "vocab_size": 49152
+}

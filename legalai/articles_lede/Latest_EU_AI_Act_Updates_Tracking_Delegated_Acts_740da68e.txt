@@ -1,0 +1,22 @@
+Part of EU AI Act Compliance
+→
+EU AI Act · May 2026 Update
+The EU AI Act’s Critical Implementation Phase is Here
+As of May 2026, the EU AI Act has entered its critical implementation phase. Compliance is now defined not by the original text alone, but by a wave of secondary legislation—delegated and implementing acts—and the official guidance emerging from the newly established
+European AI Office
+.
+For compliance, legal, and public affairs teams, this is a period of high-stakes uncertainty. The broad principles of the AI Act are now being forged into specific obligations through technical standards and detailed guidance. Simply having read the consolidated text is no longer sufficient. Organizations must now track a complex and fast-moving ecosystem of rules that will define the true cost and operational burden of compliance. Missing key
+EU AI act updates
+within a delegated act or a clarification from the AI Office is not a mere knowledge gap; it’s a direct threat to market access and a significant source of compliance risk.
+Delegated vs Implementing
+Understanding the Difference
+To navigate the current landscape, it is essential to understand the two primary legal instruments the European Commission uses to build out the AI Act’s framework. While they may seem like technical jargon, they have distinct and direct impacts on your business operations.
+Feature
+Delegated Acts
+Implementing Acts
+Purpose
+To supplement or amend non-essential parts of the main law.
+To ensure uniform conditions for the law’s application across all EU member states.
+Function
+They act like software updates, adding or changing specific details and criteria within the existing legal framework. They can alter your core compliance obligations.
+They provide legally binding, detailed rules on how to follow the law.

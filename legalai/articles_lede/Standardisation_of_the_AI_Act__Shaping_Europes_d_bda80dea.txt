@@ -1,0 +1,18 @@
+Harmonised standards will offer legal certainty under the AI Act, support innovation, and position the EU to set global benchmarks for trustworthy AI.
+Ensuring an effective and clear implementation of the
+AI Act
+is a priority for the Commission. The AI Act regulates regulates ‘high-risk’ AI systems that impact safety, health, and fundamental rights, for example, in critical infrastructure and law enforcement, among other areas (see
+article 6
+and
+annex III
+of the AI Act). These requirements need to be fulfilled before placement on the market, ensuring high-risk AI systems are monitored throughout their lifecycle.
+Standards translate legal requirements into common technical language, simplifying compliance for companies and other stakeholders.
+European harmonised standards serve several crucial functions:
+Legal certainty and reduced compliance costs
+: European harmonised standards provide a clear pathway to compliance for businesses of all sizes.
+Market benchmarking
+: European harmonised standards often become de facto global benchmarks. For example, standards currently under development focused on setting methodologies for risk management and quality management are strong candidates to become market benchmarks in the future.
+Innovation and competitiveness
+: European harmonised standards foster trust and market acceptance, enabling developers who adopt them to compete on a global scale while ensuring their solutions meet the highest safety standards.
+How are standards developed and what are the current standards?
+The European Committee for Standardisation (CEN) and European Committee for Electrotechnical Standardisation (CENELEC) are European Standardisation Organisations. Working groups in these 2 organisations are actively developing harmonised standards for high-risk AI systems.

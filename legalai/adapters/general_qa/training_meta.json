@@ -1,0 +1,102 @@
+{
+  "role": "general_qa",
+  "domain": "general",
+  "base_model": "ibm-granite/granite-3.1-2b-instruct",
+  "trained_at_utc": "2026-08-04T17:12:39.512481+00:00",
+  "duration_s": 1517.2,
+  "train_examples": 1423,
+  "eval_examples": 74,
+  "hyperparameters": {
+    "lora_rank": 16,
+    "lora_alpha": 32,
+    "lora_dropout": 0.05,
+    "target_modules": [
+      "q_proj",
+      "k_proj",
+      "v_proj",
+      "o_proj",
+      "gate_proj",
+      "up_proj",
+      "down_proj",
+      "qkv_proj",
+      "gate_up_proj"
+    ],
+    "learning_rate": 5e-05,
+    "epochs": 1,
+    "per_device_batch_size": 1,
+    "gradient_accumulation_steps": 8,
+    "effective_batch_size": 8,
+    "max_seq_length": 1024,
+    "warmup_ratio": 0.03,
+    "optimizer": "paged_adamw_8bit",
+    "lr_scheduler": "cosine",
+    "seed": 20260803
+  },
+  "quantization": {
+    "load_in_4bit": true,
+    "quant_type": "nf4",
+    "double_quant": true,
+    "compute_dtype": "bfloat16"
+  },
+  "trainable_params": 28180480,
+  "total_params": 2561712128,
+  "final_train_loss": 3.668712031975221,
+  "eval_metrics": {
+    "eval_loss": 1.7206302881240845,
+    "eval_runtime": 28.7789,
+    "eval_samples_per_second": 2.571,
+    "eval_steps_per_second": 0.347,
+    "eval_entropy": 1.044153869152069,
+    "eval_num_tokens": 517241.0,
+    "eval_mean_token_accuracy": 0.668548858165741,
+    "epoch": 1.0
+  },
+  "eval_history": [
+    {
+      "epoch": 0.247,
+      "eval_loss": 3.457054376602173,
+      "eval_mean_token_accuracy": 0.6300516784191131
+    },
+    {
+      "epoch": 0.495,
+      "eval_loss": 2.0437541007995605,
+      "eval_mean_token_accuracy": 0.6564390301704407
+    },
+    {
+      "epoch": 0.742,
+      "eval_loss": 1.7388474941253662,
+      "eval_mean_token_accuracy": 0.6686402440071106
+    },
+    {
+      "epoch": 0.989,
+      "eval_loss": 1.722316861152649,
+      "eval_mean_token_accuracy": 0.6698070883750915
+    },
+    {
+      "epoch": 1.0,
+      "eval_loss": 1.7206302881240845,
+      "eval_mean_token_accuracy": 0.668548858165741
+    },
+    {
+      "epoch": 1.0,
+      "eval_loss": 1.7206302881240845,
+      "eval_mean_token_accuracy": 0.668548858165741
+    }
+  ],
+  "learning_signal": {
+    "first_eval_loss": 3.4571,
+    "best_eval_loss": 1.7206,
+    "final_eval_loss": 1.7206,
+    "improvement": 1.7364,
+    "improved": true,
+    "best_epoch": 1.0
+  },
+  "peak_vram_mib": 4173,
+  "platform": {
+    "python": "3.11.9",
+    "torch": "2.13.0+cu126",
+    "transformers": "5.14.1",
+    "system": "Windows",
+    "gpu": "NVIDIA GeForce RTX 4070 Laptop GPU"
+  }
+}

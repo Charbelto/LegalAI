@@ -1,0 +1,15 @@
+Updated
+14 Jul, 2026
+Published
+14 Jul, 2026
+Cybersecurity
+NetNordic
+Articles
+EU AI Act: What actually changes on 2 August 2026?
+On 2 August 2026, the EU AI Act enters a new phase — though not the one many organisations have been preparing for. Transparency obligations under Article 50 take effect, and the AI Office and national authorities gain full powers to enforce and sanction breaches, including for general-purpose AI (GPAI) models. What doesn’t happen on this date, following a legislative change adopted this summer, is the broad rollout of high-risk AI obligations that was originally scheduled.
+For most organisations, this isn’t primarily a story about OpenAI, Microsoft, or Google. It’s a story about how your own business uses AI — and whether you can prove you’re doing it responsibly.
+What changes on this specific date
+It’s worth being precise about what 2 August 2026 does and doesn’t cover, because the date has shifted meaning since the Act was first published:
+GPAI enforcement becomes operational — the substantive obligations for providers of general-purpose AI models (Articles 51–55) have applied since 2 August 2025. What changes now is that the AI Office can act on its enforcement and sanction powers over those providers, including investigations and administrative fines.
+Article 50 transparency obligations take effect. They cover more than generative content: disclosure requirements when people interact directly with an AI system (such as chatbots), labelling of AI-generated or manipulated content (including deepfakes), and disclosure obligations around emotion recognition and biometric categorisation systems. One exception: the specific requirement to machine-readably watermark AI-generated content from systems already on the market before this date is postponed to 2 December 2026.
+High-risk AI systems (Annex III) are, notably, not part of this date anymore.

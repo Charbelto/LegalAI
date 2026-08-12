@@ -1,0 +1,19 @@
+Steven Farmer
+Scott Morton
+Mark Booth
+Samson Verebes
+The European Union’s AI Act entered a new phase on August 2, 2026, marking two years since its entry into force. Most immediately, the transparency obligations in Article 50 now apply to a broad range of AI systems and their providers and deployers, and the AI Act’s enforcement machinery is operational for obligations that are already in force.
+August 2, 2026, was also the date on which the core requirements for “high-risk” AI systems were due to become applicable. That did not happen, however. Following political agreement reached by the EU institutions and the later publication of the Digital Omnibus Regulation on AI (“AI Omnibus Regulation”), those requirements have been postponed until December 2, 2027, for Annex III standalone use cases and August 2, 2028, for most product-related systems.
+For an overview of the AI Act’s scope and risk categories, see our earlier
+client alert
+.
+Article 50 Transparency Rules Are Now in Force
+Article 50 applies independently of whether an AI system is treated as ”high risk.”
+Its obligations are divided between providers (broadly, entities that develop or market systems under their own name) and deployers (businesses using those systems under their authority).
+The key requirements are:
+Interactive AI.
+Providers must ensure that individuals are informed when they interact directly with AI, unless this is obvious in the circumstances. The European Commission’s
+final Article 50 guidelines
+state that notice should be clear, accessible and given at the start of the first interaction.
+Generative AI outputs.
+Providers of systems that produce AI-generated or manipulated content must mark outputs in a machine-readable and detectable format.

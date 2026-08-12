@@ -1,0 +1,450 @@
+% ============================================================================
+% references.bib
+% Verified bibliography for: single-agent vs. multi-agent LLM routing
+% topologies, evaluated on EU AI Act compliance QA.
+%
+% VERIFICATION DATE: 2026-07-26
+% Every entry below was checked against a live web search (arXiv abstract
+% pages, publisher/DOI pages, or official project pages) on this date.
+% Titles, author surnames (first 3-4 where the author list is long), years,
+% and arXiv IDs / venues were confirmed before the entry was written.
+% No arXiv ID or venue in this file was guessed or inferred without a
+% search hit confirming it. Items that could not be confirmed this way are
+% NOT included here -- see CITATION_NOTES.md for the "UNVERIFIED" list.
+% ============================================================================
+
+
+% ----------------------------------------------------------------------------
+% A. Single-agent vs. multi-agent evidence
+% ----------------------------------------------------------------------------
+
+@misc{jwalapuram2026illusion,
+  title         = {The Illusion of Multi-Agent Advantage},
+  author        = {Jwalapuram, Prathyusha and Lin, Hehai and Li, Chuyuan and Jiao, Fangkai and Wang, Sudong and Ming, Yifei and Ke, Zixuan and Qin, Chengwei and Carenini, Giuseppe and Joty, Shafiq},
+  year          = {2026},
+  eprint        = {2606.13003},
+  archivePrefix = {arXiv},
+  primaryClass  = {cs.CL},
+  url           = {https://arxiv.org/abs/2606.13003}
+}
+
+@misc{cemri2025mast,
+  title         = {Why Do Multi-Agent LLM Systems Fail?},
+  author        = {Cemri, Mert and Pan, Melissa Z. and Yang, Shuyi and others},
+  year          = {2025},
+  eprint        = {2503.13657},
+  archivePrefix = {arXiv},
+  primaryClass  = {cs.LG},
+  note          = {Accepted, NeurIPS 2025 Datasets and Benchmarks Track},
+  url           = {https://arxiv.org/abs/2503.13657}
+}
+
+@misc{tran2026singleagent,
+  title         = {Single-Agent LLMs Outperform Multi-Agent Systems on Multi-Hop Reasoning Under Equal Thinking Token Budgets},
+  author        = {Tran, Dat and Kiela, Douwe},
+  year          = {2026},
+  eprint        = {2604.02460},
+  archivePrefix = {arXiv},
+  primaryClass  = {cs.CL},
+  url           = {https://arxiv.org/abs/2604.02460}
+}
+
+@misc{xu2026oneflow,
+  title         = {Rethinking the Value of Multi-Agent Workflow: A Strong Single Agent Baseline},
+  author        = {Xu, Jiawei and Koesdwiady, Arief and Bei, Sisong and Han, Yan and Huang, Baixiang and Wang, Dakuo and Chen, Yutong and Wang, Zheshen and Wang, Peihao and Li, Pan and Ding, Ying},
+  year          = {2026},
+  eprint        = {2601.12307},
+  archivePrefix = {arXiv},
+  primaryClass  = {cs.CL},
+  note          = {Proposes the ``OneFlow'' single-agent workflow-compilation algorithm},
+  url           = {https://arxiv.org/abs/2601.12307}
+}
+
+@misc{li2024moreagents,
+  title         = {More Agents Is All You Need},
+  author        = {Li, Junyou and Zhang, Qin and Yu, Yangbin and Fu, Qiang and Ye, Deheng},
+  year          = {2024},
+  eprint        = {2402.05120},
+  archivePrefix = {arXiv},
+  primaryClass  = {cs.CL},
+  url           = {https://arxiv.org/abs/2402.05120}
+}
+
+@inproceedings{chen2024morellmcalls,
+  title         = {Are More LLM Calls All You Need? Towards the Scaling Properties of Compound AI Systems},
+  author        = {Chen, Lingjiao and Davis, Jared Quincy and Hanin, Boris and Bailis, Peter and Stoica, Ion and Zaharia, Matei and Zou, James},
+  booktitle     = {Advances in Neural Information Processing Systems (NeurIPS)},
+  volume        = {37},
+  pages         = {45767--45790},
+  year          = {2024},
+  eprint        = {2403.02419},
+  archivePrefix = {arXiv},
+  url           = {https://arxiv.org/abs/2403.02419}
+}
+
+
+% ----------------------------------------------------------------------------
+% B. Multi-agent topology / structure design
+% ----------------------------------------------------------------------------
+
+@inproceedings{zhuge2024gptswarm,
+  title         = {Language Agents as Optimizable Graphs},
+  author        = {Zhuge, Mingchen and Wang, Wenyi and Kirsch, Louis and Faccio, Francesco and Khizbullin, Dmitrii and Schmidhuber, J{\"u}rgen},
+  booktitle     = {Proceedings of the 41st International Conference on Machine Learning (ICML)},
+  year          = {2024},
+  note          = {Framework known as GPTSwarm},
+  eprint        = {2402.16823},
+  archivePrefix = {arXiv},
+  url           = {https://arxiv.org/abs/2402.16823}
+}
+
+@inproceedings{qian2024macnet,
+  title         = {Scaling Large Language Model-based Multi-Agent Collaboration},
+  author        = {Qian, Chen and Xie, Zihao and Wang, Yifei and Liu, Wei and Zhu, Kunlun and Xia, Hanchen and Dang, Yufan and Du, Zhuoyun and Chen, Weize and Yang, Cheng and Liu, Zhiyuan and Sun, Maosong},
+  booktitle     = {International Conference on Learning Representations (ICLR)},
+  year          = {2025},
+  note          = {Introduces MacNet},
+  eprint        = {2406.07155},
+  archivePrefix = {arXiv},
+  url           = {https://arxiv.org/abs/2406.07155}
+}
+
+@misc{liu2023dylan,
+  title         = {A Dynamic LLM-Powered Agent Network for Task-Oriented Agent Collaboration},
+  author        = {Liu, Zijun and Zhang, Yanzhe and Li, Peng and Liu, Yang and Yang, Diyi},
+  year          = {2023},
+  note          = {Also referred to as ``Dynamic LLM-Agent Network (DyLAN): An LLM-agent Collaboration Framework with Agent Team Optimization''},
+  eprint        = {2310.02170},
+  archivePrefix = {arXiv},
+  primaryClass  = {cs.CL},
+  url           = {https://arxiv.org/abs/2310.02170}
+}
+
+@inproceedings{zhang2024agentprune,
+  title         = {Cut the Crap: An Economical Communication Pipeline for LLM-based Multi-Agent Systems},
+  author        = {Zhang, Guibin and Yue, Yanwei and Li, Zhixun and Yun, Sukwon and Wan, Guancheng and Wang, Kun and Cheng, Dawei and Yu, Jeffrey Xu and Chen, Tianlong},
+  booktitle     = {International Conference on Learning Representations (ICLR)},
+  year          = {2025},
+  note          = {Introduces AgentPrune},
+  eprint        = {2410.02506},
+  archivePrefix = {arXiv},
+  url           = {https://arxiv.org/abs/2410.02506}
+}
+
+@misc{zhang2024gdesigner,
+  title         = {G-Designer: Architecting Multi-agent Communication Topologies via Graph Neural Networks},
+  author        = {Zhang, Guibin and Yue, Yanwei and Sun, Xiangguo and Wan, Guancheng and Yu, Miao and Fang, Junfeng and Wang, Kun and Chen, Tianlong and Cheng, Dawei},
+  year          = {2024},
+  eprint        = {2410.11782},
+  archivePrefix = {arXiv},
+  primaryClass  = {cs.MA},
+  url           = {https://arxiv.org/abs/2410.11782}
+}
+
+@misc{li2025argdesigner,
+  title         = {Assemble Your Crew: Automatic Multi-agent Communication Topology Design via Autoregressive Graph Generation},
+  author        = {Li, Shiyuan and Liu, Yixin and Wen, Qingsong and Zhang, Chengqi and Pan, Shirui},
+  year          = {2025},
+  note          = {Introduces ARG-Designer; accepted as an Oral paper, AAAI 2026},
+  eprint        = {2507.18224},
+  archivePrefix = {arXiv},
+  primaryClass  = {cs.MA},
+  url           = {https://arxiv.org/abs/2507.18224}
+}
+
+@inproceedings{wang2025agentdropout,
+  title         = {AgentDropout: Dynamic Agent Elimination for Token-Efficient and High-Performance LLM-Based Multi-Agent Collaboration},
+  author        = {Wang, Zhexuan and Wang, Yutong and Liu, Xuebo and Ding, Liang and Zhang, Miao and Liu, Jie and Zhang, Min},
+  booktitle     = {Proceedings of the 63rd Annual Meeting of the Association for Computational Linguistics (ACL), Volume 1: Long Papers},
+  pages         = {24013--24035},
+  year          = {2025},
+  eprint        = {2503.18891},
+  archivePrefix = {arXiv},
+  url           = {https://arxiv.org/abs/2503.18891}
+}
+
+@article{zhu2026masorchestrationsurvey,
+  title         = {LLM-Based Multi-Agent Orchestration: A Survey of Frameworks, Communication Protocols, and Emerging Patterns},
+  author        = {Zhu, Yiwen and Liu, Lihe and Yu, Jiaqian and Zhang, Di},
+  journal       = {Future Internet},
+  volume        = {18},
+  number        = {6},
+  pages         = {326},
+  year          = {2026},
+  doi           = {10.3390/fi18060326},
+  url           = {https://doi.org/10.3390/fi18060326}
+}
+
+
+% ----------------------------------------------------------------------------
+% C. Frameworks
+% ----------------------------------------------------------------------------
+
+@misc{wu2023autogen,
+  title         = {AutoGen: Enabling Next-Gen LLM Applications via Multi-Agent Conversation Framework},
+  author        = {Wu, Qingyun and Bansal, Gagan and Zhang, Jieyu and Wu, Yiran and Li, Beibin and Zhu, Erkang and Jiang, Li and Zhang, Xiaoyun and Zhang, Shaokun and Liu, Jiale and Awadallah, Ahmed Hassan and White, Ryen W. and Burger, Doug and Wang, Chi},
+  note          = {14 authors; verified full order against arXiv:2308.08155},
+  year          = {2023},
+  eprint        = {2308.08155},
+  archivePrefix = {arXiv},
+  primaryClass  = {cs.AI},
+  url           = {https://arxiv.org/abs/2308.08155}
+}
+
+@inproceedings{hong2023metagpt,
+  title         = {{MetaGPT}: Meta Programming for A Multi-Agent Collaborative Framework},
+  author        = {Hong, Sirui and Zhuge, Mingchen and Chen, Jiaqi and Zheng, Xiawu and Cheng, Yuheng and Zhang, Ceyao and Wang, Jinlin and Wang, Zili and Yau, Steven Ka Shing and Lin, Zijuan and Zhou, Liyang and Ran, Chenyu and Xiao, Lingfeng and Wu, Chenglin and Schmidhuber, J{\"u}rgen},
+  booktitle     = {International Conference on Learning Representations (ICLR)},
+  year          = {2024},
+  eprint        = {2308.00352},
+  archivePrefix = {arXiv},
+  note          = {15 authors; verified full order against arXiv:2308.00352},
+  url           = {https://arxiv.org/abs/2308.00352}
+}
+
+@inproceedings{li2023camel,
+  title         = {{CAMEL}: Communicative Agents for ``Mind'' Exploration of Large Language Model Society},
+  author        = {Li, Guohao and Hammoud, Hasan Abed Al Kader and Itani, Hani and Khizbullin, Dmitrii and Ghanem, Bernard},
+  booktitle     = {Advances in Neural Information Processing Systems (NeurIPS)},
+  year          = {2023},
+  eprint        = {2303.17760},
+  archivePrefix = {arXiv},
+  url           = {https://arxiv.org/abs/2303.17760}
+}
+
+@misc{langchain2024langgraph,
+  title         = {{LangGraph}},
+  author        = {{LangChain AI}},
+  year          = {2024},
+  howpublished  = {\url{https://github.com/langchain-ai/langgraph}},
+  note          = {Software repository and documentation; no companion research paper found}
+}
+
+
+% ----------------------------------------------------------------------------
+% D. Evaluation methodology
+% ----------------------------------------------------------------------------
+
+@inproceedings{zheng2023mtbench,
+  title         = {Judging {LLM}-as-a-Judge with {MT}-Bench and Chatbot Arena},
+  author        = {Zheng, Lianmin and Chiang, Wei-Lin and Sheng, Ying and Zhuang, Siyuan and Wu, Zhanghao and Zhuang, Yonghao and Lin, Zi and Li, Zhuohan and Li, Dacheng and Xing, Eric P. and Zhang, Hao and Gonzalez, Joseph E. and Stoica, Ion},
+  booktitle     = {Advances in Neural Information Processing Systems (NeurIPS), Datasets and Benchmarks Track},
+  year          = {2023},
+  eprint        = {2306.05685},
+  archivePrefix = {arXiv},
+  url           = {https://arxiv.org/abs/2306.05685}
+}
+
+@misc{wataoka2024selfpreference,
+  title         = {Self-Preference Bias in {LLM}-as-a-Judge},
+  author        = {Wataoka, Koki and Takahashi, Tsubasa and Ri, Ryokan},
+  year          = {2024},
+  eprint        = {2410.21819},
+  archivePrefix = {arXiv},
+  primaryClass  = {cs.CL},
+  note          = {Finds LLM judges assign higher scores to lower-perplexity (more self-similar) text, evidence of self-preference bias},
+  url           = {https://arxiv.org/abs/2410.21819}
+}
+
+@inproceedings{papineni2002bleu,
+  title         = {{BLEU}: A Method for Automatic Evaluation of Machine Translation},
+  author        = {Papineni, Kishore and Roukos, Salim and Ward, Todd and Zhu, Wei-Jing},
+  booktitle     = {Proceedings of the 40th Annual Meeting of the Association for Computational Linguistics (ACL)},
+  pages         = {311--318},
+  year          = {2002}
+}
+
+@inproceedings{lin2004rouge,
+  title         = {{ROUGE}: A Package for Automatic Evaluation of Summaries},
+  author        = {Lin, Chin-Yew},
+  booktitle     = {Text Summarization Branches Out: Proceedings of the ACL-04 Workshop},
+  pages         = {74--81},
+  year          = {2004}
+}
+
+@article{wilcoxon1945individual,
+  title         = {Individual Comparisons by Ranking Methods},
+  author        = {Wilcoxon, Frank},
+  journal       = {Biometrics Bulletin},
+  volume        = {1},
+  number        = {6},
+  pages         = {80--83},
+  year          = {1945}
+}
+
+@article{holm1979simple,
+  title         = {A Simple Sequentially Rejective Multiple Test Procedure},
+  author        = {Holm, Sture},
+  journal       = {Scandinavian Journal of Statistics},
+  volume        = {6},
+  number        = {2},
+  pages         = {65--70},
+  year          = {1979}
+}
+
+@article{cliff1993dominance,
+  title         = {Dominance Statistics: Ordinal Analyses to Answer Ordinal Questions},
+  author        = {Cliff, Norman},
+  journal       = {Psychological Bulletin},
+  volume        = {114},
+  number        = {3},
+  pages         = {494--509},
+  year          = {1993}
+}
+
+
+% ----------------------------------------------------------------------------
+% E. Legal / compliance domain
+% ----------------------------------------------------------------------------
+
+% ----------------------------------------------------------------------------
+% F. Parameter-efficient fine-tuning, base models, and fine-tuning corpora
+%
+% VERIFICATION DATE: 2026-08-03. arXiv IDs below were each confirmed by querying
+% the arXiv API and checking the returned title and author list, not by recall.
+%
+% Two deliberate non-arXiv entries:
+%   * granite31 -- IBM has NOT published an arXiv paper for the Granite 3.x
+%     *general language* models. arXiv has Granite Code (2405.04324), Granite
+%     Guardian, Granite Vision, Granite Embedding and Granite Speech, but no
+%     Granite 3.x LM report. The official technical documentation is the
+%     ibm-granite GitHub repository, cited here. Rather than attach one of the
+%     adjacent Granite arXiv IDs, which would misattribute the work, this is a
+%     @misc with the verified official URL.
+%   * conover2023dolly -- Dolly-15k was released via a Databricks engineering
+%     blog post and a dataset card, never as a paper.
+% ----------------------------------------------------------------------------
+
+@misc{hu2021lora,
+  title         = {{LoRA}: Low-Rank Adaptation of Large Language Models},
+  author        = {Hu, Edward J. and Shen, Yelong and Wallis, Phillip and Allen-Zhu, Zeyuan and Li, Yuanzhi and Wang, Shean and Wang, Lu and Chen, Weizhu},
+  year          = {2021},
+  eprint        = {2106.09685},
+  archivePrefix = {arXiv},
+  primaryClass  = {cs.CL},
+  url           = {https://arxiv.org/abs/2106.09685}
+}
+
+@misc{dettmers2023qlora,
+  title         = {{QLoRA}: Efficient Finetuning of Quantized {LLMs}},
+  author        = {Dettmers, Tim and Pagnoni, Artidoro and Holtzman, Ari and Zettlemoyer, Luke},
+  year          = {2023},
+  eprint        = {2305.14314},
+  archivePrefix = {arXiv},
+  primaryClass  = {cs.LG},
+  note          = {Advances in Neural Information Processing Systems (NeurIPS) 2023},
+  url           = {https://arxiv.org/abs/2305.14314}
+}
+
+@misc{trischler2017newsqa,
+  title         = {{NewsQA}: A Machine Comprehension Dataset},
+  author        = {Trischler, Adam and Wang, Tong and Yuan, Xingdi and Harris, Justin and Sordoni, Alessandro and Bachman, Philip and Suleman, Kaheer},
+  year          = {2017},
+  eprint        = {1611.09830},
+  archivePrefix = {arXiv},
+  primaryClass  = {cs.CL},
+  note          = {Proceedings of the 2nd Workshop on Representation Learning for NLP (RepL4NLP); arXiv preprint dated 2016},
+  url           = {https://arxiv.org/abs/1611.09830}
+}
+
+@misc{conover2023dolly,
+  title         = {Free {Dolly}: Introducing the World's First Truly Open Instruction-Tuned {LLM}},
+  author        = {Conover, Mike and Hayes, Matt and Mathur, Ankit and Xie, Jianwei and Wan, Jun and Shah, Sam and Ghodsi, Ali and Wendell, Patrick and Zaharia, Matei and Xin, Reynold},
+  year          = {2023},
+  howpublished  = {Databricks engineering blog; dataset released as \texttt{databricks/databricks-dolly-15k} under CC BY-SA 3.0},
+  url           = {https://www.databricks.com/blog/2023/04/12/dolly-first-open-commercially-viable-instruction-tuned-llm}
+}
+
+@misc{grattafiori2024llama3,
+  title         = {The {Llama} 3 Herd of Models},
+  author        = {Grattafiori, Aaron and Dubey, Abhimanyu and Jauhri, Abhinav and Pandey, Abhinav and others},
+  year          = {2024},
+  eprint        = {2407.21783},
+  archivePrefix = {arXiv},
+  primaryClass  = {cs.AI},
+  note          = {We use Llama 3.2 3B Instruct, released after this report; its architecture and training are documented in the accompanying model card at \url{https://huggingface.co/meta-llama/Llama-3.2-3B-Instruct}},
+  url           = {https://arxiv.org/abs/2407.21783}
+}
+
+@misc{qwen2024qwen25,
+  title         = {{Qwen2.5} Technical Report},
+  author        = {{Qwen Team} and Yang, An and Yang, Baosong and others},
+  year          = {2024},
+  eprint        = {2412.15115},
+  archivePrefix = {arXiv},
+  primaryClass  = {cs.CL},
+  url           = {https://arxiv.org/abs/2412.15115}
+}
+
+@misc{granite31,
+  title         = {{Granite} 3.1 Language Models},
+  author        = {{IBM Granite Team}},
+  year          = {2024},
+  howpublished  = {IBM technical documentation and model release},
+  note          = {No arXiv report exists for the Granite 3.x general language models; model card at \url{https://huggingface.co/ibm-granite/granite-3.1-2b-instruct}},
+  url           = {https://github.com/ibm-granite/granite-3.1-language-models}
+}
+
+@inproceedings{guha2023legalbench,
+  title         = {{LegalBench}: A Collaboratively Built Benchmark for Measuring Legal Reasoning in Large Language Models},
+  author        = {Guha, Neel and Nyarko, Julian and Ho, Daniel E. and R{\'e}, Christopher and Chilton, Adam and others},
+  booktitle     = {Advances in Neural Information Processing Systems (NeurIPS), Datasets and Benchmarks Track},
+  year          = {2023},
+  eprint        = {2209.06120},
+  archivePrefix = {arXiv},
+  note          = {arXiv preprint titled ``LegalBench: Prototyping a Collaborative Benchmark for Legal Reasoning''},
+  url           = {https://arxiv.org/abs/2209.06120}
+}
+
+@misc{pipitone2024legalbenchrag,
+  title         = {{LegalBench-RAG}: A Benchmark for Retrieval-Augmented Generation in the Legal Domain},
+  author        = {Pipitone, Nicholas and Alami, Ghita Houir},
+  year          = {2024},
+  eprint        = {2408.10343},
+  archivePrefix = {arXiv},
+  primaryClass  = {cs.CL},
+  url           = {https://arxiv.org/abs/2408.10343}
+}
+
+@misc{cui2023chatlaw,
+  title         = {{ChatLaw}: A Multi-Agent Collaborative Legal Assistant with Knowledge Graph Enhanced Mixture-of-Experts Large Language Model},
+  author        = {Cui, Jiaxi and Ning, Munan and Li, Zongjian and Chen, Bohua and Yan, Yang and Li, Hao and Ling, Bin and Tian, Yonghong and Yuan, Li},
+  year          = {2023},
+  eprint        = {2306.16092},
+  archivePrefix = {arXiv},
+  primaryClass  = {cs.CL},
+  note          = {Title as of arXiv v2 (30 May 2024). v1 (28 Jun 2023) was titled ``ChatLaw: Open-Source Legal Large Language Model with Integrated External Knowledge Bases''; v3 (8 Jun 2026, journal DOI 10.1016/j.fmre.2026.03.026) retitles it again to ``Chatlaw: A Multi-Agent Legal Assistant based on a Role-Aligned Mixture-of-Experts Architecture''. Cited here as v2.},
+  url           = {https://arxiv.org/abs/2306.16092v2}
+}
+
+@misc{guldimann2024complai,
+  title         = {{COMPL-AI} Framework: A Technical Interpretation and {LLM} Benchmarking Suite for the {EU} Artificial Intelligence Act},
+  author        = {Guldimann, Philipp and Spiridonov, Alexander and Staab, Robin and Jovanovi{\'c}, Nikola and Vero, Mark and Vechev, Velko and Gueorguieva, Anna-Maria and Balunovi{\'c}, Mislav and Konstantinov, Nikola and Bielik, Pavol and Tsankov, Petar and Vechev, Martin},
+  year          = {2024},
+  eprint        = {2410.07959},
+  archivePrefix = {arXiv},
+  primaryClass  = {cs.CY},
+  note          = {Maps EU AI Act requirements to 18 technical benchmarking criteria for LLMs},
+  url           = {https://arxiv.org/abs/2410.07959}
+}
+
+@inproceedings{li2025lexrag,
+  title         = {{LexRAG}: Benchmarking Retrieval-Augmented Generation in Multi-Turn Legal Consultation Conversation},
+  author        = {Li, Haitao and Chen, Yifan and Hu, Yiran and Ai, Qingyao and Chen, Junjie and Yang, Xiaoyu and Yang, Jianhui and Wu, Yueyue and Liu, Zeyang and Liu, Yiqun},
+  booktitle     = {Proceedings of the 48th International ACM SIGIR Conference on Research and Development in Information Retrieval (SIGIR)},
+  year          = {2025},
+  eprint        = {2502.20640},
+  archivePrefix = {arXiv},
+  url           = {https://arxiv.org/abs/2502.20640}
+}
+
+@inproceedings{raptopoulos2025pakton,
+  title         = {{PAKTON}: A Multi-Agent Framework for Question Answering in Long Legal Agreements},
+  author        = {Raptopoulos, Petros and Filandrianos, Giorgos and Lymperaiou, Maria and Stamou, Giorgos},
+  booktitle     = {Proceedings of the 2025 Conference on Empirical Methods in Natural Language Processing (EMNLP)},
+  year          = {2025},
+  eprint        = {2506.00608},
+  archivePrefix = {arXiv},
+  note          = {Oral presentation, EMNLP 2025 Main Conference},
+  url           = {https://arxiv.org/abs/2506.00608}
+}

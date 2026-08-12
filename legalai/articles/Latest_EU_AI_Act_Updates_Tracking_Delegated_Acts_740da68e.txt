@@ -1,0 +1,143 @@
+Part of EU AI Act Compliance
+→
+EU AI Act · May 2026 Update
+The EU AI Act’s Critical Implementation Phase is Here
+As of May 2026, the EU AI Act has entered its critical implementation phase. Compliance is now defined not by the original text alone, but by a wave of secondary legislation—delegated and implementing acts—and the official guidance emerging from the newly established
+European AI Office
+.
+For compliance, legal, and public affairs teams, this is a period of high-stakes uncertainty. The broad principles of the AI Act are now being forged into specific obligations through technical standards and detailed guidance. Simply having read the consolidated text is no longer sufficient. Organizations must now track a complex and fast-moving ecosystem of rules that will define the true cost and operational burden of compliance. Missing key
+EU AI act updates
+within a delegated act or a clarification from the AI Office is not a mere knowledge gap; it’s a direct threat to market access and a significant source of compliance risk.
+Delegated vs Implementing
+Understanding the Difference
+To navigate the current landscape, it is essential to understand the two primary legal instruments the European Commission uses to build out the AI Act’s framework. While they may seem like technical jargon, they have distinct and direct impacts on your business operations.
+Feature
+Delegated Acts
+Implementing Acts
+Purpose
+To supplement or amend non-essential parts of the main law.
+To ensure uniform conditions for the law’s application across all EU member states.
+Function
+They act like software updates, adding or changing specific details and criteria within the existing legal framework. They can alter your core compliance obligations.
+They provide legally binding, detailed rules on how to follow the law. They do not change the law, but specify the ‘how-to’.
+Example under AI Act
+Updating the list of high-risk AI systems in Annex III; defining the thresholds for classifying a General-Purpose AI (GPAI) model as having systemic risk.
+Defining the exact templates for technical documentation; specifying the format for post-market monitoring reports and conformity assessment procedures.
+The AI Act is not a static document. It is a living framework that will evolve significantly through these secondary acts.
+The key takeaway is that the AI Act is not a static document. It is a living framework that will evolve significantly through these secondary acts. A monitoring strategy focused only on high-level
+AI Act news
+will inevitably miss the granular, business-critical details.
+AI Office Priorities
+The European AI Office: Priorities and First Moves
+The new European AI Office, operating within the European Commission, is the central nervous system for the AI Act’s implementation. It serves as the primary hub for enforcement, standardisation, and guidance. As of mid-2026, the AI Office is actively staffing up and has begun to outline its initial priorities. Monitoring its outputs is non-negotiable for any company deploying AI in the EU.
+Early activities and expected guidance for 2026 include:
+Priority 01
+Guidance on High-Risk Classification
+The AI Office is expected to release detailed guidelines to help companies interpret the criteria in Annex III. This will address one of the most pressing market needs: clarity on whether a system falls into the high-risk category.
+Priority 02
+Codes of Practice for GPAI
+A top priority is the development of codes of practice for General-Purpose AI models. These codes, co-designed with industry stakeholders, will cover critical areas like risk management and cybersecurity.
+Priority 03
+Standardisation Mandates
+The Office has issued formal standardisation requests to European standards bodies like CEN-CENELEC. While developing these ‘harmonised standards’ is a multi-year process, tracking the drafts is crucial. Adherence to these standards will offer a ‘presumption of conformity’ with the Act’s requirements.
+Priority 04
+AI Board Establishment
+The Office is facilitating the setup of the European AI Board, composed of representatives from all member states. The Board’s opinions will be highly influential in ensuring consistent enforcement across the Union, a structure that requires understanding the roles of different EU bodies. For a primer, see our guide on
+the difference between the EU Council and other European institutions
+.
+The AI Office is rapidly becoming the single source of truth for AI Act interpretation. Its publications, workshops, and FAQs will form the de facto compliance manual for businesses.
+This is what we solve at scale
+See EU AI Act Compliance, our capability page.
+Explore the capability
+→
+Harmonised Standards
+The Critical Role of Harmonised Standards
+One of the most practical aspects of AI Act compliance will be the use of ‘harmonised standards’. These are technical specifications developed by private, independent European standards organisations (like CEN-CENELEC) following a formal request from the European Commission. Their role is to translate the Act’s legal requirements into concrete technical solutions.
+Why are they so important? Adopting a harmonised standard provides a
+‘presumption of conformity’
+. This means that if a company can demonstrate its AI system meets the relevant harmonised standard, it is automatically assumed to be in compliance with the corresponding legal requirements of the AI Act. This creates a powerful incentive to follow these standards, as it simplifies conformity assessments and reduces legal uncertainty.
+The Commission’s first standardisation request focuses on critical areas such as:
+Standard 01
+Risk Management Systems
+Establishing a process for identifying, evaluating, and mitigating risks throughout the AI lifecycle.
+Standard 02
+Data Governance and Quality
+Ensuring training, validation, and testing datasets are relevant, representative, and free of errors and biases.
+Standard 03
+Technical Documentation
+Specifying the content and structure of the documentation needed to demonstrate compliance.
+Standard 04
+Cybersecurity and Robustness
+Defining requirements to ensure AI systems are resilient against attacks and perform reliably.
+Tracking the development of these standards is a proactive compliance strategy. Early visibility into draft standards allows companies to align their internal development processes long before the standards are finalized, creating a significant competitive advantage.
+GPAI Rules
+Navigating the Evolving Rules for General-Purpose AI (GPAI)
+The AI Act establishes a unique, tiered approach for regulating General-Purpose AI models, acknowledging their foundational role in the ecosystem. The AI Office has a direct enforcement mandate here, making it a key area to watch.
+The obligations are split into two main levels:
+Level 01
+Baseline Obligations for All GPAI Models
+All providers of GPAI models must adhere to transparency requirements. This includes drawing up detailed technical documentation, providing information to downstream system providers, and establishing a policy to respect EU copyright law.
+Level 02
+Stricter Rules for GPAI with Systemic Risk
+A subset of powerful GPAI models deemed to have ‘systemic risk’ face more stringent obligations. A model is presumed to have systemic risk if the cumulative amount of computation used for its training, measured in floating-point operations (FLOPs), is greater than 10^25. These obligations include performing model evaluations, assessing and mitigating potential systemic risks, tracking serious incidents, and ensuring a high level of cybersecurity.
+A key compliance mechanism for GPAI providers will be adhering to
+codes of practice
+, which the AI Office is developing in collaboration with industry. These codes will serve as a primary tool for demonstrating compliance with the regulation. For providers of GPAI models, monitoring the AI Office’s work on these codes is not just important—it is the central pillar of their compliance strategy.
+Penalties
+The High Cost of Non-Compliance: AI Act Penalties
+The financial and reputational risks of failing to comply with the EU AI Act are substantial. The regulation establishes a tiered penalty structure designed to be effective, proportionate, and dissuasive. Understanding these potential penalties is a critical component of any corporate risk management framework.
+As detailed in
+Article 71 of the AI Act
+, non-compliance can trigger some of the highest fines of any EU regulation. The specific amounts depend on the nature of the violation:
+⚠
+Up to €35M or 7% of global turnover
+Prohibited AI Practices (Article 5):
+Using AI for social scoring or other forbidden applications carries the most severe penalty. Fines can reach up to
+€35 million or 7% of total worldwide annual turnover
+from the preceding financial year, whichever is higher.
+Violations of Key Obligations:
+Non-compliance with the core requirements for high-risk AI systems, GPAI models, or the duties of providers and users can result in fines of up to
+€15 million or 3% of total worldwide annual turnover
+.
+Providing Incorrect Information:
+Supplying incorrect, incomplete, or misleading information to notified bodies or national authorities can lead to fines of up to
+€7.5 million or 1.5% of total worldwide annual turnover
+.
+These figures underscore the necessity of a robust and continuous monitoring system. The cost of missing crucial
+EU AI act updates
+is not theoretical; it is a direct financial risk that can materially impact a company’s bottom line and shareholder value.
+Sources to Monitor
+From Reactive Alerts to Proactive Intelligence
+The AI Act’s implementation phase makes compliance a continuous intelligence challenge, not a one-time legal analysis project. The sheer volume, velocity, and variety of signals—from draft implementing acts and AI Office FAQs to CEN-CENELEC technical specifications and stakeholder position papers—overwhelm manual methods and basic keyword alerts. This regulatory complexity is often interconnected with other global rules, such as the
+UK’s Carbon Border Adjustment Mechanism (CBAM)
+, creating a web of overlapping obligations.
+A comprehensive monitoring system must capture signals from a wide array of sources:
+Source 01
+The European Commission
+For all draft and final delegated and implementing acts.
+Source 02
+The European AI Office
+For all guidance documents, workshop summaries, and consultation announcements.
+Source 03
+CEN-CENELEC
+For draft harmonised standards and technical specifications.
+Source 04
+The European AI Board
+For official opinions, recommendations, and meeting minutes.
+Source 05
+National Supervisory Authorities
+As they are established and begin issuing local interpretations and guidance.
+Source 06
+Key Stakeholder Groups
+For position papers from industry associations and civil society groups that influence secondary legislation.
+This complexity demands a shift from passive information gathering to a proactive intelligence engine. You need a system that can automatically ingest relevant documents, structure the unstructured information, map the key actors, and analyze the specific impact on your business objectives.
+Ready to monitor EU AI Act policy?
+See how Policy-Insider.AI provides structured, decision-ready intelligence on the delegated acts, standards, and guidance that will define your obligations.
+Explore our EU AI Act solution →
+No credit card required · Set up in minutes
+Continue reading
+May 27, 2026 · Article
+EU AI Act Timeline: Key Compliance Deadlines for 2027-2028
+May 19, 2026 · Article
+EU AI Act High-Risk Categories Explained (2026 Update)
+More on EU AI Act Compliance Monitoring: AI-Powered Regulatory Intelligence

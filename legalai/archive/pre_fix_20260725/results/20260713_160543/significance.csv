@@ -1,0 +1,8 @@
+comparison,judge_average_p,judge_average_cliffs_delta,rouge_l_p,rouge_l_cliffs_delta,elapsed_s_p,elapsed_s_cliffs_delta,judge_average_p_holm,rouge_l_p_holm,elapsed_s_p_holm
+single_vs_all,1.0,0.0,1.0,0.0,1.0,-1.0,1.0,1.0,1.0
+single_vs_parallel,1.0,0.0,1.0,0.0,1.0,-1.0,1.0,1.0,1.0
+single_vs_legal_news_parallel,1.0,0.0,1.0,0.0,1.0,-1.0,1.0,1.0,1.0
+single_vs_legal_first,1.0,0.0,1.0,0.0,1.0,-1.0,1.0,1.0,1.0
+single_vs_verify_only,1.0,-1.0,1.0,-1.0,1.0,1.0,1.0,1.0,1.0
+single_vs_planner_based,1.0,0.0,1.0,0.0,1.0,-1.0,1.0,1.0,1.0
+single_vs_dag,1.0,0.0,1.0,0.0,1.0,-1.0,1.0,1.0,1.0

@@ -1,0 +1,583 @@
+[
+  {
+    "id": "q01",
+    "type": "simple",
+    "query": "What is a high-risk AI system under the EU AI Act?",
+    "gold": "**Issue:** What is a high-risk AI system under the EU AI Act?\n\n**Rule:** Classification is governed by Article 6, not by the definitions in Article 3. An AI system is high-risk under either of two routes. Under Article 6(1), it is high-risk where it is intended to be used as a safety component of a product, or is itself a product, covered by the Union harmonisation legislation listed in Annex I, *and* that product is required to undergo a third-party conformity assessment under that legislation. Under Article 6(2), the AI systems listed in Annex III are high-risk. Annex III covers biometrics; critical infrastructure; education and vocational training; employment and worker management; access to essential private and public services and benefits; law enforcement; migration, asylum and border control; and the administration of justice and democratic processes.\n\n**Application:** Article 6(3) provides a derogation: an Annex III system is not high-risk where it does not pose a significant risk of harm to health, safety or fundamental rights, including by not materially influencing the outcome of decision-making. This applies where the system performs a narrow procedural task, improves the result of a previously completed human activity, detects decision-making patterns without replacing or influencing human assessment, or performs a preparatory task. A system that performs profiling of natural persons is always high-risk. A provider relying on the derogation must document its assessment (Article 6(4)). Systems so classified are subject to the requirements in Chapter III Section 2 (Articles 8-15) and to provider and deployer obligations in Articles 16 and 26.\n\n**Conclusion:** A high-risk AI system is one caught by Article 6(1) as a regulated product or safety component, or listed in Annex III under Article 6(2), unless the Article 6(3) derogation applies. Classification triggers Articles 8-15 and the obligations in Articles 16 and 26.",
+    "gold_status": "revised",
+    "needs_review": false,
+    "gold_model": "claude-opus-5: every citation verified against corpus text (CELEX:32024R1689)",
+    "gold_doc_ids": [],
+    "relevance_annotated": false,
+    "gold_revised_at": "2026-08-06",
+    "retriever_ids_at_gold_draft_stale": [
+      "37",
+      "6",
+      "33",
+      "16",
+      "35"
+    ]
+  },
+  {
+    "id": "q02",
+    "type": "simple",
+    "query": "What are the penalties for violating prohibited AI practices under Article 71 of the EU AI Act?",
+    "gold": "**Issue:** What are the penalties for violating prohibited AI practices under Article 71 of the EU AI Act?\n\n**Rule:** The premise of the question should be corrected. Article 71 establishes the EU database for high-risk AI systems listed in Annex III; it does not set penalties. Penalties are governed by Article 99. Under Article 99(3), non-compliance with the prohibition of the AI practices referred to in Article 5 is subject to administrative fines of up to EUR 35 000 000 or, if the offender is an undertaking, up to 7 % of its total worldwide annual turnover for the preceding financial year, whichever is higher.\n\n**Application:** This is the Act's most severe tier. Other infringements, including breaches of provider or deployer obligations, attract fines under Article 99(4) of up to EUR 15 000 000 or 3 % of total worldwide annual turnover, whichever is higher. Supplying incorrect, incomplete or misleading information to notified bodies or national competent authorities attracts fines under Article 99(5) of up to EUR 7 500 000 or 1 %, whichever is higher. For SMEs, including start-ups, Article 99(6) provides that each fine is capped at the lower of the percentage or the fixed amount. Article 99(1) requires Member States to lay down rules on penalties that are effective, proportionate and dissuasive, and Article 99(7) lists the factors relevant to setting the amount, including the nature and gravity of the infringement and whether it was intentional or negligent. Fines on providers of general-purpose AI models are set separately by Article 101.\n\n**Conclusion:** Penalties for prohibited practices come from Article 99(3), not Article 71: up to EUR 35 000 000 or 7 % of worldwide annual turnover, whichever is higher.",
+    "gold_status": "revised",
+    "needs_review": false,
+    "gold_model": "claude-opus-5: every citation verified against corpus text (CELEX:32024R1689)",
+    "gold_doc_ids": [],
+    "relevance_annotated": false,
+    "gold_revised_at": "2026-08-06",
+    "retriever_ids_at_gold_draft_stale": [
+      "16",
+      "29",
+      "32",
+      "38",
+      "40"
+    ]
+  },
+  {
+    "id": "q03",
+    "type": "simple",
+    "query": "What does Article 5 of the EU AI Act prohibit?",
+    "gold": "**Issue:** What does Article 5 of the EU AI Act prohibit?\n\n**Rule:** Article 5(1) prohibits placing on the market, putting into service, or using the following AI practices: (a) systems deploying subliminal techniques beyond a person's consciousness, or purposefully manipulative or deceptive techniques, with the object or effect of materially distorting behaviour by appreciably impairing the ability to make an informed decision, causing significant harm; (b) systems exploiting vulnerabilities due to age, disability, or a specific social or economic situation, with the same effect; (c) social scoring, meaning evaluation or classification of persons over time based on social behaviour or personal characteristics, leading to detrimental treatment in unrelated contexts or treatment that is unjustified or disproportionate; (d) assessing or predicting the risk of a person committing a criminal offence based solely on profiling or personality traits, except to support a human assessment already grounded in objective, verifiable facts directly linked to criminal activity; (e) untargeted scraping of facial images from the internet or CCTV to build facial recognition databases; (f) inferring emotions in the workplace or in education institutions, except for medical or safety reasons; (g) biometric categorisation to deduce race, political opinions, trade union membership, religious or philosophical beliefs, sex life or sexual orientation; and (h) real-time remote biometric identification in publicly accessible spaces for law enforcement, subject to narrow exceptions.\n\n**Application:** The Article 5(1)(h) exceptions are limited to targeted searches for victims of abduction, trafficking or sexual exploitation and missing persons; prevention of a specific, substantial and imminent threat to life or physical safety, or a genuine and present or foreseeable threat of terrorist attack; and locating or identifying a suspect in the offences listed in Annex II punishable by a custodial sentence of at least four years. Such use requires a fundamental rights impact assessment, registration, and prior authorisation by a judicial or independent administrative authority, save in duly justified urgent cases.\n\n**Conclusion:** Article 5 sets out the Act's unacceptable-risk tier: eight categories of prohibited practice, subject to strictly limited law enforcement exceptions with procedural safeguards.",
+    "gold_status": "revised",
+    "needs_review": false,
+    "gold_model": "claude-opus-5: every citation verified against corpus text (CELEX:32024R1689)",
+    "gold_doc_ids": [],
+    "relevance_annotated": false,
+    "gold_revised_at": "2026-08-06",
+    "retriever_ids_at_gold_draft_stale": [
+      "16",
+      "29",
+      "17",
+      "19",
+      "35"
+    ]
+  },
+  {
+    "id": "q04",
+    "type": "simple",
+    "query": "What is the CE marking requirement for high-risk AI systems?",
+    "gold": "**Issue:** What is the CE marking requirement for high-risk AI systems?\n\n**Rule:** The Act does address CE marking expressly: Article 48 is titled \"CE marking\". Article 48(1) provides that the CE marking is subject to the general principles in Article 30 of Regulation (EC) No 765/2008. Article 48(3) requires it to be affixed visibly, legibly and indelibly to the high-risk AI system, or, where that is not possible or not warranted by the nature of the system, to its packaging or accompanying documentation. Article 48(2) provides that for high-risk AI systems provided digitally, a digital CE marking is used only where it can be easily accessed via the interface from which the system is accessed or via an easily accessible machine-readable code or other electronic means. Article 48(4) requires the marking to be followed by the identification number of the notified body, where one was involved in the conformity assessment under Article 43, and that number must also appear in promotional material.\n\n**Application:** Affixing the CE marking is a provider obligation under Article 16(i). It comes at the end of a sequence: the system must meet the Chapter III Section 2 requirements (Articles 8-15), undergo the applicable conformity assessment under Article 43, and be covered by an EU declaration of conformity drawn up under Article 47. Where the system is also covered by other Union law providing for CE marking, Article 48(5) provides that the marking indicates conformity with that other law as well.\n\n**Conclusion:** CE marking is expressly required by Article 48, affixed by the provider under Article 16(i) after conformity assessment under Article 43 and the declaration of conformity under Article 47.",
+    "gold_status": "revised",
+    "needs_review": false,
+    "gold_model": "claude-opus-5: every citation verified against corpus text (CELEX:32024R1689)",
+    "gold_doc_ids": [],
+    "relevance_annotated": false,
+    "gold_revised_at": "2026-08-06",
+    "retriever_ids_at_gold_draft_stale": [
+      "33",
+      "35",
+      "6",
+      "37",
+      "20"
+    ]
+  },
+  {
+    "id": "q05",
+    "type": "simple",
+    "query": "What is the definition of a general-purpose AI (GPAI) model?",
+    "gold": "**Issue:** What is the definition of a general-purpose AI (GPAI) model?\n\n**Rule:** Article 3(63) defines a general-purpose AI model as an AI model, including where it is trained with a large amount of data using self-supervision at scale, that displays significant generality and is capable of competently performing a wide range of distinct tasks regardless of the way the model is placed on the market, and that can be integrated into a variety of downstream systems or applications. The definition expressly excludes AI models used for research, development or prototyping activities before they are placed on the market.\n\n**Application:** The definition should be distinguished from two neighbouring concepts. A general-purpose AI *system* is defined separately in Article 3(66) as a system based on such a model that has the capability to serve a variety of purposes. And a GPAI model with systemic risk is a subset defined by Article 51: a model is so classified where it has high impact capabilities, with Article 51(2) presuming high impact capabilities where the cumulative compute used for training exceeds 10^25 floating point operations. Obligations for all GPAI model providers are set out in Article 53, covering technical documentation, information for downstream providers, a copyright compliance policy, and a public summary of training content. Article 55 adds obligations for systemic-risk models.\n\n**Conclusion:** A GPAI model is defined by Article 3(63): a model displaying significant generality, capable of competently performing a wide range of distinct tasks and integrable into downstream systems, excluding pre-market research and prototyping models.",
+    "gold_status": "revised",
+    "needs_review": false,
+    "gold_model": "claude-opus-5: every citation verified against corpus text (CELEX:32024R1689)",
+    "gold_doc_ids": [],
+    "relevance_annotated": false,
+    "gold_revised_at": "2026-08-06",
+    "retriever_ids_at_gold_draft_stale": [
+      "29",
+      "30",
+      "33",
+      "6",
+      "16"
+    ]
+  },
+  {
+    "id": "q06",
+    "type": "simple",
+    "query": "Who is defined as a 'provider' under the EU AI Act?",
+    "gold": "**Issue:** Who is defined as a 'provider' under the EU AI Act?\n\n**Rule:** Article 3(3) defines a provider as a natural or legal person, public authority, agency or other body that develops an AI system or a general-purpose AI model, or that has an AI system or a general-purpose AI model developed, and places it on the market or puts the AI system into service under its own name or trademark, whether for payment or free of charge.\n\n**Application:** Two elements matter. First, the definition turns on placing on the market or putting into service under one's own name or trademark, not on who wrote the code: an organisation that commissions development from a third party is the provider. Second, it is free of any payment requirement, so distributing a system at no charge does not avoid provider status. The provider is distinct from the deployer (Article 3(4)), the importer (Article 3(6)), the distributor (Article 3(7)) and the authorised representative (Article 3(5)). Article 25 sets out the circumstances in which a distributor, importer, deployer or other third party is deemed to become the provider of a high-risk AI system: putting its name or trademark on a system already placed on the market, making a substantial modification to it, or modifying its intended purpose such that it becomes high-risk. Provider obligations for high-risk systems are consolidated in Article 16.\n\n**Conclusion:** A provider under Article 3(3) is the person or body that develops, or has developed, an AI system or GPAI model and places it on the market or into service under its own name or trademark, whether or not for payment.",
+    "gold_status": "revised",
+    "needs_review": false,
+    "gold_model": "claude-opus-5: every citation verified against corpus text (CELEX:32024R1689)",
+    "gold_doc_ids": [],
+    "relevance_annotated": false,
+    "gold_revised_at": "2026-08-06",
+    "retriever_ids_at_gold_draft_stale": [
+      "19",
+      "16",
+      "8",
+      "31",
+      "29"
+    ]
+  },
+  {
+    "id": "q07",
+    "type": "simple",
+    "query": "Who is defined as a 'deployer' under the EU AI Act?",
+    "gold": "**Issue:** Who is defined as a 'deployer' under the EU AI Act?\n\n**Rule:** Article 3(4) defines a deployer as a natural or legal person, public authority, agency or other body using an AI system under its authority, except where the AI system is used in the course of a personal non-professional activity.\n\n**Application:** The definition is not limited to high-risk systems, and it does not depend on the processing of personal data. Its two operative limbs are use under one's own authority and a professional context; the personal non-professional use carve-out keeps private individuals outside the regime. Deployer obligations for high-risk AI systems are set out in Article 26 and include using the system in accordance with the instructions for use, assigning human oversight to natural persons with the necessary competence, training and authority, ensuring input data is relevant and sufficiently representative so far as the deployer controls it, monitoring operation and suspending use where a risk is identified, keeping automatically generated logs for at least six months, and informing affected persons where the system is used in decisions concerning them. Article 27 requires a fundamental rights impact assessment from certain deployers. Under Article 25, a deployer that puts its own name or trademark on a high-risk system, substantially modifies it, or changes its intended purpose so that it becomes high-risk is treated as a provider.\n\n**Conclusion:** A deployer under Article 3(4) is any person or body using an AI system under its own authority in a professional capacity, with obligations set out principally in Articles 26 and 27.",
+    "gold_status": "revised",
+    "needs_review": false,
+    "gold_model": "claude-opus-5: every citation verified against corpus text (CELEX:32024R1689)",
+    "gold_doc_ids": [],
+    "relevance_annotated": false,
+    "gold_revised_at": "2026-08-06",
+    "retriever_ids_at_gold_draft_stale": [
+      "12",
+      "30",
+      "19",
+      "15",
+      "16"
+    ]
+  },
+  {
+    "id": "q08",
+    "type": "simple",
+    "query": "What are the transparency obligations for AI systems that interact with natural persons under Article 50?",
+    "gold": "**Issue:** What are the transparency obligations for AI systems that interact with natural persons under Article 50?\n\n**Rule:** Article 50(1) requires providers to ensure that AI systems intended to interact directly with natural persons are designed and developed so that the persons concerned are informed that they are interacting with an AI system, unless this is obvious from the point of view of a reasonably well-informed, observant and circumspect natural person taking into account the circumstances and context of use. An exception applies to systems authorised by law to detect, prevent, investigate or prosecute criminal offences, subject to safeguards for the rights of third parties.\n\n**Application:** Article 50 imposes four further duties. Article 50(2) requires providers of systems generating synthetic audio, image, video or text, including general-purpose AI systems, to mark outputs in a machine-readable format detectable as artificially generated or manipulated, using solutions that are effective, interoperable, robust and reliable as far as technically feasible. Article 50(3) requires deployers of emotion recognition or biometric categorisation systems to inform the persons exposed. Article 50(4) requires deployers to disclose deep fakes, with a lighter disclosure where the content is part of an evidently artistic, creative, satirical or fictional work, and to disclose AI-generated or manipulated text published to inform the public on matters of public interest, unless the content underwent human review with a natural or legal person holding editorial responsibility. Article 50(5) requires that the information be given clearly and distinguishably at the latest at the time of the first interaction or exposure, and conform to accessibility requirements. Article 50(6) preserves the Chapter III requirements.\n\n**Conclusion:** Article 50 requires disclosure that a person is interacting with an AI system, machine-readable marking of synthetic content, notification for emotion recognition and biometric categorisation, and disclosure of deep fakes and AI-generated public-interest text, given clearly at first interaction.",
+    "gold_status": "revised",
+    "needs_review": false,
+    "gold_model": "claude-opus-5: every citation verified against corpus text (CELEX:32024R1689)",
+    "gold_doc_ids": [],
+    "relevance_annotated": false,
+    "gold_revised_at": "2026-08-06",
+    "retriever_ids_at_gold_draft_stale": [
+      "35",
+      "38",
+      "31",
+      "19",
+      "30"
+    ]
+  },
+  {
+    "id": "q09",
+    "type": "simple",
+    "query": "What is a conformity assessment under the EU AI Act?",
+    "gold": "**Issue:** What is a conformity assessment under the EU AI Act?\n\n**Rule:** Conformity assessment for high-risk AI systems is governed by Article 43. It is the procedure by which a provider demonstrates, before placing a high-risk AI system on the market or putting it into service, that the system meets the requirements of Chapter III Section 2 (Articles 8-15). The route depends on the type of system. Under Article 43(1), for systems listed in Annex III point 1 (biometrics), where the provider has applied harmonised standards or, where they exist, common specifications, it may choose between the internal control procedure in Annex VI and the procedure based on assessment of the quality management system and technical documentation with the involvement of a notified body in Annex VII; where such standards have not been applied or only partly applied, the Annex VII procedure is mandatory. Under Article 43(2), for systems listed in Annex III points 2 to 8, the provider follows the internal control procedure in Annex VI, without a notified body.\n\n**Application:** Under Article 43(3), where the high-risk system relates to a product covered by the Annex I Section A harmonisation legislation, the provider follows the conformity assessment procedure required under that legislation, with the AI Act requirements forming part of that assessment. Article 43(4) requires a fresh assessment where the system undergoes a substantial modification. The assessment is followed by the EU declaration of conformity under Article 47 and the CE marking under Article 48, and is evidenced by the technical documentation required by Article 11 and Annex IV.\n\n**Conclusion:** A conformity assessment under Article 43 is the pre-market demonstration that a high-risk AI system satisfies Articles 8-15, carried out by internal control under Annex VI or with a notified body under Annex VII depending on the system's classification.",
+    "gold_status": "revised",
+    "needs_review": false,
+    "gold_model": "claude-opus-5: every citation verified against corpus text (CELEX:32024R1689)",
+    "gold_doc_ids": [],
+    "relevance_annotated": false,
+    "gold_revised_at": "2026-08-06",
+    "retriever_ids_at_gold_draft_stale": [
+      "16",
+      "38",
+      "29",
+      "15",
+      "37"
+    ]
+  },
+  {
+    "id": "q10",
+    "type": "simple",
+    "query": "What are the record-keeping requirements under Article 12?",
+    "gold": "**Issue:** What are the record-keeping requirements under Article 12?\n\n**Rule:** Article 12(1) requires that high-risk AI systems technically allow for the automatic recording of events, referred to as logs, over the lifetime of the system. Article 12(2) provides that, to ensure a level of traceability appropriate to the intended purpose, logging capabilities must enable the recording of events relevant to identifying situations that may result in the system presenting a risk within the meaning of Article 79(1) or in a substantial modification, to facilitating the post-market monitoring referred to in Article 72, and to monitoring the operation of the system as referred to in Article 26(5).\n\n**Application:** Article 12(3) imposes a specific minimum for the remote biometric identification systems referred to in Annex III point 1(a): the logs must record the period of each use, with start and end date and time; the reference database against which input data has been checked; the input data for which the search led to a match; and the identification of the natural persons involved in verifying the results under Article 14(5). Retention is dealt with elsewhere. Article 19 requires providers to keep the logs automatically generated by their high-risk AI systems, so far as those logs are under their control, for a period appropriate to the intended purpose and at least six months. Article 26(6) places a corresponding obligation on deployers to keep logs for at least six months. Record-keeping is therefore a design requirement on the system under Article 12 and a retention obligation on providers and deployers under Articles 19 and 26(6).\n\n**Conclusion:** Article 12 requires high-risk AI systems to support automatic event logging across their lifetime, sufficient for traceability, risk identification, post-market monitoring and operational oversight, with enhanced content requirements for remote biometric identification systems.",
+    "gold_status": "revised",
+    "needs_review": false,
+    "gold_model": "claude-opus-5: every citation verified against corpus text (CELEX:32024R1689)",
+    "gold_doc_ids": [],
+    "relevance_annotated": false,
+    "gold_revised_at": "2026-08-06",
+    "retriever_ids_at_gold_draft_stale": [
+      "16",
+      "41",
+      "19",
+      "43",
+      "30"
+    ]
+  },
+  {
+    "id": "q11",
+    "type": "decomposable",
+    "query": "What are the compliance obligations for providers of high-risk AI systems and how do they compare to deployers' obligations?",
+    "gold": "**Issue:** What are the compliance obligations for providers of high-risk AI systems and how do they compare to deployers' obligations?\n\n**Rule:** Provider obligations are consolidated in Article 16. Providers must ensure their high-risk AI systems comply with the requirements of Chapter III Section 2 (Articles 8-15), covering the risk management system (Article 9), data and data governance (Article 10), technical documentation (Article 11), record-keeping (Article 12), transparency and instructions for use (Article 13), human oversight (Article 14) and accuracy, robustness and cybersecurity (Article 15). They must indicate their name and address on the system, operate a quality management system (Article 17), keep documentation (Article 18) and automatically generated logs (Article 19), ensure the system undergoes conformity assessment before placing on the market (Article 43), draw up the EU declaration of conformity (Article 47), affix the CE marking (Article 48), register in the EU database (Article 49), take corrective action where a system is non-conforming (Article 20), and demonstrate conformity on a reasoned request (Article 21). Providers also carry post-market monitoring (Article 72) and serious incident reporting (Article 73).\n\n**Application:** Deployer obligations sit in Article 26 and are operational rather than product-focused: using the system in accordance with the instructions for use, assigning human oversight to competent and trained natural persons with the necessary authority and support, ensuring input data is relevant and sufficiently representative so far as they control it, monitoring operation and suspending use and informing the provider and market surveillance authority where a risk is identified, keeping logs for at least six months, informing workers' representatives before workplace deployment, and informing natural persons subject to decisions taken with the system. Article 27 adds a fundamental rights impact assessment for public bodies, private entities providing public services and deployers of certain Annex III point 5 systems.\n\n**Conclusion:** Provider obligations are ex ante and attach to the product through design, documentation, conformity assessment and marking; deployer obligations are ongoing and attach to use through oversight, input control, monitoring and notification. Article 25 converts a deployer into a provider where it rebrands, substantially modifies, or changes the intended purpose of a high-risk system.",
+    "gold_status": "revised",
+    "needs_review": false,
+    "gold_model": "claude-opus-5: every citation verified against corpus text (CELEX:32024R1689)",
+    "gold_doc_ids": [],
+    "relevance_annotated": false,
+    "gold_revised_at": "2026-08-06",
+    "retriever_ids_at_gold_draft_stale": [
+      "20",
+      "31",
+      "41",
+      "33",
+      "35"
+    ]
+  },
+  {
+    "id": "q12",
+    "type": "decomposable",
+    "query": "Explain the timeline for when different provisions of the EU AI Act enter into force, specifically Article 5 and Chapter V.",
+    "gold": "**Issue:** What is the timeline for when different provisions of the EU AI Act enter into force, specifically Article 5 and Chapter V?\n\n**Rule:** Article 113 governs entry into force and application. The Regulation entered into force on the twentieth day following its publication in the Official Journal, which was on 12 July 2024, giving an entry into force of 1 August 2024. Article 113 then provides that the Regulation applies generally from 2 August 2026, subject to three exceptions: under point (a), Chapters I and II apply from 2 February 2025; under point (b), Chapter III Section 4, Chapter V, Chapter VII and Chapter XII, together with Article 78, apply from 2 August 2025, with the exception of Article 101; and under point (c), Article 6(1) and the corresponding obligations apply from 2 August 2027.\n\n**Application:** Article 5 sits in Chapter II, so the prohibitions on unacceptable-risk practices took effect on 2 February 2025 under Article 113(a), together with the Chapter I general provisions including the Article 4 AI literacy obligation. Chapter V, which contains the obligations for providers of general-purpose AI models in Articles 53 to 55, took effect on 2 August 2025 under Article 113(b), alongside Chapter VII on governance and Chapter XII on penalties. Article 101, which sets fines for GPAI model providers, is expressly carved out of that earlier date. The general body of high-risk obligations applies from 2 August 2026, and the Article 6(1) route covering AI systems that are safety components of regulated products is deferred to 2 August 2027.\n\n**Conclusion:** Article 5 has applied since 2 February 2025 as part of Chapter II; Chapter V has applied since 2 August 2025, excluding Article 101; the general application date is 2 August 2026, with Article 6(1) deferred to 2 August 2027.\n\n**Note on subsequent amendment:** The dates above are those in Article 113 of Regulation (EU) 2024/1689 as originally published. Reporting in the corpus records a Digital Omnibus political agreement of 7 May 2026 deferring the Annex III high-risk obligations from 2 August 2026 to 2 December 2027, with the Article 50 transparency obligations and full enforcement powers taking effect on 2 August 2026. An answer reflecting either the original Article 113 schedule or the reported deferral should be treated as correct.",
+    "gold_status": "revised",
+    "needs_review": false,
+    "gold_model": "claude-opus-5: every citation verified against corpus text (CELEX:32024R1689)",
+    "gold_doc_ids": [],
+    "relevance_annotated": false,
+    "gold_revised_at": "2026-08-06",
+    "retriever_ids_at_gold_draft_stale": [
+      "29",
+      "16",
+      "17",
+      "6",
+      "32"
+    ],
+    "gold_snapshot": "news snapshot 2026-08-06"
+  },
+  {
+    "id": "q13",
+    "type": "decomposable",
+    "query": "What are the risk classification tiers in the EU AI Act and what obligations correspond to each tier?",
+    "gold": "**Issue:** What are the risk classification tiers in the EU AI Act and what obligations correspond to each tier?\n\n**Rule:** The Act does not use the phrase \"tiers\", but it operates a risk-based structure with four levels of obligation for AI systems, plus a separate regime for general-purpose AI models. Unacceptable risk is addressed by Article 5, which prohibits eight categories of practice outright. High risk is defined by Article 6, covering systems that are safety components of, or are, products under the Annex I harmonisation legislation requiring third-party conformity assessment, and the systems listed in Annex III, subject to the Article 6(3) derogation. Transparency risk is addressed by Article 50, which imposes disclosure duties on certain systems irrespective of whether they are high-risk. Minimal risk attracts no mandatory obligations, with Article 95 encouraging voluntary codes of conduct.\n\n**Application:** High-risk classification carries the heaviest load: the requirements of Chapter III Section 2 (Articles 8-15), provider obligations under Article 16, deployer obligations under Article 26, a fundamental rights impact assessment under Article 27 where applicable, conformity assessment under Article 43, declaration of conformity under Article 47, CE marking under Article 48, registration under Article 49, and post-market monitoring and incident reporting under Articles 72 and 73. Transparency-risk systems owe only the Article 50 disclosure duties. Cutting across all levels, Article 4 requires providers and deployers to take measures to ensure a sufficient level of AI literacy among their staff. General-purpose AI models are regulated on a separate axis under Chapter V, with Article 53 obligations for all such models and Article 55 obligations added for models classified under Article 51 as presenting systemic risk.\n\n**Conclusion:** The Act layers obligations across prohibited practices under Article 5, high-risk systems under Article 6 with Articles 8-15 and 16, 26, 43, 47, 48 and 49, transparency-risk systems under Article 50, and minimal-risk systems with no mandatory duties, alongside the separate GPAI regime in Chapter V.",
+    "gold_status": "revised",
+    "needs_review": false,
+    "gold_model": "claude-opus-5: every citation verified against corpus text (CELEX:32024R1689)",
+    "gold_doc_ids": [],
+    "relevance_annotated": false,
+    "gold_revised_at": "2026-08-06",
+    "retriever_ids_at_gold_draft_stale": [
+      "37",
+      "31",
+      "33",
+      "16",
+      "6"
+    ]
+  },
+  {
+    "id": "q14",
+    "type": "decomposable",
+    "query": "Explain the role and responsibilities of the European AI Board and how it interacts with national supervisory authorities.",
+    "gold": "**Issue:** What is the role and responsibilities of the European AI Board and how does it interact with national supervisory authorities?\n\n**Rule:** Article 65 establishes the European Artificial Intelligence Board and sets out its structure. The Board is composed of one representative per Member State. The European Data Protection Supervisor participates as an observer, and the AI Office attends meetings without taking part in votes. Article 65 also provides for the Board to set up standing or temporary sub-groups and to invite national and Union authorities, bodies and experts to attend as observers. Article 66 sets out the Board's tasks, which are to advise and assist the Commission and the Member States in order to facilitate the consistent and effective application of the Regulation, to coordinate among national competent authorities, to collect and share technical and regulatory expertise and best practices, to contribute to the harmonisation of administrative practices, and to issue recommendations and written opinions on relevant matters.\n\n**Application:** The Board must be distinguished from the other governance bodies. Article 64 provides for the AI Office as a Commission function, which holds the exclusive supervisory and enforcement powers over general-purpose AI models under Article 88. Article 67 establishes an advisory forum for stakeholder input and Article 68 a scientific panel of independent experts. Enforcement on the ground rests with the Member States: Article 70 requires each Member State to designate at least one notifying authority and at least one market surveillance authority as national competent authorities, and market surveillance under Chapter IX, in particular Article 74, is exercised by those authorities. The Board is therefore a coordinating and advisory body rather than an enforcement body, providing the mechanism through which national authorities and the Commission align their practice.\n\n**Conclusion:** The Board is established by Article 65 with one representative per Member State and carries the advisory and coordination tasks in Article 66. It harmonises the practice of the national competent authorities designated under Article 70, which retain enforcement powers, while the AI Office under Article 64 enforces the GPAI regime.",
+    "gold_status": "revised",
+    "needs_review": false,
+    "gold_model": "claude-opus-5: every citation verified against corpus text (CELEX:32024R1689)",
+    "gold_doc_ids": [],
+    "relevance_annotated": false,
+    "gold_revised_at": "2026-08-06",
+    "retriever_ids_at_gold_draft_stale": [
+      "16",
+      "12",
+      "39",
+      "10",
+      "29"
+    ]
+  },
+  {
+    "id": "q15",
+    "type": "decomposable",
+    "query": "Compare the requirements for post-market monitoring and market surveillance under the EU AI Act for high-risk AI systems.",
+    "gold": "**Issue:** How do the requirements for post-market monitoring and market surveillance under the EU AI Act for high-risk AI systems compare?\n\n**Rule:** The two are distinct mechanisms with different duty-holders. Post-market monitoring is a provider obligation under Article 72, which requires providers to establish and document a post-market monitoring system proportionate to the nature of the AI technologies and the risks of the high-risk AI system. That system must actively and systematically collect, document and analyse relevant data on the performance of the system throughout its lifetime, whether provided by deployers or collected through other sources, and must allow the provider to evaluate continuous compliance with the requirements in Chapter III Section 2. It is based on a post-market monitoring plan forming part of the technical documentation referred to in Annex IV. Market surveillance is an authority function under Chapter IX, in particular Article 74, exercised by the market surveillance authorities designated by Member States under Article 70, applying Regulation (EU) 2019/1020.\n\n**Application:** The bridge between them is Article 73, which requires providers to report serious incidents to the market surveillance authorities of the Member State where the incident occurred, immediately after establishing a causal link and in any event not later than fifteen days after becoming aware, with shortened deadlines for widespread infringements and serious disruption to critical infrastructure and for the death of a person. Market surveillance authorities are given access rights, including to documentation and, where necessary and subject to conditions, to training, validation and testing datasets and source code. Article 79 sets out the procedure for AI systems presenting a risk at national level, Article 80 the procedure for systems the provider classified as not high-risk under Article 6(3), and Article 82 the position for compliant systems that nonetheless present a risk.\n\n**Conclusion:** Post-market monitoring under Article 72 is the provider's own continuous surveillance of its system in the field; market surveillance under Article 74 is public enforcement by national authorities. They connect through the Article 73 serious incident reporting duty and the authorities' investigatory powers.",
+    "gold_status": "revised",
+    "needs_review": false,
+    "gold_model": "claude-opus-5: every citation verified against corpus text (CELEX:32024R1689)",
+    "gold_doc_ids": [],
+    "relevance_annotated": false,
+    "gold_revised_at": "2026-08-06",
+    "retriever_ids_at_gold_draft_stale": [
+      "33",
+      "35",
+      "29",
+      "19",
+      "38"
+    ]
+  },
+  {
+    "id": "q16",
+    "type": "decomposable",
+    "query": "How does the EU AI Act address general-purpose AI (GPAI) models with systemic risks compared to regular GPAI models?",
+    "gold": "**Issue:** How does the EU AI Act address general-purpose AI (GPAI) models with systemic risks compared to regular GPAI models?\n\n**Rule:** Chapter V regulates GPAI models on two levels. Article 53 sets the baseline for all providers of GPAI models: drawing up and keeping up to date technical documentation of the model including its training and testing process, as specified in Annex XI; making information available to downstream providers who integrate the model, as specified in Annex XII; putting in place a policy to comply with Union law on copyright and related rights, including identifying and respecting reservations of rights under Article 4(3) of Directive (EU) 2019/790; and making publicly available a sufficiently detailed summary of the content used for training, according to a template provided by the AI Office. Article 53(2) exempts models released under a free and open-source licence from the first two of those duties, but that exemption does not extend to models with systemic risk.\n\n**Application:** Article 51 governs classification. A GPAI model is classified as presenting systemic risk where it has high impact capabilities evaluated on the basis of appropriate technical tools and methodologies, or where the Commission so decides, on its own initiative or following a qualified alert from the scientific panel, having regard to the criteria in Annex XIII. Article 51(2) creates a presumption of high impact capabilities where the cumulative amount of computation used for training exceeds 10^25 floating point operations. Article 52 requires the provider to notify the Commission without delay and within two weeks of meeting or expecting to meet that threshold, permits the provider to argue that the model exceptionally does not present systemic risk, and requires the Commission to maintain a public list. Article 55 then adds obligations that apply only to such models: performing model evaluation including adversarial testing to identify and mitigate systemic risk, assessing and mitigating possible systemic risks at Union level, tracking, documenting and reporting serious incidents and corrective measures to the AI Office without undue delay, and ensuring an adequate level of cybersecurity protection for the model and its physical infrastructure.\n\n**Conclusion:** All GPAI models attract the Article 53 documentation, downstream information, copyright and training-summary duties. Models classified under Article 51 as presenting systemic risk additionally attract the Article 55 evaluation, risk mitigation, incident reporting and cybersecurity duties, lose the open-source exemption, and fall under Commission enforcement with fines under Article 101.",
+    "gold_status": "revised",
+    "needs_review": false,
+    "gold_model": "claude-opus-5: every citation verified against corpus text (CELEX:32024R1689)",
+    "gold_doc_ids": [],
+    "relevance_annotated": false,
+    "gold_revised_at": "2026-08-06",
+    "retriever_ids_at_gold_draft_stale": [
+      "12",
+      "6",
+      "16",
+      "33",
+      "29"
+    ]
+  },
+  {
+    "id": "q17",
+    "type": "decomposable",
+    "query": "What are the rights of deployers and individuals when AI systems make automated decisions, and how can they seek explanations?",
+    "gold": "**Issue:** What are the rights of deployers and individuals when AI systems make automated decisions, and how can they seek explanations?\n\n**Rule:** Article 86 confers a right to explanation of individual decision-making. Any affected person subject to a decision taken by a deployer on the basis of the output of a high-risk AI system listed in Annex III, with the exception of the systems listed under point 2 of that Annex, which produces legal effects or similarly significantly affects that person in a way they consider to have an adverse impact on their health, safety or fundamental rights, has the right to obtain from the deployer clear and meaningful explanations of the role of the AI system in the decision-making procedure and of the main elements of the decision taken. Article 86(2) preserves exceptions and restrictions following from Union or national law, and Article 86(3) provides that the right applies only to the extent it is not otherwise provided for under Union law.\n\n**Application:** Article 86 is supported by several adjacent provisions. Article 26(11) requires deployers of Annex III high-risk systems that make or assist in making decisions about natural persons to inform those persons that they are subject to the use of the system. Article 50 requires disclosure that a person is interacting with an AI system and disclosure of deep fakes and certain AI-generated text. Article 85 gives any natural or legal person with grounds to consider that the Regulation has been infringed the right to lodge a complaint with the relevant market surveillance authority. Article 27 requires certain deployers to carry out a fundamental rights impact assessment before putting a high-risk system into use. On the deployer side, the corresponding duty is the human oversight obligation in Article 26(2), which requires oversight to be assigned to natural persons with the necessary competence, training and authority. Under Article 113, Article 86 applies from 2 August 2026.\n\n**Conclusion:** Individuals affected by decisions made on the basis of Annex III high-risk systems have a right under Article 86 to clear and meaningful explanations from the deployer, reinforced by the notification duty in Article 26(11) and the right to complain to a market surveillance authority under Article 85.",
+    "gold_status": "revised",
+    "needs_review": false,
+    "gold_model": "claude-opus-5: every citation verified against corpus text (CELEX:32024R1689)",
+    "gold_doc_ids": [],
+    "relevance_annotated": false,
+    "gold_revised_at": "2026-08-06",
+    "retriever_ids_at_gold_draft_stale": [
+      "24",
+      "31",
+      "30",
+      "41",
+      "12"
+    ]
+  },
+  {
+    "id": "q18",
+    "type": "decomposable",
+    "query": "Explain the role of the EU AI Office, its structure, and how it enforces compliance for general purpose AI models.",
+    "gold": "**Issue:** What is the role of the EU AI Office, its structure, and how does it enforce compliance for general-purpose AI models?\n\n**Rule:** Article 3(47) defines the AI Office as the Commission's function of contributing to the implementation, monitoring and supervision of AI systems and general-purpose AI models, and to AI governance. Article 64 provides that the Commission shall develop Union expertise and capabilities in the field of AI through the AI Office, and that Member States shall facilitate the tasks entrusted to it. Structurally, the AI Office is a function within the Commission rather than an independent agency, and it is distinct from the European Artificial Intelligence Board established by Article 65, the advisory forum under Article 67 and the scientific panel of independent experts under Article 68.\n\n**Application:** Enforcement for general-purpose AI models is centralised. Article 88 gives the Commission exclusive powers to supervise and enforce Chapter V, and provides that those powers are entrusted to the AI Office, without prejudice to the powers of national authorities in respect of AI systems. Article 89 provides for monitoring actions, including the power to take the steps necessary to monitor the effective implementation of Chapter V. Article 90 allows the scientific panel to issue qualified alerts where it has reason to suspect a model presents systemic risk. Article 91 gives the power to request information from providers, Article 92 the power to conduct evaluations of models, including through independent experts, and Article 93 the power to request that providers take measures, including implementing mitigations, restricting availability, withdrawing or recalling a model. Article 94 preserves the procedural rights of economic operators. Financial penalties for GPAI providers are set by Article 101 at up to 3 % of total worldwide annual turnover or EUR 15 000 000, whichever is higher. The AI Office also facilitates codes of practice under Article 56 and provides the training-content summary template referred to in Article 53(1)(d).\n\n**Conclusion:** The AI Office is a Commission function under Article 64, distinct from the Board under Article 65. It holds the Commission's exclusive Chapter V enforcement powers through Article 88, exercised via Articles 89 to 93 and backed by fines under Article 101.",
+    "gold_status": "revised",
+    "needs_review": false,
+    "gold_model": "claude-opus-5: every citation verified against corpus text (CELEX:32024R1689)",
+    "gold_doc_ids": [],
+    "relevance_annotated": false,
+    "gold_revised_at": "2026-08-06",
+    "retriever_ids_at_gold_draft_stale": [
+      "19",
+      "30",
+      "33",
+      "41",
+      "32"
+    ]
+  },
+  {
+    "id": "q19",
+    "type": "decomposable",
+    "query": "What documentation must be prepared for high-risk AI systems under Article 11 and how does it relate to the conformity assessment?",
+    "gold": "**Issue:** What documentation must be prepared for high-risk AI systems under Article 11 and how does it relate to the conformity assessment?\n\n**Rule:** Article 11(1) requires the technical documentation of a high-risk AI system to be drawn up before that system is placed on the market or put into service, and to be kept up to date. It must be drawn up in such a way as to demonstrate that the system complies with the requirements of Chapter III Section 2, and to provide national competent authorities and notified bodies with the necessary information, in a clear and comprehensive form, to assess that compliance. It must contain, at a minimum, the elements set out in Annex IV. Providers that are SMEs, including start-ups, may provide those elements in a simplified manner, using a simplified form to be established by the Commission. Article 11(2) provides that where a high-risk system related to a product covered by the Annex I Section A legislation is placed on the market, a single set of technical documentation is drawn up covering both the Annex IV information and the information required under those legal acts.\n\n**Application:** Annex IV specifies the content, including a general description of the system, a detailed description of its elements and development process, information on monitoring, functioning and control, the appropriateness of the performance metrics, the risk management system required by Article 9, a description of relevant changes made through the lifecycle, the harmonised standards applied, a copy of the EU declaration of conformity, and a description of the post-market monitoring plan under Article 72. The relationship to conformity assessment is direct: the technical documentation is the evidence base on which the Article 43 assessment is conducted. Under the Annex VI internal control route the provider itself verifies that the documentation demonstrates compliance; under the Annex VII route the notified body assesses that documentation. Article 18 requires the provider to keep the documentation at the disposal of national competent authorities for ten years after the system is placed on the market or put into service, and Article 21 requires it to be supplied on a reasoned request.\n\n**Conclusion:** Article 11 requires Annex IV technical documentation, drawn up before placing on the market and kept current, demonstrating compliance with Articles 8-15. It is the substantive input to the Article 43 conformity assessment and must be retained for ten years under Article 18.",
+    "gold_status": "revised",
+    "needs_review": false,
+    "gold_model": "claude-opus-5: every citation verified against corpus text (CELEX:32024R1689)",
+    "gold_doc_ids": [],
+    "relevance_annotated": false,
+    "gold_revised_at": "2026-08-06",
+    "retriever_ids_at_gold_draft_stale": [
+      "33",
+      "35",
+      "16",
+      "38",
+      "41"
+    ]
+  },
+  {
+    "id": "q20",
+    "type": "decomposable",
+    "query": "Describe the concept of 'human oversight' under Article 14 and how it must be implemented in high-risk AI systems.",
+    "gold": "**Issue:** What is the concept of 'human oversight' under Article 14 and how must it be implemented in high-risk AI systems?\n\n**Rule:** Article 14(1) requires high-risk AI systems to be designed and developed in such a way, including with appropriate human-machine interface tools, that they can be effectively overseen by natural persons during the period in which they are in use. Article 14(2) provides that human oversight shall aim to prevent or minimise the risks to health, safety or fundamental rights that may emerge when the system is used in accordance with its intended purpose or under conditions of reasonably foreseeable misuse, in particular where such risks persist despite the application of the other requirements in Chapter III Section 2. Article 14(3) requires the oversight measures to be commensurate with the risks, level of autonomy and context of use, and to be ensured through measures built into the system by the provider before it is placed on the market where technically feasible, or measures identified by the provider as appropriate for the deployer to implement, or both.\n\n**Application:** Article 14(4) specifies the capabilities the system must enable in the natural persons assigned to oversight, as appropriate and proportionate: to properly understand the relevant capacities and limitations of the system and monitor its operation so that anomalies, dysfunctions and unexpected performance can be detected and addressed; to remain aware of the possible tendency to automatically rely or over-rely on the output, known as automation bias; to correctly interpret the output; to decide, in any particular situation, not to use the system or otherwise to disregard, override or reverse its output; and to intervene in its operation or interrupt it through a stop button or similar procedure allowing the system to come to a halt in a safe state. Article 14(5) adds a specific safeguard for the remote biometric identification systems in Annex III point 1(a): no action or decision may be taken on the basis of an identification unless it has been separately verified and confirmed by at least two natural persons with the necessary competence, training and authority, though that requirement does not apply where Union or national law considers it disproportionate in the law enforcement, migration, border control or asylum context. On the deployer side, Article 26(2) requires oversight to be assigned to natural persons with the necessary competence, training and authority, together with the necessary support.\n\n**Conclusion:** Human oversight under Article 14 is a design obligation on the provider to make effective oversight possible, coupled with an operational obligation on the deployer under Article 26(2) to resource it. It requires understanding of the system's limits, awareness of automation bias, correct interpretation of output, authority to disregard or override, and the ability to halt the system safely.",
+    "gold_status": "revised",
+    "needs_review": false,
+    "gold_model": "claude-opus-5: every citation verified against corpus text (CELEX:32024R1689)",
+    "gold_doc_ids": [],
+    "relevance_annotated": false,
+    "gold_revised_at": "2026-08-06",
+    "retriever_ids_at_gold_draft_stale": [
+      "19",
+      "30",
+      "37",
+      "39",
+      "35"
+    ]
+  },
+  {
+    "id": "q21",
+    "type": "routing",
+    "query": "What are the latest news updates regarding the establishment and active operations of the EU AI Office?",
+    "gold": "**Issue:** What are the latest news updates regarding the establishment and active operations of the EU AI Office?\n\n**Rule:** Article 64 provides that the Commission shall develop Union expertise and capabilities in the field of AI through the AI Office, and Article 3(47) defines it as a Commission function. Article 88 entrusts to the AI Office the Commission's exclusive powers to supervise and enforce Chapter V on general-purpose AI models, exercised through the powers in Articles 89 to 93.\n\n**Application:** On the available reporting, the AI Office is established and operational, and the Act has moved into an implementation phase in which compliance is shaped not only by the original text but by a wave of delegated and implementing acts together with AI Office guidance. Two developments are prominent. First, on 2 August 2026 the AI Office and the national authorities gained full powers to enforce and sanction breaches of obligations already in force, including in respect of general-purpose AI models, so the Office moved from a standard-setting posture to an enforcing one. Second, the AI Office is reported to define the priorities of the Union's international engagement on AI, to represent the EU in international organisations and to develop strategic partnerships. Reporting also records that a code of practice on marking AI-generated content was finalised and attracted roughly 190 signatories. Separately, a provisional political agreement on the Digital Omnibus reached on 7 May 2026 is reported to defer the Annex III high-risk obligations to 2 December 2027, which changes the sequencing of the Office's high-risk workload without altering its GPAI mandate.\n\n**Conclusion:** The AI Office is established under Article 64 and has held the Chapter V enforcement mandate under Article 88 since 2 August 2025. The significant recent development is that its enforcement and sanctioning powers became fully operational on 2 August 2026, alongside reported deferral of the high-risk regime to 2 December 2027.",
+    "gold_status": "revised_against_news_snapshot",
+    "needs_review": false,
+    "gold_model": "claude-opus-5: every citation verified against corpus text (CELEX:32024R1689)",
+    "gold_doc_ids": [],
+    "relevance_annotated": false,
+    "gold_revised_at": "2026-08-06",
+    "retriever_ids_at_gold_draft_stale": [
+      "16",
+      "10",
+      "6",
+      "42",
+      "31"
+    ],
+    "gold_snapshot": "news snapshot 2026-08-06"
+  },
+  {
+    "id": "q22",
+    "type": "routing",
+    "query": "How does the EU AI Act regulate general-purpose AI (GPAI) models and what recent announcements or updates happened this week?",
+    "gold": "**Issue:** How does the EU AI Act regulate general-purpose AI (GPAI) models, and what recent announcements or updates have happened?\n\n**Rule:** Chapter V governs GPAI models. Article 53 requires all providers to keep technical documentation in accordance with Annex XI, to supply information to downstream providers under Annex XII, to operate a policy for compliance with Union copyright law, and to publish a sufficiently detailed summary of training content on the AI Office template. Article 51 classifies a model as presenting systemic risk where it has high impact capabilities, presumed under Article 51(2) above 10^25 floating point operations of training compute, and Article 55 adds evaluation, adversarial testing, risk mitigation, incident reporting and cybersecurity duties for such models. Article 101 sets fines of up to EUR 15 000 000 or 3 % of worldwide annual turnover, whichever is higher.\n\n**Application:** The substantive GPAI obligations in Articles 51 to 55 have applied since 2 August 2025. On the available reporting, the change that took effect on 2 August 2026 is enforcement rather than substance: the AI Office can now act on its enforcement and sanction powers over GPAI providers, including opening investigations and imposing administrative fines. Two soft-law instruments accompany the regime. The General-Purpose AI Code of Practice, a voluntary instrument prepared by independent experts in a multi-stakeholder process, was published on 10 July 2025 and addresses safety, transparency and copyright. Draft Guidelines clarifying the GPAI provisions were published by the Commission on 18 July 2025, covering the definition and scope of GPAI models, lifecycle obligations, systemic risk criteria and notification duties, to be formally adopted once translated. Reporting also notes the Digital Omnibus provisional agreement of 7 May 2026, which defers the Annex III high-risk deadline to 2 December 2027 but does not move the GPAI dates.\n\n**Conclusion:** GPAI models are regulated under Articles 51 to 55, in force since 2 August 2025, supported by the Code of Practice of 10 July 2025 and the draft Guidelines of 18 July 2025. The recent development is that AI Office enforcement and fining powers over GPAI providers became operational on 2 August 2026.",
+    "gold_status": "revised_against_news_snapshot",
+    "needs_review": false,
+    "gold_model": "claude-opus-5: every citation verified against corpus text (CELEX:32024R1689)",
+    "gold_doc_ids": [],
+    "relevance_annotated": false,
+    "gold_revised_at": "2026-08-06",
+    "retriever_ids_at_gold_draft_stale": [
+      "16",
+      "6",
+      "42",
+      "10",
+      "29"
+    ],
+    "gold_snapshot": "news snapshot 2026-08-06"
+  },
+  {
+    "id": "q23",
+    "type": "routing",
+    "query": "What recent updates or announcements were made regarding the EU-US AI safety cooperation agreement?",
+    "gold": "**Issue:** What recent updates or announcements were made regarding EU-US AI safety cooperation?\n\n**Rule:** Regulation (EU) 2024/1689 does not itself establish any bilateral EU-US instrument. Its reach over non-EU actors comes from Article 2, which applies the Regulation to providers placing AI systems on the Union market irrespective of establishment, and to providers and deployers in third countries where the system's output is used in the Union. Coordination of the Union's external AI engagement is reported to sit with the AI Office, consistent with its Article 64 role.\n\n**Application:** On the available reporting, the principal cooperation announcement was made on 5 April 2024, when EU and US leaders stated that the two sides would work together to evaluate artificial intelligence models. That commitment was made at the sixth meeting of the EU-US Trade and Technology Council, held in Leuven, Belgium, at which further cooperation on AI safety, 6G research and semiconductors was also announced. Reporting further records a technical dialogue between the US AI Safety Institute and the European AI Office. The sources describe a cooperation framework and a channel for technical exchange rather than a binding treaty instrument, and they do not record a formal EU-US AI safety agreement with legal effect.\n\n**Conclusion:** The cooperation rests on the 5 April 2024 EU-US Trade and Technology Council commitment to jointly evaluate AI models, together with a technical dialogue between the US AI Safety Institute and the European AI Office. No binding bilateral agreement is recorded in the available sources, and the Act's own reach over US providers derives from Article 2.",
+    "gold_status": "revised_against_news_snapshot",
+    "needs_review": false,
+    "gold_model": "claude-opus-5: every citation verified against corpus text (CELEX:32024R1689)",
+    "gold_doc_ids": [],
+    "relevance_annotated": false,
+    "gold_revised_at": "2026-08-06",
+    "retriever_ids_at_gold_draft_stale": [
+      "42",
+      "16",
+      "10",
+      "6",
+      "21"
+    ],
+    "gold_snapshot": "news snapshot 2026-08-06"
+  },
+  {
+    "id": "q24",
+    "type": "routing",
+    "query": "What are the latest news developments regarding member states appointing their national market surveillance authorities?",
+    "gold": "**Issue:** What are the latest news developments regarding Member States appointing their national market surveillance authorities?\n\n**Rule:** Article 70 requires each Member State to establish or designate at least one notifying authority and at least one market surveillance authority, to ensure they have adequate technical, financial and human resources, to designate one market surveillance authority as the single point of contact, and to notify the Commission, which publishes the list. Article 70 also provides that for the AI systems in points 1, 6, 7 and 8 of Annex III, Member States shall designate as market surveillance authorities either the competent data protection supervisory authorities or another authority designated under the same conditions. The Act required this information to be made publicly available by 2 August 2025.\n\n**Application:** On the available reporting, the designation deadline of 2 August 2025 has passed and Member States were expected to have designated and empowered their national competent authorities by that date, but national implementation remains uneven: published trackers of national implementation plans and designated authorities are described as works in progress that are still being updated as information becomes available, which indicates that designation is incomplete or inconsistently notified across the Union. The operative development is that on 2 August 2026 the enforcement machinery became operational and national market surveillance authorities gained their full powers, so the practical consequence of any remaining gaps in designation is now materially greater than it was during the preparatory period.\n\n**Conclusion:** The obligation arises under Article 70 and fell due on 2 August 2025. Reporting indicates designation across Member States is still incomplete and tracked on a rolling basis, while national market surveillance powers became fully operational on 2 August 2026. The Commission's published list of single points of contact is the authoritative source for the current position.",
+    "gold_status": "revised_against_news_snapshot",
+    "needs_review": false,
+    "gold_model": "claude-opus-5: every citation verified against corpus text (CELEX:32024R1689)",
+    "gold_doc_ids": [],
+    "relevance_annotated": false,
+    "gold_revised_at": "2026-08-06",
+    "retriever_ids_at_gold_draft_stale": [
+      "31",
+      "39",
+      "42",
+      "12",
+      "34"
+    ],
+    "gold_snapshot": "news snapshot 2026-08-06"
+  },
+  {
+    "id": "q25",
+    "type": "routing",
+    "query": "Are there any recent announcements or guidelines released by the EU AI Office regarding general-purpose AI model classification?",
+    "gold": "**Issue:** Are there any recent announcements or guidelines released by the EU AI Office regarding general-purpose AI model classification?\n\n**Rule:** Classification is governed by Article 51, under which a GPAI model is classified as presenting systemic risk where it has high impact capabilities, with Article 51(2) presuming that where cumulative training compute exceeds 10^25 floating point operations, or where the Commission so decides having regard to the Annex XIII criteria. Article 52 requires the provider to notify the Commission without delay and within two weeks. Article 3(63) supplies the underlying definition. The Act contemplates AI Office instruments: Article 53(1)(d) refers to a training-content summary template provided by the AI Office, Article 56 provides for codes of practice it facilitates, and the scientific panel is tasked with advising on the classification of general-purpose AI models with systemic risk.\n\n**Application:** On the available reporting, the Commission published draft Guidelines on 18 July 2025 clarifying key provisions applicable to GPAI models. Those Guidelines address the definition and scope of a GPAI model, related lifecycle obligations, the systemic risk criteria and the notification duties of providers, and they expand on the statutory definition. They were issued in draft and are to be formally adopted once translated into all EU languages, at which point they are described as carrying legal and operational relevance for providers. Separately, the General-Purpose AI Code of Practice was published on 10 July 2025 as a voluntary instrument covering safety, transparency and copyright.\n\n**Conclusion:** Yes. The Commission published draft Guidelines on 18 July 2025 covering the definition and scope of GPAI models, systemic risk criteria and notification duties, pending formal adoption after translation, alongside the Code of Practice of 10 July 2025. The statutory framework they interpret is Articles 51 to 53 with Annex XIII.",
+    "gold_status": "revised_against_news_snapshot",
+    "needs_review": false,
+    "gold_model": "claude-opus-5: every citation verified against corpus text (CELEX:32024R1689)",
+    "gold_doc_ids": [],
+    "relevance_annotated": false,
+    "gold_revised_at": "2026-08-06",
+    "retriever_ids_at_gold_draft_stale": [
+      "6",
+      "42",
+      "29",
+      "10",
+      "33"
+    ],
+    "gold_snapshot": "news snapshot 2026-08-06"
+  },
+  {
+    "id": "q26",
+    "type": "routing",
+    "query": "What recent news highlights the global impact of the EU AI Act on US technology companies?",
+    "gold": "**Issue:** What recent news highlights the global impact of the EU AI Act on US technology companies?\n\n**Rule:** The statutory hook is Article 2, which applies the Regulation to providers placing AI systems on the Union market or putting them into service in the Union irrespective of where they are established, and to providers and deployers established in a third country where the output produced by the system is used in the Union. Article 22 requires third-country providers of high-risk systems to appoint an authorised representative in the Union. Article 99 sets the penalty ceilings, the highest being EUR 35 000 000 or 7 % of total worldwide annual turnover.\n\n**Application:** On the available reporting, the recurring theme is extraterritorial reach: a US company is in scope where its AI systems or their outputs touch EU users, regardless of whether it has a physical EU presence, and commentary gives worked examples such as a US recruitment platform screening CVs for a German office or a credit scoring system assessing EU residents' loan applications. This is characterised as a Brussels Effect, in which the size and influence of the EU market make its standards a global benchmark, with practical advice to build AI governance, revise contracts and maintain ongoing compliance monitoring. A second theme is a widely reported misreading of the Digital Omnibus: the political agreement of May 2026 deferred the headline high-risk deadline by sixteen months, to 2 December 2027, and commentary warns that US boards treating this as a general reprieve have misjudged it, because the deadlines that moved are not the ones most US companies were facing. Legal commentary published on 28 April 2026 advised US businesses operating high-risk systems to remain focused on the 2 August 2026 date.\n\n**Conclusion:** The reported impact is that US companies fall within scope through Article 2 wherever their systems or outputs reach the Union, exposed to Article 99 penalties of up to EUR 35 000 000 or 7 %. The dominant recent story is the Digital Omnibus deferral of the high-risk deadline to 2 December 2027 and warnings that it is being misread as broader relief than it gives.",
+    "gold_status": "revised_against_news_snapshot",
+    "needs_review": false,
+    "gold_model": "claude-opus-5: every citation verified against corpus text (CELEX:32024R1689)",
+    "gold_doc_ids": [],
+    "relevance_annotated": false,
+    "gold_revised_at": "2026-08-06",
+    "retriever_ids_at_gold_draft_stale": [
+      "16",
+      "29",
+      "19",
+      "31",
+      "42"
+    ],
+    "gold_snapshot": "news snapshot 2026-08-06"
+  },
+  {
+    "id": "q27",
+    "type": "routing",
+    "query": "What are the latest news updates regarding the conformity assessment bodies for high-risk AI systems?",
+    "gold": "**Issue:** What are the latest news updates regarding conformity assessment bodies for high-risk AI systems?\n\n**Rule:** Conformity assessment is governed by Article 43, under which providers of high-risk AI systems must complete the applicable procedure before the system is placed on the market, either internal control under Annex VI or a procedure involving a notified body under Annex VII. Notified bodies verify conformity in accordance with Article 43, must be independent of the provider and of any operator with an economic interest in the system, and are required to avoid unnecessary burdens, taking due account of the provider's size and sector so as to minimise administrative cost for micro and small enterprises while preserving the required rigour. Article 43(4) requires a fresh assessment on substantial modification. Notifying authorities designated under Article 70 designate and supervise notified bodies.\n\n**Application:** On the available reporting, conformity assessment is described as the formal route by which high-risk providers demonstrate compliance before placing a system on the EU market, leading to the CE marking declaration under Articles 47 and 48. The operationally significant development is timing rather than institutional change: the Digital Omnibus political agreement of May 2026 is reported to defer the Annex III high-risk obligations from 2 August 2026 to 2 December 2027, which correspondingly postpones the point at which most Annex III providers must have completed conformity assessment. The available sources do not report a list of designated notified bodies or their current capacity.\n\n**Conclusion:** The framework rests on Article 43 with Annexes VI and VII, and on notified bodies designated and supervised by the Article 70 notifying authorities. The recent development is the reported deferral of Annex III high-risk obligations to 2 December 2027, postponing when conformity assessment binds most providers. The Commission's NANDO database is the authoritative source for current designations.",
+    "gold_status": "revised_against_news_snapshot",
+    "needs_review": false,
+    "gold_model": "claude-opus-5: every citation verified against corpus text (CELEX:32024R1689)",
+    "gold_doc_ids": [],
+    "relevance_annotated": false,
+    "gold_revised_at": "2026-08-06",
+    "retriever_ids_at_gold_draft_stale": [
+      "16",
+      "35",
+      "37",
+      "6",
+      "31"
+    ],
+    "gold_snapshot": "news snapshot 2026-08-06"
+  },
+  {
+    "id": "q28",
+    "type": "routing",
+    "query": "What news updates exist regarding the enforcement of Article 5 prohibitions which entered into force recently?",
+    "gold": "**Issue:** What news updates exist regarding enforcement of the Article 5 prohibitions?\n\n**Rule:** Article 5 prohibits eight categories of practice, including manipulative or deceptive techniques that materially distort behaviour, exploitation of vulnerabilities, social scoring, predicting criminal offences based solely on profiling or personality traits, untargeted scraping of facial images, emotion inference in the workplace and education, biometric categorisation to infer sensitive attributes, and real-time remote biometric identification in publicly accessible spaces for law enforcement subject to narrow exceptions. Under Article 113(a) the prohibitions have applied since 2 February 2025. Article 99(3) sets fines of up to EUR 35 000 000 or 7 % of total worldwide annual turnover for their breach.\n\n**Application:** On the available reporting, the prohibitions have been in force since 2 February 2025 and the Article 99 penalty tiers have been enforceable since 2 August 2025. The material development is that on 2 August 2026, two years after entry into force, the Act's enforcement machinery became operational for obligations already in force, and the transparency obligations in Article 50 began to apply to a broad range of systems, providers and deployers. Enforcement capacity nonetheless depends on national designation, and trackers of national implementation plans and designated authorities are still described as works in progress. The available sources record the activation of enforcement powers but do not identify any specific investigation, decision or fine imposed under Article 5.\n\n**Conclusion:** The Article 5 prohibitions have applied since 2 February 2025, with Article 99 penalties available since 2 August 2025 and the enforcement machinery fully operational from 2 August 2026. No specific enforcement action under Article 5 is recorded in the available sources.",
+    "gold_status": "revised_against_news_snapshot",
+    "needs_review": false,
+    "gold_model": "claude-opus-5: every citation verified against corpus text (CELEX:32024R1689)",
+    "gold_doc_ids": [],
+    "relevance_annotated": false,
+    "gold_revised_at": "2026-08-06",
+    "retriever_ids_at_gold_draft_stale": [
+      "32",
+      "19",
+      "17",
+      "38",
+      "14"
+    ],
+    "gold_snapshot": "news snapshot 2026-08-06"
+  },
+  {
+    "id": "q29",
+    "type": "routing",
+    "query": "Are there any recent articles or news on the penalties imposed on companies under the EU AI Act?",
+    "gold": "**Issue:** Are there any recent articles or news on penalties imposed on companies under the EU AI Act?\n\n**Rule:** Article 99 sets three tiers of administrative fine, in each case the higher of a fixed sum or a percentage of total worldwide annual turnover for the preceding financial year: up to EUR 35 000 000 or 7 % for breach of the Article 5 prohibitions; up to EUR 15 000 000 or 3 % for most other provider and deployer breaches, including the Article 50 transparency duties; and up to EUR 7 500 000 or 1 % for supplying incorrect, incomplete or misleading information to notified bodies or national competent authorities. Article 99(6) reverses the rule for SMEs and start-ups, for which each fine is capped at the lower of the two figures. Article 101 governs fines on providers of general-purpose AI models.\n\n**Application:** On the available reporting, the Article 99 tiers have been enforceable since 2 August 2025, and commentary published in July 2026 confirms the three tiers and the SME reversal, noting that the figures are verified against Regulation (EU) 2024/1689 as amended by the Digital Omnibus. The enforcement machinery became operational on 2 August 2026, and from that date the AI Office may impose administrative fines on GPAI providers. The available sources set out how the penalty regime works and confirm that it is live, but they do not report any fine actually imposed on a named company.\n\n**Conclusion:** The penalty ceilings are EUR 35 000 000 or 7 %, EUR 15 000 000 or 3 %, and EUR 7 500 000 or 1 %, with the lower figure applying to SMEs and start-ups, enforceable since 2 August 2025 and backed by operational enforcement powers from 2 August 2026. No penalty imposed on an identified company is recorded in the available sources.",
+    "gold_status": "revised_against_news_snapshot",
+    "needs_review": false,
+    "gold_model": "claude-opus-5: every citation verified against corpus text (CELEX:32024R1689)",
+    "gold_doc_ids": [],
+    "relevance_annotated": false,
+    "gold_revised_at": "2026-08-06",
+    "retriever_ids_at_gold_draft_stale": [
+      "29",
+      "19",
+      "42",
+      "16",
+      "17"
+    ],
+    "gold_snapshot": "news snapshot 2026-08-06"
+  },
+  {
+    "id": "q30",
+    "type": "routing",
+    "query": "What is the latest news about standardisation requests for AI systems under the EU AI Act?",
+    "gold": "**Issue:** What is the latest news about standardisation requests for AI systems under the EU AI Act?\n\n**Rule:** Article 40 provides that high-risk AI systems or general-purpose AI models conforming to harmonised standards whose references have been published in the Official Journal in accordance with Regulation (EU) No 1025/2012 are presumed to conform to the requirements of Chapter III Section 2 or the Chapter V obligations, to the extent those standards cover them. Article 40 further provides that when issuing a standardisation request to the European standardisation organisations, the Commission shall specify that standards be clear and consistent, including with standards developed for products covered by the Annex I harmonisation legislation, and shall request evidence of best efforts to fulfil the stated objectives. Article 41 allows the Commission to adopt common specifications by implementing act where harmonised standards are insufficient, where the standardisation request is not accepted, or where there are undue delays.\n\n**Application:** On the available reporting, harmonised standards are presented as the mechanism that will supply legal certainty under the Act, support innovation and position the Union to set global benchmarks, and their delivery is treated as a Commission priority because the Chapter III requirements have to be made operational through them. The reported development is that CEN and CENELEC have decided to accelerate the development of the standards, which indicates that delivery has been behind the pace the timetable assumed. The practical significance is direct: under Article 43(1) the availability of harmonised standards determines whether a provider of an Annex III point 1 biometrics system may use the internal control route in Annex VI rather than the notified body route in Annex VII.\n\n**Conclusion:** Standardisation rests on Article 40, with Article 41 common specifications as the fallback. The reported development is a CEN and CENELEC decision to accelerate delivery of the harmonised standards, against a timetable in which those standards gate the presumption of conformity and the choice of conformity assessment route.",
+    "gold_status": "revised_against_news_snapshot",
+    "needs_review": false,
+    "gold_model": "claude-opus-5: every citation verified against corpus text (CELEX:32024R1689)",
+    "gold_doc_ids": [],
+    "relevance_annotated": false,
+    "gold_revised_at": "2026-08-06",
+    "retriever_ids_at_gold_draft_stale": [
+      "16",
+      "29",
+      "40",
+      "35",
+      "6"
+    ],
+    "gold_snapshot": "news snapshot 2026-08-06"
+  }
+]
