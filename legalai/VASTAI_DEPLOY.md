@@ -44,10 +44,14 @@ step 3 below, after setup.)
 ## 3. Get the code, then three commands
 
 ```bash
-apt-get update && apt-get install -y git python3
+apt-get update && apt-get install -y git python3 python3-pip
 git clone https://github.com/Charbelto/LegalAI.git
 cd LegalAI/legalai
 ```
+
+(If you picked a "PyTorch"/CUDA template, Python and pip are already there and
+this line is a harmless no-op. If you picked a bare Ubuntu image, this is what
+gets you both.)
 
 That's the only "infrastructure" step. Everything else is three Python
 commands, run in this order:
