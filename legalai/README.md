@@ -222,12 +222,14 @@ The other topologies (`single`, `legal_first`, `planner_based`, `verify_only`,
 UI, but are excluded from the benchmark and the paper.
 
 **To run the full benchmark on a rented cloud GPU (recommended over a laptop
-8GB GPU for turnaround time), see [`VASTAI_DEPLOY.md`](VASTAI_DEPLOY.md)** for
-GPU sizing guidance and step-by-step Vast.ai setup. Locally, use
-`run_experiment.ps1` (Windows) or `run_experiment.sh` (Linux/Vast.ai). Local 3B
-generation on an 8GB laptop GPU is far slower than a hosted API — budget on the
-order of a day for the full 540 runs there, and measure with `-Smoke`/`--smoke`
-first either way.
+8GB GPU for turnaround time), see [`VASTAI_DEPLOY.md`](VASTAI_DEPLOY.md)** —
+GPU sizing guidance, then three commands: `python setup.py` (once),
+`python test.py` (a few minutes, sanity check + a timing estimate),
+`python run.py` (the full run). On Windows, `run_experiment.ps1` runs the
+same pipeline with more manual control (arm selection, judge provider
+overrides, etc.); `run_experiment.sh` is its Linux equivalent. Local 3B
+generation on an 8GB laptop GPU is far slower than a hosted API — budget on
+the order of a day for the full 540 runs there.
 
 ### Fine-tuning pipeline
 
