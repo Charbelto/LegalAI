@@ -1,4 +1,10 @@
 % Place this in your Overleaf document. Requires \usepackage{booktabs} and \usepackage{multirow}
+% STALE: measured before graph/workflow.py restricted the terminal validator
+% (Loop Engineering) to graph_engineering only. Every topology reached the
+% validator when these numbers were produced, which is why Graph Execution
+% Steps reads 20.0 +/- 0.0 for ALL/PARALLEL/Graph Engineering alike. Regenerate
+% from a fresh benchmark.py run -> analyze_results.py -> evaluate_workflows.py
+% before using these numbers in a submission.
 \begin{table*}[t]
 \centering
 \caption{Coordination topologies compared across three PEFT-specialised expert agents (PEFT arm). Values are means over queries and repeats; $\pm$ is the 95\% confidence interval margin.}
@@ -6,7 +12,7 @@
 \small
 \begin{tabular}{lccc}
 \toprule
-\textbf{Metric} & \textbf{ALL (Sequential)} & \textbf{DAG (Converging)} & \textbf{PARALLEL} \\
+\textbf{Metric} & \textbf{ALL (Sequential)} & \textbf{Graph Engineering} & \textbf{PARALLEL} \\
 \midrule
 \multicolumn{4}{l}{\textit{Operational \& Latency Metrics}} \\
 \textbf{End-to-End Latency (s)} & 249.08 $\pm$ 20.10 & 246.77 $\pm$ 16.15 & 244.16 $\pm$ 18.76 \\

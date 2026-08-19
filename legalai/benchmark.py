@@ -47,9 +47,9 @@ CONFIG_URL = f"{URL_BASE}/runtime"
 
 # Three structurally distinct coordination patterns, and only these three.
 #
-#   all      strict sequential chain  (legal -> news -> general_qa)
-#   parallel full concurrency         (all three at once)
-#   dag      converging dependency    (legal, news -> general_qa)
+#   all                strict sequential chain  (legal -> news -> general_qa)
+#   parallel           full concurrency         (all three at once)
+#   graph_engineering  converging dependency    (legal, news -> general_qa + loop engineering verification)
 #
 # The other topologies - single, legal_first, planner_based, verify_only,
 # legal_news_parallel - remain fully implemented and selectable in
@@ -62,7 +62,7 @@ CONFIG_URL = f"{URL_BASE}/runtime"
 MODES = [
     "all",
     "parallel",
-    "dag",
+    "graph_engineering",
 ]
 
 # The two experimental arms. Both are benchmarked, so the paper can report
@@ -101,11 +101,14 @@ SERVER_START_TIMEOUT_S = int(os.getenv("BENCH_SERVER_START_TIMEOUT_S", "300"))
 
 # Per-request timeout. Was 600s, which is fine for a hosted API but not for local
 # 2-3B generation: one pass through the graph makes ~8 model calls and takes 5-8
-# minutes, and the validator can send the whole graph round again (MAX_ITERATIONS
-# =2). Retries are normal rather than exceptional - in the pre-pivot run 508 of
-# 630 rows show 20+ graph steps against 14-17 for a single pass - so a 10-minute
-# ceiling would convert the system's ordinary behaviour into recorded failures and
-# bias the results toward whichever topology happens to retry least.
+# minutes, and for graph_engineering the terminal validator (Loop Engineering) can
+# send the whole graph round again (MAX_ITERATIONS=2). That mode's retries are
+# normal rather than exceptional - in the pre-pivot run, when the validator still
+# ran unconditionally for every mode, 508 of 630 rows showed 20+ graph steps
+# against 14-17 for a single pass - so a 10-minute ceiling would convert the
+# system's ordinary behaviour into recorded failures. ALL and PARALLEL no longer
+# reach the validator at all (see graph/workflow.py route_after_aggregator) and so
+# never retry, but the timeout still has to clear graph_engineering's worst case.
 REQUEST_TIMEOUT_S = int(os.getenv("BENCH_REQUEST_TIMEOUT_S", "3600"))
 
 

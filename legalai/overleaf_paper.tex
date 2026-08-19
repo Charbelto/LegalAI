@@ -13,7 +13,7 @@
 
 \begin{document}
 
-\title{Empirical Evaluation of Multi-Agent Routing Topologies and Workflows for Legal Compliance Analysis}
+\title{Graph Engineering for Multi-Agentic Systems: Empirical Evaluation of Routing Topologies and Loop Engineering Verification in Legal AI}
 
 \author{Charbel~\dots \\
 \textit{Legal AI Lab}}
@@ -21,70 +21,56 @@
 \maketitle
 
 \begin{abstract}
-As large language models (LLMs) are increasingly deployed in highly regulated domains like law and regulatory compliance, the choice of agentic orchestration architecture becomes a critical design parameter. This paper presents a comprehensive empirical evaluation of six distinct multi-agent routing topologies (Sequential, Routed Single-Agent, Parallel Execution, Legal-News Parallel, Legal-First Selective, and Verification Bypass) evaluated on compliance checks for the EU AI Act. Using a suite of 32 operational, text quality (NLG), and structural metrics, we analyze the speed-quality trade-offs inherent in these topologies. Our results indicate that routed single-agent systems maintain a high balance of information retrieval precision and execution speed, while sequential workflows exhibit high latency overhead without commensurate quality improvements.
+As large language models (LLMs) are increasingly deployed in highly regulated domains like legal compliance and governance, agentic workflow architecture matters substantially more than raw model scale. Following the agentic design vocabulary popularized by Andrew Ng --- Reflection, Tool Use, Planning, and Multi-Agent Collaboration --- and Anthropic's five production workflow patterns, this paper evaluates multi-agent coordination architectures on legal compliance analysis for the EU AI Act. We frame the design space as a progression from loops (single-agent revision) through chains and networks to \textit{Graph Engineering}: a topology that externalizes shared state across specialized agents and, distinctively in our design, is the only topology carrying a terminal \textit{Loop Engineering} step --- an explicit Reflection/Evaluator-Optimizer pass in which a Validation Agent checks the draft response against completeness, accuracy, structure, relevance, and source-quality criteria and, on failure, sends the workflow back for a bounded number of revision cycles. Sequential (ALL) and fully concurrent (PARALLEL) topologies receive no such pass, which makes the presence of Loop Engineering the manipulated variable in the comparison rather than a constant present in every arm. We evaluate all three topologies across 32 operational, NLG reference-matching, and LLM-judged quality metrics, over three separately fine-tuned PEFT expert models (Llama 3.2 3B, Qwen2.5 3B, Granite 3.1 2B Instruct), and over two experimental arms --- adapted (PEFT) and untuned base weights --- so that the effect of specialization can be separated from the effect of topology.
 \end{abstract}
 
 \section{Introduction}
-Modern AI orchestration frameworks (such as LangGraph) enable complex state-machine routing between specialized agents. However, quantitative comparisons of different routing Topologies are scarce. This paper provides a rigorous analysis of the performance, quality, and structural features of outputs produced by various multi-agent routing topologies.
+Zero-shot prompting forces a language model into an artificial constraint: producing a complete, error-free legal analysis in a single uninterrupted pass, with no drafting, verification, or revision. Andrew Ng's widely cited HumanEval comparison makes the alternative concrete: GPT-3.5 scores 48.1\% zero-shot and GPT-4 scores 67.0\% zero-shot, but GPT-3.5 wrapped in an iterative agentic workflow reaches 95.1\% --- a larger jump than upgrading the base model itself \cite{ng_batch_2024, sequoia_ng_2024}. The implication for system design is that workflow architecture, not model scale, is frequently the dominant lever.
 
-\section{Routing Topologies \& Methodology}
-We evaluate six routing configurations:
+This paper treats that implication as a design and measurement question for a regulated-domain application: does adding an explicit, bounded reflection loop to a converging multi-agent topology measurably improve legal-compliance answer quality over sequential or fully parallel execution without one? We call the converging topology under test \textit{Graph Engineering}, following the vocabulary in which a loop externalizes revision, a chain externalizes task order, a network externalizes role specialization, and a graph externalizes shared state and relationships across specialized agents \cite{ng_playbook_2026}. Concretely, our Graph Engineering topology fans two domain experts (\textit{Legal} and \textit{News}) out concurrently, converges their outputs through a \textit{General QA} synthesis step and an \textit{Aggregator}, and --- uniquely among the topologies compared here --- routes the aggregated draft through a terminal \textit{Validation Agent}. If the draft fails validation, \textit{Loop Engineering} attaches the validator's structured critique to the shared state and re-enters the workflow, bounded by a maximum retry count.
+
+The contribution of this paper is empirical rather than architectural novelty: Reflection, multi-agent fan-out, and shared-state graphs are established patterns \cite{schluntz_zhang_2024, madaan_selfrefine_2023, shinn_reflexion_2023}. What we add is (1) an experimental design in which the reflection step is the isolated independent variable rather than a constant applied uniformly to every topology, (2) a controlled comparison across three separately fine-tuned open-weight expert models rather than one shared model, and (3) a PEFT-vs-base ablation that separates the contribution of domain specialization from the contribution of coordination structure.
+
+\section{Related Work: Agentic Design Patterns}
+Ng identifies four design patterns for agentic systems. \textit{Reflection} lets a model inspect its own output against a rubric and revise; Ng reports it as the most mature pattern and describes it as "pretty robust technology" that can "almost always" be made to work \cite{ng_playbook_2026}. \textit{Tool Use} lets a model call external capabilities --- retrieval, code execution, search --- to ground its answers in verifiable data. \textit{Planning} lets a model decompose a task into steps, which Ng rates as comparatively immature ("less mature, less predictable"). \textit{Multi-Agent Collaboration} assigns distinct roles to separate model instances so that different rubrics catch different error classes; Ng calls it "more emerging" but reports it "works much better than you might think" \cite{ng_playbook_2026}.
+
+Independently, Anthropic's \textit{Building Effective Agents} formalizes five production workflow patterns --- Prompt Chaining, Routing, Parallelization, Orchestrator-Workers, and Evaluator-Optimizer --- and draws a sharp distinction between \textit{workflows} (LLMs and tools composed through predefined code paths) and \textit{agents} (the model dynamically directs its own process), recommending the cheapest workflow that satisfies the task before reaching for more autonomy \cite{schluntz_zhang_2024}. Evaluator-Optimizer is Reflection formalized with explicit role separation between the generator and the critic, and is reported to run 2--4 cycles before converging \cite{schluntz_zhang_2024}. This is architecturally identical to what we implement as Loop Engineering: a dedicated Validation Agent (the evaluator) that critiques a dedicated Aggregator's draft (the optimizer's input), separated by an explicit pass/fail decision and a bounded iteration count, following the design advice to separate critique from rewriting rather than asking a single call to silently ``improve this'' \cite{ng_playbook_2026}. The underlying mechanism traces to Self-Refine and Reflexion, which showed that iterative self-critique measurably improves output quality across reasoning and code-generation tasks without any additional training \cite{madaan_selfrefine_2023, shinn_reflexion_2023}.
+
+A useful synthesis frames these patterns as stages in the externalization of cognition: a loop externalizes revision within one context window; a chain externalizes task order into fixed application code; a network introduces role-specialized workers coordinated by an orchestrator, at the cost of the orchestrator becoming a context bottleneck as team size grows; and a graph externalizes shared state itself, so that workers read and write a durable structure instead of routing everything through one conversational hub \cite{ng_playbook_2026}. Our Graph Engineering topology instantiates this at the workflow-graph level: LangGraph's \cite{langgraph} shared \texttt{AgentState} plays the role of externalized state (every node reads and writes named channels rather than passing a growing transcript), and the terminal Validation Agent plays the role of a graph-native Evaluator-Optimizer, with its critique attached back into that same shared state rather than into a separate conversational side-channel. We do not implement a persistent, queryable knowledge graph in the sense of typed entities, edges, and cross-session provenance --- the most advanced and, per Ng's own July 2026 course, least-adopted stage of the progression \cite{ng_playbook_2026} --- and we say so explicitly in Section~\ref{sec:limitations} rather than claim it.
+
+\section{Coordination Topologies and Loop Engineering}
+\label{sec:validator-gating}
+We compare three structurally distinct coordination topologies, all built on the same LangGraph state machine and the same three domain experts (\textit{Legal}, \textit{News}, \textit{General QA}):
+
 \begin{enumerate}
-    \item \textbf{ALL (Sequential)}: Executes all retrieval and analysis nodes in sequence.
-    \item \textbf{SINGLE (Router)}: A routing node dynamically selects the single most appropriate expert agent.
-    \item \textbf{PARALLEL}: Spawns all retrieval and logic agents concurrently.
-    \item \textbf{LEGAL-NEWS PAR.}: Runs the legal and news retrieval agents in parallel, bypassing general Q\&A.
-    \item \textbf{LEGAL-FIRST}: Executes the legal agent first, then decides if news or general QA is required.
-    \item \textbf{VERIFY-ONLY (Bypass)}: Routes directly to aggregation and verification, bypassing retrieval nodes.
+    \item \textbf{ALL (Sequential Chain)}: Legal $\rightarrow$ News $\rightarrow$ General QA $\rightarrow$ Aggregator $\rightarrow$ Response, in strict linear sequence.
+    \item \textbf{PARALLEL (Full Concurrency)}: Legal, News, and General QA all fan out concurrently from retrieval, converge at the Aggregator, then Response.
+    \item \textbf{Graph Engineering (Convergent Fan-Out + Loop Engineering)}: Legal and News fan out concurrently, converge into General QA and then the Aggregator, and --- \emph{only for this topology} --- route through the terminal Validation Agent before Response.
 \end{enumerate}
 
-Outputs are evaluated against an expert-curated "Gold Standard" compliance check for the EU AI Act using a multi-dimensional metric framework comprising 32 metrics.
+The three topologies therefore differ along two dimensions at once, deliberately: (a) the fan-out/convergence structure (sequential vs.\ full parallel vs.\ partial convergent), which is the Multi-Agent Collaboration axis, and (b) the presence or absence of the terminal Loop Engineering pass, which is the Reflection axis. ALL and PARALLEL terminate immediately once the Aggregator produces a draft; Graph Engineering alone sends that draft to validation. This is an explicit change from an earlier iteration of this experiment, in which the Validation Agent ran unconditionally after every topology's Aggregator step. That design made reflection a constant nuisance variable present in every arm rather than the thing under test: any latency or quality difference measured against Graph Engineering could not be attributed to the reflection loop, because ALL and PARALLEL silently received the identical fix-up pass. Gating the terminal edge in \texttt{graph/workflow.py} on topology (\texttt{route\_after\_aggregator}) makes Loop Engineering the isolated independent variable, and is covered by a regression test that exercises the compiled graph directly for every supported mode.
+
+\subsection{The Validation Agent and Loop Engineering}
+The Validation Agent evaluates the Aggregator's draft against five criteria, each answered by the same LLM call in a fixed, parseable output format: \textbf{Completeness} (does it fully answer the query?), \textbf{Accuracy} (is it consistent with the retrieved context?), \textbf{Clarity} (is it well-structured?), \textbf{Relevance} (does it stay on topic?), and \textbf{Source Quality} (are the retrieved documents authoritative and on-topic?). An unparseable validator response is treated as a failure rather than defaulting to pass, so a malformed judgment cannot silently masquerade as approval.
+
+On failure, Loop Engineering does two things: it increments a bounded iteration counter (\texttt{MAX\_ITERATIONS = 2}), and it writes the validator's issue list into the shared state, where the Aggregator reads it back on the next pass and explicitly instructs the underlying LLM to address those issues in its revision. This is the separation Ng recommends --- critique first, as a structured list, then a distinct revision step that consumes it --- rather than an opaque "try again" \cite{ng_playbook_2026}. If the validator additionally judges the retrieved sources irrelevant, the retry re-enters at retrieval rather than at the planner, so a bad-sources failure is not "fixed" by asking the same weak evidence to be phrased differently.
+
+\section{Methodology}
+\textbf{Expert models.} Each domain expert is a separate open-weight model, not a shared model with swapped prompts, so that "does topology combine specialized agents well" is answerable independently of "does one bigger model already do this": Legal runs Llama 3.2 3B Instruct fine-tuned on LegalBench; News runs Qwen2.5 3B Instruct fine-tuned on NewsQA; General QA runs Granite 3.1 2B Instruct fine-tuned on Dolly-15k. Coordination nodes (planner, router, aggregator, validator, response) share the General QA expert's base weights with its adapter disabled, so domain specialization stays confined to the three experts being compared.
+
+\textbf{PEFT ablation (RQ2).} Every topology is benchmarked twice: once with each expert's LoRA adapter loaded (\emph{peft} arm) and once on the identical untuned base weights (\emph{base} arm), so that the paper can separate the effect of fine-tuning from the effect of coordination structure. The General QA expert's adapter is deliberately left disabled even in the peft arm for that one role: its training distribution (Dolly-15k, median $\sim$300 tokens) does not cover the $\sim$1370-token EU-AI-Act context it is served in this benchmark, and empirically the adapted weights degenerate at that length while the base weights answer correctly. This is disclosed as a scope limitation of RQ2 rather than fixed by pretending it does not happen.
+
+\textbf{Dataset and metrics.} 30 hand-built queries spanning legal, news, and general categories, evaluated against expert-curated gold answers. Each (query, topology, arm) cell is repeated 3 times with sampling enabled (not greedy decoding), so that repeats carry real generation variance rather than reporting spuriously tight confidence intervals on identical text. 32 metrics are computed per run, grouped into operational/latency (end-to-end latency, graph steps, tokens, cost), NLG reference-matching (BLEU-1/4, ROUGE-1/2/L, Jaccard and cosine similarity, Levenshtein similarity against the gold answer), LLM-judged quality (accuracy, completeness, groundedness, scored 1--5 by a model that is neither the system under test nor the model that authored the gold answers, to avoid self-preference bias), and structural/domain metrics (verbosity, statutory citation count, temporal references). Pairwise topology comparisons use the Wilcoxon signed-rank test paired on query (not on repeat, which would inflate the sample and violate the independence assumption), Holm-corrected across the family of topology pairs, with Cliff's delta as the effect size.
+
+\textbf{Infrastructure.} Generation is fully local (\texttt{GENERATION\_PROVIDER=local\_peft}); no chat call leaves the machine, and only the LLM judge (DeepSeek, hosted) sees generated text after the fact, never during generation, so the model under test never grades itself. Embeddings for retrieval run on local Ollama (\texttt{nomic-embed-text}) regardless of the generation provider. Live web/EUR-Lex search is disabled for the duration of the experiment so that two runs of the same query see the same retrieval context; this trades interactive recency for reproducibility, which is the correct trade for a benchmark.
 
 \section{Evaluation Results}
-The computed metrics across all configurations are summarized in Table~\ref{tab:agent_workflows_eval}.
+The performance of the topologies across the 32 metrics is presented in Table~\ref{tab:agent_workflows_eval} (peft arm) and Table~\ref{tab:peft_ablation} (peft vs.\ base ablation).\footnote{The values currently in these tables were measured before the terminal validator was restricted to the Graph Engineering topology (Section~\ref{sec:validator-gating}) and must be treated as provisional until the full benchmark is re-run under the corrected architecture; see the note at the end of this section.}
 
-\begin{table*}[htbp]
-\centering
-\caption{Comparative Analysis of Multi-Agent Routing Topologies and Workflows}
-\label{tab:agent_workflows_eval}
-\small
-\begin{tabular}{lcccccc}
-\toprule
-\textbf{Metric} & \textbf{ALL (Sequential)} & \textbf{SINGLE (Router)} & \textbf{PARALLEL} & \textbf{LEGAL-NEWS PAR.} & \textbf{LEGAL-FIRST} & \textbf{VERIFY-ONLY (Bypass)} \\
-\midrule
-\multicolumn{7}{l}{\textit{Operational \& Latency Metrics}} \\
-\textbf{End-to-End Latency (s)} & 79.07 & 46.51 & 71.00 & 69.49 & 83.41 & 22.27 \\
-\textbf{Backend Graph Latency (s)} & 67.52 & 45.44 & 69.85 & 68.40 & 82.27 & 20.82 \\
-\textbf{Graph Execution Steps} & 20 & 16 & 20 & 18 & 18 & 14 \\
-\textbf{Mean Step Latency (ms)} & 3376.2 & 2839.8 & 3492.5 & 3799.9 & 4570.5 & 1487.4 \\
-\textbf{Generation Speed (words/s)} & 1.49 & 3.48 & 2.15 & 1.84 & 1.61 & 3.64 \\
-\textbf{Estimated Tokens (Words * 1.3)} & 153 & 210 & 198 & 166 & 174 & 105 \\
-\textbf{Simulated Run Cost (USD)} & \$0.0001 & \$0.0001 & \$0.0001 & \$0.0001 & \$0.0001 & \$0.0001 \\
-\midrule
-\multicolumn{7}{l}{\textit{Text Quality \& NLG Reference-Matching (vs. Gold Standard)}} \\
-\textbf{BLEU-1 Score} & 0.1206 & 0.2218 & 0.1940 & 0.1473 & 0.1557 & 0.0441 \\
-\textbf{BLEU-4 Score} & 0.0175 & 0.0399 & 0.0285 & 0.0257 & 0.0168 & 0.0066 \\
-\textbf{ROUGE-1 F1-Score} & 0.3030 & 0.3570 & 0.3302 & 0.3259 & 0.3276 & 0.2611 \\
-\textbf{ROUGE-2 F1-Score} & 0.0914 & 0.0782 & 0.0748 & 0.1042 & 0.0639 & 0.0670 \\
-\textbf{ROUGE-L F1-Score} & 0.1667 & 0.1739 & 0.1628 & 0.1877 & 0.1565 & 0.1500 \\
-\textbf{Word Jaccard Similarity} & 0.1850 & 0.2336 & 0.1728 & 0.1940 & 0.1891 & 0.1564 \\
-\textbf{Character Jaccard Similarity} & 0.5532 & 0.7551 & 0.7174 & 0.6957 & 0.6596 & 0.6087 \\
-\textbf{TF Cosine Similarity} & 0.4958 & 0.4981 & 0.6402 & 0.5683 & 0.5734 & 0.5743 \\
-\textbf{Levenshtein Similarity} & 0.2520 & 0.2706 & 0.2716 & 0.2783 & 0.2582 & 0.1924 \\
-\midrule
-\multicolumn{7}{l}{\textit{Text Structural \& Domain-Specific Metrics}} \\
-\textbf{Word Count (Verbosity)} & 118 & 162 & 153 & 128 & 134 & 81 \\
-\textbf{Sentence Count} & 8 & 10 & 8 & 9 & 10 & 4 \\
-\textbf{Paragraph Count} & 4 & 5 & 3 & 3 & 4 & 4 \\
-\textbf{Lexical Diversity (TTR)} & 0.7456 & 0.7548 & 0.6824 & 0.7561 & 0.7795 & 0.7692 \\
-\textbf{Temporal References Count} & 0 & 4 & 5 & 2 & 2 & 0 \\
-\textbf{Bullet Points Count} & 4 & 6 & 5 & 5 & 7 & 3 \\
-\bottomrule
-\end{tabular}
-\end{table*}
+\input{metrics_table.tex}
 
 \subsection{Latency and Operational Profiles}
-As shown in Fig.~\ref{fig:macro_latency}, the execution latency varies heavily. While the verification-only workflow completes in only 22.27 seconds, it lacks comprehensive retrieval context. The sequential workflow (ALL) takes 79.07 seconds due to its step-by-step nature. Figure~\ref{fig:graph_efficiency} displays the step execution, cost, token, and generation speed profiles. Figure~\ref{fig:stacked_latencies} presents the detailed stacked breakdowns of individual node execution across workflows.
+Figure~\ref{fig:macro_latency} displays macro latency profiles across execution steps and network overhead. Sequential execution (ALL) accumulates expert latency additively; Graph Engineering runs Legal and News concurrently before its convergent QA step, and --- being the only topology that reaches the Validation Agent --- carries the additional latency of at least one extra LLM call per run, and up to \texttt{MAX\_ITERATIONS} additional full passes on validation failure. Figure~\ref{fig:graph_efficiency} displays generation speed and token consumption; Figure~\ref{fig:stacked_latencies} breaks down per-node latency, where ALL and PARALLEL now correctly show zero time spent in the \texttt{validator} node, since they no longer reach it.
 
 \begin{figure*}[htbp]
   \centering
@@ -115,7 +101,7 @@ As shown in Fig.~\ref{fig:macro_latency}, the execution latency varies heavily. 
     \caption{Mean Latency per Step}
     \label{fig:latency_per_step}
   \end{subfigure}
-  \caption{Macro Latency and Execution Profiles across Configurations.}
+  \caption{Macro Latency and Execution Profiles across Topologies.}
   \label{fig:macro_latency}
 \end{figure*}
 
@@ -151,12 +137,12 @@ As shown in Fig.~\ref{fig:macro_latency}, the execution latency varies heavily. 
 \begin{figure*}[htbp]
   \centering
   \includegraphics[width=0.85\textwidth]{chart9_node_latency_stacked.png}
-  \caption{Cumulative Stacked Bar Chart of Node-level Latency profiles across Workflows.}
+  \caption{Cumulative Stacked Bar Chart of Node-level Latency profiles across Workflows. Only Graph Engineering shows non-zero \texttt{validator} and post-validation \texttt{response} segments attributable to Loop Engineering.}
   \label{fig:stacked_latencies}
 \end{figure*}
 
 \subsection{Text Quality \& Reference Alignment}
-To measure how well output compliance guides align with the Gold Standard, we evaluate n-gram overlap. Figure~\ref{fig:nlg_quality} illustrates BLEU and ROUGE profiles.
+Figure~\ref{fig:nlg_quality} illustrates BLEU and ROUGE profiles against gold-standard compliance checks. The hypothesis under test is that Loop Engineering's structured critique-and-revise cycle catches factual omissions and structural defects that a single aggregation pass misses, which would surface as higher reference alignment (ROUGE-L, BLEU-4) and higher LLM-judged accuracy/completeness for Graph Engineering relative to ALL and PARALLEL. Whether the data supports this is an empirical question answered by the paired significance tests in Table~\ref{tab:peft_ablation}, not asserted in advance.
 
 \begin{figure*}[htbp]
   \centering
@@ -188,7 +174,7 @@ To measure how well output compliance guides align with the Gold Standard, we ev
 \end{figure*}
 
 \subsection{Trade-Off Profiles}
-Figure~\ref{fig:multidim_analysis} illustrates the speed-quality trade-off space and provides a spider-radar comparison showing that the SINGLE workflow dominates across multiple dimensions.
+Figure~\ref{fig:multidim_analysis} illustrates the quality-vs-latency trade-off space and a spider-radar comparison across all measured dimensions. Because Graph Engineering alone pays the latency cost of the terminal validation pass (and, on failure, a full retry), the relevant comparison is not whether it is faster --- it structurally cannot be, by construction --- but whether the quality gain per added second is favorable, and whether that gain is statistically distinguishable from noise once Holm-corrected across the three pairwise topology comparisons.
 
 \begin{figure*}[htbp]
   \centering
@@ -207,7 +193,43 @@ Figure~\ref{fig:multidim_analysis} illustrates the speed-quality trade-off space
   \label{fig:multidim_analysis}
 \end{figure*}
 
+\emph{Note on the tables above:} the numbers in Table~\ref{tab:agent_workflows_eval} and Table~\ref{tab:peft_ablation} --- including the near-identical 20.0 execution-step counts across all three topologies --- were measured under the earlier architecture in which every topology reached the Validation Agent. They therefore do not yet reflect the corrected design in Section~\ref{sec:validator-gating} and must be regenerated from a full benchmark run before submission (\texttt{benchmark.py} $\rightarrow$ \texttt{analyze\_results.py} $\rightarrow$ \texttt{evaluate\_workflows.py} $\rightarrow$ \texttt{make\_paper\_figures.py}).
+
+\section{Limitations}
+\label{sec:limitations}
+Three limitations follow directly from the design choices above and should be stated plainly rather than discovered by a reviewer. First, Graph Engineering's Reflection loop is bounded (\texttt{MAX\_ITERATIONS = 2}); Ng's own maturity assessment of Planning and Multi-Agent Collaboration as "emerging" rather than reliable applies to any system, like this one, that composes more than one pattern \cite{ng_playbook_2026}. Second, agentic workflows trade latency for quality by construction: Graph Engineering cannot be faster than ALL or PARALLEL on a query that fails validation, because it repeats work they do not. Third, "Graph Engineering" here means a LangGraph state-machine graph with shared, named state channels and per-step provenance (the thinking log and per-node timings), not a persistent, cross-session, entity-relationship knowledge graph of the kind Ng's July 2026 Agentic Knowledge Graphs course teaches \cite{ng_playbook_2026}; extending this system with a durable, queryable memory (e.g. Neo4j-backed) so that, for instance, a previously-validated citation could be reused across sessions rather than re-derived, is future work rather than a claim made here.
+
+Additional scope limitations specific to this experiment: the PEFT ablation for the General QA role runs on base weights in both arms (Section~4), so the peft arm is two adapted experts plus one unadapted, which weakens but does not invalidate RQ2's coverage; all three expert models are in the 2--3B parameter class, so conclusions about topology and reflection may not transfer to substantially larger models where a single pass already has more headroom to be correct; and the benchmark corpus is the EU AI Act specifically, so generalization to other regulatory bodies of law is untested.
+
 \section{Conclusion}
-This paper presented a detailed empirical evaluation of agent topologies. We conclude that parallel and routed single-agent workflows yield the highest response fidelity and alignment with references, while sequential setups suffer from prohibitive latency without measurable quality gains.
+This study evaluated multi-agent coordination topologies for legal-compliance analysis under an agentic design framework spanning Ng's four patterns and Anthropic's five workflow patterns, with Reflection instantiated as a terminal Loop Engineering step exclusive to a single topology, \textbf{Graph Engineering}, rather than as a constant applied to every arm. This isolates the question the paper set out to ask --- does convergent multi-agent structure plus a bounded, critique-driven reflection loop outperform sequential or fully parallel execution without one --- as an answerable, falsifiable comparison, to be settled by the re-run benchmark rather than assumed from the architecture alone.
+
+\section*{Acknowledgment}
+The agentic design framework used to structure this evaluation --- Ng's four patterns, Anthropic's five workflow patterns, and the loop/chain/network/graph progression --- follows the synthesis in \cite{ng_playbook_2026}, suggested by the author's advisor.
+
+\begin{thebibliography}{9}
+
+\bibitem{ng_playbook_2026}
+Independently compiled synthesis, ``Graph Engineering for Multi-Agentic Systems: The Andrew Ng Playbook,'' based on Andrew Ng's DeepLearning.AI courses and presentations (including the July 2026 Agentic Knowledge Graphs course with Neo4j and Google ADK) and Anthropic's \textit{Building Effective Agents}, Jul.\ 2026. Not affiliated with or endorsed by Andrew Ng, DeepLearning.AI, Anthropic, Neo4j, or Google.
+
+\bibitem{ng_batch_2024}
+A.\ Ng, ``Four AI Agent Strategies'' and ``Agentic Design Patterns Parts 2--4,'' \textit{The Batch}, DeepLearning.AI, Mar.--Apr.\ 2024.
+
+\bibitem{sequoia_ng_2024}
+A.\ Ng, ``What's Next for AI Agentic Workflows,'' Sequoia Capital AI Ascent, Mar.\ 2024.
+
+\bibitem{schluntz_zhang_2024}
+E.\ Schluntz and B.\ Zhang, ``Building Effective Agents,'' Anthropic Engineering, Dec.\ 2024.
+
+\bibitem{madaan_selfrefine_2023}
+A.\ Madaan et al., ``Self-Refine: Iterative Refinement with Self-Feedback,'' \textit{NeurIPS}, 2023.
+
+\bibitem{shinn_reflexion_2023}
+N.\ Shinn et al., ``Reflexion: Language Agents with Verbal Reinforcement Learning,'' \textit{NeurIPS}, 2023.
+
+\bibitem{langgraph}
+LangChain AI, ``LangGraph: Building Stateful, Multi-Actor Applications with LLMs,'' 2024. \url{https://langchain-ai.github.io/langgraph/}
+
+\end{thebibliography}
 
 \end{document}

@@ -15,7 +15,7 @@ class ChatRequest(BaseModel):
     fetch_news: bool = Field(default=True, description="Whether fresh news fetching is enabled")
     num_articles: int = Field(default=5, ge=1, le=10, description="Number of articles to fetch when needed")
     expert_execution_mode: Optional[
-        Literal["all", "single", "parallel", "legal_news_parallel", "legal_first", "verify_only", "planner_based", "dag"]
+        Literal["all", "single", "parallel", "legal_news_parallel", "legal_first", "verify_only", "planner_based", "graph_engineering", "graph", "dag"]
     ] = Field(
         default=None,
         description="Override expert execution mode for this request only",

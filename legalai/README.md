@@ -203,7 +203,7 @@ Persisted volumes:
 
 This repository contains a full experiment framework comparing **three
 coordination topologies** — `all` (sequential), `parallel` (concurrent) and
-`dag` (converging) — over **three separately fine-tuned expert models**:
+`graph_engineering` (converging dependency with terminal loop engineering verification) — over **three separately fine-tuned expert models**:
 
 | role | base model | LoRA adapter trained on |
 |---|---|---|
@@ -221,9 +221,13 @@ The other topologies (`single`, `legal_first`, `planner_based`, `verify_only`,
 `legal_news_parallel`) remain fully implemented and selectable through the API and
 UI, but are excluded from the benchmark and the paper.
 
-**Full run instructions, timings and failure modes: see `RUN_HANDOFF.md` in the
-project root.** Local 3B generation is far slower than a hosted API — budget on
-the order of a day for the full 540 runs, and measure with `-Smoke` first.
+**To run the full benchmark on a rented cloud GPU (recommended over a laptop
+8GB GPU for turnaround time), see [`VASTAI_DEPLOY.md`](VASTAI_DEPLOY.md)** for
+GPU sizing guidance and step-by-step Vast.ai setup. Locally, use
+`run_experiment.ps1` (Windows) or `run_experiment.sh` (Linux/Vast.ai). Local 3B
+generation on an 8GB laptop GPU is far slower than a hosted API — budget on the
+order of a day for the full 540 runs there, and measure with `-Smoke`/`--smoke`
+first either way.
 
 ### Fine-tuning pipeline
 

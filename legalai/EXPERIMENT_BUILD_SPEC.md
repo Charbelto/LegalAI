@@ -121,9 +121,9 @@ The experiment needs real tokens and retrieved doc IDs, not proxies.
 
 ## 5. Add two topologies — `graph/workflow.py`, `backend/models.py`, `backend/service.py`, `config.py`, `agents/planner.py`, `state.py`
 
-Add modes `"planner_based"` and `"dag"`.
+Add modes `"planner_based"` and `"graph_engineering"`.
 
-1. `backend/models.py` line ~18 — extend the `Literal[...]` with `"planner_based", "dag"`.
+1. `backend/models.py` line ~18 — extend the `Literal[...]` with `"planner_based", "graph_engineering"`.
 2. `backend/service.py` `_normalize_expert_mode` (line ~110) — add both to the allowed set.
 3. `config.py` — add both to the `EXPERT_EXECUTION_MODE` whitelist.
 4. `graph/workflow.py` `_effective_expert_mode` (line ~262) — add both to the valid set.
@@ -131,15 +131,15 @@ Add modes `"planner_based"` and `"dag"`.
 ```python
 elif mode == "planner_based":
     return state.get("plan") or ["legal"]      # planner decided which experts
-elif mode == "dag":
-    return ["legal", "news"]                    # then fan into general_qa via route_after_news
+elif mode == "graph_engineering":
+    return ["legal", "news"]                    # then fan into general_qa via route_after_news + terminal loop engineering verification
 ```
 6. **Planner that actually plans.** In `agents/planner.py`, when mode is `planner_based`,
    call the LLM (use `PLANNER_PROMPT`, extend it to ask for a JSON list of needed experts from
    {legal, news, general_qa}) and store `state["plan"] = [...]`. Add `plan: list[str]` to
    `state.py` `AgentState`.
 7. **Parallel-safe state.** True parallel fan-out (`parallel`, `legal_news_parallel`,
-   `planner_based`, `dag`) requires concurrent writes to `agent_outputs` to merge, not clobber.
+   `planner_based`, `graph_engineering`) requires concurrent writes to `agent_outputs` to merge, not clobber.
    In `state.py`, annotate the field with a reducer:
 ```python
 from typing import Annotated
@@ -148,8 +148,8 @@ agent_outputs: Annotated[dict, _merge_dicts]
 ```
    Do the same for `agent_timings` and `thinking_log` (list concat reducer). Verify the existing
    "parallel" modes still pass after this change.
-8. For `dag`, customize `route_after_legal`/`route_after_news` so the legal+news results
-   converge into `general_qa` before `aggregator`, giving a genuine diamond dependency graph
+8. For `graph_engineering`, customize `route_after_legal`/`route_after_news` so the legal+news results
+   converge into `general_qa` before `aggregator` and terminal `validator` (Loop Engineering), giving a genuine dependency graph
    distinct from flat `parallel`.
 
 ---
@@ -162,7 +162,7 @@ Replace the single-query block (lines ~45–86). Keep the server start/stop logi
 import itertools
 REPEATS = int(os.getenv("BENCH_REPEATS", "5"))
 MODES = ["all","single","parallel","legal_news_parallel","legal_first",
-         "verify_only","planner_based","dag"]
+         "verify_only","planner_based","graph_engineering"]
 
 with open(ROOT_DIR/"eval_dataset.json", encoding="utf-8") as f:
     dataset = json.load(f)
@@ -245,7 +245,7 @@ CI whiskers on both axes.
       token counts.
 - [ ] Re-running `--smoke` twice with `LEGALAI_DETERMINISTIC=1` yields **identical responses**
       for the same (query, mode) — proves seeding works.
-- [ ] `planner_based` and `dag` modes execute end-to-end; `dag` shows legal+news converging into
+- [ ] `planner_based` and `graph_engineering` modes execute end-to-end; `graph_engineering` shows legal+news converging into
       general_qa in `thinking_log`; no concurrent-write errors from the reducers.
 - [ ] `analyze_results.py` runs on a ≥2-query, ≥2-repeat sample and emits all four output files,
       with mean±CI, Holm-corrected p-values, and Cliff's delta populated.

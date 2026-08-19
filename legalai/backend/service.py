@@ -158,7 +158,9 @@ class LegalAIService:
     def _normalize_expert_mode(self, mode: Optional[str]) -> str:
         """Normalize per-request expert execution mode with safe fallback."""
         normalized = str(mode or "").strip().lower()
-        if normalized in {"all", "single", "parallel", "legal_news_parallel", "legal_first", "verify_only", "planner_based", "dag"}:
+        if normalized in {"graph", "dag"}:
+            return "graph_engineering"
+        if normalized in {"all", "single", "parallel", "legal_news_parallel", "legal_first", "verify_only", "planner_based", "graph_engineering"}:
             return normalized
         return config.EXPERT_EXECUTION_MODE
 

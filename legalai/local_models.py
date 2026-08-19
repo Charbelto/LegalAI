@@ -31,7 +31,7 @@ Design points that matter for the experiment
   oldest retrieved documents) and the fact is recorded so
   ``truncation_warnings`` still surfaces it.
 
-* **Generation is serialised per model.** The PARALLEL and DAG topologies fan
+* **Generation is serialised per model.** The PARALLEL and Graph Engineering topologies fan
   experts out into concurrent LangGraph branches. Different experts hold
   different models, so they genuinely overlap; but two calls into the *same*
   ``transformers`` model from two threads is not safe, so each cached model
@@ -103,6 +103,36 @@ def _compute_dtype():
     if name in {"float16", "fp16", "half"}:
         return torch.float16
     return torch.float32
+
+
+def _resolve_device(resolved_role: str):
+    """Which CUDA device (or 'cpu') a role's weights should load onto.
+
+    Reads config.LOCAL_ROLE_DEVICES (see config.py). On a single-GPU box every
+    role defaults to "cuda:0", matching the original design where concurrency
+    during the PARALLEL/graph_engineering expert fan-out comes from per-model
+    locks timesharing one device. On a multi-GPU host each role can be pinned to
+    its own device for real hardware parallelism. Falls back to "cuda:0" if the
+    configured index does not exist on this machine, rather than crashing a
+    single-GPU dev box that inherited a multi-GPU .env.
+    """
+    torch, _ = _import_torch_stack()
+    requested = str(config.LOCAL_ROLE_DEVICES.get(resolved_role, "cuda:0")).strip().lower()
+    if requested == "cpu" or not torch.cuda.is_available():
+        return "cpu"
+    if requested.startswith("cuda:"):
+        try:
+            index = int(requested.split(":", 1)[1])
+        except ValueError:
+            index = 0
+        if index >= torch.cuda.device_count():
+            print(
+                f"[local_models] {resolved_role}: requested {requested} but only "
+                f"{torch.cuda.device_count()} GPU(s) visible; falling back to cuda:0"
+            )
+            index = 0
+        return index
+    return 0
 
 
 def resolve_role(role: Optional[str]) -> str:
@@ -243,7 +273,7 @@ def _load_model(role: str, want_adapter: bool) -> _LoadedModel:
         base_model_id,
         quantization_config=quant_config,
         dtype=_compute_dtype(),
-        device_map={"": 0} if torch.cuda.is_available() else "cpu",
+        device_map={"": _resolve_device(role)} if torch.cuda.is_available() else "cpu",
         trust_remote_code=config.LOCAL_TRUST_REMOTE_CODE,
         attn_implementation=config.LOCAL_ATTN_IMPLEMENTATION,
     )

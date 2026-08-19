@@ -693,7 +693,7 @@ nb5 = notebook(
         "",
         "**Design:** 30 queries x 3 topologies x 3 repeats x 2 arms = **540 runs**.",
         "",
-        "- Topologies: `all` (sequential), `parallel` (concurrent), `dag` (converging).",
+        "- Topologies: `all` (sequential), `parallel` (concurrent), `graph_engineering` (converging + loop engineering).",
         "- Arms: `peft` (adapters loaded) and `base` (identical models, no adapters).",
         "",
         "The `base` arm is the control that makes RQ2 answerable. Without it, a topology",

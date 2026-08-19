@@ -1,4 +1,6 @@
 % RQ2 ablation table. Requires \usepackage{booktabs}.
+% STALE: see metrics_table.tex - measured before the terminal validator was
+% restricted to graph_engineering only. Regenerate before submission.
 \begin{table*}[t]
 \centering
 \caption{RQ2 ablation: each coordination topology run with LoRA-specialised experts (PEFT) and with the identical untuned base models (Base). Values are means over queries and repeats; $\pm$ is the 95\% confidence interval margin.}
@@ -8,7 +10,7 @@
 \toprule
 \textbf{Metric} & \multicolumn{3}{c}{\textbf{PEFT}} & \multicolumn{3}{c}{\textbf{Base}} \\
 \cmidrule(lr){2-4}\cmidrule(lr){5-7}
- & ALL (Sequential) & PARALLEL & DAG (Converging) & ALL (Sequential) & PARALLEL & DAG (Converging) \\
+ & ALL (Sequential) & PARALLEL & Graph Engineering & ALL (Sequential) & PARALLEL & Graph Engineering \\
 \midrule
 \multicolumn{7}{l}{\textit{Judged quality}} \\
 \textbf{Judge Average (1--5)} & 1.80 $\pm$ 0.10 & 1.73 $\pm$ 0.09 & 1.77 $\pm$ 0.10 & 1.75 $\pm$ 0.09 & 1.78 $\pm$ 0.10 & 1.80 $\pm$ 0.09 \\

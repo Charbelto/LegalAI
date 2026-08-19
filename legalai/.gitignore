@@ -1,0 +1,22 @@
+# Python
+__pycache__/
+*.pyc
+.venv/
+venv/
+
+# Secrets / local env
+.env
+.env.local
+
+# Node / frontend build
+frontend/node_modules/
+frontend/dist/
+
+# Generated at runtime - not experiment artifacts worth versioning by default.
+# Existing tracked copies (adapters/, benchmark_runs*.jsonl, etc.) are left
+# alone; this only stops NEW churn from future runs from bloating the repo.
+sessions/
+*.log
+judge_cache.json
+judge_spend.json
+vram_report.json

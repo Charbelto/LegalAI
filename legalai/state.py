@@ -177,7 +177,7 @@ class AgentState(TypedDict):
     # Silent-truncation warnings appended by any agent's _record_tokens (see
     # agents/base.py). Unlike abstained/experts_run above, this can be written
     # by MULTIPLE nodes fanned out in the same step (legal/news/general_qa all
-    # run concurrently for parallel/legal_news_parallel/dag), so it needs a
+    # run concurrently for parallel/legal_news_parallel/graph_engineering), so it needs a
     # reducer - a plain field here raises LangGraph's InvalidUpdateError the
     # moment 2+ of those branches each contribute a value in the same step.
     truncation_warnings: Annotated[List[Dict[str, Any]], append_unique_dicts]

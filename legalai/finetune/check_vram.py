@@ -20,7 +20,7 @@ What it reports
 * One short generation per model, to prove the weights are usable and not merely
   resident.
 * With --concurrent, three simultaneous generations from three threads, which is
-  what the PARALLEL and DAG topologies do. Reports wall-clock against the
+  what the PARALLEL and Graph Engineering topologies do. Reports wall-clock against the
   sequential sum so the speedup (or lack of it) is visible.
 
 If it fails, the fallbacks in plan order are: shorter context
@@ -76,7 +76,7 @@ def main():
     parser.add_argument(
         "--concurrent",
         action="store_true",
-        help="Also run three simultaneous generations (what PARALLEL/DAG do).",
+        help="Also run three simultaneous generations (what PARALLEL/Graph Engineering do).",
     )
     parser.add_argument("--max-new-tokens", type=int, default=48)
     parser.add_argument(
@@ -201,7 +201,7 @@ def main():
         report["sequential_generation_s"] = round(sequential_total, 2)
         report["peak_vram_after_generation"] = _gpu_snapshot()
 
-    # The real question for PARALLEL/DAG: do three experts overlap or queue?
+    # The real question for PARALLEL/Graph Engineering: do three experts overlap or queue?
     if ok and args.concurrent and not args.no_generate:
         print("\n[step0] concurrent generation probe (3 threads, what PARALLEL does)")
         started = time.perf_counter()
@@ -240,7 +240,7 @@ def main():
     # Qwen2.5 3B's 36. Computed from each model's own config, not estimated.
     if ok and report["baseline"]:
         # Budget the CONCURRENT phase, which is what actually stresses the card:
-        # the three experts running at once in PARALLEL/DAG. Their measured
+        # the three experts running at once in PARALLEL/Graph Engineering. Their measured
         # prompts are ~2100 tokens, so --kv-context defaults to that plus the
         # generation budget. config.LOCAL_MAX_INPUT_TOKENS is deliberately much
         # higher (it has to clear the aggregator's ~4500-token prompt) but the

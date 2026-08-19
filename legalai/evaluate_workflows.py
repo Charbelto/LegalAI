@@ -30,7 +30,9 @@ CONFIG_COLORS = {
     "legal_first": "#D97706",          # Amber
     "verify_only": "#E11D48",          # Crimson
     "planner_based": "#2563EB",         # Blue
-    "dag": "#059669"                   # Emerald Green
+    "graph_engineering": "#059669",    # Emerald Green
+    "graph": "#059669",
+    "dag": "#059669"
 }
 
 # --- Lexical similarity functions (reused by analysis) ---
@@ -507,7 +509,9 @@ def main():
 MODE_NAMES = {
     "all": "ALL (Sequential)",
     "parallel": "PARALLEL",
-    "dag": "DAG (Converging)",
+    "graph_engineering": "Graph Engineering",
+    "graph": "Graph Engineering",
+    "dag": "Graph Engineering",
     # Still-implemented but no longer benchmarked topologies, kept so an older
     # or wider run still renders a table.
     "single": "SINGLE (Router)",
@@ -617,7 +621,7 @@ def generate_ablation_table(raw, arms_present):
     metric list than the main table - the point here is the arm contrast, and
     32 rows x 6 columns would not fit a two-column page.
     """
-    mode_order = [m for m in ("all", "parallel", "dag") if m in set(raw["mode"])]
+    mode_order = [m for m in ("all", "parallel", "graph_engineering", "graph", "dag") if m in set(raw["mode"])]
     mode_order += sorted(set(raw["mode"]) - set(mode_order))
     arm_order = [a for a in ("peft", "base") if a in arms_present]
     arm_order += [a for a in arms_present if a not in arm_order]

@@ -149,9 +149,29 @@ if LOCAL_COORDINATOR_ROLE not in LOCAL_PEFT_ROLES:
     LOCAL_COORDINATOR_ROLE = "general_qa"
 LOCAL_COORDINATOR_USE_ADAPTER = os.getenv("LEGALAI_COORDINATOR_USE_ADAPTER", "0") == "1"
 
+# Per-role CUDA device placement. Defaults to "cuda:0" for everything, i.e. the
+# original single-8GB-GPU design where the three models share one device and
+# genuine concurrency during the PARALLEL/graph_engineering expert fan-out comes
+# from each model's own lock (see local_models.py), not from separate hardware.
+#
+# On a multi-GPU host (e.g. a multi-GPU Vast.ai rental) each role can be pinned
+# to its own physical GPU instead, so the concurrent expert phase gets real
+# hardware parallelism rather than three threads timesharing one device:
+#   LEGALAI_LEGAL_DEVICE=cuda:0
+#   LEGALAI_NEWS_DEVICE=cuda:1
+#   LEGALAI_GENERAL_DEVICE=cuda:2
+# Falls back to "cpu" automatically if CUDA is unavailable (see local_models.py).
+LOCAL_ROLE_DEVICES = {
+    "legal": os.getenv("LEGALAI_LEGAL_DEVICE", "cuda:0"),
+    "news": os.getenv("LEGALAI_NEWS_DEVICE", "cuda:0"),
+    "general_qa": os.getenv("LEGALAI_GENERAL_DEVICE", "cuda:0"),
+}
+
 # 4-bit NF4 (QLoRA) by default: three 3-4B models at 4 bits is the only
 # configuration that plausibly co-resides in 8GB. Set to 0 to load in bf16 for a
-# machine with more VRAM.
+# machine with more VRAM (e.g. a 24GB+ Vast.ai rental) - bf16 avoids the
+# dequantisation overhead of NF4 and is both faster and higher-fidelity once VRAM
+# is no longer the binding constraint.
 LOCAL_LOAD_IN_4BIT = os.getenv("LEGALAI_LOAD_IN_4BIT", "1") == "1"
 LOCAL_QUANT_TYPE = os.getenv("LEGALAI_QUANT_TYPE", "nf4")
 LOCAL_DOUBLE_QUANT = os.getenv("LEGALAI_DOUBLE_QUANT", "1") == "1"
@@ -166,7 +186,7 @@ LOCAL_COMPUTE_DTYPE = os.getenv("LEGALAI_COMPUTE_DTYPE", "bfloat16")
 # corpus and 5 retrieved documents, the legal expert's rendered prompt runs
 # 1373-2141 tokens depending on tokenizer. The AGGREGATOR is the long pole: it
 # receives the retrieved context plus up to three expert answers, so roughly
-# 4500 tokens in ALL/PARALLEL/DAG.
+# 4500 tokens in ALL/PARALLEL/Graph Engineering.
 #
 # This ceiling therefore has to clear the aggregator, not just the experts. That
 # is affordable because the aggregator runs ALONE, after the experts have
@@ -248,7 +268,7 @@ MAX_ITERATIONS = 2  # Maximum number of validation retries
 
 # Expert execution mode:
 EXPERT_EXECUTION_MODE = os.getenv("LEGALAI_EXPERT_EXECUTION_MODE", "all").strip().lower()
-if EXPERT_EXECUTION_MODE not in {"all", "single", "parallel", "legal_news_parallel", "legal_first", "verify_only", "planner_based", "dag"}:
+if EXPERT_EXECUTION_MODE not in {"all", "single", "parallel", "legal_news_parallel", "legal_first", "verify_only", "planner_based", "graph_engineering", "graph", "dag"}:
 	EXPERT_EXECUTION_MODE = "all"
 
 # Planner Agent Prompt

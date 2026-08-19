@@ -60,11 +60,13 @@ DPI = 150
 
 # The three compared topologies, in structural order: strict chain, full
 # concurrency, converging dependency.
-MODE_ORDER = ["all", "parallel", "dag"]
+MODE_ORDER = ["all", "parallel", "graph_engineering"]
 MODE_LABELS = {
     "all": "ALL\n(sequential)",
     "parallel": "PARALLEL\n(concurrent)",
-    "dag": "DAG\n(converging)",
+    "graph_engineering": "Graph Engineering\n(converging + loop)",
+    "graph": "Graph Engineering\n(converging + loop)",
+    "dag": "Graph Engineering\n(converging + loop)",
     # Kept so a run that included the still-implemented topologies still plots.
     "single": "SINGLE\n(1 agent)",
     "legal_first": "LEGAL-FIRST\n(conditional)",
@@ -79,6 +81,8 @@ MODE_LABELS = {
 MODE_COLORS = {
     "all": "#2c3e50",
     "parallel": "#2980b9",
+    "graph_engineering": "#16a085",
+    "graph": "#16a085",
     "dag": "#16a085",
 }
 FALLBACK_COLOR = "#7f8c8d"

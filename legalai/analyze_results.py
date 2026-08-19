@@ -193,7 +193,7 @@ def paired_tests(frame, test_metrics, min_pairs=MIN_PAIRS):
     beat single-agent". SINGLE is no longer in the compared set - once each
     expert is a separately fine-tuned model, that question is not the one this
     experiment answers - so the comparison is now all-pairs among the topologies
-    present: ALL vs PARALLEL, ALL vs DAG, PARALLEL vs DAG. With three topologies
+    present: ALL vs PARALLEL, ALL vs Graph Engineering, PARALLEL vs Graph Engineering. With three topologies
     that is three tests, and Holm corrects across exactly that family of three,
     per metric.
 
@@ -304,6 +304,8 @@ def analyze():
         return
 
     df = pd.DataFrame(runs)
+    if "mode" in df.columns:
+        df["mode"] = df["mode"].replace({"dag": "graph_engineering", "graph": "graph_engineering"})
 
     # 3. Compute quality metrics per run
     print("[analysis] Calculating lexical similarity metrics vs gold answers...")
@@ -700,7 +702,7 @@ def analyze():
     # 6. Paired significance tests.
     #
     # Two families of comparison since the PEFT pivot:
-    #   RQ1/RQ3 - all pairs of topologies (ALL / PARALLEL / DAG), run separately
+    #   RQ1/RQ3 - all pairs of topologies (ALL / PARALLEL / Graph Engineering), run separately
     #             within each arm, because comparing a tuned topology against an
     #             untuned one would confound structure with specialisation.
     #   RQ2     - peft vs base within each topology (the ablation).

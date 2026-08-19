@@ -462,15 +462,15 @@ def _mode_rows(mode, n_queries, repeats, judge_value, rng, noise=0.01, arm="peft
 
 
 def _synthetic_runs(n_queries, repeats, single_value, other_value, noise=0.01):
-    """Two-topology frame where 'all' scores `single_value` and 'dag' `other_value`.
+    """Two-topology frame where 'all' scores `single_value` and 'graph_engineering' `other_value`.
 
     Named after the two topologies that are actually compared now. `paired_tests`
-    sorts mode names, so the comparison comes out as "all_vs_dag" and a positive
+    sorts mode names, so the comparison comes out as "all_vs_graph_engineering" and a positive
     Cliff's delta means ALL scored higher.
     """
     rng = np.random.default_rng(0)
     rows = _mode_rows("all", n_queries, repeats, single_value, rng, noise, latency=20.0)
-    rows += _mode_rows("dag", n_queries, repeats, other_value, rng, noise, latency=40.0)
+    rows += _mode_rows("graph_engineering", n_queries, repeats, other_value, rng, noise, latency=40.0)
     return pd.DataFrame(rows)
 
 
@@ -486,7 +486,7 @@ def test_pairs_are_queries_not_repeats(analyze_module):
 
     assert len(sig) == 1
     row = sig.iloc[0]
-    assert row["comparison"] == "all_vs_dag"
+    assert row["comparison"] == "all_vs_graph_engineering"
     assert row["n_queries_paired"] == 8
     assert row["judge_average_n"] == 8
     assert row["judge_average_p"] < 0.05
@@ -499,16 +499,16 @@ def test_all_topology_pairs_are_compared(analyze_module):
 
     The pivot removed SINGLE from the compared set, so there is no baseline to
     test everything against; the design is now all-pairs among ALL / PARALLEL /
-    DAG. A regression to baseline-style testing would silently drop the
-    PARALLEL-vs-DAG comparison, which is the one the paper's ranking depends on.
+    Graph Engineering. A regression to baseline-style testing would silently drop the
+    PARALLEL-vs-Graph Engineering comparison, which is the one the paper's ranking depends on.
     """
     rng = np.random.default_rng(1)
     rows = []
-    for mode, value in (("all", 3.0), ("parallel", 3.5), ("dag", 4.0)):
+    for mode, value in (("all", 3.0), ("parallel", 3.5), ("graph_engineering", 4.0)):
         rows += _mode_rows(mode, 10, 3, value, rng)
     sig = analyze_module.paired_tests(pd.DataFrame(rows), analyze_module.TEST_METRICS)
 
-    assert set(sig["comparison"]) == {"all_vs_dag", "all_vs_parallel", "dag_vs_parallel"}
+    assert set(sig["comparison"]) == {"all_vs_graph_engineering", "all_vs_parallel", "graph_engineering_vs_parallel"}
     assert len(sig) == 3
 
 
@@ -561,7 +561,7 @@ def test_holm_correction_is_applied_across_mode_comparisons(analyze_module):
     """The family of pairwise topology comparisons must be family-wise corrected."""
     rng = np.random.default_rng(3)
     rows = []
-    for mode, value in (("all", 4.0), ("parallel", 3.0), ("dag", 3.4)):
+    for mode, value in (("all", 4.0), ("parallel", 3.0), ("graph_engineering", 3.4)):
         rows += _mode_rows(mode, 10, 3, value, rng)
 
     sig = analyze_module.paired_tests(pd.DataFrame(rows), analyze_module.TEST_METRICS)
@@ -594,14 +594,14 @@ def test_arm_ablation_is_paired_within_each_topology(analyze_module):
     """
     rng = np.random.default_rng(4)
     rows = []
-    for mode in ("all", "parallel", "dag"):
+    for mode in ("all", "parallel", "graph_engineering"):
         rows += _mode_rows(mode, 10, 3, 4.0, rng, arm="peft")
         rows += _mode_rows(mode, 10, 3, 3.0, rng, arm="base")
 
     sig = analyze_module.arm_tests(pd.DataFrame(rows), analyze_module.TEST_METRICS)
 
     assert len(sig) == 3
-    assert set(sig["mode"]) == {"all", "parallel", "dag"}
+    assert set(sig["mode"]) == {"all", "parallel", "graph_engineering"}
     for _, row in sig.iterrows():
         assert row["left"] == "peft" and row["right"] == "base"
         assert row["n_queries_paired"] == 10
@@ -615,7 +615,7 @@ def test_single_arm_run_reports_no_ablation(analyze_module):
     """One arm means RQ2 is unanswerable; return empty rather than a fake control."""
     rng = np.random.default_rng(5)
     rows = []
-    for mode in ("all", "parallel", "dag"):
+    for mode in ("all", "parallel", "graph_engineering"):
         rows += _mode_rows(mode, 10, 3, 4.0, rng, arm="peft")
 
     assert analyze_module.arm_tests(pd.DataFrame(rows), analyze_module.TEST_METRICS).empty
@@ -635,7 +635,7 @@ def test_ablation_without_arm_column_is_not_invented(analyze_module):
 
 
 def test_benchmarked_topologies_are_exactly_the_three_compared():
-    """The paper compares ALL / PARALLEL / DAG and nothing else.
+    """The paper compares ALL / PARALLEL / Graph Engineering and nothing else.
 
     SINGLE and the other topologies stay implemented (see the routing test above,
     which still passes) but must not re-enter the benchmark sweep: doing so would
@@ -654,7 +654,7 @@ def test_benchmarked_topologies_are_exactly_the_three_compared():
         spec.loader.exec_module(module)
     benchmark = sys.modules["benchmark"]
 
-    assert benchmark.MODES == ["all", "parallel", "dag"]
+    assert benchmark.MODES == ["all", "parallel", "graph_engineering"]
     assert "single" not in benchmark.MODES
     assert benchmark.ARMS == ["peft", "base"]
 
@@ -689,7 +689,7 @@ def test_resume_key_includes_the_arm(tmp_path):
     rows = [
         {"query_id": "q01", "mode": "all", "repeat": 0, "arm": "peft", "success": True},
         {"query_id": "q01", "mode": "all", "repeat": 0, "arm": "base", "success": True},
-        {"query_id": "q02", "mode": "dag", "repeat": 1, "success": True},   # pre-pivot row
+        {"query_id": "q02", "mode": "graph_engineering", "repeat": 1, "success": True},   # pre-pivot row
         {"query_id": "q03", "mode": "all", "repeat": 0, "arm": "peft", "success": False},
     ]
     runs_file.write_text(
@@ -713,7 +713,7 @@ def test_resume_key_includes_the_arm(tmp_path):
     assert ("q03", "all", 0, "peft") not in existing, "failed runs must be retried"
     assert ("q03", "all", 0, "base") not in existing
     # Pre-pivot rows attach to peft only, never to every arm.
-    assert ("q02", "dag", 1, "peft") in existing
+    assert ("q02", "graph_engineering", 1, "peft") in existing
     assert ("q02", "dag", 1, "base") not in existing
 
 
@@ -746,6 +746,86 @@ def test_arm_is_recorded_on_every_row():
     # The per-request timeout must accommodate validator retries, which are the
     # common case rather than the exception on local models.
     assert benchmark.REQUEST_TIMEOUT_S >= 1800, benchmark.REQUEST_TIMEOUT_S
+
+
+@pytest.mark.parametrize(
+    "mode,validator_should_run",
+    [
+        ("all", False),
+        ("parallel", False),
+        ("legal_news_parallel", False),
+        ("legal_first", False),
+        ("verify_only", False),
+        ("planner_based", False),
+        ("graph_engineering", True),
+        ("graph", True),
+        ("dag", True),
+    ],
+)
+def test_terminal_validator_runs_only_for_graph_engineering(monkeypatch, mode, validator_should_run):
+    """Loop Engineering (the terminal validator/reflection pass) must be exclusive
+    to graph_engineering, or it is a constant present in every arm rather than the
+    thing the graph_engineering-vs-ALL/PARALLEL comparison is testing.
+
+    Uses the same real-graph-with-stub-agents technique as
+    test_truncation_warnings_survives_expert_node_narrowing so this exercises the
+    actual conditional edges in graph/workflow.py, not a reimplementation of them.
+    """
+    import importlib.util
+    import sys
+    from pathlib import Path
+
+    root = Path(__file__).resolve().parents[1]
+
+    class _NoOpAgent:
+        def __init__(self, *_args, **_kwargs):
+            pass
+
+        def invoke(self, state):
+            return state
+
+    agents_module = sys.modules["agents"]
+    for name in (
+        "PlannerAgent",
+        "RouterAgent",
+        "MemoryAgent",
+        "RetrievalAgent",
+        "LegalAgent",
+        "NewsAgent",
+        "GeneralQAAgent",
+        "AggregatorAgent",
+        "ValidationAgent",
+        "ResponseAgent",
+    ):
+        monkeypatch.setattr(agents_module, name, _NoOpAgent, raising=False)
+
+    sys.modules.pop("graph.workflow", None)
+    spec = importlib.util.spec_from_file_location("graph.workflow", root / "graph" / "workflow.py")
+    workflow = importlib.util.module_from_spec(spec)
+    sys.modules["graph.workflow"] = workflow
+    try:
+        spec.loader.exec_module(workflow)
+
+        compiled = workflow.create_legal_ai_graph()
+        result = compiled.invoke({
+            "query": "What are the obligations for high-risk AI systems?",
+            "session_id": "test",
+            "route": "legal",
+            "expert_execution_mode": mode,
+            "chat_history": [],
+            "retrieved_docs": [],
+            "agent_outputs": {},
+            "agent_timings": {},
+            "thinking_log": [],
+            "validation_result": {},
+        })
+
+        ran = "validator" in result.get("agent_timings", {})
+        assert ran is validator_should_run, (
+            f"mode={mode!r}: expected validator-ran={validator_should_run}, got {ran}"
+        )
+    finally:
+        sys.modules.pop("graph.workflow", None)
 
 
 def test_live_legal_search_is_off_by_default():

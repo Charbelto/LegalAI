@@ -275,7 +275,7 @@ def create_legal_ai_graph() -> Any:
     # Retrieval -> Expert(s)
     def _effective_expert_mode(state: AgentState) -> str:
         mode = str(state.get("expert_execution_mode", config.EXPERT_EXECUTION_MODE)).strip().lower()
-        if mode in {"all", "single", "parallel", "legal_news_parallel", "legal_first", "verify_only", "planner_based", "dag"}:
+        if mode in {"all", "single", "parallel", "legal_news_parallel", "legal_first", "verify_only", "planner_based", "graph_engineering", "graph", "dag"}:
             return mode
         return "all"
 
@@ -306,16 +306,10 @@ def create_legal_ai_graph() -> Any:
             if not experts:
                 return "legal"
             return experts if len(experts) > 1 else experts[0]
-        elif mode == "dag":
+        elif mode in {"graph_engineering", "graph", "dag"}:
             return ["legal", "news"]
 
         # "single" mode: exactly ONE expert, always.
-        #
-        # This branch previously fanned out to 2-3 experts in parallel whenever the
-        # router emitted a multi-label route, which made the "single agent" baseline
-        # a small ensemble and the single-vs-multi comparison unfalsifiable. We now
-        # take the router's *primary* label (the one it mentions first) and run only
-        # that expert. Multi-expert behaviour lives in the multi-agent topologies.
         return select_single_expert(state.get("route", "general"))
 
     workflow.add_conditional_edges(
@@ -333,7 +327,7 @@ def create_legal_ai_graph() -> Any:
         mode = _effective_expert_mode(state)
         route = state.get("route", "")
         is_multi_route = len([r for r in ["legal", "news", "general"] if r in route]) > 1
-        if mode == "dag":
+        if mode in {"graph_engineering", "graph", "dag"}:
             return "general_qa"
         if mode == "planner_based":
             return "aggregator"
@@ -357,7 +351,7 @@ def create_legal_ai_graph() -> Any:
         mode = _effective_expert_mode(state)
         route = state.get("route", "")
         is_multi_route = len([r for r in ["legal", "news", "general"] if r in route]) > 1
-        if mode == "dag":
+        if mode in {"graph_engineering", "graph", "dag"}:
             return "general_qa"
         if mode == "planner_based":
             return "aggregator"
@@ -378,8 +372,32 @@ def create_legal_ai_graph() -> Any:
 
     workflow.add_edge("general_qa", "aggregator")
 
-    # Aggregator -> Validator
-    workflow.add_edge("aggregator", "validator")
+    # Aggregator -> Validator, but ONLY for graph_engineering.
+    #
+    # Loop Engineering (the terminal Reflection/Evaluator-Optimizer pass) is the
+    # architectural feature that distinguishes Graph Engineering from the other
+    # topologies in this experiment. Earlier, the validator ran unconditionally
+    # for every mode, which made "reflection" a constant present in every arm
+    # rather than the thing being tested - ALL and PARALLEL would silently get
+    # the same fix-up pass as graph_engineering, so any quality or latency
+    # difference measured against them was NOT attributable to the terminal
+    # verification loop. Restricting it to graph_engineering makes reflection the
+    # actual manipulated variable: ALL and PARALLEL terminate immediately after
+    # aggregation, graph_engineering alone gets the critique-and-revise loop.
+    def route_after_aggregator(state: AgentState) -> Literal["validator", "response"]:
+        mode = _effective_expert_mode(state)
+        if mode in {"graph_engineering", "graph", "dag"}:
+            return "validator"
+        return "response"
+
+    workflow.add_conditional_edges(
+        "aggregator",
+        route_after_aggregator,
+        {
+            "validator": "validator",
+            "response": "response",
+        },
+    )
 
     # Validator -> Response (if pass) or back to Planner (if fail and retries left)
     # Or re-fetch if sources are bad

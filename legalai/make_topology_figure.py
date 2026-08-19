@@ -29,7 +29,7 @@ EXPERT_COLOR = "#aed6f1"      # domain experts
 SKIPPED_COLOR = "#f2f3f4"     # nodes bypassed by this topology
 # Highlights the three topologies this study compares. Was COMPARED_EDGE,
 # marking the single-agent baseline; SINGLE is no longer a baseline, so the
-# emphasis moves to the compared set (ALL / PARALLEL / DAG).
+# emphasis moves to the compared set (ALL / PARALLEL / Graph Engineering).
 COMPARED_EDGE = "#c0392b"
 ABSTAIN_COLOR = "#f5b7b1"
 
@@ -86,11 +86,11 @@ TOPOLOGIES = [
         False,
     ),
     (
-        "DAG (compared): parallel then convergent",
+        "GRAPH ENGINEERING (compared): parallel convergent + loop engineering",
         [("R", 0, 0, "shared"), ("Retr", 1, 0, "shared"), ("Legal", 2, 0.7, "expert"),
-         ("News", 2, -0.7, "expert"), ("GQA", 3, 0, "expert"), ("Agg", 4, 0, "shared")],
+         ("News", 2, -0.7, "expert"), ("GQA", 3, 0, "expert"), ("Agg", 4, 0, "shared"), ("V", 5, 0, "shared")],
         [("R", "Retr"), ("Retr", "Legal"), ("Retr", "News"), ("Legal", "GQA"),
-         ("News", "GQA"), ("GQA", "Agg")],
+         ("News", "GQA"), ("GQA", "Agg"), ("Agg", "V")],
         True,
     ),
     (
