@@ -65,17 +65,24 @@ python run.py       # the full 540-run benchmark, analysis, and figures
 `setup.py` installs the CUDA build of torch and everything in
 `requirements.txt`/`requirements-finetune.txt`, installs and starts Ollama
 (needed for embeddings - see the note below), and copies `.env.example` to
-`.env` if you don't have one yet. **After it finishes, open `.env` and set
+`.env` if you don't have one yet - **also writing `LEGALAI_LOAD_IN_4BIT=0`
+and `LEGALAI_GENERAL_POOL_SIZE=2`**, since `test.py`/`run.py` both default to
+`--concurrency 4` (see "Using the spare VRAM" below for what that pairing
+means and its VRAM trade-off). **After it finishes, open `.env` and set
 `DEEPSEEK_API_KEY`** (used only by the LLM judge that scores answers after
 generation, never for generation itself). The three LoRA adapters
 (`adapters/legal`, `adapters/news`, `adapters/general_qa`) are already
 committed to the repo, so no fine-tuning step is needed.
 
-`test.py` runs the unit tests, then a tiny 6-request smoke benchmark, and
-prints an estimate for how long the full run will take **on your actual
-rental** - trust that number over anything estimated in this doc. It also
-flags the obvious red flags (abstention sentence everywhere, peft/base
-answers being identical, etc.) - fix those before moving on.
+`test.py` runs the unit tests, then a tiny 6-request smoke benchmark **at the
+same `--concurrency 4` default `run.py` will use**, and prints an estimate
+for how long the full run will take **on your actual rental** - trust that
+number over anything estimated in this doc. It also flags the obvious red
+flags (abstention sentence everywhere, peft/base answers being identical,
+etc.) - fix those before moving on. Both scripts run a VRAM pre-flight check
+automatically before touching concurrency > 1 (see below) - it fails in
+seconds with a clear message if the pool doesn't fit, instead of failing
+hours into a run.
 
 `run.py` runs both experimental arms, then the statistics/judge/charts
 pipeline, and leaves `metrics_table.tex`, `metrics_table_ablation.tex`, and
@@ -94,41 +101,44 @@ shared helper (`ollama_setup.py`) that installs it if missing, starts it if
 it's not running, and pulls the embedding model - you shouldn't need to touch
 it directly.
 
-### Optional: use the spare VRAM (do this after `test.py`, before `run.py`)
+### Using the spare VRAM (this is now the default - read this before your first real run)
 
-A 24GB card holds all three models (bf16, ~18GB) with room to spare. Two
-independent settings in `.env`, both safe to combine, both already commented
-in `.env.example`:
+A 24GB card holds all three models (bf16, ~18GB) with room to spare, so
+`test.py`/`run.py` default to **`--concurrency 4` paired with
+`LEGALAI_GENERAL_POOL_SIZE=2`** (`setup.py` writes that setting into `.env`
+for you). What each half does:
 
-**Free - just run more at once.** `test.py`/`run.py` default to sequential
-(`--concurrency 1`). Legal and News are already different models with their
-own GPU stream, so requests that need different experts at the same time can
-now genuinely overlap:
+**Concurrency 4 - free, just runs more requests at once.** Legal and News are
+already different models with their own GPU stream, so requests that need
+different experts at the same time genuinely overlap instead of queueing.
 
-```bash
-python test.py --concurrency 2   # time it first at the setting you intend to use
-python run.py --concurrency 2
-```
+**`LEGALAI_GENERAL_POOL_SIZE=2` - costs ~5GB, targets the real bottleneck.**
+`general_qa` is the busiest role: besides the General QA expert, every
+coordination node (planner, router, aggregator, validator, response) shares
+its weights, so it's what concurrent requests queue behind most. This loads a
+second copy of Granite so two of those calls can run at once.
 
-**Costs ~5GB - targets the real bottleneck.** `general_qa` is the busiest
-role: besides the General QA expert, every coordination node (planner,
-router, aggregator, validator, response) shares its weights, so it's what
-concurrent requests queue behind most. Add to `.env`:
-
-```bash
-LEGALAI_GENERAL_POOL_SIZE=2
-```
-
-This loads a second copy of Granite so two of those calls can run at once.
-VRAM math (bf16, per replica): Legal ~6.4GB, News ~6.2GB, General QA ~5.1GB -
-`legal=1, news=1, general_qa=2` is already ~23GB of weights on a 24GB card, so
-**confirm it fits before trusting it**:
+**Be honest about the VRAM math, though: this pairing is tight, not
+comfortable.** Per replica in bf16: Legal ~6.4GB, News ~6.2GB, General QA
+~5.1GB. `legal=1, news=1, general_qa=2` is already **~23GB of weights alone
+on a 24GB card**, before KV caches, activations, or CUDA overhead. It's
+plausible this doesn't fit on your specific rental - that's exactly why
+`test.py`/`run.py` both run `finetune/check_vram.py --concurrent` automatically
+before doing anything expensive, and refuse to proceed with a clear message
+if it doesn't report a fit, rather than letting you find out three hours into
+`run.py`. If it fails:
 
 ```bash
-python finetune/check_vram.py --concurrent    # must report PASS
+# in .env, back off the pool:
+LEGALAI_GENERAL_POOL_SIZE=1
+# or run at the safe default:
+python run.py --concurrency 1
+# or rent a 40GB+ card and keep general_qa=2
 ```
 
-If it doesn't fit, drop back to `general_qa=1` or rent a 40GB+ card.
+`--skip-vram-check` exists on both scripts if you've already confirmed it
+fits and don't want to re-check every time, but there's little reason to use
+it - the check takes well under a minute.
 
 **The trade-off:** once you raise concurrency above 1, the recorded latency
 for each run includes queueing time, not just the topology's own work - so

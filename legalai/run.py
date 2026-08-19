@@ -2,7 +2,12 @@
 statistics, charts, and LaTeX tables.
 
     python run.py
-    python run.py --concurrency 2   # use spare VRAM - see VASTAI_DEPLOY.md before raising this
+    python run.py --concurrency 1   # fall back to fully sequential/isolated latency
+
+Defaults to --concurrency 4, paired with LEGALAI_GENERAL_POOL_SIZE=2 in .env
+(see VASTAI_DEPLOY.md) - a reasonable pairing for a 24GB GPU, but a genuinely
+tight one on VRAM (see the pre-flight check below), not a "safe for any card"
+default. Pass --concurrency 1 to disable it entirely.
 
 Takes hours, not minutes - run python test.py first and use its time estimate
 before starting this unattended. Safe to leave running over SSH/screen/tmux;
@@ -23,6 +28,7 @@ from pathlib import Path
 from ollama_setup import ensure_ollama_ready
 
 ROOT = Path(__file__).resolve().parent
+DEFAULT_CONCURRENCY = 4
 
 
 def run(cmd: list[str], required: bool = True) -> None:
@@ -32,19 +38,47 @@ def run(cmd: list[str], required: bool = True) -> None:
         sys.exit(f"[run] '{' '.join(cmd)}' failed (exit {result.returncode}). Stopping.")
 
 
+def check_vram_fits() -> None:
+    """Refuse to start a multi-hour run on a config that won't fit in VRAM.
+
+    LEGALAI_GENERAL_POOL_SIZE=2 (this script's paired default with
+    --concurrency 4) is genuinely tight on a 24GB card - see VASTAI_DEPLOY.md's
+    VRAM math. Better to fail in the ~30s this takes than 3 hours into the run.
+    """
+    print("[run] Pre-flight: confirming the model pool fits in VRAM (finetune/check_vram.py)...")
+    result = subprocess.run(
+        [sys.executable, "finetune/check_vram.py", "--concurrent", "--no-generate"],
+        cwd=ROOT,
+    )
+    if result.returncode != 0:
+        sys.exit(
+            "[run] VRAM check failed - the configured model pool does not fit on this "
+            "GPU. Lower LEGALAI_GENERAL_POOL_SIZE in .env (try 1) and/or pass "
+            "--concurrency 1, or rent a bigger card. See VASTAI_DEPLOY.md."
+        )
+    print("[run] VRAM check passed.")
+
+
 def main() -> None:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument(
-        "--concurrency", type=int, default=1,
-        help="Max in-flight benchmark requests. 1 (default) is the safest, most "
-        "isolated latency measurement. Raising this trades per-request latency "
-        "purity for wall-clock speed on a VRAM-rich GPU - see VASTAI_DEPLOY.md's "
-        "'use the spare VRAM' section before raising it.",
+        "--concurrency", type=int, default=DEFAULT_CONCURRENCY,
+        help=f"Max in-flight benchmark requests. Defaults to {DEFAULT_CONCURRENCY}, "
+        "paired with LEGALAI_GENERAL_POOL_SIZE=2 in .env. Pass 1 for the safest, "
+        "most isolated latency measurement (no pooling/concurrency benefit). See "
+        "VASTAI_DEPLOY.md's 'use the spare VRAM' section for the VRAM trade-off.",
+    )
+    parser.add_argument(
+        "--skip-vram-check", action="store_true",
+        help="Skip the pre-flight VRAM check. Not recommended - see check_vram_fits().",
     )
     args = parser.parse_args()
     concurrency_flags = ["--concurrency", str(args.concurrency)] if args.concurrency > 1 else []
 
     ensure_ollama_ready()
+
+    if args.concurrency > 1 and not args.skip_vram_check:
+        check_vram_fits()
 
     print("[run] [1/6] Validity tests...")
     run([sys.executable, "-m", "pytest", "tests", "-q"])

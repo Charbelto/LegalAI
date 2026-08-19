@@ -45,7 +45,24 @@ def ensure_env_file() -> None:
         print("[setup] WARNING: no .env.example to copy from; create .env yourself.")
         return
     shutil.copy(example, env_file)
-    print("[setup] Created .env from .env.example.")
+
+    # Paired with run.py's/test.py's default of --concurrency 4: this is the
+    # Vast.ai-tailored setup script, so it writes the settings that pairing
+    # assumes rather than leaving them commented out as they are in
+    # .env.example (which targets every environment, including an 8GB laptop
+    # where this would be wrong). run.py's check_vram_fits() verifies this
+    # actually fits before the full benchmark starts - see VASTAI_DEPLOY.md
+    # for the VRAM math, which is genuinely tight on a 24GB card.
+    with env_file.open("a", encoding="utf-8") as f:
+        f.write(
+            "\n# --- Set by setup.py: pairs with run.py/test.py's default "
+            "--concurrency 4 ---\n"
+            "LEGALAI_LOAD_IN_4BIT=0\n"
+            "LEGALAI_GENERAL_POOL_SIZE=2\n"
+        )
+
+    print("[setup] Created .env from .env.example (+ LEGALAI_LOAD_IN_4BIT=0, "
+          "LEGALAI_GENERAL_POOL_SIZE=2 for run.py's default concurrency).")
     print("[setup] >>> Edit .env and set DEEPSEEK_API_KEY before running the full benchmark. <<<")
 
 

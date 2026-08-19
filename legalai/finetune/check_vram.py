@@ -263,7 +263,16 @@ def main():
             )
             # 2 tensors (K and V) x 2 bytes (bf16/fp16) per head-dim element.
             kib_per_token = layers * kv_heads * head_dim * 2 * 2 / 1024
-            kv_mib = kib_per_token * budget["context_tokens"] / 1024
+            # x pool size: config.LOCAL_MODEL_POOL_SIZE loads N independent replicas
+            # of this role (see local_models.py), and ALL of them are resident and
+            # budgeted for, not just the one `models[role]` happens to hold a
+            # reference to (get_loaded_model() round-robins across the pool - see
+            # local_models._next_replica - so `chat` here is only replica 0).
+            # Missing this multiplier previously undercounted the KV budget for any
+            # role with a pool size > 1, which is exactly the configuration this
+            # check exists to validate.
+            pool_size = local_models._pool_size(role)
+            kv_mib = kib_per_token * budget["context_tokens"] / 1024 * pool_size
             total_kv_mib += kv_mib
             per_model.append(
                 {
@@ -273,6 +282,7 @@ def main():
                     "head_dim": head_dim,
                     "grouped_query_attention": bool(kv_heads and heads and kv_heads < heads),
                     "kib_per_token": round(kib_per_token, 1),
+                    "pool_size": pool_size,
                     "kv_cache_mib_at_context": round(kv_mib),
                 }
             )
@@ -290,10 +300,11 @@ def main():
             f"applies to the aggregator, which runs alone)"
         )
         for entry in per_model:
+            pool_note = f" x{entry['pool_size']} replicas" if entry["pool_size"] > 1 else ""
             print(
                 f"  {entry['role']:11s} {entry['layers']:3d}L x {entry['kv_heads']:2d}kv x "
                 f"{entry['head_dim']:3d}d = {entry['kib_per_token']:6.0f} KiB/tok -> "
-                f"{entry['kv_cache_mib_at_context']:5d} MiB"
+                f"{entry['kv_cache_mib_at_context']:5d} MiB{pool_note}"
                 f"{'' if entry['grouped_query_attention'] else '   (no GQA)'}"
             )
         print(
