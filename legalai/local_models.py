@@ -51,6 +51,7 @@ Ollama and DeepSeek paths keep working on a machine with no torch installed.
 
 from __future__ import annotations
 
+import contextlib
 import os
 import threading
 import time
@@ -63,8 +64,17 @@ ROOT_DIR = Path(__file__).resolve().parent
 
 # Lazy, module-level singletons. Imports are deferred into _import_torch_stack()
 # so that merely importing local_models.py on a torch-less machine is harmless.
-_MODELS: Dict[str, "_LoadedModel"] = {}
+#
+# Each cache entry is a POOL (list) of _LoadedModel replicas, not a single
+# instance - see config.LOCAL_MODEL_POOL_SIZE. Pool size 1 (the default) is
+# behaviourally identical to the original one-instance-per-key design.
+_MODELS: Dict[str, List["_LoadedModel"]] = {}
 _LOAD_LOCK = threading.Lock()
+# Round-robins which pool replica the next get_loaded_model() call receives.
+# Kept separate from _LOAD_LOCK, which only guards first-time pool construction
+# - cursor advancement happens on every call and must not serialise on that.
+_POOL_CURSORS: Dict[str, int] = {}
+_POOL_CURSOR_LOCK = threading.Lock()
 _TORCH = None
 _TRANSFORMERS = None
 
@@ -203,17 +213,33 @@ def arm_name() -> str:
 
 
 class _LoadedModel:
-    """One base model (optionally + adapter) plus its tokenizer and lock."""
+    """One base model (optionally + adapter) plus its tokenizer, lock and stream."""
 
-    def __init__(self, key: str, model, tokenizer, base_model_id: str, adapter_dir: Optional[str]):
+    def __init__(
+        self,
+        key: str,
+        model,
+        tokenizer,
+        base_model_id: str,
+        adapter_dir: Optional[str],
+        stream=None,
+    ):
         self.key = key
         self.model = model
         self.tokenizer = tokenizer
         self.base_model_id = base_model_id
         self.adapter_dir = adapter_dir
-        # Per-model, not global: concurrent experts hold different models and
-        # must be able to genuinely overlap (see module docstring).
+        # Per-replica, not global: concurrent experts (and, with a pool size > 1,
+        # concurrent replicas of the SAME role) hold independent models and must
+        # be able to genuinely overlap (see module docstring).
         self.lock = threading.Lock()
+        # A dedicated CUDA stream so this replica's kernels can actually run
+        # concurrently with another replica's on the GPU's own scheduler, rather
+        # than implicitly serialising on PyTorch's shared default stream just
+        # because two Python threads happened to call .generate() around the
+        # same time. None on CPU or when CUDA is unavailable - streams are a
+        # CUDA-only concept.
+        self.stream = stream
 
 
 def _load_model(role: str, want_adapter: bool) -> _LoadedModel:
@@ -269,11 +295,12 @@ def _load_model(role: str, want_adapter: bool) -> _LoadedModel:
     #
     # sdpa attention rather than eager: same numerics, materially less
     # activation memory, which matters when three models share 8GB.
+    device = _resolve_device(role) if torch.cuda.is_available() else "cpu"
     model = transformers.AutoModelForCausalLM.from_pretrained(
         base_model_id,
         quantization_config=quant_config,
         dtype=_compute_dtype(),
-        device_map={"": _resolve_device(role)} if torch.cuda.is_available() else "cpu",
+        device_map={"": device} if torch.cuda.is_available() else "cpu",
         trust_remote_code=config.LOCAL_TRUST_REMOTE_CODE,
         attn_implementation=config.LOCAL_ATTN_IMPLEMENTATION,
     )
@@ -291,12 +318,19 @@ def _load_model(role: str, want_adapter: bool) -> _LoadedModel:
     elapsed = time.perf_counter() - started
     print(f"[local_models]   loaded role={role} in {elapsed:.1f}s")
 
+    # Created on the SAME device the model was placed on - torch.cuda.Stream()
+    # with no device argument binds to whatever device is "current" for this
+    # thread, which is not necessarily this role's configured device on a
+    # multi-GPU host (see LOCAL_ROLE_DEVICES).
+    stream = torch.cuda.Stream(device=device) if torch.cuda.is_available() else None
+
     return _LoadedModel(
         key=_cache_key(role, want_adapter),
         model=model,
         tokenizer=tokenizer,
         base_model_id=base_model_id,
         adapter_dir=str(adapter_dir) if adapter_dir else None,
+        stream=stream,
     )
 
 
@@ -317,25 +351,57 @@ def _cache_key(resolved_role: str, want_adapter: bool) -> str:
     return f"{spec['base_model']}::{suffix}"
 
 
+def _pool_size(resolved_role: str) -> int:
+    """How many replicas to load for this role. 1 unless configured higher."""
+    try:
+        size = int(config.LOCAL_MODEL_POOL_SIZE.get(resolved_role, 1))
+    except (TypeError, ValueError):
+        size = 1
+    return max(1, size)
+
+
+def _next_replica(key: str, pool: List["_LoadedModel"]) -> "_LoadedModel":
+    """Round-robin which pool replica the next caller gets.
+
+    Round-robin rather than "pick whichever is free": with pool size 1 (the
+    common case) there is only one choice, and correctly detecting "free" would
+    need a semaphore per replica for no benefit at that size. At pool size > 1,
+    round-robin still spreads load close to evenly across replicas without
+    needing that extra machinery - a caller that lands on a busy replica just
+    waits on that replica's own lock, exactly as a single-instance role already
+    does today.
+    """
+    if len(pool) == 1:
+        return pool[0]
+    with _POOL_CURSOR_LOCK:
+        index = _POOL_CURSORS.get(key, 0)
+        _POOL_CURSORS[key] = (index + 1) % len(pool)
+    return pool[index]
+
+
 def get_loaded_model(role: Optional[str]) -> _LoadedModel:
-    """Return the cached model for a role, loading it on first use.
+    """Return a cached model replica for a role, loading the pool on first use.
 
     Note the asymmetry, which is deliberate: WHICH weights to load comes from
     the resolved role, but WHETHER to attach the adapter comes from the role as
     requested. See _cache_key.
+
+    Returns one replica from that role's pool (see config.LOCAL_MODEL_POOL_SIZE
+    and _next_replica). Pool size 1 - the default - returns the same single
+    instance every time, identical to the pre-pooling behaviour.
     """
     resolved = resolve_role(role)
     want_adapter = uses_adapter(role)
     key = _cache_key(resolved, want_adapter)
-    cached = _MODELS.get(key)
-    if cached is not None:
-        return cached
-    with _LOAD_LOCK:
-        cached = _MODELS.get(key)
-        if cached is None:
-            cached = _load_model(resolved, want_adapter)
-            _MODELS[key] = cached
-    return cached
+    pool = _MODELS.get(key)
+    if pool is None:
+        with _LOAD_LOCK:
+            pool = _MODELS.get(key)
+            if pool is None:
+                size = _pool_size(resolved)
+                pool = [_load_model(resolved, want_adapter) for _ in range(size)]
+                _MODELS[key] = pool
+    return _next_replica(key, pool)
 
 
 def preload_all(roles: Optional[List[str]] = None) -> Dict[str, Any]:
@@ -363,6 +429,9 @@ def preload_all(roles: Optional[List[str]] = None) -> Dict[str, Any]:
             "role": role,
             "base_model": loaded.base_model_id,
             "adapter_dir": loaded.adapter_dir,
+            "pool_size": _pool_size(resolve_role(role)),
+            # Time to build the WHOLE pool, not one replica: the first call for
+            # a key loads every replica inside _LOAD_LOCK (see get_loaded_model).
             "load_s": round(time.perf_counter() - started, 2),
         }
         if report["cuda_available"]:
@@ -556,19 +625,42 @@ class LocalChatModel:
             gen_kwargs["temperature"] = self.temperature
             gen_kwargs["top_p"] = 0.95
 
+        # A per-call torch.Generator instead of torch.manual_seed/cuda.manual_seed_all.
+        # Those reseed PyTorch's GLOBAL RNG, which was only safe while at most one
+        # generate() call could be in flight system-wide - never actually true
+        # here, since PARALLEL/graph_engineering already run the legal and news
+        # experts concurrently on separate models, and a model-replica pool (see
+        # config.LOCAL_MODEL_POOL_SIZE) adds more concurrent callers still. Two
+        # threads each calling manual_seed() around their own generate() can
+        # interleave and silently reseed each other, breaking the
+        # seed-to-reproducible-output guarantee the benchmark's repeats depend
+        # on. A Generator is call-local state, so concurrent callers cannot step
+        # on each other no matter how many models/replicas run at once.
+        generator = None
+        if self.seed is not None:
+            gen_device = next(self._loaded.model.parameters()).device
+            generator = torch.Generator(device=gen_device).manual_seed(int(self.seed))
+
         started = time.perf_counter()
+        stream_ctx = (
+            torch.cuda.stream(self._loaded.stream)
+            if self._loaded.stream is not None
+            else contextlib.nullcontext()
+        )
         with self._loaded.lock:
-            # Seeding inside the lock: torch's RNG is global, so setting it
-            # outside would let a concurrently-running expert reseed between our
-            # seed call and our generate call, making repeats irreproducible.
-            if self.seed is not None:
-                torch.manual_seed(int(self.seed))
-                if torch.cuda.is_available():
-                    torch.cuda.manual_seed_all(int(self.seed))
-            with torch.inference_mode():
+            with stream_ctx, torch.inference_mode():
                 output = self._loaded.model.generate(
-                    input_ids=input_ids, attention_mask=attention_mask, **gen_kwargs
+                    input_ids=input_ids,
+                    attention_mask=attention_mask,
+                    generator=generator,
+                    **gen_kwargs,
                 )
+            if self._loaded.stream is not None:
+                # The lock is released as soon as this replica's own work is
+                # queued; block only long enough for THIS call's kernels to
+                # finish before reading `output` below, without forcing every
+                # other stream/replica on the device to also drain.
+                self._loaded.stream.synchronize()
         elapsed_ms = (time.perf_counter() - started) * 1000
 
         generated = output[0][prompt_tokens:]
@@ -629,10 +721,11 @@ def unload_all():
     which is the correct outcome - far better than appearing to work while the
     next load OOMs.
     """
-    global _MODELS
+    global _MODELS, _POOL_CURSORS
     with _LOAD_LOCK:
-        cached = list(_MODELS.values())
+        cached = [replica for pool in _MODELS.values() for replica in pool]
         _MODELS = {}
+        _POOL_CURSORS = {}
     for entry in cached:
         entry.model = None
         entry.tokenizer = None

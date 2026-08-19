@@ -261,3 +261,91 @@ def test_adapter_path_is_absolute(local_models_module):
     """Relative adapter paths break the server subprocess, whose cwd may differ."""
     for role in ("legal", "news", "general_qa"):
         assert local_models_module.adapter_path(role).is_absolute()
+
+
+# ---------------------------------------------------------------------------
+# Model replica pooling (LOCAL_MODEL_POOL_SIZE) - exploits spare VRAM on a
+# bigger GPU for genuine intra-role concurrency. Pool size 1 (the default) must
+# be exactly the pre-pooling single-instance behaviour.
+# ---------------------------------------------------------------------------
+
+
+def test_pool_size_defaults_to_one_for_every_role(cfg):
+    """The 8GB-laptop design must be unchanged unless someone opts in."""
+    for role in ("legal", "news", "general_qa"):
+        assert cfg.LOCAL_MODEL_POOL_SIZE[role] == 1
+
+
+def test_pool_size_never_goes_below_one(local_models_module, cfg, monkeypatch):
+    """A misconfigured 0/negative/non-numeric pool size must not disable a role."""
+    monkeypatch.setitem(cfg.LOCAL_MODEL_POOL_SIZE, "general_qa", 0)
+    assert local_models_module._pool_size("general_qa") == 1
+
+    monkeypatch.setitem(cfg.LOCAL_MODEL_POOL_SIZE, "general_qa", -3)
+    assert local_models_module._pool_size("general_qa") == 1
+
+
+def test_next_replica_always_returns_the_only_replica_at_pool_size_one(local_models_module):
+    """No round-robin bookkeeping should kick in when there is nothing to round-robin."""
+    only = object()
+    for _ in range(5):
+        assert local_models_module._next_replica("k", [only]) is only
+    # And it must not have touched the cursor table at all.
+    assert "k" not in local_models_module._POOL_CURSORS
+
+
+def test_next_replica_round_robins_across_a_larger_pool(local_models_module, monkeypatch):
+    """Load should spread evenly across replicas, wrapping back to the start."""
+    monkeypatch.setattr(local_models_module, "_POOL_CURSORS", {})
+    pool = [object(), object(), object()]
+    seen = [local_models_module._next_replica("k", pool) for _ in range(7)]
+    assert seen == [pool[0], pool[1], pool[2], pool[0], pool[1], pool[2], pool[0]]
+
+
+def test_get_loaded_model_builds_a_pool_of_the_configured_size(
+    local_models_module, cfg, monkeypatch
+):
+    """Raising a role's pool size must load that many replicas, once, and cycle them."""
+    monkeypatch.setattr(cfg, "LOCAL_PEFT_USE_ADAPTERS", False)
+    monkeypatch.setitem(cfg.LOCAL_MODEL_POOL_SIZE, "general_qa", 3)
+    monkeypatch.setattr(local_models_module, "_MODELS", {})
+    monkeypatch.setattr(local_models_module, "_POOL_CURSORS", {})
+
+    built = []
+
+    def _fake_load(resolved_role, want_adapter):
+        replica = object()
+        built.append((resolved_role, want_adapter, replica))
+        return replica
+
+    monkeypatch.setattr(local_models_module, "_load_model", _fake_load)
+
+    replicas = [local_models_module.get_loaded_model("aggregator") for _ in range(4)]
+
+    # Exactly 3 replicas built (the configured pool size), not 4 - the pool is
+    # built once on first use and then reused, never reloaded per call.
+    assert len(built) == 3
+    assert all(role == "general_qa" and adapter is False for role, adapter, _ in built)
+
+    pool = [replica for _, _, replica in built]
+    # 4 calls over a 3-replica pool: round-robin, wrapping back to the first.
+    assert replicas == [pool[0], pool[1], pool[2], pool[0]]
+
+
+def test_unload_all_clears_every_replica_in_every_pool(local_models_module, monkeypatch):
+    """A pool of N replicas must release all N, not just one."""
+    replica_a = local_models_module._LoadedModel(
+        key="k::peft", model=object(), tokenizer=object(), base_model_id="m", adapter_dir=None
+    )
+    replica_b = local_models_module._LoadedModel(
+        key="k::peft", model=object(), tokenizer=object(), base_model_id="m", adapter_dir=None
+    )
+    monkeypatch.setattr(local_models_module, "_MODELS", {"m::peft": [replica_a, replica_b]})
+    monkeypatch.setattr(local_models_module, "_POOL_CURSORS", {"m::peft": 1})
+
+    local_models_module.unload_all()
+
+    assert local_models_module._MODELS == {}
+    assert local_models_module._POOL_CURSORS == {}
+    assert replica_a.model is None and replica_a.tokenizer is None
+    assert replica_b.model is None and replica_b.tokenizer is None

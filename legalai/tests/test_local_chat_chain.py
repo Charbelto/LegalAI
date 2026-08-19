@@ -258,7 +258,9 @@ def test_unload_all_releases_weights_even_with_a_live_reference(
         key="stub::peft", model=model, tokenizer=tokenizer,
         base_model_id="stub/model", adapter_dir=None,
     )
-    monkeypatch.setattr(local_models_module, "_MODELS", {"stub::peft": entry})
+    # _MODELS holds a POOL (list) of replicas per key, not a bare instance -
+    # see config.LOCAL_MODEL_POOL_SIZE / local_models.get_loaded_model.
+    monkeypatch.setattr(local_models_module, "_MODELS", {"stub::peft": [entry]})
 
     # A caller still holding the chat model, exactly as validate_adapters did.
     monkeypatch.setattr(local_models_module, "get_loaded_model", lambda role: entry)

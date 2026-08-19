@@ -167,6 +167,38 @@ LOCAL_ROLE_DEVICES = {
     "general_qa": os.getenv("LEGALAI_GENERAL_DEVICE", "cuda:0"),
 }
 
+# Per-role model REPLICA POOL size. 1 (default, matches the original 8GB-laptop
+# design exactly) means one loaded instance per (base model, arm) key, serving
+# requests one at a time behind its own lock - correct when only one copy of
+# each model fits in VRAM at all.
+#
+# On a bigger GPU (e.g. a 24GB Vast.ai rental), raising a role's pool size loads
+# N independent copies of that role's weights, so N concurrent requests can use
+# the SAME role's model at once instead of queueing behind one lock. This is a
+# genuine, not simulated, speedup: single-request (batch=1) decode of a 2-3B
+# model leaves most of a modern GPU's compute idle, so a handful of concurrent
+# decode streams (see the per-replica CUDA stream in local_models.py) can
+# overlap real work up to memory-bandwidth saturation.
+#
+# general_qa is the busiest role by far - besides the general_qa expert itself,
+# EVERY coordination node (planner, router, aggregator, validator, response)
+# also resolves to it (see resolve_role() / LOCAL_COORDINATOR_ROLE), so it is
+# the first thing to bottleneck as benchmark concurrency rises. Size it first.
+#
+# VRAM check before raising these: each replica costs roughly
+# params * 2 bytes (bf16) - legal (Llama 3.2 3B) ~6.4GB, news (Qwen2.5 3B)
+# ~6.2GB, general_qa (Granite 3.1 2B) ~5.1GB per replica - plus KV cache and
+# activation memory on top. A 24GB card comfortably fits legal=1, news=1,
+# general_qa=2 (~23GB); pushing further risks an OOM at startup rather than a
+# graceful degradation, so increase one role at a time and watch
+# torch.cuda.mem_get_info (finetune/check_vram.py --concurrent) before trusting
+# a new setting.
+LOCAL_MODEL_POOL_SIZE = {
+    "legal": int(os.getenv("LEGALAI_LEGAL_POOL_SIZE", "1")),
+    "news": int(os.getenv("LEGALAI_NEWS_POOL_SIZE", "1")),
+    "general_qa": int(os.getenv("LEGALAI_GENERAL_POOL_SIZE", "1")),
+}
+
 # 4-bit NF4 (QLoRA) by default: three 3-4B models at 4 bits is the only
 # configuration that plausibly co-resides in 8GB. Set to 0 to load in bf16 for a
 # machine with more VRAM (e.g. a 24GB+ Vast.ai rental) - bf16 avoids the

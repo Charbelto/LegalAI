@@ -388,12 +388,23 @@ def run_benchmark():
         type=int,
         default=int(os.getenv("BENCH_CONCURRENCY", "1")),
         help="Max in-flight requests. 1 (default) preserves the original sequential "
-        "behaviour - safe for local Ollama generation. Raise this only against "
-        "GENERATION_PROVIDER=deepseek (or another hosted API): the server no longer "
-        "serializes requests, but a shared local Ollama backend can still choke on "
-        "true concurrency without OLLAMA_NUM_PARALLEL raised, and per-request seeds "
-        "are only race-free for providers that ignore the seed (DeepSeek does; see "
-        "agents/base.py build_chat_llm).",
+        "behaviour - safe everywhere, and the only setting that measures each "
+        "request's latency in true isolation. Raise this against "
+        "GENERATION_PROVIDER=deepseek (or another hosted API) freely - the server "
+        "no longer serializes requests there. For local_peft on a VRAM-rich GPU, "
+        "raising it is now also supported: see config.LOCAL_MODEL_POOL_SIZE and "
+        "local_models.py's per-replica CUDA streams, which let concurrent requests "
+        "genuinely overlap instead of only queueing on one shared model lock. Doing "
+        "so trades per-request latency purity for wall-clock throughput - recorded "
+        "elapsed_s at concurrency > 1 includes queueing/contention delay, not just "
+        "the topology's own work, so latency comparisons remain valid ACROSS "
+        "topologies (the same concurrency level is applied uniformly to all three) "
+        "but are no longer isolated-request latency numbers; disclose the "
+        "concurrency level used alongside any latency figure. A shared local "
+        "Ollama backend (embeddings) can still choke on true concurrency without "
+        "OLLAMA_NUM_PARALLEL raised, and per-request seeds are race-free regardless "
+        "of provider now that local generation seeds via a per-call torch.Generator "
+        "rather than the global RNG (see local_models.py LocalChatModel.invoke).",
     )
     parser.add_argument(
         "--limit",

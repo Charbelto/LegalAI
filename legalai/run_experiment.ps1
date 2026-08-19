@@ -36,9 +36,14 @@ param(
     [int]$Repeats = 3,
     [int]$Concurrency = 0                 # max in-flight benchmark requests. 0 = auto: 8 for
                                            # deepseek generation, 1 (sequential) for ollama and
-                                           # local_peft. Do not raise it for local_peft: one GPU
-                                           # serialises anyway and client-side concurrency only
-                                           # corrupts the latency measurements.
+                                           # local_peft. For local_peft on a VRAM-rich GPU (e.g. a
+                                           # Vast.ai rental), raising this is supported via
+                                           # config.LOCAL_MODEL_POOL_SIZE (per-role model replicas)
+                                           # and local_models.py's per-replica CUDA streams - see
+                                           # VASTAI_DEPLOY.md. It trades isolated per-request
+                                           # latency for wall-clock throughput; apply the same
+                                           # concurrency level to every topology in a run so the
+                                           # cross-topology latency comparison stays valid.
 )
 
 $ErrorActionPreference = "Stop"

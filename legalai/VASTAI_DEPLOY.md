@@ -30,16 +30,61 @@ Once VRAM is no longer the binding constraint, set `LEGALAI_LOAD_IN_4BIT=0` in
 the bitsandbytes dequantisation overhead on every forward pass and is both
 faster and higher-fidelity than the laptop's 4-bit configuration.
 
-Do **not** raise `benchmark.py --concurrency` for `local_peft` generation
-regardless of GPU: each of the three models is a single loaded instance guarded
-by its own lock (see `local_models.py`), so concurrent HTTP requests queue on
-whichever model they need rather than genuinely parallelising, and client-side
-concurrency only corrupts the latency measurements (see `run_experiment.ps1`'s
-own comment on this). The real concurrency in this design happens *inside* one
-graph run, when `parallel`/`graph_engineering` fan Legal and News out to two
-different models at once - that already works on a single GPU via per-model
-locks, and multi-GPU device pinning (below) makes it genuine hardware
-parallelism if you rent more than one GPU.
+### Using the spare VRAM: replica pools + benchmark concurrency
+
+A 24GB card holds all three models (bf16, ~18GB) with room to spare, which
+this codebase can now use for genuine intra-role concurrency instead of
+sitting idle. Two independent knobs, both safe to combine:
+
+**Tier 1 - free, zero extra VRAM.** Raise `benchmark.py --concurrency` (or
+`CONCURRENCY=2` for `run_experiment.sh`) to 2 or 3 even with every pool size
+left at 1. Legal and News are already different loaded models with their own
+lock, so two concurrent benchmark requests that land on Legal and News at the
+same time now overlap for real - each gets its own CUDA stream (see
+`local_models.py`'s `_LoadedModel.stream`), so their kernels genuinely
+interleave on the GPU instead of implicitly serialising on one shared default
+stream. This is the same mechanism that already lets `parallel`/
+`graph_engineering` fan Legal and News out *within* one request; raising
+`--concurrency` extends it *across* requests too, for free.
+
+**Tier 2 - costs VRAM, targets the real bottleneck.** `general_qa` is the
+busiest role by a wide margin: besides the General QA expert itself, every
+coordination node (planner, router, aggregator, validator, response) also
+resolves to it (see `resolve_role()` / `LOCAL_COORDINATOR_ROLE`), so it is
+what most concurrent requests end up queueing behind. `LEGALAI_GENERAL_POOL_SIZE=2`
+loads a second independent copy of Granite (~5GB more) so two of those calls
+can run at once instead of one waiting on the other's lock:
+
+```bash
+export LEGALAI_GENERAL_POOL_SIZE=2   # ~5GB extra VRAM; legal/news stay at 1
+```
+
+VRAM math to check before raising further (bf16, per replica): Legal
+(Llama 3.2 3B) ~6.4GB, News (Qwen2.5 3B) ~6.2GB, General QA (Granite 3.1 2B)
+~5.1GB; KV cache per replica at benchmark context lengths is only a few hundred
+MB (see `finetune/check_vram.py`'s KV budget), so weights dominate the total.
+`legal=1, news=1, general_qa=2` is ~23GB of weights alone on a 24GB card -
+workable but with little headroom for activations/CUDA context, so **run
+`finetune/check_vram.py --concurrent` after changing a pool size and confirm
+it reports `PASS` before trusting it**, rather than assuming the arithmetic
+above holds exactly on your specific rental. If it doesn't fit, either drop
+back to `general_qa=1` (raising benchmark `--concurrency` alone still helps
+Legal/News) or rent a 40GB+ card.
+
+**What this costs you:** recorded `elapsed_s` at concurrency > 1 includes
+queueing/contention time, not just the topology's own work, so it is no longer
+an isolated per-request latency measurement. Apply the *same* concurrency
+level to every topology and both arms in one benchmark pass (which
+`run_experiment.sh`/`.ps1` already do - concurrency is a single flag for the
+whole run) so the relative latency comparison between ALL/PARALLEL/
+graph_engineering - what the paper's significance tests actually use - stays
+valid, and disclose the concurrency level used alongside any absolute latency
+figure in the paper.
+
+Multi-GPU device pinning (below) is the other lever if you rent more than one
+GPU: it gives Legal/News/General QA their own physical device each, so the
+concurrent expert phase gets real hardware parallelism instead of sharing one
+device's compute via streams.
 
 ### Optional: multi-GPU device pinning
 
@@ -92,6 +137,7 @@ Create `.env` (copy `.env.example` if present, otherwise create it) with at leas
 ```bash
 GENERATION_PROVIDER=local_peft
 LEGALAI_LOAD_IN_4BIT=0          # bf16 - see the GPU sizing note above
+LEGALAI_GENERAL_POOL_SIZE=2     # optional Tier 2 - only after check_vram.py --concurrent confirms it fits
 DEEPSEEK_API_KEY=sk-...         # for the LLM judge only; never used for generation
 JUDGE_PROVIDER=deepseek
 JUDGE_MODEL=deepseek-v4-flash
@@ -115,13 +161,27 @@ chmod +x run_experiment.sh
 ./run_experiment.sh --smoke --yes             # 1 query x 3 modes x 1 repeat per arm
 ```
 
-Inspect `benchmark_runs_smoke.jsonl` per the checklist in `run_experiment.ps1`
-(no abstention-sentence-everywhere, peft/base answers actually differ, modes
-differ from each other within an arm). If it looks right:
+Time the smoke run and extrapolate before committing to the full run:
 
 ```bash
-./run_experiment.sh --yes                     # full 540-run benchmark + analysis + figures
+python -c "import json,statistics; rows=[json.loads(l) for l in open('benchmark_runs_smoke.jsonl')]; times=[r['elapsed_s'] for r in rows if r.get('success')]; print(f'{statistics.mean(times):.1f}s avg over {len(times)} runs -> full 540-run estimate: {statistics.mean(times)*540/3600:.1f} hours')"
 ```
+
+Inspect `benchmark_runs_smoke.jsonl` per the checklist in `run_experiment.ps1`
+(no abstention-sentence-everywhere, peft/base answers actually differ, modes
+differ from each other within an arm). If it looks right, run the full
+benchmark - `CONCURRENCY` applies the Tier 1/2 settings above uniformly across
+the whole run:
+
+```bash
+CONCURRENCY=2 ./run_experiment.sh --yes       # full 540-run benchmark + analysis + figures
+```
+
+Rough expectation: bf16 + per-replica CUDA streams alone (no concurrency
+change) should already beat the 8-13 hour 4-bit/single-stream estimate;
+`CONCURRENCY=2`-`3` on top of that is the difference between "several hours"
+and "closer to one" - but treat both as directional. The smoke-run
+extrapolation above, measured on your actual rental, is the number to trust.
 
 `--yes` skips the interactive confirmations (judge-preflight cost check,
 DeepSeek self-judging warning) so the run can proceed unattended over SSH -
@@ -152,3 +212,13 @@ terminate immediately after aggregation. Any `metrics_table.tex` /
 `metrics_table_ablation.tex` produced by a run against the current code
 reflects that; numbers already in the repo from before this change do not
 (they show identical 20-step graphs for every topology, which was the bug).
+
+Also note for the write-up: `local_models.py` now seeds each generation call
+with its own `torch.Generator` instead of the old `torch.manual_seed()` /
+`torch.cuda.manual_seed_all()` pair, which reseeded PyTorch's global RNG and
+could be silently clobbered by a concurrently-running call (already possible
+pre-pooling, since Legal and News already ran concurrently in `parallel`/
+`graph_engineering`, and more likely now with replica pools and raised
+benchmark concurrency). If you ever re-verify "same seed -> identical output"
+as part of validating a run, that check is now actually sound under
+concurrency; it was a latent gap before.
