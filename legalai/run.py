@@ -105,8 +105,12 @@ def main() -> None:
     run([sys.executable, "llm_judge.py", "--spend"], required=False)
 
     print("\n=== Done ===")
-    print("metrics_table.tex, metrics_table_ablation.tex, and paper_figures/*.png are ready.")
-    print("Copy them back to your local machine (scp) or commit + push - see VASTAI_DEPLOY.md.")
+    print("Ready to copy out - see VASTAI_DEPLOY.md 'Get the results back':")
+    print("  evaluation_assets/*.png     <- what overleaf_paper.tex actually includes (as figures/)")
+    print("  metrics_table.tex, metrics_table_ablation.tex")
+    print("  benchmark_runs.jsonl, run_meta*.json, analysis_summary.csv, significance.csv,")
+    print("  by_query_type.csv, results.json")
+    print("  paper_figures/*.png         <- extra figure set, not yet wired into the paper")
 
 
 if __name__ == "__main__":

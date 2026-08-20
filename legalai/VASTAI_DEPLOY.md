@@ -163,14 +163,28 @@ Leave these unset on a single-GPU rental.
 
 ## 4. Get the results back
 
-The run produces `benchmark_runs.jsonl`, `run_meta*.json`, `analysis_summary.csv`,
-`significance.csv`, `by_query_type.csv`, `metrics_table.tex`,
-`metrics_table_ablation.tex`, and `paper_figures/*.png`. Either:
+**What you actually need**, in order of importance:
+
+| File/folder | What it is |
+|---|---|
+| `evaluation_assets/*.png` | The charts `overleaf_paper.tex` actually `\includegraphics`'s (chart1_e2e_latency.png ... chart29_performance_radar.png). Upload these into a folder named `figures/` in Overleaf - the .tex has `\graphicspath{{figures/}}`. |
+| `metrics_table.tex`, `metrics_table_ablation.tex` | The two results tables, `\input` directly by the paper. |
+| `benchmark_runs.jsonl` | Every raw run - your only record of the actual generated answers. Keep this regardless of everything else. |
+| `run_meta.json`, `run_meta_peft.json`, `run_meta_base.json` | Provenance: seeds, git commit, timings, config - keep so the run stays reproducible/citable. |
+| `analysis_summary.csv`, `significance.csv`, `by_query_type.csv`, `results.json` | The statistics behind the tables - keep for your own reference and reviewer questions. |
+
+`run.py` also produces `paper_figures/*.png` (`fig0_topologies.png`,
+`fig1_operational.png`, etc., from `make_paper_figures.py`/
+`make_topology_figure.py`) - a *different*, differently-named figure set that
+is **not currently referenced anywhere in `overleaf_paper.tex`**. Worth
+grabbing too (it includes a topology diagram), but it won't appear in your
+compiled PDF unless you add `\includegraphics` calls for it yourself.
 
 ```bash
 # from your local machine
+scp -P <port> -r root@<host>:~/LegalAI/legalai/evaluation_assets ./evaluation_assets
 scp -P <port> -r root@<host>:~/LegalAI/legalai/paper_figures ./paper_figures
-scp -P <port> root@<host>:~/LegalAI/legalai/{benchmark_runs.jsonl,analysis_summary.csv,significance.csv,by_query_type.csv,metrics_table.tex,metrics_table_ablation.tex} ./
+scp -P <port> root@<host>:~/LegalAI/legalai/{benchmark_runs.jsonl,run_meta.json,run_meta_peft.json,run_meta_base.json,analysis_summary.csv,significance.csv,by_query_type.csv,results.json,metrics_table.tex,metrics_table_ablation.tex} ./
 ```
 
 or commit them from the instance and push (see the main README for the
