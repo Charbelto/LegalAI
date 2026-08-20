@@ -29,10 +29,33 @@ def run(cmd: list[str]) -> None:
 def install_python_deps() -> None:
     # torch FIRST from PyTorch's own CUDA index, or pip silently grabs a
     # CPU-only wheel from PyPI and every model runs on the CPU.
-    run([sys.executable, "-m", "pip", "install", "torch",
+    #
+    # --force-reinstall --no-deps matters on templates that ship their own
+    # torch (e.g. Vast.ai's "PyTorch" template): plain `pip install torch
+    # --index-url ...` with no version pin treats ANY already-installed torch
+    # as satisfying the requirement and silently does nothing, which would
+    # leave the template's pre-baked build (possibly CPU-only, possibly a
+    # different CUDA version) in place instead of the cu126 build this project
+    # is verified against. --no-deps avoids reinstalling torch's dependency
+    # tree, which would otherwise make this slow for no benefit.
+    run([sys.executable, "-m", "pip", "install", "--force-reinstall", "--no-deps", "torch",
          "--index-url", "https://download.pytorch.org/whl/cu126"])
     run([sys.executable, "-m", "pip", "install", "-r", "requirements.txt"])
     run([sys.executable, "-m", "pip", "install", "-r", "requirements-finetune.txt"])
+
+    print("[setup] Verifying torch sees the GPU...")
+    check = subprocess.run(
+        [sys.executable, "-c",
+         "import torch, sys; print('torch', torch.__version__, 'cuda_available=', torch.cuda.is_available()); "
+         "sys.exit(0 if torch.cuda.is_available() else 1)"],
+        cwd=ROOT,
+    )
+    if check.returncode != 0:
+        sys.exit(
+            "[setup] torch cannot see a GPU. Either the install above failed, or this "
+            "instance has no GPU/driver attached - check `nvidia-smi` works before "
+            "continuing. Everything past this point needs a working GPU."
+        )
 
 
 def ensure_env_file() -> None:
