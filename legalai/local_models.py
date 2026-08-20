@@ -625,22 +625,20 @@ class LocalChatModel:
             gen_kwargs["temperature"] = self.temperature
             gen_kwargs["top_p"] = 0.95
 
-        # A per-call torch.Generator instead of torch.manual_seed/cuda.manual_seed_all.
-        # Those reseed PyTorch's GLOBAL RNG, which was only safe while at most one
-        # generate() call could be in flight system-wide - never actually true
-        # here, since PARALLEL/graph_engineering already run the legal and news
-        # experts concurrently on separate models, and a model-replica pool (see
-        # config.LOCAL_MODEL_POOL_SIZE) adds more concurrent callers still. Two
-        # threads each calling manual_seed() around their own generate() can
-        # interleave and silently reseed each other, breaking the
-        # seed-to-reproducible-output guarantee the benchmark's repeats depend
-        # on. A Generator is call-local state, so concurrent callers cannot step
-        # on each other no matter how many models/replicas run at once.
-        generator = None
-        if self.seed is not None:
-            gen_device = next(self._loaded.model.parameters()).device
-            generator = torch.Generator(device=gen_device).manual_seed(int(self.seed))
-
+        # Tried passing a per-call torch.Generator(...) as generate(generator=...)
+        # here, to avoid reseeding PyTorch's global RNG (see the reasoning that
+        # used to be in this comment - concurrent replicas/models CAN step on
+        # each other's manual_seed() calls, which is a real, still-unresolved
+        # race). Reverted: transformers' generate() validates kwargs against the
+        # model's forward signature and rejects anything it doesn't recognise -
+        # "The following model_kwargs are not used by the model: ['generator']"
+        # - confirmed on a real run (transformers 5.14.1 has no generate()-level
+        # generator passthrough). Back to manual_seed()/cuda.manual_seed_all()
+        # inside the per-replica lock, which is what this codebase always did:
+        # it narrows the race to "another replica's generate() call happens to
+        # run between our seed call and our generate call", not "any call
+        # anywhere", and is the best available option without a working
+        # generator API in this transformers version.
         started = time.perf_counter()
         stream_ctx = (
             torch.cuda.stream(self._loaded.stream)
@@ -648,11 +646,14 @@ class LocalChatModel:
             else contextlib.nullcontext()
         )
         with self._loaded.lock:
+            if self.seed is not None:
+                torch.manual_seed(int(self.seed))
+                if torch.cuda.is_available():
+                    torch.cuda.manual_seed_all(int(self.seed))
             with stream_ctx, torch.inference_mode():
                 output = self._loaded.model.generate(
                     input_ids=input_ids,
                     attention_mask=attention_mask,
-                    generator=generator,
                     **gen_kwargs,
                 )
             if self._loaded.stream is not None:

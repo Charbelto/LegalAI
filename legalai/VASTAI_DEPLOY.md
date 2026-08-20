@@ -200,12 +200,19 @@ terminate immediately after aggregation. Any `metrics_table.tex` /
 reflects that; numbers already in the repo from before this change do not
 (they show identical 20-step graphs for every topology, which was the bug).
 
-Also note for the write-up: `local_models.py` now seeds each generation call
-with its own `torch.Generator` instead of the old `torch.manual_seed()` /
-`torch.cuda.manual_seed_all()` pair, which reseeded PyTorch's global RNG and
-could be silently clobbered by a concurrently-running call (already possible
-pre-pooling, since Legal and News already ran concurrently in `parallel`/
-`graph_engineering`, and more likely now with replica pools and raised
-benchmark concurrency). If you ever re-verify "same seed -> identical output"
-as part of validating a run, that check is now actually sound under
-concurrency; it was a latent gap before.
+Also note for the write-up: `local_models.py` still seeds generation with
+`torch.manual_seed()` / `torch.cuda.manual_seed_all()`, which reseed
+PyTorch's *global* RNG rather than a call-local one. A per-call
+`torch.Generator` passed as `generate(generator=...)` was tried as a safer
+alternative and reverted - this transformers version's `generate()` validates
+kwargs against the model's forward signature and rejects `generator` outright
+("model_kwargs are not used by the model"). So the race this would have
+closed is still open in principle: two replicas/models generating at the
+exact same instant could reseed each other, since both hold the SAME global
+RNG regardless of which per-replica lock they're under. In practice the
+window is narrow and the pre-pooling code had the identical limitation
+(Legal and News already ran concurrently), so this isn't a new regression -
+just not the improvement it was meant to be. If "same seed -> identical
+output" ever matters for validating a run, re-test it under whatever
+concurrency/pool settings you're actually using, don't assume it from this
+note.
