@@ -2,12 +2,17 @@
 statistics, charts, and LaTeX tables.
 
     python run.py
-    python run.py --concurrency 1   # fall back to fully sequential/isolated latency
+    python run.py --concurrency 4   # only after re-verifying it fits - see below
 
-Defaults to --concurrency 4, paired with LEGALAI_GENERAL_POOL_SIZE=2 in .env
-(see VASTAI_DEPLOY.md) - a reasonable pairing for a 24GB GPU, but a genuinely
-tight one on VRAM (see the pre-flight check below), not a "safe for any card"
-default. Pass --concurrency 1 to disable it entirely.
+Defaults to --concurrency 1 (fully sequential). --concurrency 4 paired with
+LEGALAI_GENERAL_POOL_SIZE=2 was tried on a real 24GB RTX 4090 and produced a
+genuine CUDA OOM under actual concurrent load ("aggregator" node's ~4500-token
+prompt, multiple in flight at once) - the VRAM pre-flight check below only
+validates that model weights + a static KV-cache estimate fit, not real
+activation memory under concurrent generation, so it gave false confidence.
+Do not re-enable that pairing as the default; if you want to retry it,
+increase concurrency one step at a time (2, then 3, ...) and watch
+`nvidia-smi` during an actual run, not just the pre-flight check.
 
 Takes hours, not minutes - run python test.py first and use its time estimate
 before starting this unattended. Safe to leave running over SSH/screen/tmux;
@@ -28,7 +33,7 @@ from pathlib import Path
 from ollama_setup import ensure_ollama_ready
 
 ROOT = Path(__file__).resolve().parent
-DEFAULT_CONCURRENCY = 4
+DEFAULT_CONCURRENCY = 1  # see the module docstring - 4 OOM'd on a real 24GB card
 
 
 def run(cmd: list[str], required: bool = True) -> None:
@@ -63,10 +68,12 @@ def main() -> None:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument(
         "--concurrency", type=int, default=DEFAULT_CONCURRENCY,
-        help=f"Max in-flight benchmark requests. Defaults to {DEFAULT_CONCURRENCY}, "
-        "paired with LEGALAI_GENERAL_POOL_SIZE=2 in .env. Pass 1 for the safest, "
-        "most isolated latency measurement (no pooling/concurrency benefit). See "
-        "VASTAI_DEPLOY.md's 'use the spare VRAM' section for the VRAM trade-off.",
+        help=f"Max in-flight benchmark requests. Defaults to {DEFAULT_CONCURRENCY} "
+        "(sequential) - the safest, most isolated latency measurement, and the only "
+        "setting confirmed not to OOM on a real 24GB card. Raising this needs "
+        "LEGALAI_GENERAL_POOL_SIZE > 1 in .env to have any effect, and was found to "
+        "OOM at concurrency=4/pool=2 under real load - see VASTAI_DEPLOY.md's 'use "
+        "the spare VRAM' section before trying it again.",
     )
     parser.add_argument(
         "--skip-vram-check", action="store_true",

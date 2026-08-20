@@ -1,16 +1,19 @@
 """Quick sanity check before committing to the full run.
 
     python test.py
-    python test.py --concurrency 1   # match a python run.py --concurrency 1 fallback
+    python test.py --concurrency 2   # match whatever you plan to pass to run.py
 
-Matches run.py's default (--concurrency 4, paired with LEGALAI_GENERAL_POOL_SIZE=2
-in .env - see VASTAI_DEPLOY.md) so the timing estimate reflects what python
-run.py will actually do, not a sequential best case. Runs 1 query x 3
-topologies x 1 repeat, for both the peft and base arms (6 requests total) - a
-few minutes, not hours - then prints a time estimate for the full 540-run
-benchmark extrapolated from what it just measured on THIS machine. Run this
-before python run.py, not instead of it: the numbers this produces are too
-few to trust as results, only as a sanity/timing check.
+Matches run.py's default (--concurrency 1, sequential - see its docstring for
+why raising this needs care) so the timing estimate reflects what python
+run.py will actually do. Runs 1 query x 3 topologies x 1 repeat, for both the
+peft and base arms (6 requests total) - a few minutes, not hours - then
+prints a time estimate for the full 540-run benchmark extrapolated from what
+it just measured on THIS machine. Run this before python run.py, not instead
+of it: the numbers this produces are too few to trust as results, only as a
+sanity/timing check. Passing --concurrency > 1 exercises the VRAM pre-flight
+check, but that check only validates static weight/KV-cache size, not real
+activation memory under concurrent generation - it gave false confidence
+before, so treat a PASS from it as a hint, not a guarantee.
 """
 
 from __future__ import annotations
@@ -26,7 +29,7 @@ from ollama_setup import ensure_ollama_ready
 ROOT = Path(__file__).resolve().parent
 SMOKE_FILE = ROOT / "benchmark_runs_smoke.jsonl"
 FULL_RUN_COUNT = 540  # 30 queries x 3 topologies x 3 repeats x 2 arms
-DEFAULT_CONCURRENCY = 4  # keep in sync with run.py's DEFAULT_CONCURRENCY
+DEFAULT_CONCURRENCY = 1  # keep in sync with run.py's DEFAULT_CONCURRENCY - see its docstring
 
 
 def run(cmd: list[str]) -> None:

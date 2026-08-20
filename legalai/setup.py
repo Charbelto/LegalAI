@@ -87,23 +87,21 @@ def ensure_env_file() -> None:
         return
     shutil.copy(example, env_file)
 
-    # Paired with run.py's/test.py's default of --concurrency 4: this is the
-    # Vast.ai-tailored setup script, so it writes the settings that pairing
-    # assumes rather than leaving them commented out as they are in
-    # .env.example (which targets every environment, including an 8GB laptop
-    # where this would be wrong). run.py's check_vram_fits() verifies this
-    # actually fits before the full benchmark starts - see VASTAI_DEPLOY.md
-    # for the VRAM math, which is genuinely tight on a 24GB card.
+    # Vast.ai has enough VRAM to drop 4-bit quantization (see VASTAI_DEPLOY.md),
+    # so that's still safe to default on. LEGALAI_GENERAL_POOL_SIZE is left at
+    # config.py's own default (1) - pool=2 paired with --concurrency 4 produced
+    # a genuine CUDA OOM under real concurrent load on a real 24GB card. Raise
+    # it yourself only after re-reading VASTAI_DEPLOY.md's "Using the spare
+    # VRAM" section and re-verifying with finetune/check_vram.py --concurrent.
     with env_file.open("a", encoding="utf-8") as f:
         f.write(
-            "\n# --- Set by setup.py: pairs with run.py/test.py's default "
-            "--concurrency 4 ---\n"
+            "\n# --- Set by setup.py ---\n"
             "LEGALAI_LOAD_IN_4BIT=0\n"
-            "LEGALAI_GENERAL_POOL_SIZE=2\n"
         )
 
-    print("[setup] Created .env from .env.example (+ LEGALAI_LOAD_IN_4BIT=0, "
-          "LEGALAI_GENERAL_POOL_SIZE=2 for run.py's default concurrency).")
+    print("[setup] Created .env from .env.example (+ LEGALAI_LOAD_IN_4BIT=0). "
+          "LEGALAI_GENERAL_POOL_SIZE left at the default of 1 - see VASTAI_DEPLOY.md "
+          "before raising it.")
     print("[setup] >>> Edit .env and set DEEPSEEK_API_KEY before running the full benchmark. <<<")
 
 

@@ -65,17 +65,17 @@ python run.py       # the full 540-run benchmark, analysis, and figures
 `setup.py` installs the CUDA build of torch and everything in
 `requirements.txt`/`requirements-finetune.txt`, installs and starts Ollama
 (needed for embeddings - see the note below), and copies `.env.example` to
-`.env` if you don't have one yet - **also writing `LEGALAI_LOAD_IN_4BIT=0`
-and `LEGALAI_GENERAL_POOL_SIZE=2`**, since `test.py`/`run.py` both default to
-`--concurrency 4` (see "Using the spare VRAM" below for what that pairing
-means and its VRAM trade-off). **After it finishes, open `.env` and set
-`DEEPSEEK_API_KEY`** (used only by the LLM judge that scores answers after
-generation, never for generation itself). The three LoRA adapters
-(`adapters/legal`, `adapters/news`, `adapters/general_qa`) are already
-committed to the repo, so no fine-tuning step is needed.
+`.env` if you don't have one yet - **also writing `LEGALAI_LOAD_IN_4BIT=0`**.
+`test.py`/`run.py` both default to **`--concurrency 1`** (sequential) and
+`LEGALAI_GENERAL_POOL_SIZE` is left at its default of `1` - see "Using the
+spare VRAM" below for why, before raising either. **After setup.py finishes,
+open `.env` and set `DEEPSEEK_API_KEY`** (used only by the LLM judge that
+scores answers after generation, never for generation itself). The three
+LoRA adapters (`adapters/legal`, `adapters/news`, `adapters/general_qa`) are
+already committed to the repo, so no fine-tuning step is needed.
 
 `test.py` runs the unit tests, then a tiny 6-request smoke benchmark **at the
-same `--concurrency 4` default `run.py` will use**, and prints an estimate
+same `--concurrency 1` default `run.py` will use**, and prints an estimate
 for how long the full run will take **on your actual rental** - trust that
 number over anything estimated in this doc. It also flags the obvious red
 flags (abstention sentence everywhere, peft/base answers being identical,
@@ -101,12 +101,22 @@ shared helper (`ollama_setup.py`) that installs it if missing, starts it if
 it's not running, and pulls the embedding model - you shouldn't need to touch
 it directly.
 
-### Using the spare VRAM (this is now the default - read this before your first real run)
+### Using the spare VRAM (optional, off by default - read this before turning it on)
 
-A 24GB card holds all three models (bf16, ~18GB) with room to spare, so
-`test.py`/`run.py` default to **`--concurrency 4` paired with
-`LEGALAI_GENERAL_POOL_SIZE=2`** (`setup.py` writes that setting into `.env`
-for you). What each half does:
+A 24GB card holds all three models (bf16, ~18GB) with room to spare, which is
+tempting to spend on **`--concurrency 4` paired with
+`LEGALAI_GENERAL_POOL_SIZE=2`** - but that exact pairing was tried on a real
+24GB RTX 4090 and produced a genuine `CUDA OutOfMemoryError` under actual
+concurrent generation load (the aggregator node's long prompt, several in
+flight at once). The VRAM pre-flight check below only validates static
+weights + a KV-cache estimate, not real activation memory, so it passed right
+before the run OOM'd - treat a pass from it as a hint, not a guarantee.
+`test.py`/`run.py` now both default to `--concurrency 1` with
+`LEGALAI_GENERAL_POOL_SIZE=1`, and `setup.py` no longer writes a pool size
+into `.env`. Raise these only if you want to spend the effort re-verifying
+it on your specific rental - one step at a time (2, then 3...), watching
+`nvidia-smi` during an actual run, not just the pre-flight check. What each
+half would do if you did raise it:
 
 **Concurrency 4 - free, just runs more requests at once.** Legal and News are
 already different models with their own GPU stream, so requests that need
