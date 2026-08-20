@@ -38,7 +38,18 @@ def install_python_deps() -> None:
     # different CUDA version) in place instead of the cu126 build this project
     # is verified against. --no-deps avoids reinstalling torch's dependency
     # tree, which would otherwise make this slow for no benefit.
-    run([sys.executable, "-m", "pip", "install", "--force-reinstall", "--no-deps", "torch",
+    #
+    # torchvision MUST be reinstalled in the same command. torchvision ships
+    # compiled C++ extensions (e.g. its `nms` op) built against one specific
+    # torch ABI; leaving the template's original torchvision in place after
+    # swapping torch underneath it breaks with "RuntimeError: operator
+    # torchvision::nms does not exist" - and transformers imports torchvision
+    # internally even to load a plain text model's config (LlamaConfig pulls
+    # in image/video utilities), so this silently broke every model load, not
+    # just vision ones. Installing both from the same index in one command is
+    # what PyTorch's own docs recommend, and is what keeps them ABI-matched.
+    run([sys.executable, "-m", "pip", "install", "--force-reinstall", "--no-deps",
+         "torch", "torchvision",
          "--index-url", "https://download.pytorch.org/whl/cu126"])
     run([sys.executable, "-m", "pip", "install", "-r", "requirements.txt"])
     run([sys.executable, "-m", "pip", "install", "-r", "requirements-finetune.txt"])
