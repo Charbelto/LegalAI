@@ -271,9 +271,23 @@ def test_adapter_path_is_absolute(local_models_module):
 
 
 def test_pool_size_defaults_to_one_for_every_role(cfg):
-    """The 8GB-laptop design must be unchanged unless someone opts in."""
-    for role in ("legal", "news", "general_qa"):
-        assert cfg.LOCAL_MODEL_POOL_SIZE[role] == 1
+    """The 8GB-laptop design must be unchanged unless someone opts in.
+
+    Checks config.py's SOURCE (the os.getenv fallback literal), not the live
+    cfg.LOCAL_MODEL_POOL_SIZE dict. That dict is computed once, at import time,
+    from whatever environment happened to be active - and setup.py deliberately
+    writes LEGALAI_GENERAL_POOL_SIZE=2 into .env on a Vast.ai box (paired with
+    run.py's --concurrency default; see VASTAI_DEPLOY.md). Asserting on the
+    live dict would make this test fail on exactly the deployment it exists to
+    guard, which is the opposite of testing "the code's default".
+    """
+    import inspect
+
+    source = inspect.getsource(cfg)
+    for env_var in ("LEGALAI_LEGAL_POOL_SIZE", "LEGALAI_NEWS_POOL_SIZE", "LEGALAI_GENERAL_POOL_SIZE"):
+        assert f'os.getenv("{env_var}", "1")' in source, (
+            f"{env_var}'s fallback in config.py must be the literal \"1\""
+        )
 
 
 def test_pool_size_never_goes_below_one(local_models_module, cfg, monkeypatch):
