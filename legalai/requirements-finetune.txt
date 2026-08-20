@@ -18,7 +18,13 @@
 #   bitsandbytes 0.50.0, accelerate 1.14.0, datasets 5.0.1
 
 torch>=2.4                 # install from the cu* index, see above
-transformers>=4.44
+# Pinned, not just >=4.44: an unpinned install on a Vast.ai box pulled
+# transformers 5.15.1 (newest at the time) and it could not load LlamaConfig
+# at all ("Could not import module 'LlamaConfig'") - a real regression in that
+# release, not a config/environment problem on our side. 5.14.1 is the version
+# actually verified against these three models; pinned so a fresh install
+# doesn't silently drift onto a broken newer release again.
+transformers==5.14.1
 peft>=0.12
 trl>=0.9
 bitsandbytes>=0.43         # 4-bit NF4 quantisation; has Windows wheels from 0.43
