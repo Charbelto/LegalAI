@@ -39,17 +39,24 @@ def install_python_deps() -> None:
     # is verified against. --no-deps avoids reinstalling torch's dependency
     # tree, which would otherwise make this slow for no benefit.
     #
-    # torchvision MUST be reinstalled in the same command. torchvision ships
-    # compiled C++ extensions (e.g. its `nms` op) built against one specific
-    # torch ABI; leaving the template's original torchvision in place after
-    # swapping torch underneath it breaks with "RuntimeError: operator
-    # torchvision::nms does not exist" - and transformers imports torchvision
-    # internally even to load a plain text model's config (LlamaConfig pulls
-    # in image/video utilities), so this silently broke every model load, not
-    # just vision ones. Installing both from the same index in one command is
-    # what PyTorch's own docs recommend, and is what keeps them ABI-matched.
+    # torchvision AND torchaudio must be reinstalled in the same command.
+    # Both ship compiled extensions built against one specific torch CUDA
+    # build; leaving the template's originals in place after swapping torch
+    # underneath them breaks two different ways:
+    #   - torchvision: "RuntimeError: operator torchvision::nms does not
+    #     exist" - transformers imports torchvision internally even to load a
+    #     plain text model's *config* (LlamaConfig pulls in image/video
+    #     utilities).
+    #   - torchaudio: "PyTorch and TorchAudio were compiled with different
+    #     CUDA versions" - transformers imports torchaudio internally to load
+    #     a model *class* (modeling_utils pulls in RNNT loss utilities).
+    # Neither is optional for this project's actual imports (image/audio
+    # processing) - transformers just drags them in as a side effect of its
+    # own module structure. Installing all three from the same index in one
+    # command is what PyTorch's own docs recommend, and is what keeps them
+    # mutually ABI-matched.
     run([sys.executable, "-m", "pip", "install", "--force-reinstall", "--no-deps",
-         "torch", "torchvision",
+         "torch", "torchvision", "torchaudio",
          "--index-url", "https://download.pytorch.org/whl/cu126"])
     run([sys.executable, "-m", "pip", "install", "-r", "requirements.txt"])
     run([sys.executable, "-m", "pip", "install", "-r", "requirements-finetune.txt"])
