@@ -181,9 +181,17 @@ class LegalAIService:
                 return
 
             self._emit(emit, "status", {"message": "Loading EU AI Act into vector store..."})
-            text = embed.pdf_to_text(Utils.EUROPEAN_ACT_URL)
-            if not text.strip():
-                raise RuntimeError("Failed to download EU AI Act document")
+            # embed.pdf_to_text(Utils.EUROPEAN_ACT_URL) used to be called directly
+            # here: single source, no headers. That source needs
+            # Accept: application/pdf to get a PDF back at all (without it, the
+            # EU portal serves RDF/XML metadata instead) - a header only
+            # embed.py's own CLI path was setting, via EUROPEAN_ACT_SOURCES. This
+            # path went untested for a long time because a populated
+            # chroma_storage/ always existed already, so the lazy-load branch
+            # above never actually ran. fetch_eu_ai_act_text() is the same
+            # multi-source, header-aware, length-checked helper the CLI uses, and
+            # raises its own actionable RuntimeError if every source fails.
+            text, source_label = embed.fetch_eu_ai_act_text()
 
             embed.embed_text_in_chromadb(
                 text,
@@ -191,7 +199,7 @@ class LegalAIService:
                 document_description="Artificial Intelligence Act",
             )
             self._eu_act_loaded = True
-            self._emit(emit, "status", {"message": "EU AI Act loaded."})
+            self._emit(emit, "status", {"message": f"EU AI Act loaded from {source_label}."})
 
     def get_health(self) -> Dict[str, Any]:
         """Return current API/service status."""
